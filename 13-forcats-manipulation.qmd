@@ -596,12 +596,15 @@ data |>
   xlab("Device") + ylab("Gender")
 ```
 
-### Mosaic Plot
+### Count Plot
 
-A mosaic plot is a graphical representation of a two way table or contingency table. It was introduced by Hartigan & Kleiner and is divided into rectangles. Proportions on horizontal axis represents the number of observations for each level of the X variable. The vertical length of each rectangle is proportional to the proportion of Y variable in each level of X variable.
+A count plot maps the frequency of observations at each combination of factor levels to circle size using `geom_count()`. It provides a clean, dependency-free alternative for inspecting two-way categorical distributions in ggplot2.
 
-Mosaic plots need the **ggmosaic** package (archived on CRAN) and are out of
-scope here — they are covered in the [ggplot2 ebook](https://viz-ggplot2.rsquaredacademy.com/).
+```{r count_plot}
+ggplot(data, aes(x = device, y = gender)) +
+  geom_count() +
+  xlab("Device") + ylab("Gender")
+```
 
 ### Pie Chart
 
@@ -705,10 +708,14 @@ data |>
   xlab("Device") + ylab("Channel")
 ```
     
-5. Display mosaic plot of `device` by `channel`
+5. Display count plot of `device` by `channel`
 
-Mosaic plots need the **ggmosaic** package (archived on CRAN) and are out of
-scope here — they are covered in the [ggplot2 ebook](https://viz-ggplot2.rsquaredacademy.com/).
+```{r plot_5, fig.align='center', fig.height=5, fig.width=7, echo=FALSE}
+ggplot(data, aes(x = device, y = channel)) +
+  geom_count() +
+  ggtitle("Channel by Device") +
+  xlab("Device") + ylab("Channel")
+```
 
 6. Display pie or donut chart of `channel`
 
@@ -776,7 +783,7 @@ psych::describe(minilytics)
 skimr::skim(minilytics)
 summarytools::dfSummary(minilytics)
 tableone::CreateTableOne(vars = c("device", "os"), data = minilytics)
-desctable::desctable(minilytics)
+summary(minilytics)
 ```
 
 ## Try it live {.unnumbered}

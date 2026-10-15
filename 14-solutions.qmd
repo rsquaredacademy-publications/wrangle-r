@@ -454,8 +454,11 @@ data |>
 ```
 
 ```{r sol_fc13d3, fig.height=5, fig.width=7}
-# 5: mosaic plots need ggmosaic (archived on CRAN) — out of scope;
-# see the ggplot2 ebook instead.
+# 5: count plot, device by channel
+ggplot(data, aes(x = device, y = channel)) +
+  geom_count() +
+  ggtitle("Channel by Device") +
+  xlab("Device") + ylab("Channel")
 # 6: pie and donut of channel
 data |> pull(channel) |> table() |> pie()
 data |>
