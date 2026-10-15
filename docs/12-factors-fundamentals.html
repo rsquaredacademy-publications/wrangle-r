@@ -959,10 +959,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>device <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Desktop" "Tablet"  "Mobile"  "Mobile"  "Mobile"  "Mobile"  "Mobile" 
- [8] "Tablet"  "Mobile"  "Desktop" "Desktop" "Mobile"  "Desktop" "Desktop"
-[15] "Desktop" "Desktop" "Tablet"  "Tablet"  "Desktop" "Tablet"  "Mobile" 
-[22] "Desktop" "Desktop" "Mobile"  "Desktop"</code></pre>
+<pre><code> [1] "Mobile"  "Desktop" "Tablet"  "Tablet"  "Tablet"  "Desktop" "Desktop"
+ [8] "Tablet"  "Desktop" "Tablet"  "Mobile"  "Desktop" "Desktop" "Tablet" 
+[15] "Mobile"  "Desktop" "Desktop" "Tablet"  "Tablet"  "Desktop" "Tablet" 
+[22] "Mobile"  "Tablet"  "Desktop" "Tablet" </code></pre>
 </div>
 </div>
 </section>
@@ -983,9 +983,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Tablet  Mobile  Mobile  Mobile  Mobile  Mobile  Tablet  Mobile 
-[10] Desktop Desktop Mobile  Desktop Desktop Desktop Desktop Tablet  Tablet 
-[19] Desktop Tablet  Mobile  Desktop Desktop Mobile  Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Tablet  Tablet  Desktop Desktop Tablet  Desktop
+[10] Tablet  Mobile  Desktop Desktop Tablet  Mobile  Desktop Desktop Tablet 
+[19] Tablet  Desktop Tablet  Mobile  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -993,10 +993,10 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Tablet  Mobile  Mobile  Mobile  Mobile  Mobile  Tablet  Mobile 
-[10] Desktop Desktop Mobile  Desktop Desktop Desktop Desktop Tablet  Tablet 
-[19] Desktop Tablet  Mobile  Desktop Desktop Mobile  Desktop
-Levels: Desktop Tablet Mobile</code></pre>
+<pre><code> [1] Mobile  Desktop Tablet  Tablet  Tablet  Desktop Desktop Tablet  Desktop
+[10] Tablet  Mobile  Desktop Desktop Tablet  Mobile  Desktop Desktop Tablet 
+[19] Tablet  Desktop Tablet  Mobile  Tablet  Desktop Tablet 
+Levels: Mobile Desktop Tablet</code></pre>
 </div>
 </div>
 <p>Did you notice any difference between these two functions? Focus on the last line of the output where the levels are displayed. Now observe the order of the levels. <code>as.factor()</code> displays levels in the alphabetical order whereas <code>as_factor()</code> displays them in order of appearance in the data. <strong>Mobile</strong>, followed by <strong>Tablet</strong>, and then <strong>Desktop</strong>. If you look at the data, they appear in the same order.</p>
@@ -1015,9 +1015,9 @@ Levels: Desktop Tablet Mobile</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Tablet  Mobile  Mobile  Mobile  Mobile  Mobile  Tablet  Mobile 
-[10] Desktop Desktop Mobile  Desktop Desktop Desktop Desktop Tablet  Tablet 
-[19] Desktop Tablet  Mobile  Desktop Desktop Mobile  Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Tablet  Tablet  Desktop Desktop Tablet  Desktop
+[10] Tablet  Mobile  Desktop Desktop Tablet  Mobile  Desktop Desktop Tablet 
+[19] Tablet  Desktop Tablet  Mobile  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1025,9 +1025,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Tablet  Mobile  Mobile  Mobile  Mobile  Mobile  Tablet  Mobile 
-[10] Desktop Desktop Mobile  Desktop Desktop Desktop Desktop Tablet  Tablet 
-[19] Desktop Tablet  Mobile  Desktop Desktop Mobile  Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Tablet  Tablet  Desktop Desktop Tablet  Desktop
+[10] Tablet  Mobile  Desktop Desktop Tablet  Mobile  Desktop Desktop Tablet 
+[19] Tablet  Desktop Tablet  Mobile  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1035,9 +1035,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop &lt;NA&gt;    Mobile  Mobile  Mobile  Mobile  Mobile  &lt;NA&gt;    Mobile 
-[10] Desktop Desktop Mobile  Desktop Desktop Desktop Desktop &lt;NA&gt;    &lt;NA&gt;   
-[19] Desktop &lt;NA&gt;    Mobile  Desktop Desktop Mobile  Desktop
+<pre><code> [1] Mobile  Desktop &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    Desktop Desktop &lt;NA&gt;    Desktop
+[10] &lt;NA&gt;    Mobile  Desktop Desktop &lt;NA&gt;    Mobile  Desktop Desktop &lt;NA&gt;   
+[19] &lt;NA&gt;    Desktop &lt;NA&gt;    Mobile  &lt;NA&gt;    Desktop &lt;NA&gt;   
 Levels: Desktop Mobile</code></pre>
 </div>
 </div>
@@ -1051,8 +1051,8 @@ Levels: Desktop Mobile</code></pre>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>),</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Desk"</span>, <span class="st">"Mob"</span>, <span class="st">"Tab"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desk Tab  Mob  Mob  Mob  Mob  Mob  Tab  Mob  Desk Desk Mob  Desk Desk Desk
-[16] Desk Tab  Tab  Desk Tab  Mob  Desk Desk Mob  Desk
+<pre><code> [1] Mob  Desk Tab  Tab  Tab  Desk Desk Tab  Desk Tab  Mob  Desk Desk Tab  Mob 
+[16] Desk Desk Tab  Tab  Desk Tab  Mob  Tab  Desk Tab 
 Levels: Desk Mob Tab</code></pre>
 </div>
 </div>
@@ -1066,17 +1066,17 @@ Levels: Desk Mob Tab</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>device <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Mobile"  NA        "Mobile"  "Mobile"  "Tablet"  "Tablet"  "Mobile" 
- [8] "Mobile"  NA        "Tablet"  "Desktop" "Desktop" "Tablet"  "Tablet" 
-[15] NA        NA        "Mobile"  "Mobile"  "Desktop" "Desktop" "Mobile" 
-[22] "Desktop" NA        NA        "Mobile" </code></pre>
+<pre><code> [1] NA        "Mobile"  "Tablet"  NA        NA        NA        "Tablet" 
+ [8] NA        "Mobile"  NA        "Mobile"  "Tablet"  NA        "Tablet" 
+[15] NA        "Desktop" "Desktop" "Desktop" "Mobile"  "Tablet"  "Mobile" 
+[22] "Tablet"  "Mobile"  "Mobile"  NA       </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store as categorical data</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Mobile  &lt;NA&gt;    Mobile  Mobile  Tablet  Tablet  Mobile  Mobile  &lt;NA&gt;   
-[10] Tablet  Desktop Desktop Tablet  Tablet  &lt;NA&gt;    &lt;NA&gt;    Mobile  Mobile 
-[19] Desktop Desktop Mobile  Desktop &lt;NA&gt;    &lt;NA&gt;    Mobile 
+<pre><code> [1] &lt;NA&gt;    Mobile  Tablet  &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    Tablet  &lt;NA&gt;    Mobile 
+[10] &lt;NA&gt;    Mobile  Tablet  &lt;NA&gt;    Tablet  &lt;NA&gt;    Desktop Desktop Desktop
+[19] Mobile  Tablet  Mobile  Tablet  Mobile  Mobile  &lt;NA&gt;   
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1084,9 +1084,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">exclude =</span> <span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Mobile  &lt;NA&gt;    Mobile  Mobile  Tablet  Tablet  Mobile  Mobile  &lt;NA&gt;   
-[10] Tablet  Desktop Desktop Tablet  Tablet  &lt;NA&gt;    &lt;NA&gt;    Mobile  Mobile 
-[19] Desktop Desktop Mobile  Desktop &lt;NA&gt;    &lt;NA&gt;    Mobile 
+<pre><code> [1] &lt;NA&gt;    Mobile  Tablet  &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    Tablet  &lt;NA&gt;    Mobile 
+[10] &lt;NA&gt;    Mobile  Tablet  &lt;NA&gt;    Tablet  &lt;NA&gt;    Desktop Desktop Desktop
+[19] Mobile  Tablet  Mobile  Tablet  Mobile  Mobile  &lt;NA&gt;   
 Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 </div>
 </div>
@@ -1099,10 +1099,10 @@ Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rating <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rating</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Like"    "Neutral" "Like"    "Neutral" "Neutral" "Dislike" "Neutral"
- [8] "Like"    "Dislike" "Neutral" "Like"    "Neutral" "Like"    "Like"   
-[15] "Like"    "Like"    "Neutral" "Neutral" "Dislike" "Dislike" "Neutral"
-[22] "Like"    "Like"    "Dislike" "Neutral"</code></pre>
+<pre><code> [1] "Dislike" "Like"    "Dislike" "Like"    "Dislike" "Dislike" "Neutral"
+ [8] "Neutral" "Like"    "Like"    "Dislike" "Dislike" "Like"    "Dislike"
+[15] "Like"    "Dislike" "Neutral" "Like"    "Neutral" "Like"    "Like"   
+[22] "Dislike" "Dislike" "Neutral" "Neutral"</code></pre>
 </div>
 </div>
 <p>It consists of three values Dislike, Neutral &amp; Like in that order. You can see that there is an intrinsic order here. Like is better than neutral which in turn is better than dislike. While we can order them, we can’t quantify the difference between them. We can’t say neutral is so many times better than dislike.</p>
@@ -1118,9 +1118,9 @@ Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.ordered</span>(rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Like    Neutral Like    Neutral Neutral Dislike Neutral Like    Dislike
-[10] Neutral Like    Neutral Like    Like    Like    Like    Neutral Neutral
-[19] Dislike Dislike Neutral Like    Like    Dislike Neutral
+<pre><code> [1] Dislike Like    Dislike Like    Dislike Dislike Neutral Neutral Like   
+[10] Like    Dislike Dislike Like    Dislike Like    Dislike Neutral Like   
+[19] Neutral Like    Like    Dislike Dislike Neutral Neutral
 Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 </div>
 </div>
@@ -1128,9 +1128,9 @@ Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(rating, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Like    Neutral Like    Neutral Neutral Dislike Neutral Like    Dislike
-[10] Neutral Like    Neutral Like    Like    Like    Like    Neutral Neutral
-[19] Dislike Dislike Neutral Like    Like    Dislike Neutral
+<pre><code> [1] Dislike Like    Dislike Like    Dislike Dislike Neutral Neutral Like   
+[10] Like    Dislike Dislike Like    Dislike Like    Dislike Neutral Like   
+[19] Neutral Like    Like    Dislike Dislike Neutral Neutral
 Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 </div>
 </div>
@@ -1142,9 +1142,9 @@ Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(rating, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Like    Neutral Like    Neutral Neutral Dislike Neutral Like    Dislike
-[10] Neutral Like    Neutral Like    Like    Like    Like    Neutral Neutral
-[19] Dislike Dislike Neutral Like    Like    Dislike Neutral
+<pre><code> [1] Dislike Like    Dislike Like    Dislike Dislike Neutral Neutral Like   
+[10] Like    Dislike Dislike Like    Dislike Like    Dislike Neutral Like   
+[19] Neutral Like    Like    Dislike Dislike Neutral Neutral
 Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 </div>
 </div>
@@ -1152,9 +1152,9 @@ Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(rating, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Like    Neutral Like    Neutral Neutral Dislike Neutral Like    Dislike
-[10] Neutral Like    Neutral Like    Like    Like    Like    Neutral Neutral
-[19] Dislike Dislike Neutral Like    Like    Dislike Neutral
+<pre><code> [1] Dislike Like    Dislike Like    Dislike Dislike Neutral Neutral Like   
+[10] Like    Dislike Dislike Like    Dislike Like    Dislike Neutral Like   
+[19] Neutral Like    Like    Dislike Dislike Neutral Neutral
 Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 </div>
 </div>

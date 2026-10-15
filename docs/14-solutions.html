@@ -665,15 +665,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-09"</code></pre>
+<pre><code>[1] "2026-10-15"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-09 08:28:19 UTC"</code></pre>
+<pre><code>[1] "2026-10-15 16:24:33 UTC"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pm</span>(<span class="fu">now</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="fu">c</span>(<span class="dv">2018</span>, <span class="dv">2016</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -898,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="st">"UTC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-09 08:28:20 UTC"</code></pre>
+<pre><code>[1] "2026-10-15 16:24:34 UTC"</code></pre>
 </div>
 </div>
 <p><strong>Q3. Round <code>transact</code> due dates: up to weeks, down to days, back to the start of the month.</strong></p>
@@ -1368,10 +1368,11 @@ $user_type
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5: mosaic plots need ggmosaic (archived on CRAN) — out of scope;</span></span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see the ggplot2 ebook instead.</span></span>
-<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 6: pie and donut of channel</span></span>
-<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">pie</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5: count plot, device by channel</span></span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> device, <span class="at">y =</span> channel)) <span class="sc">+</span></span>
+<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_count</span>() <span class="sc">+</span></span>
+<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Device"</span>) <span class="sc">+</span></span>
+<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Device"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1379,18 +1380,27 @@ $user_type
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span></span>
-<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">channel =</span> f, <span class="at">count =</span> n) <span class="sc">|&gt;</span></span>
-<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> channel), <span class="at">width =</span> <span class="dv">1</span>,</span>
-<span id="cb158-7"><a href="#cb158-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb158-8"><a href="#cb158-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6: pie and donut of channel</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">pie</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="14-solutions_files/figure-html/sol_fc13d3-2.png" class="img-fluid figure-img" width="1344"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span></span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">channel =</span> f, <span class="at">count =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb159-6"><a href="#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> channel), <span class="at">width =</span> <span class="dv">1</span>,</span>
+<span id="cb159-7"><a href="#cb159-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb159-8"><a href="#cb159-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-solutions_files/figure-html/sol_fc13d3-3.png" class="img-fluid figure-img" width="1344"></p>
 </figure>
 </div>
 </div>
@@ -1890,487 +1900,490 @@ $user_type
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb159" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Data Wrangling in R: worked solutions to chapter exercises, plus open stubs for contributors."</span></span>
-<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercise Solutions {#exercise-solutions}</span></span>
-<span id="cb159-6"><a href="#cb159-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-7"><a href="#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
-<span id="cb159-8"><a href="#cb159-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-9"><a href="#cb159-9" aria-hidden="true" tabindex="-1"></a>Try every **Your Turn** before reading its solution — the struggle is the</span>
-<span id="cb159-10"><a href="#cb159-10" aria-hidden="true" tabindex="-1"></a>lesson. Worked solutions below cover @dplyr-basics, @tidying-data-with-tidyr,</span>
-<span id="cb159-11"><a href="#cb159-11" aria-hidden="true" tabindex="-1"></a>@date-and-time-in-r, @date-arithmetic-time-zones, @categorical-data-in-r and</span>
-<span id="cb159-12"><a href="#cb159-12" aria-hidden="true" tabindex="-1"></a>@forcats-manipulation. Remaining chapters are open stubs — to contribute one,</span>
-<span id="cb159-13"><a href="#cb159-13" aria-hidden="true" tabindex="-1"></a>open an issue or pull request with the chapter, the question, and a runnable</span>
-<span id="cb159-14"><a href="#cb159-14" aria-hidden="true" tabindex="-1"></a>chunk in this book's style (<span class="in">`|&gt;`</span>-first, same data as the chapter).</span>
-<span id="cb159-15"><a href="#cb159-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-16"><a href="#cb159-16" aria-hidden="true" tabindex="-1"></a>We will use the following R packages:</span>
-<span id="cb159-17"><a href="#cb159-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-18"><a href="#cb159-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_libs, message=FALSE}</span></span>
-<span id="cb159-19"><a href="#cb159-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb159-20"><a href="#cb159-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb159-21"><a href="#cb159-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-22"><a href="#cb159-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-23"><a href="#cb159-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## dplyr Basics</span></span>
-<span id="cb159-24"><a href="#cb159-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-25"><a href="#cb159-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_data, message=FALSE}</span></span>
-<span id="cb159-26"><a href="#cb159-26" aria-hidden="true" tabindex="-1"></a>ecom <span class="ot">&lt;-</span></span>
-<span id="cb159-27"><a href="#cb159-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv'</span>,</span>
-<span id="cb159-28"><a href="#cb159-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols_only</span>(<span class="at">device =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"laptop"</span>, <span class="st">"tablet"</span>, <span class="st">"mobile"</span>)),</span>
-<span id="cb159-29"><a href="#cb159-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">referrer =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"bing"</span>, <span class="st">"direct"</span>, <span class="st">"social"</span>, <span class="st">"yahoo"</span>, <span class="st">"google"</span>)),</span>
-<span id="cb159-30"><a href="#cb159-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">purchase =</span> <span class="fu">col_logical</span>(), <span class="at">n_pages =</span> <span class="fu">col_double</span>(), <span class="at">n_visit =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb159-31"><a href="#cb159-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">duration =</span> <span class="fu">col_double</span>(), <span class="at">order_value =</span> <span class="fu">col_double</span>(), <span class="at">order_items =</span> <span class="fu">col_double</span>()</span>
-<span id="cb159-32"><a href="#cb159-32" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb159-33"><a href="#cb159-33" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb159-34"><a href="#cb159-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-35"><a href="#cb159-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-36"><a href="#cb159-36" aria-hidden="true" tabindex="-1"></a>**Q1. What is the average number of pages visited by purchasers and</span>
-<span id="cb159-37"><a href="#cb159-37" aria-hidden="true" tabindex="-1"></a>non-purchasers?**</span>
-<span id="cb159-38"><a href="#cb159-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-39"><a href="#cb159-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr1}</span></span>
-<span id="cb159-40"><a href="#cb159-40" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
-<span id="cb159-41"><a href="#cb159-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_pages =</span> <span class="fu">mean</span>(n_pages), <span class="at">.by =</span> purchase)</span>
-<span id="cb159-42"><a href="#cb159-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-43"><a href="#cb159-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-44"><a href="#cb159-44" aria-hidden="true" tabindex="-1"></a>Purchasers browse far more pages (~16 vs ~5) — the signal behind the AOV case</span>
-<span id="cb159-45"><a href="#cb159-45" aria-hidden="true" tabindex="-1"></a>study.</span>
-<span id="cb159-46"><a href="#cb159-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-47"><a href="#cb159-47" aria-hidden="true" tabindex="-1"></a>**Q2. What is the average time on site for purchasers vs non-purchasers?**</span>
-<span id="cb159-48"><a href="#cb159-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-49"><a href="#cb159-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr2}</span></span>
-<span id="cb159-50"><a href="#cb159-50" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
-<span id="cb159-51"><a href="#cb159-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_time =</span> <span class="fu">mean</span>(duration), <span class="at">.by =</span> purchase)</span>
-<span id="cb159-52"><a href="#cb159-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-53"><a href="#cb159-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-54"><a href="#cb159-54" aria-hidden="true" tabindex="-1"></a>Time on site barely differs (~355 vs ~359 seconds): page depth, not duration,</span>
-<span id="cb159-55"><a href="#cb159-55" aria-hidden="true" tabindex="-1"></a>separates buyers here.</span>
-<span id="cb159-56"><a href="#cb159-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-57"><a href="#cb159-57" aria-hidden="true" tabindex="-1"></a>**Q3. What is the average number of pages visited by purchasers and</span>
-<span id="cb159-58"><a href="#cb159-58" aria-hidden="true" tabindex="-1"></a>non-purchasers using mobile?**</span>
-<span id="cb159-59"><a href="#cb159-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-60"><a href="#cb159-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr3}</span></span>
-<span id="cb159-61"><a href="#cb159-61" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
-<span id="cb159-62"><a href="#cb159-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(device <span class="sc">==</span> <span class="st">"mobile"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb159-63"><a href="#cb159-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_pages =</span> <span class="fu">mean</span>(n_pages), <span class="at">.by =</span> purchase)</span>
-<span id="cb159-64"><a href="#cb159-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-65"><a href="#cb159-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-66"><a href="#cb159-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tidying Data with tidyr</span></span>
-<span id="cb159-67"><a href="#cb159-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-68"><a href="#cb159-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr_data, message=FALSE}</span></span>
-<span id="cb159-69"><a href="#cb159-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb159-70"><a href="#cb159-70" aria-hidden="true" tabindex="-1"></a>mockstring <span class="ot">&lt;-</span></span>
-<span id="cb159-71"><a href="#cb159-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv'</span>,</span>
-<span id="cb159-72"><a href="#cb159-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb159-73"><a href="#cb159-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-74"><a href="#cb159-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-75"><a href="#cb159-75" aria-hidden="true" tabindex="-1"></a>**Q1. Reshape the mean of <span class="in">`n_visit`</span> and <span class="in">`order_items`</span> by <span class="in">`referrer`</span> from wide</span>
-<span id="cb159-76"><a href="#cb159-76" aria-hidden="true" tabindex="-1"></a>to long.**</span>
-<span id="cb159-77"><a href="#cb159-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-78"><a href="#cb159-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr1}</span></span>
-<span id="cb159-79"><a href="#cb159-79" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
-<span id="cb159-80"><a href="#cb159-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(n_visit, order_items), \(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb159-81"><a href="#cb159-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> referrer) <span class="sc">|&gt;</span></span>
-<span id="cb159-82"><a href="#cb159-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>referrer, <span class="at">names_to =</span> <span class="st">"metric"</span>, <span class="at">values_to =</span> <span class="st">"mean_value"</span>)</span>
-<span id="cb159-83"><a href="#cb159-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-84"><a href="#cb159-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-85"><a href="#cb159-85" aria-hidden="true" tabindex="-1"></a>**Q2. Split the <span class="in">`email`</span> column of <span class="in">`mockstring`</span> at <span class="in">`"@"`</span> and reunite it — does</span>
-<span id="cb159-86"><a href="#cb159-86" aria-hidden="true" tabindex="-1"></a>the round-trip hold?**</span>
-<span id="cb159-87"><a href="#cb159-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-88"><a href="#cb159-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr2}</span></span>
-<span id="cb159-89"><a href="#cb159-89" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> mockstring <span class="sc">|&gt;</span></span>
-<span id="cb159-90"><a href="#cb159-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(email) <span class="sc">|&gt;</span></span>
-<span id="cb159-91"><a href="#cb159-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(email, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"user"</span>, <span class="st">"domain"</span>), <span class="at">sep =</span> <span class="st">"@"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb159-92"><a href="#cb159-92" aria-hidden="true" tabindex="-1"></a>reunited <span class="ot">&lt;-</span> split <span class="sc">|&gt;</span></span>
-<span id="cb159-93"><a href="#cb159-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">"rejoined"</span>, user, domain, <span class="at">sep =</span> <span class="st">"@"</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb159-94"><a href="#cb159-94" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(reunited<span class="sc">$</span>rejoined, mockstring<span class="sc">$</span>email)</span>
-<span id="cb159-95"><a href="#cb159-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-96"><a href="#cb159-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-97"><a href="#cb159-97" aria-hidden="true" tabindex="-1"></a>Yes — every row round-trips (<span class="in">`TRUE`</span>), since each address holds exactly one</span>
-<span id="cb159-98"><a href="#cb159-98" aria-hidden="true" tabindex="-1"></a><span class="in">`"@"`</span>.</span>
-<span id="cb159-99"><a href="#cb159-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-100"><a href="#cb159-100" aria-hidden="true" tabindex="-1"></a>**Q3. Run the <span class="in">`complete()`</span> example without <span class="in">`fill`</span>: what does the missing count</span>
-<span id="cb159-101"><a href="#cb159-101" aria-hidden="true" tabindex="-1"></a>become, and why?**</span>
-<span id="cb159-102"><a href="#cb159-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-103"><a href="#cb159-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr3}</span></span>
-<span id="cb159-104"><a href="#cb159-104" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
-<span id="cb159-105"><a href="#cb159-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(purchase) <span class="sc">|&gt;</span></span>
-<span id="cb159-106"><a href="#cb159-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(device, purchase) <span class="sc">|&gt;</span></span>
-<span id="cb159-107"><a href="#cb159-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(device, <span class="at">purchase =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb159-108"><a href="#cb159-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-109"><a href="#cb159-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-110"><a href="#cb159-110" aria-hidden="true" tabindex="-1"></a>The missing cells become <span class="in">`NA`</span>, not 0: with no <span class="in">`fill`</span>, <span class="in">`complete()`</span> adds the</span>
-<span id="cb159-111"><a href="#cb159-111" aria-hidden="true" tabindex="-1"></a>absent combinations but has no value to put in <span class="in">`n`</span>, so the count is unknown</span>
-<span id="cb159-112"><a href="#cb159-112" aria-hidden="true" tabindex="-1"></a>(<span class="in">`NA`</span>). Pass <span class="in">`fill = list(n = 0L)`</span> when a missing combination genuinely means</span>
-<span id="cb159-113"><a href="#cb159-113" aria-hidden="true" tabindex="-1"></a>"zero events".</span>
-<span id="cb159-114"><a href="#cb159-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-115"><a href="#cb159-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Date &amp; Time: Parsing and Components</span></span>
-<span id="cb159-116"><a href="#cb159-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-117"><a href="#cb159-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10_libs, message=FALSE}</span></span>
-<span id="cb159-118"><a href="#cb159-118" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb159-119"><a href="#cb159-119" aria-hidden="true" tabindex="-1"></a>transact <span class="ot">&lt;-</span></span>
-<span id="cb159-120"><a href="#cb159-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv'</span>,</span>
-<span id="cb159-121"><a href="#cb159-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb159-122"><a href="#cb159-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-123"><a href="#cb159-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-124"><a href="#cb159-124" aria-hidden="true" tabindex="-1"></a>**Q1. Current date, current time, AM or PM, and leap years.**</span>
-<span id="cb159-125"><a href="#cb159-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-126"><a href="#cb159-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10a}</span></span>
-<span id="cb159-127"><a href="#cb159-127" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb159-128"><a href="#cb159-128" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span>
-<span id="cb159-129"><a href="#cb159-129" aria-hidden="true" tabindex="-1"></a><span class="fu">pm</span>(<span class="fu">now</span>())</span>
-<span id="cb159-130"><a href="#cb159-130" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="fu">c</span>(<span class="dv">2018</span>, <span class="dv">2016</span>))</span>
-<span id="cb159-131"><a href="#cb159-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-132"><a href="#cb159-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-133"><a href="#cb159-133" aria-hidden="true" tabindex="-1"></a>2018 was not a leap year (<span class="in">`FALSE`</span>); 2016 was (<span class="in">`TRUE`</span>).</span>
-<span id="cb159-134"><a href="#cb159-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-135"><a href="#cb159-135" aria-hidden="true" tabindex="-1"></a>**Q2. R 1.0.0 was released on <span class="in">`2000-02-29 08:55:23 UTC`</span>. Save it as a <span class="in">`Date`</span></span>
-<span id="cb159-136"><a href="#cb159-136" aria-hidden="true" tabindex="-1"></a>from character, a <span class="in">`Date`</span> from origin + number, <span class="in">`POSIXct`</span>, <span class="in">`POSIXlt`</span></span>
-<span id="cb159-137"><a href="#cb159-137" aria-hidden="true" tabindex="-1"></a>(extracting month day, day of year, month, zone) and <span class="in">`ISODate`</span>.**</span>
-<span id="cb159-138"><a href="#cb159-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-139"><a href="#cb159-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10b}</span></span>
-<span id="cb159-140"><a href="#cb159-140" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2000-02-29"</span>)</span>
-<span id="cb159-141"><a href="#cb159-141" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">11016</span>, <span class="at">origin =</span> <span class="st">"1970-01-01"</span>)</span>
-<span id="cb159-142"><a href="#cb159-142" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">"2000-02-29 08:55:23"</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
-<span id="cb159-143"><a href="#cb159-143" aria-hidden="true" tabindex="-1"></a>lt <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="st">"2000-02-29 08:55:23"</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
-<span id="cb159-144"><a href="#cb159-144" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">month_day =</span> lt<span class="sc">$</span>mday, <span class="at">day_of_year =</span> lt<span class="sc">$</span>yday, <span class="at">month =</span> lt<span class="sc">$</span>mon <span class="sc">+</span> <span class="dv">1</span>L, <span class="at">zone =</span> lt<span class="sc">$</span>zone)</span>
-<span id="cb159-145"><a href="#cb159-145" aria-hidden="true" tabindex="-1"></a><span class="fu">ISOdate</span>(<span class="dv">2000</span>, <span class="dv">2</span>, <span class="dv">29</span>, <span class="dv">8</span>, <span class="dv">55</span>, <span class="dv">23</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
-<span id="cb159-146"><a href="#cb159-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-147"><a href="#cb159-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-148"><a href="#cb159-148" aria-hidden="true" tabindex="-1"></a><span class="in">`$mon`</span> is zero-indexed, hence <span class="in">`+ 1L`</span>; <span class="in">`$yday`</span> is 59 (zero-indexed — the 60th</span>
-<span id="cb159-149"><a href="#cb159-149" aria-hidden="true" tabindex="-1"></a>day of the leap year).</span>
-<span id="cb159-150"><a href="#cb159-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-151"><a href="#cb159-151" aria-hidden="true" tabindex="-1"></a>**Q3. Create <span class="in">`July 5th, 2019`</span> from each spelling with <span class="in">`as.Date()`</span> and the</span>
-<span id="cb159-152"><a href="#cb159-152" aria-hidden="true" tabindex="-1"></a>correct format.**</span>
-<span id="cb159-153"><a href="#cb159-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-154"><a href="#cb159-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10c}</span></span>
-<span id="cb159-155"><a href="#cb159-155" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July-05-19"</span>, <span class="at">format =</span> <span class="st">"%B-%d-%y"</span>)</span>
-<span id="cb159-156"><a href="#cb159-156" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"JUL-05-19"</span>, <span class="at">format =</span> <span class="st">"%b-%d-%y"</span>)</span>
-<span id="cb159-157"><a href="#cb159-157" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"05.07.19"</span>, <span class="at">format =</span> <span class="st">"%d.%m.%y"</span>)</span>
-<span id="cb159-158"><a href="#cb159-158" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"5-July 2019"</span>, <span class="at">format =</span> <span class="st">"%d-%B %Y"</span>)</span>
-<span id="cb159-159"><a href="#cb159-159" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July 5th, 2019"</span>, <span class="at">format =</span> <span class="st">"July %dth, %Y"</span>)</span>
-<span id="cb159-160"><a href="#cb159-160" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July 05, 2019"</span>, <span class="at">format =</span> <span class="st">"%B %d, %Y"</span>)</span>
-<span id="cb159-161"><a href="#cb159-161" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2019-July- 05"</span>, <span class="at">format =</span> <span class="st">"%Y-%B- %d"</span>)</span>
-<span id="cb159-162"><a href="#cb159-162" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"05/07/2019"</span>, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb159-163"><a href="#cb159-163" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"07/05/2019"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
-<span id="cb159-164"><a href="#cb159-164" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"7/5/2019"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
-<span id="cb159-165"><a href="#cb159-165" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"07/5/19"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb159-166"><a href="#cb159-166" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2019-07-05"</span>)</span>
-<span id="cb159-167"><a href="#cb159-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-168"><a href="#cb159-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-169"><a href="#cb159-169" aria-hidden="true" tabindex="-1"></a>Note the ambiguous pairs: <span class="in">`05/07/2019`</span> vs <span class="in">`07/05/2019`</span> is day-first vs</span>
-<span id="cb159-170"><a href="#cb159-170" aria-hidden="true" tabindex="-1"></a>month-first — the format string, not the data, decides. <span class="in">`as.Date()`</span> matches</span>
-<span id="cb159-171"><a href="#cb159-171" aria-hidden="true" tabindex="-1"></a>literals (<span class="in">`"July "`</span>, <span class="in">`"th"`</span>, <span class="in">`", "`</span>) character-for-character.</span>
-<span id="cb159-172"><a href="#cb159-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-173"><a href="#cb159-173" aria-hidden="true" tabindex="-1"></a>**Q4. Parse the same spellings with <span class="in">`strptime()`</span> / <span class="in">`parse_date_time()`</span> /</span>
-<span id="cb159-174"><a href="#cb159-174" aria-hidden="true" tabindex="-1"></a>helpers.**</span>
-<span id="cb159-175"><a href="#cb159-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-176"><a href="#cb159-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10d}</span></span>
-<span id="cb159-177"><a href="#cb159-177" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"July-05-19"</span>, <span class="st">"JUL-05-19"</span>, <span class="st">"05.07.19"</span>, <span class="st">"5-July 2019"</span>,</span>
-<span id="cb159-178"><a href="#cb159-178" aria-hidden="true" tabindex="-1"></a>  <span class="st">"July 5th, 2019"</span>, <span class="st">"July 05, 2019"</span>, <span class="st">"2019-July- 05"</span>, <span class="st">"05/07/2019"</span>,</span>
-<span id="cb159-179"><a href="#cb159-179" aria-hidden="true" tabindex="-1"></a>  <span class="st">"07/05/2019"</span>, <span class="st">"7/5/2019"</span>, <span class="st">"07/5/19"</span>, <span class="st">"2019-07-05"</span>)</span>
-<span id="cb159-180"><a href="#cb159-180" aria-hidden="true" tabindex="-1"></a><span class="fu">parse_date_time</span>(dates, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Bdy"</span>, <span class="st">"bdy"</span>, <span class="st">"dmy"</span>, <span class="st">"dBY"</span>, <span class="st">"BYd"</span>,</span>
-<span id="cb159-181"><a href="#cb159-181" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dmy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"ymd"</span>))</span>
-<span id="cb159-182"><a href="#cb159-182" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">"July 05, 2019"</span>)</span>
-<span id="cb159-183"><a href="#cb159-183" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"05.07.19"</span>)</span>
-<span id="cb159-184"><a href="#cb159-184" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">"2019-07-05"</span>)</span>
-<span id="cb159-185"><a href="#cb159-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-186"><a href="#cb159-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-187"><a href="#cb159-187" aria-hidden="true" tabindex="-1"></a>One <span class="in">`parse_date_time()`</span> call with several <span class="in">`orders`</span> handles the whole mixed</span>
-<span id="cb159-188"><a href="#cb159-188" aria-hidden="true" tabindex="-1"></a>vector — prefer helpers (<span class="in">`mdy()`</span>/<span class="in">`dmy()`</span>/<span class="in">`ymd()`</span>) when a column uses a single</span>
-<span id="cb159-189"><a href="#cb159-189" aria-hidden="true" tabindex="-1"></a>convention.</span>
-<span id="cb159-190"><a href="#cb159-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-191"><a href="#cb159-191" aria-hidden="true" tabindex="-1"></a>**Q5. From the <span class="in">`Due`</span> column of <span class="in">`transact`</span>, tabulate year, labelled month,</span>
-<span id="cb159-192"><a href="#cb159-192" aria-hidden="true" tabindex="-1"></a>labelled weekday, hour and quarter.**</span>
-<span id="cb159-193"><a href="#cb159-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-194"><a href="#cb159-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10e}</span></span>
-<span id="cb159-195"><a href="#cb159-195" aria-hidden="true" tabindex="-1"></a>transact <span class="sc">|&gt;</span></span>
-<span id="cb159-196"><a href="#cb159-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">due_year =</span> <span class="fu">year</span>(Due),</span>
-<span id="cb159-197"><a href="#cb159-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_month =</span> <span class="fu">month</span>(Due, <span class="at">label =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb159-198"><a href="#cb159-198" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_wday =</span> <span class="fu">wday</span>(Due, <span class="at">label =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb159-199"><a href="#cb159-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_hour =</span> <span class="fu">hour</span>(Due),</span>
-<span id="cb159-200"><a href="#cb159-200" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_quarter =</span> <span class="fu">quarter</span>(Due)) <span class="sc">|&gt;</span></span>
-<span id="cb159-201"><a href="#cb159-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(due_year, due_month, due_wday, due_hour, due_quarter)</span>
-<span id="cb159-202"><a href="#cb159-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-203"><a href="#cb159-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-204"><a href="#cb159-204" aria-hidden="true" tabindex="-1"></a><span class="in">`due_hour`</span> is 0 everywhere: <span class="in">`Due`</span> is a <span class="in">`Date`</span> (midnight, no time component) —</span>
-<span id="cb159-205"><a href="#cb159-205" aria-hidden="true" tabindex="-1"></a><span class="in">`hour()`</span> on dates is always 0.</span>
-<span id="cb159-206"><a href="#cb159-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-207"><a href="#cb159-207" aria-hidden="true" tabindex="-1"></a>**Q6. R 2.0.0 (<span class="in">`2004-10-04 14:24:38`</span>) with <span class="in">`make_date()`</span> and <span class="in">`make_datetime()`</span>;</span>
-<span id="cb159-208"><a href="#cb159-208" aria-hidden="true" tabindex="-1"></a>R 3.0.0 (<span class="in">`2013-04-03 07:12:36`</span>) via <span class="in">`update()`</span>.**</span>
-<span id="cb159-209"><a href="#cb159-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-210"><a href="#cb159-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10f}</span></span>
-<span id="cb159-211"><a href="#cb159-211" aria-hidden="true" tabindex="-1"></a>r200 <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2004</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">38</span>)</span>
-<span id="cb159-212"><a href="#cb159-212" aria-hidden="true" tabindex="-1"></a>r200_date <span class="ot">&lt;-</span> <span class="fu">make_date</span>(<span class="dv">2004</span>, <span class="dv">10</span>, <span class="dv">4</span>)</span>
-<span id="cb159-213"><a href="#cb159-213" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(r200, <span class="at">year =</span> <span class="dv">2013</span>, <span class="at">month =</span> <span class="dv">4</span>, <span class="at">mday =</span> <span class="dv">3</span>, <span class="at">hour =</span> <span class="dv">7</span>, <span class="at">min =</span> <span class="dv">12</span>, <span class="at">sec =</span> <span class="dv">36</span>)</span>
-<span id="cb159-214"><a href="#cb159-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-215"><a href="#cb159-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-216"><a href="#cb159-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Date &amp; Time: Arithmetic and Time Zones</span></span>
-<span id="cb159-217"><a href="#cb159-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-218"><a href="#cb159-218" aria-hidden="true" tabindex="-1"></a>**Q1. Vacation length, shifted vacation, invoice settlement and employment</span>
-<span id="cb159-219"><a href="#cb159-219" aria-hidden="true" tabindex="-1"></a>length.**</span>
-<span id="cb159-220"><a href="#cb159-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-221"><a href="#cb159-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11a, message=FALSE}</span></span>
-<span id="cb159-222"><a href="#cb159-222" aria-hidden="true" tabindex="-1"></a>vac_start <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2020-04-19"</span>)</span>
-<span id="cb159-223"><a href="#cb159-223" aria-hidden="true" tabindex="-1"></a>vac_end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2020-04-25"</span>)</span>
-<span id="cb159-224"><a href="#cb159-224" aria-hidden="true" tabindex="-1"></a>vac_start <span class="sc">%--%</span> vac_end</span>
-<span id="cb159-225"><a href="#cb159-225" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(vac_start <span class="sc">%--%</span> vac_end)</span>
-<span id="cb159-226"><a href="#cb159-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-227"><a href="#cb159-227" aria-hidden="true" tabindex="-1"></a><span class="co"># shift the start by 10 days and the end by 2 weeks, then recompute</span></span>
-<span id="cb159-228"><a href="#cb159-228" aria-hidden="true" tabindex="-1"></a>vac_start2 <span class="ot">&lt;-</span> vac_start <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">10</span>)</span>
-<span id="cb159-229"><a href="#cb159-229" aria-hidden="true" tabindex="-1"></a>vac_end2 <span class="ot">&lt;-</span> vac_end <span class="sc">+</span> <span class="fu">weeks</span>(<span class="dv">2</span>)</span>
-<span id="cb159-230"><a href="#cb159-230" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(vac_start2 <span class="sc">%--%</span> vac_end2)</span>
-<span id="cb159-231"><a href="#cb159-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-232"><a href="#cb159-232" aria-hidden="true" tabindex="-1"></a>receivables <span class="ot">&lt;-</span></span>
-<span id="cb159-233"><a href="#cb159-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/receivables.csv'</span>,</span>
-<span id="cb159-234"><a href="#cb159-234" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb159-235"><a href="#cb159-235" aria-hidden="true" tabindex="-1"></a>receivables <span class="sc">|&gt;</span></span>
-<span id="cb159-236"><a href="#cb159-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">invoice_date =</span> <span class="fu">mdy</span>(invoice_date), <span class="at">due_date =</span> <span class="fu">mdy</span>(due_date),</span>
-<span id="cb159-237"><a href="#cb159-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">settled_date =</span> <span class="fu">mdy</span>(settled_date),</span>
-<span id="cb159-238"><a href="#cb159-238" aria-hidden="true" tabindex="-1"></a>    <span class="at">days_to_settle =</span> settled_date <span class="sc">-</span> invoice_date,</span>
-<span id="cb159-239"><a href="#cb159-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">days_overdue =</span> settled_date <span class="sc">-</span> due_date) <span class="sc">|&gt;</span></span>
-<span id="cb159-240"><a href="#cb159-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(invoice_number, days_to_settle, days_overdue) <span class="sc">|&gt;</span></span>
-<span id="cb159-241"><a href="#cb159-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb159-242"><a href="#cb159-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-243"><a href="#cb159-243" aria-hidden="true" tabindex="-1"></a>hr <span class="ot">&lt;-</span></span>
-<span id="cb159-244"><a href="#cb159-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/hr-data.csv'</span>,</span>
-<span id="cb159-245"><a href="#cb159-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb159-246"><a href="#cb159-246" aria-hidden="true" tabindex="-1"></a>hr <span class="sc">|&gt;</span></span>
-<span id="cb159-247"><a href="#cb159-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Termd <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(DateofTermination)) <span class="sc">|&gt;</span></span>
-<span id="cb159-248"><a href="#cb159-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hire =</span> <span class="fu">mdy</span>(DateofHire), <span class="at">term =</span> <span class="fu">mdy</span>(DateofTermination),</span>
-<span id="cb159-249"><a href="#cb159-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">employed =</span> term <span class="sc">-</span> hire) <span class="sc">|&gt;</span></span>
-<span id="cb159-250"><a href="#cb159-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Employee_Name, hire, term, employed) <span class="sc">|&gt;</span></span>
-<span id="cb159-251"><a href="#cb159-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb159-252"><a href="#cb159-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-253"><a href="#cb159-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-254"><a href="#cb159-254" aria-hidden="true" tabindex="-1"></a>The base vacation is 6 days; after shifting it spans 10 days. Positive</span>
-<span id="cb159-255"><a href="#cb159-255" aria-hidden="true" tabindex="-1"></a><span class="in">`days_overdue`</span> means the customer paid late; filter <span class="in">`Termd == 1`</span> (plus a</span>
-<span id="cb159-256"><a href="#cb159-256" aria-hidden="true" tabindex="-1"></a>non-missing termination date) so only terminated employees count.</span>
-<span id="cb159-257"><a href="#cb159-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-258"><a href="#cb159-258" aria-hidden="true" tabindex="-1"></a>**Q2. Your timezone, daylight savings and the current UTC time.**</span>
-<span id="cb159-259"><a href="#cb159-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-260"><a href="#cb159-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11b}</span></span>
-<span id="cb159-261"><a href="#cb159-261" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
-<span id="cb159-262"><a href="#cb159-262" aria-hidden="true" tabindex="-1"></a><span class="fu">dst</span>(<span class="fu">now</span>())</span>
-<span id="cb159-263"><a href="#cb159-263" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="st">"UTC"</span>)</span>
-<span id="cb159-264"><a href="#cb159-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-265"><a href="#cb159-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-266"><a href="#cb159-266" aria-hidden="true" tabindex="-1"></a>**Q3. Round <span class="in">`transact`</span> due dates: up to weeks, down to days, back to the start</span>
-<span id="cb159-267"><a href="#cb159-267" aria-hidden="true" tabindex="-1"></a>of the month.**</span>
-<span id="cb159-268"><a href="#cb159-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-269"><a href="#cb159-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11c}</span></span>
-<span id="cb159-270"><a href="#cb159-270" aria-hidden="true" tabindex="-1"></a>transact <span class="sc">|&gt;</span></span>
-<span id="cb159-271"><a href="#cb159-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">due_week_up =</span> <span class="fu">ceiling_date</span>(Due, <span class="st">"week"</span>),</span>
-<span id="cb159-272"><a href="#cb159-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_day_down =</span> <span class="fu">floor_date</span>(Due, <span class="st">"day"</span>),</span>
-<span id="cb159-273"><a href="#cb159-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_month_start =</span> <span class="fu">rollback</span>(Due, <span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb159-274"><a href="#cb159-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Due, due_week_up, due_day_down, due_month_start) <span class="sc">|&gt;</span></span>
-<span id="cb159-275"><a href="#cb159-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb159-276"><a href="#cb159-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-277"><a href="#cb159-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-278"><a href="#cb159-278" aria-hidden="true" tabindex="-1"></a><span class="in">`Due`</span> values are whole dates, so rounding down to days is a no-op (midnight</span>
-<span id="cb159-279"><a href="#cb159-279" aria-hidden="true" tabindex="-1"></a>already); <span class="in">`ceiling_date()`</span> moves each due date forward to its week boundary.</span>
-<span id="cb159-280"><a href="#cb159-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-281"><a href="#cb159-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## Categorical Data Fundamentals</span></span>
-<span id="cb159-282"><a href="#cb159-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-283"><a href="#cb159-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12_data, message=FALSE}</span></span>
-<span id="cb159-284"><a href="#cb159-284" aria-hidden="true" tabindex="-1"></a>analytics_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"analytics_raw.rds"</span>)</span>
-<span id="cb159-285"><a href="#cb159-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-286"><a href="#cb159-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-287"><a href="#cb159-287" aria-hidden="true" tabindex="-1"></a>**Q1. Quantitative or qualitative?** Quantitative: Age, Annual Sales, Weight,</span>
-<span id="cb159-288"><a href="#cb159-288" aria-hidden="true" tabindex="-1"></a>Height, Job/Work Experience. Qualitative: Gender, Education Level, Vehicle</span>
-<span id="cb159-289"><a href="#cb159-289" aria-hidden="true" tabindex="-1"></a>Type, Ice Cream Flavor, Blood Group, Color, Mode of Payment. (Education Level</span>
-<span id="cb159-290"><a href="#cb159-290" aria-hidden="true" tabindex="-1"></a>is qualitative but *ordered* — see ordered factors below.)</span>
-<span id="cb159-291"><a href="#cb159-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-292"><a href="#cb159-292" aria-hidden="true" tabindex="-1"></a>**Q2. Dichotomous or polychotomous?** Dichotomous (exactly two outcomes):</span>
-<span id="cb159-293"><a href="#cb159-293" aria-hidden="true" tabindex="-1"></a>Heads / Tails, Rich / Poor, Democrat / Republican. Polychotomous (three or</span>
-<span id="cb159-294"><a href="#cb159-294" aria-hidden="true" tabindex="-1"></a>more): Blood Group, Transportation Mode, Education Level.</span>
-<span id="cb159-295"><a href="#cb159-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-296"><a href="#cb159-296" aria-hidden="true" tabindex="-1"></a>**Q3–Q9. Factor checks, coercion and level control on `analytics_raw`.**</span>
-<span id="cb159-297"><a href="#cb159-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-298"><a href="#cb159-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12a}</span></span>
-<span id="cb159-299"><a href="#cb159-299" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3: which of these are already factors? (raw file: none — all character)</span></span>
-<span id="cb159-300"><a href="#cb159-300" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"device"</span>, <span class="st">"page_depth"</span>, <span class="st">"landing_page"</span>)], is.factor)</span>
-<span id="cb159-301"><a href="#cb159-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-302"><a href="#cb159-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Q4: coerce the categorical columns (page_depth stays numeric;</span></span>
-<span id="cb159-303"><a href="#cb159-303" aria-hidden="true" tabindex="-1"></a><span class="co"># `city` is not in this file, so it is skipped)</span></span>
-<span id="cb159-304"><a href="#cb159-304" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"device"</span>, <span class="st">"os"</span>, <span class="st">"browser"</span>, <span class="st">"user_type"</span>, <span class="st">"channel"</span>,</span>
-<span id="cb159-305"><a href="#cb159-305" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>, <span class="st">"landing_page"</span>, <span class="st">"exit_page"</span>, <span class="st">"country"</span>)</span>
-<span id="cb159-306"><a href="#cb159-306" aria-hidden="true" tabindex="-1"></a>analytics_raw[cat_vars] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(analytics_raw[cat_vars], factor)</span>
-<span id="cb159-307"><a href="#cb159-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-308"><a href="#cb159-308" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5: keep only male/female levels in gender</span></span>
-<span id="cb159-309"><a href="#cb159-309" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
-<span id="cb159-310"><a href="#cb159-310" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
-<span id="cb159-311"><a href="#cb159-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-312"><a href="#cb159-312" aria-hidden="true" tabindex="-1"></a><span class="co"># Q6: admit NA as a level (no-op here — this file has no missing gender,</span></span>
-<span id="cb159-313"><a href="#cb159-313" aria-hidden="true" tabindex="-1"></a><span class="co"># but the call is what makes unseen NAs explicit downstream)</span></span>
-<span id="cb159-314"><a href="#cb159-314" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb159-315"><a href="#cb159-315" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">fct_na_value_to_level</span>(gender, <span class="at">level =</span> <span class="cn">NA</span>)</span>
-<span id="cb159-316"><a href="#cb159-316" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
-<span id="cb159-317"><a href="#cb159-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-318"><a href="#cb159-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Q7: label that NA level "missing"</span></span>
-<span id="cb159-319"><a href="#cb159-319" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">fct_na_value_to_level</span>(gender, <span class="at">level =</span> <span class="st">"(Missing)"</span>)</span>
-<span id="cb159-320"><a href="#cb159-320" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
-<span id="cb159-321"><a href="#cb159-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-322"><a href="#cb159-322" aria-hidden="true" tabindex="-1"></a><span class="co"># Q8: relabel user_type levels</span></span>
-<span id="cb159-323"><a href="#cb159-323" aria-hidden="true" tabindex="-1"></a>user_type <span class="ot">&lt;-</span> <span class="fu">fct_recode</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type),</span>
-<span id="cb159-324"><a href="#cb159-324" aria-hidden="true" tabindex="-1"></a>  <span class="st">"New"</span> <span class="ot">=</span> <span class="st">"New Visitor"</span>, <span class="st">"Returning"</span> <span class="ot">=</span> <span class="st">"Returning Visitor"</span>)</span>
-<span id="cb159-325"><a href="#cb159-325" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(user_type)</span>
-<span id="cb159-326"><a href="#cb159-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-327"><a href="#cb159-327" aria-hidden="true" tabindex="-1"></a><span class="co"># Q9: is user_rating ordered? coerce if not</span></span>
-<span id="cb159-328"><a href="#cb159-328" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(analytics_raw<span class="sc">$</span>user_rating)</span>
-<span id="cb159-329"><a href="#cb159-329" aria-hidden="true" tabindex="-1"></a>user_rating <span class="ot">&lt;-</span> <span class="fu">ordered</span>(analytics_raw<span class="sc">$</span>user_rating)</span>
-<span id="cb159-330"><a href="#cb159-330" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(user_rating)</span>
-<span id="cb159-331"><a href="#cb159-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-332"><a href="#cb159-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-333"><a href="#cb159-333" aria-hidden="true" tabindex="-1"></a>**Q10–Q13. Level counts, categories, frequencies and a two-way summary.**</span>
-<span id="cb159-334"><a href="#cb159-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-335"><a href="#cb159-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12b}</span></span>
-<span id="cb159-336"><a href="#cb159-336" aria-hidden="true" tabindex="-1"></a><span class="co"># Q10: number of levels</span></span>
-<span id="cb159-337"><a href="#cb159-337" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"browser"</span>, <span class="st">"channel"</span>, <span class="st">"landing_page"</span>, <span class="st">"exit_page"</span>)],</span>
-<span id="cb159-338"><a href="#cb159-338" aria-hidden="true" tabindex="-1"></a>  \(x) <span class="fu">nlevels</span>(<span class="fu">factor</span>(x)))</span>
-<span id="cb159-339"><a href="#cb159-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-340"><a href="#cb159-340" aria-hidden="true" tabindex="-1"></a><span class="co"># Q11: the categories themselves</span></span>
-<span id="cb159-341"><a href="#cb159-341" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"os"</span>, <span class="st">"channel"</span>, <span class="st">"browser"</span>, <span class="st">"gender"</span>, <span class="st">"user_type"</span>)],</span>
-<span id="cb159-342"><a href="#cb159-342" aria-hidden="true" tabindex="-1"></a>  \(x) <span class="fu">levels</span>(<span class="fu">factor</span>(x)))</span>
-<span id="cb159-343"><a href="#cb159-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-344"><a href="#cb159-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Q12: frequencies</span></span>
-<span id="cb159-345"><a href="#cb159-345" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel))</span>
-<span id="cb159-346"><a href="#cb159-346" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type))</span>
-<span id="cb159-347"><a href="#cb159-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-348"><a href="#cb159-348" aria-hidden="true" tabindex="-1"></a><span class="co"># Q13: channel by user_type — counts and column shares</span></span>
-<span id="cb159-349"><a href="#cb159-349" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel), <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type))</span>
-<span id="cb159-350"><a href="#cb159-350" aria-hidden="true" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel),</span>
-<span id="cb159-351"><a href="#cb159-351" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type)), <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb159-352"><a href="#cb159-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-353"><a href="#cb159-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-354"><a href="#cb159-354" aria-hidden="true" tabindex="-1"></a><span class="fu">## Factor Manipulation with forcats</span></span>
-<span id="cb159-355"><a href="#cb159-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-356"><a href="#cb159-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13_data, message=FALSE}</span></span>
-<span id="cb159-357"><a href="#cb159-357" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb159-358"><a href="#cb159-358" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"analytics.rds"</span>)</span>
-<span id="cb159-359"><a href="#cb159-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-360"><a href="#cb159-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-361"><a href="#cb159-361" aria-hidden="true" tabindex="-1"></a>**Q1–Q2. Frequencies in descending order; is `laptop` a `device` level?**</span>
-<span id="cb159-362"><a href="#cb159-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-363"><a href="#cb159-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13a}</span></span>
-<span id="cb159-364"><a href="#cb159-364" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(device) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-365"><a href="#cb159-365" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-366"><a href="#cb159-366" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(exit_page) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-367"><a href="#cb159-367" aria-hidden="true" tabindex="-1"></a><span class="st">"laptop"</span> <span class="sc">%in%</span> <span class="fu">levels</span>(data<span class="sc">$</span>device)</span>
-<span id="cb159-368"><a href="#cb159-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-369"><a href="#cb159-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-370"><a href="#cb159-370" aria-hidden="true" tabindex="-1"></a><span class="in">`fct_count()`</span> sorts most-frequent-first. (<span class="in">`device`</span> here holds</span>
-<span id="cb159-371"><a href="#cb159-371" aria-hidden="true" tabindex="-1"></a>Desktop/Mobile/Tablet, so <span class="in">`"laptop"`</span> is not a level — it belongs to the</span>
-<span id="cb159-372"><a href="#cb159-372" aria-hidden="true" tabindex="-1"></a><span class="in">`ecom`</span> schema, not <span class="in">`analytics`</span>.)</span>
-<span id="cb159-373"><a href="#cb159-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-374"><a href="#cb159-374" aria-hidden="true" tabindex="-1"></a>**Q3–Q8. Collapsing, lumping, keeping and anonymizing levels.**</span>
-<span id="cb159-375"><a href="#cb159-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-376"><a href="#cb159-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13b}</span></span>
-<span id="cb159-377"><a href="#cb159-377" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3: collapse account-related pages</span></span>
-<span id="cb159-378"><a href="#cb159-378" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span></span>
-<span id="cb159-379"><a href="#cb159-379" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_collapse</span>(<span class="at">Account =</span> <span class="fu">c</span>(<span class="st">"My Account"</span>, <span class="st">"Register"</span>, <span class="st">"Sign In"</span>, <span class="st">"Your Info"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb159-380"><a href="#cb159-380" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">6</span>)</span>
-<span id="cb159-381"><a href="#cb159-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-382"><a href="#cb159-382" aria-hidden="true" tabindex="-1"></a><span class="co"># Q4: lump landing pages behind fewer than 1000 visits into "Other"</span></span>
-<span id="cb159-383"><a href="#cb159-383" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_min</span>(<span class="at">min =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-384"><a href="#cb159-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-385"><a href="#cb159-385" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5: top 10 landing and exit pages</span></span>
-<span id="cb159-386"><a href="#cb159-386" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_n</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-387"><a href="#cb159-387" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(exit_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_n</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-388"><a href="#cb159-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-389"><a href="#cb159-389" aria-hidden="true" tabindex="-1"></a><span class="co"># Q6: landing pages with at least 5% of traffic</span></span>
-<span id="cb159-390"><a href="#cb159-390" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_prop</span>(<span class="at">prop =</span> <span class="fl">0.05</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
-<span id="cb159-391"><a href="#cb159-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-392"><a href="#cb159-392" aria-hidden="true" tabindex="-1"></a><span class="co"># Q7: keep only the big-four browsers</span></span>
-<span id="cb159-393"><a href="#cb159-393" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(browser) <span class="sc">|&gt;</span></span>
-<span id="cb159-394"><a href="#cb159-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_other</span>(<span class="at">keep =</span> <span class="fu">c</span>(<span class="st">"Chrome"</span>, <span class="st">"Firefox"</span>, <span class="st">"Safari"</span>, <span class="st">"Edge"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb159-395"><a href="#cb159-395" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>()</span>
-<span id="cb159-396"><a href="#cb159-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-397"><a href="#cb159-397" aria-hidden="true" tabindex="-1"></a><span class="co"># Q8: anonymize page levels (stable within a session via seed)</span></span>
-<span id="cb159-398"><a href="#cb159-398" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb159-399"><a href="#cb159-399" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_anon</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
-<span id="cb159-400"><a href="#cb159-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-401"><a href="#cb159-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-402"><a href="#cb159-402" aria-hidden="true" tabindex="-1"></a>**Q9–Q15. Reordering, shuffling and reversing levels.**</span>
-<span id="cb159-403"><a href="#cb159-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-404"><a href="#cb159-404" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13c}</span></span>
-<span id="cb159-405"><a href="#cb159-405" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb159-406"><a href="#cb159-406" aria-hidden="true" tabindex="-1"></a>landing_page <span class="ot">&lt;-</span> data<span class="sc">$</span>landing_page</span>
-<span id="cb159-407"><a href="#cb159-407" aria-hidden="true" tabindex="-1"></a>browser <span class="ot">&lt;-</span> data<span class="sc">$</span>browser</span>
-<span id="cb159-408"><a href="#cb159-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-409"><a href="#cb159-409" aria-hidden="true" tabindex="-1"></a><span class="co"># Q9/Q10/Q11: Home first, Apparel second, Specials last</span></span>
-<span id="cb159-410"><a href="#cb159-410" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Home"</span>) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span>
-<span id="cb159-411"><a href="#cb159-411" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Apparel"</span>, <span class="at">after =</span> <span class="dv">1</span>L) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span>
-<span id="cb159-412"><a href="#cb159-412" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Specials"</span>, <span class="at">after =</span> <span class="cn">Inf</span>) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">tail</span>(<span class="dv">3</span>)</span>
-<span id="cb159-413"><a href="#cb159-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-414"><a href="#cb159-414" aria-hidden="true" tabindex="-1"></a><span class="co"># Q12: browsers by frequency</span></span>
-<span id="cb159-415"><a href="#cb159-415" aria-hidden="true" tabindex="-1"></a>browser <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
-<span id="cb159-416"><a href="#cb159-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-417"><a href="#cb159-417" aria-hidden="true" tabindex="-1"></a><span class="co"># Q13: landing pages in order of appearance</span></span>
-<span id="cb159-418"><a href="#cb159-418" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_inorder</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">6</span>)</span>
-<span id="cb159-419"><a href="#cb159-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-420"><a href="#cb159-420" aria-hidden="true" tabindex="-1"></a><span class="co"># Q14: shuffled os levels</span></span>
-<span id="cb159-421"><a href="#cb159-421" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(os) <span class="sc">|&gt;</span> <span class="fu">fct_shuffle</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
-<span id="cb159-422"><a href="#cb159-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-423"><a href="#cb159-423" aria-hidden="true" tabindex="-1"></a><span class="co"># Q15: reversed browser levels</span></span>
-<span id="cb159-424"><a href="#cb159-424" aria-hidden="true" tabindex="-1"></a>browser <span class="sc">|&gt;</span> <span class="fu">fct_rev</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
-<span id="cb159-425"><a href="#cb159-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-426"><a href="#cb159-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-427"><a href="#cb159-427" aria-hidden="true" tabindex="-1"></a>**Q16. The plots.**</span>
-<span id="cb159-428"><a href="#cb159-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-429"><a href="#cb159-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d1, fig.height=5, fig.width=7}</span></span>
-<span id="cb159-430"><a href="#cb159-430" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb159-431"><a href="#cb159-431" aria-hidden="true" tabindex="-1"></a><span class="co"># 1: bar plot of channel</span></span>
-<span id="cb159-432"><a href="#cb159-432" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb159-433"><a href="#cb159-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> channel), <span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb159-434"><a href="#cb159-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Source of Traffic"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Channel"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Count"</span>)</span>
-<span id="cb159-435"><a href="#cb159-435" aria-hidden="true" tabindex="-1"></a><span class="co"># 2: grouped bars, user_type by channel</span></span>
-<span id="cb159-436"><a href="#cb159-436" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb159-437"><a href="#cb159-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> channel, <span class="at">fill =</span> user_type), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb159-438"><a href="#cb159-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"User Type by Channel"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Channel"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"User Type"</span>)</span>
-<span id="cb159-439"><a href="#cb159-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-440"><a href="#cb159-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-441"><a href="#cb159-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d2, fig.height=5, fig.width=7}</span></span>
-<span id="cb159-442"><a href="#cb159-442" aria-hidden="true" tabindex="-1"></a><span class="co"># 3: stacked bars, channel by gender</span></span>
-<span id="cb159-443"><a href="#cb159-443" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb159-444"><a href="#cb159-444" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> channel)) <span class="sc">+</span></span>
-<span id="cb159-445"><a href="#cb159-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Gender"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Gender"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span>
-<span id="cb159-446"><a href="#cb159-446" aria-hidden="true" tabindex="-1"></a><span class="co"># 4: proportional bars, channel by device</span></span>
-<span id="cb159-447"><a href="#cb159-447" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
-<span id="cb159-448"><a href="#cb159-448" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(device, channel) <span class="sc">|&gt;</span></span>
-<span id="cb159-449"><a href="#cb159-449" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">|&gt;</span></span>
-<span id="cb159-450"><a href="#cb159-450" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb159-451"><a href="#cb159-451" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> device, <span class="at">y =</span> n, <span class="at">fill =</span> channel)) <span class="sc">+</span></span>
-<span id="cb159-452"><a href="#cb159-452" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb159-453"><a href="#cb159-453" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Device"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Device"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span>
-<span id="cb159-454"><a href="#cb159-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-455"><a href="#cb159-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-456"><a href="#cb159-456" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d3, fig.height=5, fig.width=7}</span></span>
-<span id="cb159-457"><a href="#cb159-457" aria-hidden="true" tabindex="-1"></a><span class="co"># 5: mosaic plots need ggmosaic (archived on CRAN) — out of scope;</span></span>
-<span id="cb159-458"><a href="#cb159-458" aria-hidden="true" tabindex="-1"></a><span class="co"># see the ggplot2 ebook instead.</span></span>
-<span id="cb159-459"><a href="#cb159-459" aria-hidden="true" tabindex="-1"></a><span class="co"># 6: pie and donut of channel</span></span>
-<span id="cb159-460"><a href="#cb159-460" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">pie</span>()</span>
-<span id="cb159-461"><a href="#cb159-461" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
-<span id="cb159-462"><a href="#cb159-462" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span></span>
-<span id="cb159-463"><a href="#cb159-463" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span></span>
-<span id="cb159-464"><a href="#cb159-464" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">channel =</span> f, <span class="at">count =</span> n) <span class="sc">|&gt;</span></span>
-<span id="cb159-465"><a href="#cb159-465" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb159-466"><a href="#cb159-466" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> channel), <span class="at">width =</span> <span class="dv">1</span>,</span>
-<span id="cb159-467"><a href="#cb159-467" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb159-468"><a href="#cb159-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>)</span>
-<span id="cb159-469"><a href="#cb159-469" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb159-470"><a href="#cb159-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-471"><a href="#cb159-471" aria-hidden="true" tabindex="-1"></a><span class="fu">## Open stubs</span></span>
-<span id="cb159-472"><a href="#cb159-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-473"><a href="#cb159-473" aria-hidden="true" tabindex="-1"></a>Chapters without **Your Turn** blocks still need proposed drills + solutions —</span>
-<span id="cb159-474"><a href="#cb159-474" aria-hidden="true" tabindex="-1"></a>contributions welcome (see above):</span>
-<span id="cb159-475"><a href="#cb159-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-476"><a href="#cb159-476" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@joining-tables-in-r-dplyr: join puzzles on <span class="in">`customer`</span>/<span class="in">`order`</span></span>
-<span id="cb159-477"><a href="#cb159-477" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@dplyr-helper-functions: sampling/slicing drills on <span class="in">`ecom`</span></span>
-<span id="cb159-478"><a href="#cb159-478" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@r-pipe-magrittr: rewrite-a-chain exercises (<span class="in">`%&gt;%`</span> → <span class="in">`|&gt;`</span>, <span class="in">`_`</span>, <span class="in">`\(x)`</span>)</span>
-<span id="cb159-479"><a href="#cb159-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@tibbles-in-r: tibble vs data.frame edge cases</span>
-<span id="cb159-480"><a href="#cb159-480" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@strings-in-r: URL/email parsing variants on <span class="in">`mockstring`</span></span>
-<span id="cb159-481"><a href="#cb159-481" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@import-data-in-r-basics and @import-data-in-r-advanced: import-parameter drills</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb160" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Data Wrangling in R: worked solutions to chapter exercises, plus open stubs for contributors."</span></span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercise Solutions {#exercise-solutions}</span></span>
+<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb160-8"><a href="#cb160-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-9"><a href="#cb160-9" aria-hidden="true" tabindex="-1"></a>Try every **Your Turn** before reading its solution — the struggle is the</span>
+<span id="cb160-10"><a href="#cb160-10" aria-hidden="true" tabindex="-1"></a>lesson. Worked solutions below cover @dplyr-basics, @tidying-data-with-tidyr,</span>
+<span id="cb160-11"><a href="#cb160-11" aria-hidden="true" tabindex="-1"></a>@date-and-time-in-r, @date-arithmetic-time-zones, @categorical-data-in-r and</span>
+<span id="cb160-12"><a href="#cb160-12" aria-hidden="true" tabindex="-1"></a>@forcats-manipulation. Remaining chapters are open stubs — to contribute one,</span>
+<span id="cb160-13"><a href="#cb160-13" aria-hidden="true" tabindex="-1"></a>open an issue or pull request with the chapter, the question, and a runnable</span>
+<span id="cb160-14"><a href="#cb160-14" aria-hidden="true" tabindex="-1"></a>chunk in this book's style (<span class="in">`|&gt;`</span>-first, same data as the chapter).</span>
+<span id="cb160-15"><a href="#cb160-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-16"><a href="#cb160-16" aria-hidden="true" tabindex="-1"></a>We will use the following R packages:</span>
+<span id="cb160-17"><a href="#cb160-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-18"><a href="#cb160-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_libs, message=FALSE}</span></span>
+<span id="cb160-19"><a href="#cb160-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb160-20"><a href="#cb160-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb160-21"><a href="#cb160-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-22"><a href="#cb160-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-23"><a href="#cb160-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## dplyr Basics</span></span>
+<span id="cb160-24"><a href="#cb160-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-25"><a href="#cb160-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_data, message=FALSE}</span></span>
+<span id="cb160-26"><a href="#cb160-26" aria-hidden="true" tabindex="-1"></a>ecom <span class="ot">&lt;-</span></span>
+<span id="cb160-27"><a href="#cb160-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv'</span>,</span>
+<span id="cb160-28"><a href="#cb160-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols_only</span>(<span class="at">device =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"laptop"</span>, <span class="st">"tablet"</span>, <span class="st">"mobile"</span>)),</span>
+<span id="cb160-29"><a href="#cb160-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">referrer =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"bing"</span>, <span class="st">"direct"</span>, <span class="st">"social"</span>, <span class="st">"yahoo"</span>, <span class="st">"google"</span>)),</span>
+<span id="cb160-30"><a href="#cb160-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">purchase =</span> <span class="fu">col_logical</span>(), <span class="at">n_pages =</span> <span class="fu">col_double</span>(), <span class="at">n_visit =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb160-31"><a href="#cb160-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">duration =</span> <span class="fu">col_double</span>(), <span class="at">order_value =</span> <span class="fu">col_double</span>(), <span class="at">order_items =</span> <span class="fu">col_double</span>()</span>
+<span id="cb160-32"><a href="#cb160-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb160-33"><a href="#cb160-33" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb160-34"><a href="#cb160-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-35"><a href="#cb160-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-36"><a href="#cb160-36" aria-hidden="true" tabindex="-1"></a>**Q1. What is the average number of pages visited by purchasers and</span>
+<span id="cb160-37"><a href="#cb160-37" aria-hidden="true" tabindex="-1"></a>non-purchasers?**</span>
+<span id="cb160-38"><a href="#cb160-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-39"><a href="#cb160-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr1}</span></span>
+<span id="cb160-40"><a href="#cb160-40" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
+<span id="cb160-41"><a href="#cb160-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_pages =</span> <span class="fu">mean</span>(n_pages), <span class="at">.by =</span> purchase)</span>
+<span id="cb160-42"><a href="#cb160-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-43"><a href="#cb160-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-44"><a href="#cb160-44" aria-hidden="true" tabindex="-1"></a>Purchasers browse far more pages (~16 vs ~5) — the signal behind the AOV case</span>
+<span id="cb160-45"><a href="#cb160-45" aria-hidden="true" tabindex="-1"></a>study.</span>
+<span id="cb160-46"><a href="#cb160-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-47"><a href="#cb160-47" aria-hidden="true" tabindex="-1"></a>**Q2. What is the average time on site for purchasers vs non-purchasers?**</span>
+<span id="cb160-48"><a href="#cb160-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-49"><a href="#cb160-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr2}</span></span>
+<span id="cb160-50"><a href="#cb160-50" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
+<span id="cb160-51"><a href="#cb160-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_time =</span> <span class="fu">mean</span>(duration), <span class="at">.by =</span> purchase)</span>
+<span id="cb160-52"><a href="#cb160-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-53"><a href="#cb160-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-54"><a href="#cb160-54" aria-hidden="true" tabindex="-1"></a>Time on site barely differs (~355 vs ~359 seconds): page depth, not duration,</span>
+<span id="cb160-55"><a href="#cb160-55" aria-hidden="true" tabindex="-1"></a>separates buyers here.</span>
+<span id="cb160-56"><a href="#cb160-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-57"><a href="#cb160-57" aria-hidden="true" tabindex="-1"></a>**Q3. What is the average number of pages visited by purchasers and</span>
+<span id="cb160-58"><a href="#cb160-58" aria-hidden="true" tabindex="-1"></a>non-purchasers using mobile?**</span>
+<span id="cb160-59"><a href="#cb160-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-60"><a href="#cb160-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_dplyr3}</span></span>
+<span id="cb160-61"><a href="#cb160-61" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
+<span id="cb160-62"><a href="#cb160-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(device <span class="sc">==</span> <span class="st">"mobile"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb160-63"><a href="#cb160-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_pages =</span> <span class="fu">mean</span>(n_pages), <span class="at">.by =</span> purchase)</span>
+<span id="cb160-64"><a href="#cb160-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-65"><a href="#cb160-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-66"><a href="#cb160-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tidying Data with tidyr</span></span>
+<span id="cb160-67"><a href="#cb160-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-68"><a href="#cb160-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr_data, message=FALSE}</span></span>
+<span id="cb160-69"><a href="#cb160-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb160-70"><a href="#cb160-70" aria-hidden="true" tabindex="-1"></a>mockstring <span class="ot">&lt;-</span></span>
+<span id="cb160-71"><a href="#cb160-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv'</span>,</span>
+<span id="cb160-72"><a href="#cb160-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-73"><a href="#cb160-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-74"><a href="#cb160-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-75"><a href="#cb160-75" aria-hidden="true" tabindex="-1"></a>**Q1. Reshape the mean of <span class="in">`n_visit`</span> and <span class="in">`order_items`</span> by <span class="in">`referrer`</span> from wide</span>
+<span id="cb160-76"><a href="#cb160-76" aria-hidden="true" tabindex="-1"></a>to long.**</span>
+<span id="cb160-77"><a href="#cb160-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-78"><a href="#cb160-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr1}</span></span>
+<span id="cb160-79"><a href="#cb160-79" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
+<span id="cb160-80"><a href="#cb160-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(n_visit, order_items), \(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb160-81"><a href="#cb160-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> referrer) <span class="sc">|&gt;</span></span>
+<span id="cb160-82"><a href="#cb160-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>referrer, <span class="at">names_to =</span> <span class="st">"metric"</span>, <span class="at">values_to =</span> <span class="st">"mean_value"</span>)</span>
+<span id="cb160-83"><a href="#cb160-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-84"><a href="#cb160-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-85"><a href="#cb160-85" aria-hidden="true" tabindex="-1"></a>**Q2. Split the <span class="in">`email`</span> column of <span class="in">`mockstring`</span> at <span class="in">`"@"`</span> and reunite it — does</span>
+<span id="cb160-86"><a href="#cb160-86" aria-hidden="true" tabindex="-1"></a>the round-trip hold?**</span>
+<span id="cb160-87"><a href="#cb160-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-88"><a href="#cb160-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr2}</span></span>
+<span id="cb160-89"><a href="#cb160-89" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> mockstring <span class="sc">|&gt;</span></span>
+<span id="cb160-90"><a href="#cb160-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(email) <span class="sc">|&gt;</span></span>
+<span id="cb160-91"><a href="#cb160-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(email, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"user"</span>, <span class="st">"domain"</span>), <span class="at">sep =</span> <span class="st">"@"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-92"><a href="#cb160-92" aria-hidden="true" tabindex="-1"></a>reunited <span class="ot">&lt;-</span> split <span class="sc">|&gt;</span></span>
+<span id="cb160-93"><a href="#cb160-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">"rejoined"</span>, user, domain, <span class="at">sep =</span> <span class="st">"@"</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-94"><a href="#cb160-94" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(reunited<span class="sc">$</span>rejoined, mockstring<span class="sc">$</span>email)</span>
+<span id="cb160-95"><a href="#cb160-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-96"><a href="#cb160-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-97"><a href="#cb160-97" aria-hidden="true" tabindex="-1"></a>Yes — every row round-trips (<span class="in">`TRUE`</span>), since each address holds exactly one</span>
+<span id="cb160-98"><a href="#cb160-98" aria-hidden="true" tabindex="-1"></a><span class="in">`"@"`</span>.</span>
+<span id="cb160-99"><a href="#cb160-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-100"><a href="#cb160-100" aria-hidden="true" tabindex="-1"></a>**Q3. Run the <span class="in">`complete()`</span> example without <span class="in">`fill`</span>: what does the missing count</span>
+<span id="cb160-101"><a href="#cb160-101" aria-hidden="true" tabindex="-1"></a>become, and why?**</span>
+<span id="cb160-102"><a href="#cb160-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-103"><a href="#cb160-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_tidyr3}</span></span>
+<span id="cb160-104"><a href="#cb160-104" aria-hidden="true" tabindex="-1"></a>ecom <span class="sc">|&gt;</span></span>
+<span id="cb160-105"><a href="#cb160-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(purchase) <span class="sc">|&gt;</span></span>
+<span id="cb160-106"><a href="#cb160-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(device, purchase) <span class="sc">|&gt;</span></span>
+<span id="cb160-107"><a href="#cb160-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(device, <span class="at">purchase =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb160-108"><a href="#cb160-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-109"><a href="#cb160-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-110"><a href="#cb160-110" aria-hidden="true" tabindex="-1"></a>The missing cells become <span class="in">`NA`</span>, not 0: with no <span class="in">`fill`</span>, <span class="in">`complete()`</span> adds the</span>
+<span id="cb160-111"><a href="#cb160-111" aria-hidden="true" tabindex="-1"></a>absent combinations but has no value to put in <span class="in">`n`</span>, so the count is unknown</span>
+<span id="cb160-112"><a href="#cb160-112" aria-hidden="true" tabindex="-1"></a>(<span class="in">`NA`</span>). Pass <span class="in">`fill = list(n = 0L)`</span> when a missing combination genuinely means</span>
+<span id="cb160-113"><a href="#cb160-113" aria-hidden="true" tabindex="-1"></a>"zero events".</span>
+<span id="cb160-114"><a href="#cb160-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-115"><a href="#cb160-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Date &amp; Time: Parsing and Components</span></span>
+<span id="cb160-116"><a href="#cb160-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-117"><a href="#cb160-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10_libs, message=FALSE}</span></span>
+<span id="cb160-118"><a href="#cb160-118" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb160-119"><a href="#cb160-119" aria-hidden="true" tabindex="-1"></a>transact <span class="ot">&lt;-</span></span>
+<span id="cb160-120"><a href="#cb160-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv'</span>,</span>
+<span id="cb160-121"><a href="#cb160-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-122"><a href="#cb160-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-123"><a href="#cb160-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-124"><a href="#cb160-124" aria-hidden="true" tabindex="-1"></a>**Q1. Current date, current time, AM or PM, and leap years.**</span>
+<span id="cb160-125"><a href="#cb160-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-126"><a href="#cb160-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10a}</span></span>
+<span id="cb160-127"><a href="#cb160-127" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb160-128"><a href="#cb160-128" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span>
+<span id="cb160-129"><a href="#cb160-129" aria-hidden="true" tabindex="-1"></a><span class="fu">pm</span>(<span class="fu">now</span>())</span>
+<span id="cb160-130"><a href="#cb160-130" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="fu">c</span>(<span class="dv">2018</span>, <span class="dv">2016</span>))</span>
+<span id="cb160-131"><a href="#cb160-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-132"><a href="#cb160-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-133"><a href="#cb160-133" aria-hidden="true" tabindex="-1"></a>2018 was not a leap year (<span class="in">`FALSE`</span>); 2016 was (<span class="in">`TRUE`</span>).</span>
+<span id="cb160-134"><a href="#cb160-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-135"><a href="#cb160-135" aria-hidden="true" tabindex="-1"></a>**Q2. R 1.0.0 was released on <span class="in">`2000-02-29 08:55:23 UTC`</span>. Save it as a <span class="in">`Date`</span></span>
+<span id="cb160-136"><a href="#cb160-136" aria-hidden="true" tabindex="-1"></a>from character, a <span class="in">`Date`</span> from origin + number, <span class="in">`POSIXct`</span>, <span class="in">`POSIXlt`</span></span>
+<span id="cb160-137"><a href="#cb160-137" aria-hidden="true" tabindex="-1"></a>(extracting month day, day of year, month, zone) and <span class="in">`ISODate`</span>.**</span>
+<span id="cb160-138"><a href="#cb160-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-139"><a href="#cb160-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10b}</span></span>
+<span id="cb160-140"><a href="#cb160-140" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2000-02-29"</span>)</span>
+<span id="cb160-141"><a href="#cb160-141" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">11016</span>, <span class="at">origin =</span> <span class="st">"1970-01-01"</span>)</span>
+<span id="cb160-142"><a href="#cb160-142" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">"2000-02-29 08:55:23"</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
+<span id="cb160-143"><a href="#cb160-143" aria-hidden="true" tabindex="-1"></a>lt <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="st">"2000-02-29 08:55:23"</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
+<span id="cb160-144"><a href="#cb160-144" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">month_day =</span> lt<span class="sc">$</span>mday, <span class="at">day_of_year =</span> lt<span class="sc">$</span>yday, <span class="at">month =</span> lt<span class="sc">$</span>mon <span class="sc">+</span> <span class="dv">1</span>L, <span class="at">zone =</span> lt<span class="sc">$</span>zone)</span>
+<span id="cb160-145"><a href="#cb160-145" aria-hidden="true" tabindex="-1"></a><span class="fu">ISOdate</span>(<span class="dv">2000</span>, <span class="dv">2</span>, <span class="dv">29</span>, <span class="dv">8</span>, <span class="dv">55</span>, <span class="dv">23</span>, <span class="at">tz =</span> <span class="st">"UTC"</span>)</span>
+<span id="cb160-146"><a href="#cb160-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-147"><a href="#cb160-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-148"><a href="#cb160-148" aria-hidden="true" tabindex="-1"></a><span class="in">`$mon`</span> is zero-indexed, hence <span class="in">`+ 1L`</span>; <span class="in">`$yday`</span> is 59 (zero-indexed — the 60th</span>
+<span id="cb160-149"><a href="#cb160-149" aria-hidden="true" tabindex="-1"></a>day of the leap year).</span>
+<span id="cb160-150"><a href="#cb160-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-151"><a href="#cb160-151" aria-hidden="true" tabindex="-1"></a>**Q3. Create <span class="in">`July 5th, 2019`</span> from each spelling with <span class="in">`as.Date()`</span> and the</span>
+<span id="cb160-152"><a href="#cb160-152" aria-hidden="true" tabindex="-1"></a>correct format.**</span>
+<span id="cb160-153"><a href="#cb160-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-154"><a href="#cb160-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10c}</span></span>
+<span id="cb160-155"><a href="#cb160-155" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July-05-19"</span>, <span class="at">format =</span> <span class="st">"%B-%d-%y"</span>)</span>
+<span id="cb160-156"><a href="#cb160-156" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"JUL-05-19"</span>, <span class="at">format =</span> <span class="st">"%b-%d-%y"</span>)</span>
+<span id="cb160-157"><a href="#cb160-157" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"05.07.19"</span>, <span class="at">format =</span> <span class="st">"%d.%m.%y"</span>)</span>
+<span id="cb160-158"><a href="#cb160-158" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"5-July 2019"</span>, <span class="at">format =</span> <span class="st">"%d-%B %Y"</span>)</span>
+<span id="cb160-159"><a href="#cb160-159" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July 5th, 2019"</span>, <span class="at">format =</span> <span class="st">"July %dth, %Y"</span>)</span>
+<span id="cb160-160"><a href="#cb160-160" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July 05, 2019"</span>, <span class="at">format =</span> <span class="st">"%B %d, %Y"</span>)</span>
+<span id="cb160-161"><a href="#cb160-161" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2019-July- 05"</span>, <span class="at">format =</span> <span class="st">"%Y-%B- %d"</span>)</span>
+<span id="cb160-162"><a href="#cb160-162" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"05/07/2019"</span>, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb160-163"><a href="#cb160-163" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"07/05/2019"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb160-164"><a href="#cb160-164" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"7/5/2019"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb160-165"><a href="#cb160-165" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"07/5/19"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb160-166"><a href="#cb160-166" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2019-07-05"</span>)</span>
+<span id="cb160-167"><a href="#cb160-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-168"><a href="#cb160-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-169"><a href="#cb160-169" aria-hidden="true" tabindex="-1"></a>Note the ambiguous pairs: <span class="in">`05/07/2019`</span> vs <span class="in">`07/05/2019`</span> is day-first vs</span>
+<span id="cb160-170"><a href="#cb160-170" aria-hidden="true" tabindex="-1"></a>month-first — the format string, not the data, decides. <span class="in">`as.Date()`</span> matches</span>
+<span id="cb160-171"><a href="#cb160-171" aria-hidden="true" tabindex="-1"></a>literals (<span class="in">`"July "`</span>, <span class="in">`"th"`</span>, <span class="in">`", "`</span>) character-for-character.</span>
+<span id="cb160-172"><a href="#cb160-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-173"><a href="#cb160-173" aria-hidden="true" tabindex="-1"></a>**Q4. Parse the same spellings with <span class="in">`strptime()`</span> / <span class="in">`parse_date_time()`</span> /</span>
+<span id="cb160-174"><a href="#cb160-174" aria-hidden="true" tabindex="-1"></a>helpers.**</span>
+<span id="cb160-175"><a href="#cb160-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-176"><a href="#cb160-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10d}</span></span>
+<span id="cb160-177"><a href="#cb160-177" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"July-05-19"</span>, <span class="st">"JUL-05-19"</span>, <span class="st">"05.07.19"</span>, <span class="st">"5-July 2019"</span>,</span>
+<span id="cb160-178"><a href="#cb160-178" aria-hidden="true" tabindex="-1"></a>  <span class="st">"July 5th, 2019"</span>, <span class="st">"July 05, 2019"</span>, <span class="st">"2019-July- 05"</span>, <span class="st">"05/07/2019"</span>,</span>
+<span id="cb160-179"><a href="#cb160-179" aria-hidden="true" tabindex="-1"></a>  <span class="st">"07/05/2019"</span>, <span class="st">"7/5/2019"</span>, <span class="st">"07/5/19"</span>, <span class="st">"2019-07-05"</span>)</span>
+<span id="cb160-180"><a href="#cb160-180" aria-hidden="true" tabindex="-1"></a><span class="fu">parse_date_time</span>(dates, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Bdy"</span>, <span class="st">"bdy"</span>, <span class="st">"dmy"</span>, <span class="st">"dBY"</span>, <span class="st">"BYd"</span>,</span>
+<span id="cb160-181"><a href="#cb160-181" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dmy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"mdy"</span>, <span class="st">"ymd"</span>))</span>
+<span id="cb160-182"><a href="#cb160-182" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">"July 05, 2019"</span>)</span>
+<span id="cb160-183"><a href="#cb160-183" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"05.07.19"</span>)</span>
+<span id="cb160-184"><a href="#cb160-184" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">"2019-07-05"</span>)</span>
+<span id="cb160-185"><a href="#cb160-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-186"><a href="#cb160-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-187"><a href="#cb160-187" aria-hidden="true" tabindex="-1"></a>One <span class="in">`parse_date_time()`</span> call with several <span class="in">`orders`</span> handles the whole mixed</span>
+<span id="cb160-188"><a href="#cb160-188" aria-hidden="true" tabindex="-1"></a>vector — prefer helpers (<span class="in">`mdy()`</span>/<span class="in">`dmy()`</span>/<span class="in">`ymd()`</span>) when a column uses a single</span>
+<span id="cb160-189"><a href="#cb160-189" aria-hidden="true" tabindex="-1"></a>convention.</span>
+<span id="cb160-190"><a href="#cb160-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-191"><a href="#cb160-191" aria-hidden="true" tabindex="-1"></a>**Q5. From the <span class="in">`Due`</span> column of <span class="in">`transact`</span>, tabulate year, labelled month,</span>
+<span id="cb160-192"><a href="#cb160-192" aria-hidden="true" tabindex="-1"></a>labelled weekday, hour and quarter.**</span>
+<span id="cb160-193"><a href="#cb160-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-194"><a href="#cb160-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10e}</span></span>
+<span id="cb160-195"><a href="#cb160-195" aria-hidden="true" tabindex="-1"></a>transact <span class="sc">|&gt;</span></span>
+<span id="cb160-196"><a href="#cb160-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">due_year =</span> <span class="fu">year</span>(Due),</span>
+<span id="cb160-197"><a href="#cb160-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_month =</span> <span class="fu">month</span>(Due, <span class="at">label =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb160-198"><a href="#cb160-198" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_wday =</span> <span class="fu">wday</span>(Due, <span class="at">label =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb160-199"><a href="#cb160-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_hour =</span> <span class="fu">hour</span>(Due),</span>
+<span id="cb160-200"><a href="#cb160-200" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_quarter =</span> <span class="fu">quarter</span>(Due)) <span class="sc">|&gt;</span></span>
+<span id="cb160-201"><a href="#cb160-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(due_year, due_month, due_wday, due_hour, due_quarter)</span>
+<span id="cb160-202"><a href="#cb160-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-203"><a href="#cb160-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-204"><a href="#cb160-204" aria-hidden="true" tabindex="-1"></a><span class="in">`due_hour`</span> is 0 everywhere: <span class="in">`Due`</span> is a <span class="in">`Date`</span> (midnight, no time component) —</span>
+<span id="cb160-205"><a href="#cb160-205" aria-hidden="true" tabindex="-1"></a><span class="in">`hour()`</span> on dates is always 0.</span>
+<span id="cb160-206"><a href="#cb160-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-207"><a href="#cb160-207" aria-hidden="true" tabindex="-1"></a>**Q6. R 2.0.0 (<span class="in">`2004-10-04 14:24:38`</span>) with <span class="in">`make_date()`</span> and <span class="in">`make_datetime()`</span>;</span>
+<span id="cb160-208"><a href="#cb160-208" aria-hidden="true" tabindex="-1"></a>R 3.0.0 (<span class="in">`2013-04-03 07:12:36`</span>) via <span class="in">`update()`</span>.**</span>
+<span id="cb160-209"><a href="#cb160-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-210"><a href="#cb160-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub10f}</span></span>
+<span id="cb160-211"><a href="#cb160-211" aria-hidden="true" tabindex="-1"></a>r200 <span class="ot">&lt;-</span> <span class="fu">make_datetime</span>(<span class="dv">2004</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">38</span>)</span>
+<span id="cb160-212"><a href="#cb160-212" aria-hidden="true" tabindex="-1"></a>r200_date <span class="ot">&lt;-</span> <span class="fu">make_date</span>(<span class="dv">2004</span>, <span class="dv">10</span>, <span class="dv">4</span>)</span>
+<span id="cb160-213"><a href="#cb160-213" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(r200, <span class="at">year =</span> <span class="dv">2013</span>, <span class="at">month =</span> <span class="dv">4</span>, <span class="at">mday =</span> <span class="dv">3</span>, <span class="at">hour =</span> <span class="dv">7</span>, <span class="at">min =</span> <span class="dv">12</span>, <span class="at">sec =</span> <span class="dv">36</span>)</span>
+<span id="cb160-214"><a href="#cb160-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-215"><a href="#cb160-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-216"><a href="#cb160-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Date &amp; Time: Arithmetic and Time Zones</span></span>
+<span id="cb160-217"><a href="#cb160-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-218"><a href="#cb160-218" aria-hidden="true" tabindex="-1"></a>**Q1. Vacation length, shifted vacation, invoice settlement and employment</span>
+<span id="cb160-219"><a href="#cb160-219" aria-hidden="true" tabindex="-1"></a>length.**</span>
+<span id="cb160-220"><a href="#cb160-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-221"><a href="#cb160-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11a, message=FALSE}</span></span>
+<span id="cb160-222"><a href="#cb160-222" aria-hidden="true" tabindex="-1"></a>vac_start <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2020-04-19"</span>)</span>
+<span id="cb160-223"><a href="#cb160-223" aria-hidden="true" tabindex="-1"></a>vac_end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2020-04-25"</span>)</span>
+<span id="cb160-224"><a href="#cb160-224" aria-hidden="true" tabindex="-1"></a>vac_start <span class="sc">%--%</span> vac_end</span>
+<span id="cb160-225"><a href="#cb160-225" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(vac_start <span class="sc">%--%</span> vac_end)</span>
+<span id="cb160-226"><a href="#cb160-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-227"><a href="#cb160-227" aria-hidden="true" tabindex="-1"></a><span class="co"># shift the start by 10 days and the end by 2 weeks, then recompute</span></span>
+<span id="cb160-228"><a href="#cb160-228" aria-hidden="true" tabindex="-1"></a>vac_start2 <span class="ot">&lt;-</span> vac_start <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">10</span>)</span>
+<span id="cb160-229"><a href="#cb160-229" aria-hidden="true" tabindex="-1"></a>vac_end2 <span class="ot">&lt;-</span> vac_end <span class="sc">+</span> <span class="fu">weeks</span>(<span class="dv">2</span>)</span>
+<span id="cb160-230"><a href="#cb160-230" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(vac_start2 <span class="sc">%--%</span> vac_end2)</span>
+<span id="cb160-231"><a href="#cb160-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-232"><a href="#cb160-232" aria-hidden="true" tabindex="-1"></a>receivables <span class="ot">&lt;-</span></span>
+<span id="cb160-233"><a href="#cb160-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/receivables.csv'</span>,</span>
+<span id="cb160-234"><a href="#cb160-234" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-235"><a href="#cb160-235" aria-hidden="true" tabindex="-1"></a>receivables <span class="sc">|&gt;</span></span>
+<span id="cb160-236"><a href="#cb160-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">invoice_date =</span> <span class="fu">mdy</span>(invoice_date), <span class="at">due_date =</span> <span class="fu">mdy</span>(due_date),</span>
+<span id="cb160-237"><a href="#cb160-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">settled_date =</span> <span class="fu">mdy</span>(settled_date),</span>
+<span id="cb160-238"><a href="#cb160-238" aria-hidden="true" tabindex="-1"></a>    <span class="at">days_to_settle =</span> settled_date <span class="sc">-</span> invoice_date,</span>
+<span id="cb160-239"><a href="#cb160-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">days_overdue =</span> settled_date <span class="sc">-</span> due_date) <span class="sc">|&gt;</span></span>
+<span id="cb160-240"><a href="#cb160-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(invoice_number, days_to_settle, days_overdue) <span class="sc">|&gt;</span></span>
+<span id="cb160-241"><a href="#cb160-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb160-242"><a href="#cb160-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-243"><a href="#cb160-243" aria-hidden="true" tabindex="-1"></a>hr <span class="ot">&lt;-</span></span>
+<span id="cb160-244"><a href="#cb160-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rsquaredacademy/datasets/master/hr-data.csv'</span>,</span>
+<span id="cb160-245"><a href="#cb160-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-246"><a href="#cb160-246" aria-hidden="true" tabindex="-1"></a>hr <span class="sc">|&gt;</span></span>
+<span id="cb160-247"><a href="#cb160-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Termd <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(DateofTermination)) <span class="sc">|&gt;</span></span>
+<span id="cb160-248"><a href="#cb160-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hire =</span> <span class="fu">mdy</span>(DateofHire), <span class="at">term =</span> <span class="fu">mdy</span>(DateofTermination),</span>
+<span id="cb160-249"><a href="#cb160-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">employed =</span> term <span class="sc">-</span> hire) <span class="sc">|&gt;</span></span>
+<span id="cb160-250"><a href="#cb160-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Employee_Name, hire, term, employed) <span class="sc">|&gt;</span></span>
+<span id="cb160-251"><a href="#cb160-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb160-252"><a href="#cb160-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-253"><a href="#cb160-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-254"><a href="#cb160-254" aria-hidden="true" tabindex="-1"></a>The base vacation is 6 days; after shifting it spans 10 days. Positive</span>
+<span id="cb160-255"><a href="#cb160-255" aria-hidden="true" tabindex="-1"></a><span class="in">`days_overdue`</span> means the customer paid late; filter <span class="in">`Termd == 1`</span> (plus a</span>
+<span id="cb160-256"><a href="#cb160-256" aria-hidden="true" tabindex="-1"></a>non-missing termination date) so only terminated employees count.</span>
+<span id="cb160-257"><a href="#cb160-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-258"><a href="#cb160-258" aria-hidden="true" tabindex="-1"></a>**Q2. Your timezone, daylight savings and the current UTC time.**</span>
+<span id="cb160-259"><a href="#cb160-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-260"><a href="#cb160-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11b}</span></span>
+<span id="cb160-261"><a href="#cb160-261" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
+<span id="cb160-262"><a href="#cb160-262" aria-hidden="true" tabindex="-1"></a><span class="fu">dst</span>(<span class="fu">now</span>())</span>
+<span id="cb160-263"><a href="#cb160-263" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>(<span class="st">"UTC"</span>)</span>
+<span id="cb160-264"><a href="#cb160-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-265"><a href="#cb160-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-266"><a href="#cb160-266" aria-hidden="true" tabindex="-1"></a>**Q3. Round <span class="in">`transact`</span> due dates: up to weeks, down to days, back to the start</span>
+<span id="cb160-267"><a href="#cb160-267" aria-hidden="true" tabindex="-1"></a>of the month.**</span>
+<span id="cb160-268"><a href="#cb160-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-269"><a href="#cb160-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_lub11c}</span></span>
+<span id="cb160-270"><a href="#cb160-270" aria-hidden="true" tabindex="-1"></a>transact <span class="sc">|&gt;</span></span>
+<span id="cb160-271"><a href="#cb160-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">due_week_up =</span> <span class="fu">ceiling_date</span>(Due, <span class="st">"week"</span>),</span>
+<span id="cb160-272"><a href="#cb160-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_day_down =</span> <span class="fu">floor_date</span>(Due, <span class="st">"day"</span>),</span>
+<span id="cb160-273"><a href="#cb160-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">due_month_start =</span> <span class="fu">rollback</span>(Due, <span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb160-274"><a href="#cb160-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Due, due_week_up, due_day_down, due_month_start) <span class="sc">|&gt;</span></span>
+<span id="cb160-275"><a href="#cb160-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb160-276"><a href="#cb160-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-277"><a href="#cb160-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-278"><a href="#cb160-278" aria-hidden="true" tabindex="-1"></a><span class="in">`Due`</span> values are whole dates, so rounding down to days is a no-op (midnight</span>
+<span id="cb160-279"><a href="#cb160-279" aria-hidden="true" tabindex="-1"></a>already); <span class="in">`ceiling_date()`</span> moves each due date forward to its week boundary.</span>
+<span id="cb160-280"><a href="#cb160-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-281"><a href="#cb160-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## Categorical Data Fundamentals</span></span>
+<span id="cb160-282"><a href="#cb160-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-283"><a href="#cb160-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12_data, message=FALSE}</span></span>
+<span id="cb160-284"><a href="#cb160-284" aria-hidden="true" tabindex="-1"></a>analytics_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"analytics_raw.rds"</span>)</span>
+<span id="cb160-285"><a href="#cb160-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-286"><a href="#cb160-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-287"><a href="#cb160-287" aria-hidden="true" tabindex="-1"></a>**Q1. Quantitative or qualitative?** Quantitative: Age, Annual Sales, Weight,</span>
+<span id="cb160-288"><a href="#cb160-288" aria-hidden="true" tabindex="-1"></a>Height, Job/Work Experience. Qualitative: Gender, Education Level, Vehicle</span>
+<span id="cb160-289"><a href="#cb160-289" aria-hidden="true" tabindex="-1"></a>Type, Ice Cream Flavor, Blood Group, Color, Mode of Payment. (Education Level</span>
+<span id="cb160-290"><a href="#cb160-290" aria-hidden="true" tabindex="-1"></a>is qualitative but *ordered* — see ordered factors below.)</span>
+<span id="cb160-291"><a href="#cb160-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-292"><a href="#cb160-292" aria-hidden="true" tabindex="-1"></a>**Q2. Dichotomous or polychotomous?** Dichotomous (exactly two outcomes):</span>
+<span id="cb160-293"><a href="#cb160-293" aria-hidden="true" tabindex="-1"></a>Heads / Tails, Rich / Poor, Democrat / Republican. Polychotomous (three or</span>
+<span id="cb160-294"><a href="#cb160-294" aria-hidden="true" tabindex="-1"></a>more): Blood Group, Transportation Mode, Education Level.</span>
+<span id="cb160-295"><a href="#cb160-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-296"><a href="#cb160-296" aria-hidden="true" tabindex="-1"></a>**Q3–Q9. Factor checks, coercion and level control on `analytics_raw`.**</span>
+<span id="cb160-297"><a href="#cb160-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-298"><a href="#cb160-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12a}</span></span>
+<span id="cb160-299"><a href="#cb160-299" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3: which of these are already factors? (raw file: none — all character)</span></span>
+<span id="cb160-300"><a href="#cb160-300" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"device"</span>, <span class="st">"page_depth"</span>, <span class="st">"landing_page"</span>)], is.factor)</span>
+<span id="cb160-301"><a href="#cb160-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-302"><a href="#cb160-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Q4: coerce the categorical columns (page_depth stays numeric;</span></span>
+<span id="cb160-303"><a href="#cb160-303" aria-hidden="true" tabindex="-1"></a><span class="co"># `city` is not in this file, so it is skipped)</span></span>
+<span id="cb160-304"><a href="#cb160-304" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"device"</span>, <span class="st">"os"</span>, <span class="st">"browser"</span>, <span class="st">"user_type"</span>, <span class="st">"channel"</span>,</span>
+<span id="cb160-305"><a href="#cb160-305" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>, <span class="st">"landing_page"</span>, <span class="st">"exit_page"</span>, <span class="st">"country"</span>)</span>
+<span id="cb160-306"><a href="#cb160-306" aria-hidden="true" tabindex="-1"></a>analytics_raw[cat_vars] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(analytics_raw[cat_vars], factor)</span>
+<span id="cb160-307"><a href="#cb160-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-308"><a href="#cb160-308" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5: keep only male/female levels in gender</span></span>
+<span id="cb160-309"><a href="#cb160-309" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
+<span id="cb160-310"><a href="#cb160-310" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
+<span id="cb160-311"><a href="#cb160-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-312"><a href="#cb160-312" aria-hidden="true" tabindex="-1"></a><span class="co"># Q6: admit NA as a level (no-op here — this file has no missing gender,</span></span>
+<span id="cb160-313"><a href="#cb160-313" aria-hidden="true" tabindex="-1"></a><span class="co"># but the call is what makes unseen NAs explicit downstream)</span></span>
+<span id="cb160-314"><a href="#cb160-314" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb160-315"><a href="#cb160-315" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">fct_na_value_to_level</span>(gender, <span class="at">level =</span> <span class="cn">NA</span>)</span>
+<span id="cb160-316"><a href="#cb160-316" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
+<span id="cb160-317"><a href="#cb160-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-318"><a href="#cb160-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Q7: label that NA level "missing"</span></span>
+<span id="cb160-319"><a href="#cb160-319" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">fct_na_value_to_level</span>(gender, <span class="at">level =</span> <span class="st">"(Missing)"</span>)</span>
+<span id="cb160-320"><a href="#cb160-320" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span>
+<span id="cb160-321"><a href="#cb160-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-322"><a href="#cb160-322" aria-hidden="true" tabindex="-1"></a><span class="co"># Q8: relabel user_type levels</span></span>
+<span id="cb160-323"><a href="#cb160-323" aria-hidden="true" tabindex="-1"></a>user_type <span class="ot">&lt;-</span> <span class="fu">fct_recode</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type),</span>
+<span id="cb160-324"><a href="#cb160-324" aria-hidden="true" tabindex="-1"></a>  <span class="st">"New"</span> <span class="ot">=</span> <span class="st">"New Visitor"</span>, <span class="st">"Returning"</span> <span class="ot">=</span> <span class="st">"Returning Visitor"</span>)</span>
+<span id="cb160-325"><a href="#cb160-325" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(user_type)</span>
+<span id="cb160-326"><a href="#cb160-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-327"><a href="#cb160-327" aria-hidden="true" tabindex="-1"></a><span class="co"># Q9: is user_rating ordered? coerce if not</span></span>
+<span id="cb160-328"><a href="#cb160-328" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(analytics_raw<span class="sc">$</span>user_rating)</span>
+<span id="cb160-329"><a href="#cb160-329" aria-hidden="true" tabindex="-1"></a>user_rating <span class="ot">&lt;-</span> <span class="fu">ordered</span>(analytics_raw<span class="sc">$</span>user_rating)</span>
+<span id="cb160-330"><a href="#cb160-330" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(user_rating)</span>
+<span id="cb160-331"><a href="#cb160-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-332"><a href="#cb160-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-333"><a href="#cb160-333" aria-hidden="true" tabindex="-1"></a>**Q10–Q13. Level counts, categories, frequencies and a two-way summary.**</span>
+<span id="cb160-334"><a href="#cb160-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-335"><a href="#cb160-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fct12b}</span></span>
+<span id="cb160-336"><a href="#cb160-336" aria-hidden="true" tabindex="-1"></a><span class="co"># Q10: number of levels</span></span>
+<span id="cb160-337"><a href="#cb160-337" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"browser"</span>, <span class="st">"channel"</span>, <span class="st">"landing_page"</span>, <span class="st">"exit_page"</span>)],</span>
+<span id="cb160-338"><a href="#cb160-338" aria-hidden="true" tabindex="-1"></a>  \(x) <span class="fu">nlevels</span>(<span class="fu">factor</span>(x)))</span>
+<span id="cb160-339"><a href="#cb160-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-340"><a href="#cb160-340" aria-hidden="true" tabindex="-1"></a><span class="co"># Q11: the categories themselves</span></span>
+<span id="cb160-341"><a href="#cb160-341" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(analytics_raw[<span class="fu">c</span>(<span class="st">"os"</span>, <span class="st">"channel"</span>, <span class="st">"browser"</span>, <span class="st">"gender"</span>, <span class="st">"user_type"</span>)],</span>
+<span id="cb160-342"><a href="#cb160-342" aria-hidden="true" tabindex="-1"></a>  \(x) <span class="fu">levels</span>(<span class="fu">factor</span>(x)))</span>
+<span id="cb160-343"><a href="#cb160-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-344"><a href="#cb160-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Q12: frequencies</span></span>
+<span id="cb160-345"><a href="#cb160-345" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel))</span>
+<span id="cb160-346"><a href="#cb160-346" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type))</span>
+<span id="cb160-347"><a href="#cb160-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-348"><a href="#cb160-348" aria-hidden="true" tabindex="-1"></a><span class="co"># Q13: channel by user_type — counts and column shares</span></span>
+<span id="cb160-349"><a href="#cb160-349" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel), <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type))</span>
+<span id="cb160-350"><a href="#cb160-350" aria-hidden="true" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(<span class="fu">factor</span>(analytics_raw<span class="sc">$</span>channel),</span>
+<span id="cb160-351"><a href="#cb160-351" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(analytics_raw<span class="sc">$</span>user_type)), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb160-352"><a href="#cb160-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-353"><a href="#cb160-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-354"><a href="#cb160-354" aria-hidden="true" tabindex="-1"></a><span class="fu">## Factor Manipulation with forcats</span></span>
+<span id="cb160-355"><a href="#cb160-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-356"><a href="#cb160-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13_data, message=FALSE}</span></span>
+<span id="cb160-357"><a href="#cb160-357" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb160-358"><a href="#cb160-358" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"analytics.rds"</span>)</span>
+<span id="cb160-359"><a href="#cb160-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-360"><a href="#cb160-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-361"><a href="#cb160-361" aria-hidden="true" tabindex="-1"></a>**Q1–Q2. Frequencies in descending order; is `laptop` a `device` level?**</span>
+<span id="cb160-362"><a href="#cb160-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-363"><a href="#cb160-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13a}</span></span>
+<span id="cb160-364"><a href="#cb160-364" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(device) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-365"><a href="#cb160-365" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-366"><a href="#cb160-366" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(exit_page) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-367"><a href="#cb160-367" aria-hidden="true" tabindex="-1"></a><span class="st">"laptop"</span> <span class="sc">%in%</span> <span class="fu">levels</span>(data<span class="sc">$</span>device)</span>
+<span id="cb160-368"><a href="#cb160-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-369"><a href="#cb160-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-370"><a href="#cb160-370" aria-hidden="true" tabindex="-1"></a><span class="in">`fct_count()`</span> sorts most-frequent-first. (<span class="in">`device`</span> here holds</span>
+<span id="cb160-371"><a href="#cb160-371" aria-hidden="true" tabindex="-1"></a>Desktop/Mobile/Tablet, so <span class="in">`"laptop"`</span> is not a level — it belongs to the</span>
+<span id="cb160-372"><a href="#cb160-372" aria-hidden="true" tabindex="-1"></a><span class="in">`ecom`</span> schema, not <span class="in">`analytics`</span>.)</span>
+<span id="cb160-373"><a href="#cb160-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-374"><a href="#cb160-374" aria-hidden="true" tabindex="-1"></a>**Q3–Q8. Collapsing, lumping, keeping and anonymizing levels.**</span>
+<span id="cb160-375"><a href="#cb160-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-376"><a href="#cb160-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13b}</span></span>
+<span id="cb160-377"><a href="#cb160-377" aria-hidden="true" tabindex="-1"></a><span class="co"># Q3: collapse account-related pages</span></span>
+<span id="cb160-378"><a href="#cb160-378" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span></span>
+<span id="cb160-379"><a href="#cb160-379" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_collapse</span>(<span class="at">Account =</span> <span class="fu">c</span>(<span class="st">"My Account"</span>, <span class="st">"Register"</span>, <span class="st">"Sign In"</span>, <span class="st">"Your Info"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb160-380"><a href="#cb160-380" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">6</span>)</span>
+<span id="cb160-381"><a href="#cb160-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-382"><a href="#cb160-382" aria-hidden="true" tabindex="-1"></a><span class="co"># Q4: lump landing pages behind fewer than 1000 visits into "Other"</span></span>
+<span id="cb160-383"><a href="#cb160-383" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_min</span>(<span class="at">min =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-384"><a href="#cb160-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-385"><a href="#cb160-385" aria-hidden="true" tabindex="-1"></a><span class="co"># Q5: top 10 landing and exit pages</span></span>
+<span id="cb160-386"><a href="#cb160-386" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_n</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-387"><a href="#cb160-387" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(exit_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_n</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-388"><a href="#cb160-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-389"><a href="#cb160-389" aria-hidden="true" tabindex="-1"></a><span class="co"># Q6: landing pages with at least 5% of traffic</span></span>
+<span id="cb160-390"><a href="#cb160-390" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_lump_prop</span>(<span class="at">prop =</span> <span class="fl">0.05</span>) <span class="sc">|&gt;</span> <span class="fu">fct_count</span>()</span>
+<span id="cb160-391"><a href="#cb160-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-392"><a href="#cb160-392" aria-hidden="true" tabindex="-1"></a><span class="co"># Q7: keep only the big-four browsers</span></span>
+<span id="cb160-393"><a href="#cb160-393" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(browser) <span class="sc">|&gt;</span></span>
+<span id="cb160-394"><a href="#cb160-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_other</span>(<span class="at">keep =</span> <span class="fu">c</span>(<span class="st">"Chrome"</span>, <span class="st">"Firefox"</span>, <span class="st">"Safari"</span>, <span class="st">"Edge"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb160-395"><a href="#cb160-395" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>()</span>
+<span id="cb160-396"><a href="#cb160-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-397"><a href="#cb160-397" aria-hidden="true" tabindex="-1"></a><span class="co"># Q8: anonymize page levels (stable within a session via seed)</span></span>
+<span id="cb160-398"><a href="#cb160-398" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb160-399"><a href="#cb160-399" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(landing_page) <span class="sc">|&gt;</span> <span class="fu">fct_anon</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb160-400"><a href="#cb160-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-401"><a href="#cb160-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-402"><a href="#cb160-402" aria-hidden="true" tabindex="-1"></a>**Q9–Q15. Reordering, shuffling and reversing levels.**</span>
+<span id="cb160-403"><a href="#cb160-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-404"><a href="#cb160-404" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13c}</span></span>
+<span id="cb160-405"><a href="#cb160-405" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb160-406"><a href="#cb160-406" aria-hidden="true" tabindex="-1"></a>landing_page <span class="ot">&lt;-</span> data<span class="sc">$</span>landing_page</span>
+<span id="cb160-407"><a href="#cb160-407" aria-hidden="true" tabindex="-1"></a>browser <span class="ot">&lt;-</span> data<span class="sc">$</span>browser</span>
+<span id="cb160-408"><a href="#cb160-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-409"><a href="#cb160-409" aria-hidden="true" tabindex="-1"></a><span class="co"># Q9/Q10/Q11: Home first, Apparel second, Specials last</span></span>
+<span id="cb160-410"><a href="#cb160-410" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Home"</span>) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span>
+<span id="cb160-411"><a href="#cb160-411" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Apparel"</span>, <span class="at">after =</span> <span class="dv">1</span>L) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span>
+<span id="cb160-412"><a href="#cb160-412" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_relevel</span>(<span class="st">"Specials"</span>, <span class="at">after =</span> <span class="cn">Inf</span>) <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">tail</span>(<span class="dv">3</span>)</span>
+<span id="cb160-413"><a href="#cb160-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-414"><a href="#cb160-414" aria-hidden="true" tabindex="-1"></a><span class="co"># Q12: browsers by frequency</span></span>
+<span id="cb160-415"><a href="#cb160-415" aria-hidden="true" tabindex="-1"></a>browser <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
+<span id="cb160-416"><a href="#cb160-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-417"><a href="#cb160-417" aria-hidden="true" tabindex="-1"></a><span class="co"># Q13: landing pages in order of appearance</span></span>
+<span id="cb160-418"><a href="#cb160-418" aria-hidden="true" tabindex="-1"></a>landing_page <span class="sc">|&gt;</span> <span class="fu">fct_inorder</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">6</span>)</span>
+<span id="cb160-419"><a href="#cb160-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-420"><a href="#cb160-420" aria-hidden="true" tabindex="-1"></a><span class="co"># Q14: shuffled os levels</span></span>
+<span id="cb160-421"><a href="#cb160-421" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(os) <span class="sc">|&gt;</span> <span class="fu">fct_shuffle</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
+<span id="cb160-422"><a href="#cb160-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-423"><a href="#cb160-423" aria-hidden="true" tabindex="-1"></a><span class="co"># Q15: reversed browser levels</span></span>
+<span id="cb160-424"><a href="#cb160-424" aria-hidden="true" tabindex="-1"></a>browser <span class="sc">|&gt;</span> <span class="fu">fct_rev</span>() <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
+<span id="cb160-425"><a href="#cb160-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-426"><a href="#cb160-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-427"><a href="#cb160-427" aria-hidden="true" tabindex="-1"></a>**Q16. The plots.**</span>
+<span id="cb160-428"><a href="#cb160-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-429"><a href="#cb160-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d1, fig.height=5, fig.width=7}</span></span>
+<span id="cb160-430"><a href="#cb160-430" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb160-431"><a href="#cb160-431" aria-hidden="true" tabindex="-1"></a><span class="co"># 1: bar plot of channel</span></span>
+<span id="cb160-432"><a href="#cb160-432" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb160-433"><a href="#cb160-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> channel), <span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb160-434"><a href="#cb160-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Source of Traffic"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Channel"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Count"</span>)</span>
+<span id="cb160-435"><a href="#cb160-435" aria-hidden="true" tabindex="-1"></a><span class="co"># 2: grouped bars, user_type by channel</span></span>
+<span id="cb160-436"><a href="#cb160-436" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb160-437"><a href="#cb160-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> channel, <span class="at">fill =</span> user_type), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb160-438"><a href="#cb160-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"User Type by Channel"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Channel"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"User Type"</span>)</span>
+<span id="cb160-439"><a href="#cb160-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-440"><a href="#cb160-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-441"><a href="#cb160-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d2, fig.height=5, fig.width=7}</span></span>
+<span id="cb160-442"><a href="#cb160-442" aria-hidden="true" tabindex="-1"></a><span class="co"># 3: stacked bars, channel by gender</span></span>
+<span id="cb160-443"><a href="#cb160-443" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb160-444"><a href="#cb160-444" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> channel)) <span class="sc">+</span></span>
+<span id="cb160-445"><a href="#cb160-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Gender"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Gender"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span>
+<span id="cb160-446"><a href="#cb160-446" aria-hidden="true" tabindex="-1"></a><span class="co"># 4: proportional bars, channel by device</span></span>
+<span id="cb160-447"><a href="#cb160-447" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb160-448"><a href="#cb160-448" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(device, channel) <span class="sc">|&gt;</span></span>
+<span id="cb160-449"><a href="#cb160-449" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">|&gt;</span></span>
+<span id="cb160-450"><a href="#cb160-450" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb160-451"><a href="#cb160-451" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> device, <span class="at">y =</span> n, <span class="at">fill =</span> channel)) <span class="sc">+</span></span>
+<span id="cb160-452"><a href="#cb160-452" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb160-453"><a href="#cb160-453" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Device"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Device"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span>
+<span id="cb160-454"><a href="#cb160-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-455"><a href="#cb160-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-456"><a href="#cb160-456" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sol_fc13d3, fig.height=5, fig.width=7}</span></span>
+<span id="cb160-457"><a href="#cb160-457" aria-hidden="true" tabindex="-1"></a><span class="co"># 5: count plot, device by channel</span></span>
+<span id="cb160-458"><a href="#cb160-458" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> device, <span class="at">y =</span> channel)) <span class="sc">+</span></span>
+<span id="cb160-459"><a href="#cb160-459" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_count</span>() <span class="sc">+</span></span>
+<span id="cb160-460"><a href="#cb160-460" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Channel by Device"</span>) <span class="sc">+</span></span>
+<span id="cb160-461"><a href="#cb160-461" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Device"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Channel"</span>)</span>
+<span id="cb160-462"><a href="#cb160-462" aria-hidden="true" tabindex="-1"></a><span class="co"># 6: pie and donut of channel</span></span>
+<span id="cb160-463"><a href="#cb160-463" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">pie</span>()</span>
+<span id="cb160-464"><a href="#cb160-464" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb160-465"><a href="#cb160-465" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(channel) <span class="sc">|&gt;</span></span>
+<span id="cb160-466"><a href="#cb160-466" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb160-467"><a href="#cb160-467" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">channel =</span> f, <span class="at">count =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb160-468"><a href="#cb160-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb160-469"><a href="#cb160-469" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> channel), <span class="at">width =</span> <span class="dv">1</span>,</span>
+<span id="cb160-470"><a href="#cb160-470" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb160-471"><a href="#cb160-471" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>)</span>
+<span id="cb160-472"><a href="#cb160-472" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb160-473"><a href="#cb160-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-474"><a href="#cb160-474" aria-hidden="true" tabindex="-1"></a><span class="fu">## Open stubs</span></span>
+<span id="cb160-475"><a href="#cb160-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-476"><a href="#cb160-476" aria-hidden="true" tabindex="-1"></a>Chapters without **Your Turn** blocks still need proposed drills + solutions —</span>
+<span id="cb160-477"><a href="#cb160-477" aria-hidden="true" tabindex="-1"></a>contributions welcome (see above):</span>
+<span id="cb160-478"><a href="#cb160-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-479"><a href="#cb160-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@joining-tables-in-r-dplyr: join puzzles on <span class="in">`customer`</span>/<span class="in">`order`</span></span>
+<span id="cb160-480"><a href="#cb160-480" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@dplyr-helper-functions: sampling/slicing drills on <span class="in">`ecom`</span></span>
+<span id="cb160-481"><a href="#cb160-481" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@r-pipe-magrittr: rewrite-a-chain exercises (<span class="in">`%&gt;%`</span> → <span class="in">`|&gt;`</span>, <span class="in">`_`</span>, <span class="in">`\(x)`</span>)</span>
+<span id="cb160-482"><a href="#cb160-482" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@tibbles-in-r: tibble vs data.frame edge cases</span>
+<span id="cb160-483"><a href="#cb160-483" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@strings-in-r: URL/email parsing variants on <span class="in">`mockstring`</span></span>
+<span id="cb160-484"><a href="#cb160-484" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@import-data-in-r-basics and @import-data-in-r-advanced: import-parameter drills</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
