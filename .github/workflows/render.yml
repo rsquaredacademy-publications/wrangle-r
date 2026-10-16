@@ -58,6 +58,11 @@ jobs:
       - name: Render HTML
         run: quarto render --to html --output-dir /tmp/stage-html
 
+      # Quarto re-copies resources found in the committed docs/ into <output>/docs/;
+      # they are not real pages and must not reach the sitemap or the site.
+      - name: Remove nested docs/docs
+        run: rm -rf /tmp/stage-html/docs
+
       # Generated, not copied from a root file. The hand-maintained sitemap this
       # replaces was verified correct, but it could not stay correct: nothing
       # compared it against the pages actually built.
