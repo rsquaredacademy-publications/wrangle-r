@@ -2,6 +2,11 @@
 # old bookdown chapter slugs -> new Quarto slugs (2026 cutover).
 # The 10/11 one->two splits land on part A with a "continued" banner.
 
+[[headers]]
+  for = "/site-kit/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
 [[redirects]]
   from = "https://wrangle-r.rsquaredacademy.com/import1.html"
   to = "https://wrangle-r.rsquaredacademy.com/01-import-1.html"
