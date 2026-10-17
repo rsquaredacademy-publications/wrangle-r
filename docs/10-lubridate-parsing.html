@@ -131,9 +131,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_author" content="Aravind Hebbali">
 <meta name="citation_language" content="en">
 <meta name="citation_book_title" content="Data Wrangling with R">
-<!-- Rsquared site-kit v1.0.1: GA4 + region-based consent. Kit files are vendored in site-kit/. -->
+<!-- Rsquared site-kit v1.2.0: GA4 + region-based consent + email sign-up. Kit files are vendored in site-kit/. -->
 <link rel="stylesheet" href="./site-kit/rsa-consent.css">
 <script src="./site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async=""></script>
+<link rel="stylesheet" href="./site-kit/rsa-signup.css">
+<script src="./site-kit/rsa-signup.js" defer=""></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
@@ -2445,15 +2447,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-17 04:53:46 UTC"</code></pre>
+<pre><code>[1] "2026-10-17 14:20:47 UTC"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-17 04:53:46 UTC"</code></pre>
+<pre><code>[1] "2026-10-17 14:20:47 UTC"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"UTC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-10-17 04:53:46 UTC"</code></pre>
+<pre><code>[1] "2026-10-17 14:20:47 UTC"</code></pre>
 </div>
 </div>
 </section>
@@ -2463,11 +2465,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">am</span>(<span class="fu">now</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">pm</span>(<span class="fu">now</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 </section>
@@ -2792,7 +2794,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(lubridate<span class="sc">::</span><span class="fu">now</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1792212827
+<pre><code>[1] 1792246848
 attr(,"tzone")
 [1] ""</code></pre>
 </div>
@@ -4218,6 +4220,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 
 <!-- -->
 
+<div data-rsa-signup="" data-site="wrangle-r.rsquaredacademy.com" data-privacy-url="https://www.rsquaredacademy.com/privacy-policy.html"></div>
 </section>
 
 </main> <!-- /main -->
@@ -5972,6 +5975,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
     </div>   
     <div class="nav-footer-center">
 <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don’t use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout="">Turn off analytics</a>.</p>
+<p>Sites that show the newsletter sign-up form use Zoho Campaigns to send updates. If you sign up, we collect your email address, an optional first name, and which site you signed up on, and we use them only to send you updates. Sign-up uses double opt-in, so you must confirm by email before you are added; every email includes an unsubscribe link, and we never sell or share the list.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

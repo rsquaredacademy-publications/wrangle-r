@@ -131,9 +131,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_author" content="Aravind Hebbali">
 <meta name="citation_language" content="en">
 <meta name="citation_book_title" content="Data Wrangling with R">
-<!-- Rsquared site-kit v1.0.1: GA4 + region-based consent. Kit files are vendored in site-kit/. -->
+<!-- Rsquared site-kit v1.2.0: GA4 + region-based consent + email sign-up. Kit files are vendored in site-kit/. -->
 <link rel="stylesheet" href="./site-kit/rsa-consent.css">
 <script src="./site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async=""></script>
+<link rel="stylesheet" href="./site-kit/rsa-signup.css">
+<script src="./site-kit/rsa-signup.js" defer=""></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
@@ -2761,14 +2763,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 8 × 2
   f          n
   &lt;fct&gt;  &lt;int&gt;
-1 ch_1   35615
-2 ch_2    8031
-3 ch_3   39853
-4 ch_4    3375
-5 ch_5  139668
-6 ch_6    7388
-7 ch_7    4395
-8 ch_8    6073</code></pre>
+1 ch_1    7388
+2 ch_2    6073
+3 ch_3   35615
+4 ch_4    8031
+5 ch_5   39853
+6 ch_6    4395
+7 ch_7  139668
+8 ch_8    3375</code></pre>
 </div>
 </div>
 </section>
@@ -3142,8 +3144,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_shuffle</span>() <span class="sc">|&gt;</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Paid Search"    "(Other)"        "Affiliates"     "Direct"        
-[5] "Organic Search" "Social"         "Display"        "Referral"      </code></pre>
+<pre><code>[1] "Display"        "Referral"       "(Other)"        "Direct"        
+[5] "Paid Search"    "Organic Search" "Social"         "Affiliates"    </code></pre>
 </div>
 </div>
 </section>
@@ -3774,6 +3776,7 @@ No   Variable   Stats / Values          Freqs (% of Valid)   Graph              
 
 <!-- -->
 
+<div data-rsa-signup="" data-site="wrangle-r.rsquaredacademy.com" data-privacy-url="https://www.rsquaredacademy.com/privacy-policy.html"></div>
 </section>
 
 </main> <!-- /main -->
@@ -5075,6 +5078,7 @@ No   Variable   Stats / Values          Freqs (% of Valid)   Graph              
     </div>   
     <div class="nav-footer-center">
 <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don’t use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout="">Turn off analytics</a>.</p>
+<p>Sites that show the newsletter sign-up form use Zoho Campaigns to send updates. If you sign up, we collect your email address, an optional first name, and which site you signed up on, and we use them only to send you updates. Sign-up uses double opt-in, so you must confirm by email before you are added; every email includes an unsubscribe link, and we never sell or share the list.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

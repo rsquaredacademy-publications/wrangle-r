@@ -131,9 +131,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_author" content="Aravind Hebbali">
 <meta name="citation_language" content="en">
 <meta name="citation_book_title" content="Data Wrangling with R">
-<!-- Rsquared site-kit v1.0.1: GA4 + region-based consent. Kit files are vendored in site-kit/. -->
+<!-- Rsquared site-kit v1.2.0: GA4 + region-based consent + email sign-up. Kit files are vendored in site-kit/. -->
 <link rel="stylesheet" href="./site-kit/rsa-consent.css">
 <script src="./site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async=""></script>
+<link rel="stylesheet" href="./site-kit/rsa-signup.css">
+<script src="./site-kit/rsa-signup.js" defer=""></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -953,10 +955,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>device <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Tablet"  "Mobile"  "Mobile"  "Tablet"  "Mobile"  "Desktop" "Tablet" 
- [8] "Mobile"  "Desktop" "Tablet"  "Tablet"  "Tablet"  "Desktop" "Tablet" 
-[15] "Desktop" "Tablet"  "Desktop" "Desktop" "Mobile"  "Tablet"  "Tablet" 
-[22] "Tablet"  "Mobile"  "Desktop" "Desktop"</code></pre>
+<pre><code> [1] "Mobile"  "Desktop" "Tablet"  "Desktop" "Desktop" "Desktop" "Mobile" 
+ [8] "Desktop" "Mobile"  "Mobile"  "Desktop" "Desktop" "Desktop" "Desktop"
+[15] "Desktop" "Mobile"  "Mobile"  "Tablet"  "Mobile"  "Tablet"  "Mobile" 
+[22] "Tablet"  "Tablet"  "Desktop" "Tablet" </code></pre>
 </div>
 </div>
 </section>
@@ -977,9 +979,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Tablet  Mobile  Mobile  Tablet  Mobile  Desktop Tablet  Mobile  Desktop
-[10] Tablet  Tablet  Tablet  Desktop Tablet  Desktop Tablet  Desktop Desktop
-[19] Mobile  Tablet  Tablet  Tablet  Mobile  Desktop Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Desktop Desktop Desktop Mobile  Desktop Mobile 
+[10] Mobile  Desktop Desktop Desktop Desktop Desktop Mobile  Mobile  Tablet 
+[19] Mobile  Tablet  Mobile  Tablet  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -987,10 +989,10 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Tablet  Mobile  Mobile  Tablet  Mobile  Desktop Tablet  Mobile  Desktop
-[10] Tablet  Tablet  Tablet  Desktop Tablet  Desktop Tablet  Desktop Desktop
-[19] Mobile  Tablet  Tablet  Tablet  Mobile  Desktop Desktop
-Levels: Tablet Mobile Desktop</code></pre>
+<pre><code> [1] Mobile  Desktop Tablet  Desktop Desktop Desktop Mobile  Desktop Mobile 
+[10] Mobile  Desktop Desktop Desktop Desktop Desktop Mobile  Mobile  Tablet 
+[19] Mobile  Tablet  Mobile  Tablet  Tablet  Desktop Tablet 
+Levels: Mobile Desktop Tablet</code></pre>
 </div>
 </div>
 <p>Did you notice any difference between these two functions? Focus on the last line of the output where the levels are displayed. Now observe the order of the levels. <code>as.factor()</code> displays levels in the alphabetical order whereas <code>as_factor()</code> displays them in order of appearance in the data. <strong>Mobile</strong>, followed by <strong>Tablet</strong>, and then <strong>Desktop</strong>. If you look at the data, they appear in the same order.</p>
@@ -1009,9 +1011,9 @@ Levels: Tablet Mobile Desktop</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Tablet  Mobile  Mobile  Tablet  Mobile  Desktop Tablet  Mobile  Desktop
-[10] Tablet  Tablet  Tablet  Desktop Tablet  Desktop Tablet  Desktop Desktop
-[19] Mobile  Tablet  Tablet  Tablet  Mobile  Desktop Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Desktop Desktop Desktop Mobile  Desktop Mobile 
+[10] Mobile  Desktop Desktop Desktop Desktop Desktop Mobile  Mobile  Tablet 
+[19] Mobile  Tablet  Mobile  Tablet  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1019,9 +1021,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Tablet  Mobile  Mobile  Tablet  Mobile  Desktop Tablet  Mobile  Desktop
-[10] Tablet  Tablet  Tablet  Desktop Tablet  Desktop Tablet  Desktop Desktop
-[19] Mobile  Tablet  Tablet  Tablet  Mobile  Desktop Desktop
+<pre><code> [1] Mobile  Desktop Tablet  Desktop Desktop Desktop Mobile  Desktop Mobile 
+[10] Mobile  Desktop Desktop Desktop Desktop Desktop Mobile  Mobile  Tablet 
+[19] Mobile  Tablet  Mobile  Tablet  Tablet  Desktop Tablet 
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1029,9 +1031,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &lt;NA&gt;    Mobile  Mobile  &lt;NA&gt;    Mobile  Desktop &lt;NA&gt;    Mobile  Desktop
-[10] &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    Desktop &lt;NA&gt;    Desktop &lt;NA&gt;    Desktop Desktop
-[19] Mobile  &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    Mobile  Desktop Desktop
+<pre><code> [1] Mobile  Desktop &lt;NA&gt;    Desktop Desktop Desktop Mobile  Desktop Mobile 
+[10] Mobile  Desktop Desktop Desktop Desktop Desktop Mobile  Mobile  &lt;NA&gt;   
+[19] Mobile  &lt;NA&gt;    Mobile  &lt;NA&gt;    &lt;NA&gt;    Desktop &lt;NA&gt;   
 Levels: Desktop Mobile</code></pre>
 </div>
 </div>
@@ -1045,8 +1047,8 @@ Levels: Desktop Mobile</code></pre>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>),</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Desk"</span>, <span class="st">"Mob"</span>, <span class="st">"Tab"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Tab  Mob  Mob  Tab  Mob  Desk Tab  Mob  Desk Tab  Tab  Tab  Desk Tab  Desk
-[16] Tab  Desk Desk Mob  Tab  Tab  Tab  Mob  Desk Desk
+<pre><code> [1] Mob  Desk Tab  Desk Desk Desk Mob  Desk Mob  Mob  Desk Desk Desk Desk Desk
+[16] Mob  Mob  Tab  Mob  Tab  Mob  Tab  Tab  Desk Tab 
 Levels: Desk Mob Tab</code></pre>
 </div>
 </div>
@@ -1060,17 +1062,17 @@ Levels: Desk Mob Tab</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>device <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Desktop"</span>, <span class="st">"Mobile"</span>, <span class="st">"Tablet"</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Desktop" "Mobile"  "Mobile"  "Mobile"  "Desktop" "Desktop" NA       
- [8] "Desktop" "Desktop" "Tablet"  "Desktop" NA        "Desktop" "Tablet" 
-[15] NA        NA        "Tablet"  NA        "Mobile"  NA        NA       
-[22] "Desktop" "Tablet"  "Mobile"  "Mobile" </code></pre>
+<pre><code> [1] "Desktop" "Tablet"  NA        "Tablet"  "Mobile"  "Tablet"  "Desktop"
+ [8] "Tablet"  "Mobile"  "Mobile"  "Tablet"  "Tablet"  "Tablet"  "Tablet" 
+[15] NA        "Desktop" NA        "Desktop" "Mobile"  "Desktop" "Desktop"
+[22] NA        NA        "Mobile"  "Desktop"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store as categorical data</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Mobile  Mobile  Mobile  Desktop Desktop &lt;NA&gt;    Desktop Desktop
-[10] Tablet  Desktop &lt;NA&gt;    Desktop Tablet  &lt;NA&gt;    &lt;NA&gt;    Tablet  &lt;NA&gt;   
-[19] Mobile  &lt;NA&gt;    &lt;NA&gt;    Desktop Tablet  Mobile  Mobile 
+<pre><code> [1] Desktop Tablet  &lt;NA&gt;    Tablet  Mobile  Tablet  Desktop Tablet  Mobile 
+[10] Mobile  Tablet  Tablet  Tablet  Tablet  &lt;NA&gt;    Desktop &lt;NA&gt;    Desktop
+[19] Mobile  Desktop Desktop &lt;NA&gt;    &lt;NA&gt;    Mobile  Desktop
 Levels: Desktop Mobile Tablet</code></pre>
 </div>
 </div>
@@ -1078,9 +1080,9 @@ Levels: Desktop Mobile Tablet</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(device, <span class="at">exclude =</span> <span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Desktop Mobile  Mobile  Mobile  Desktop Desktop &lt;NA&gt;    Desktop Desktop
-[10] Tablet  Desktop &lt;NA&gt;    Desktop Tablet  &lt;NA&gt;    &lt;NA&gt;    Tablet  &lt;NA&gt;   
-[19] Mobile  &lt;NA&gt;    &lt;NA&gt;    Desktop Tablet  Mobile  Mobile 
+<pre><code> [1] Desktop Tablet  &lt;NA&gt;    Tablet  Mobile  Tablet  Desktop Tablet  Mobile 
+[10] Mobile  Tablet  Tablet  Tablet  Tablet  &lt;NA&gt;    Desktop &lt;NA&gt;    Desktop
+[19] Mobile  Desktop Desktop &lt;NA&gt;    &lt;NA&gt;    Mobile  Desktop
 Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 </div>
 </div>
@@ -1093,10 +1095,10 @@ Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rating <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>), <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rating</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Neutral" "Dislike" "Dislike" "Neutral" "Dislike" "Like"    "Neutral"
- [8] "Neutral" "Like"    "Like"    "Like"    "Dislike" "Dislike" "Like"   
-[15] "Like"    "Like"    "Neutral" "Neutral" "Like"    "Neutral" "Neutral"
-[22] "Like"    "Like"    "Like"    "Neutral"</code></pre>
+<pre><code> [1] "Dislike" "Like"    "Dislike" "Neutral" "Like"    "Neutral" "Dislike"
+ [8] "Dislike" "Dislike" "Neutral" "Like"    "Neutral" "Neutral" "Dislike"
+[15] "Like"    "Neutral" "Neutral" "Neutral" "Neutral" "Like"    "Dislike"
+[22] "Like"    "Dislike" "Neutral" "Neutral"</code></pre>
 </div>
 </div>
 <p>It consists of three values Dislike, Neutral &amp; Like in that order. You can see that there is an intrinsic order here. Like is better than neutral which in turn is better than dislike. While we can order them, we can’t quantify the difference between them. We can’t say neutral is so many times better than dislike.</p>
@@ -1112,9 +1114,9 @@ Levels: Desktop Mobile Tablet &lt;NA&gt;</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.ordered</span>(rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Neutral Dislike Dislike Neutral Dislike Like    Neutral Neutral Like   
-[10] Like    Like    Dislike Dislike Like    Like    Like    Neutral Neutral
-[19] Like    Neutral Neutral Like    Like    Like    Neutral
+<pre><code> [1] Dislike Like    Dislike Neutral Like    Neutral Dislike Dislike Dislike
+[10] Neutral Like    Neutral Neutral Dislike Like    Neutral Neutral Neutral
+[19] Neutral Like    Dislike Like    Dislike Neutral Neutral
 Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 </div>
 </div>
@@ -1122,9 +1124,9 @@ Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(rating, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Neutral Dislike Dislike Neutral Dislike Like    Neutral Neutral Like   
-[10] Like    Like    Dislike Dislike Like    Like    Like    Neutral Neutral
-[19] Like    Neutral Neutral Like    Like    Like    Neutral
+<pre><code> [1] Dislike Like    Dislike Neutral Like    Neutral Dislike Dislike Dislike
+[10] Neutral Like    Neutral Neutral Dislike Like    Neutral Neutral Neutral
+[19] Neutral Like    Dislike Like    Dislike Neutral Neutral
 Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 </div>
 </div>
@@ -1136,9 +1138,9 @@ Levels: Dislike &lt; Like &lt; Neutral</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(rating, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Neutral Dislike Dislike Neutral Dislike Like    Neutral Neutral Like   
-[10] Like    Like    Dislike Dislike Like    Like    Like    Neutral Neutral
-[19] Like    Neutral Neutral Like    Like    Like    Neutral
+<pre><code> [1] Dislike Like    Dislike Neutral Like    Neutral Dislike Dislike Dislike
+[10] Neutral Like    Neutral Neutral Dislike Like    Neutral Neutral Neutral
+[19] Neutral Like    Dislike Like    Dislike Neutral Neutral
 Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 </div>
 </div>
@@ -1146,9 +1148,9 @@ Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(rating, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dislike"</span>, <span class="st">"Neutral"</span>, <span class="st">"Like"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] Neutral Dislike Dislike Neutral Dislike Like    Neutral Neutral Like   
-[10] Like    Like    Dislike Dislike Like    Like    Like    Neutral Neutral
-[19] Like    Neutral Neutral Like    Like    Like    Neutral
+<pre><code> [1] Dislike Like    Dislike Neutral Like    Neutral Dislike Dislike Dislike
+[10] Neutral Like    Neutral Neutral Dislike Like    Neutral Neutral Neutral
+[19] Neutral Like    Dislike Like    Dislike Neutral Neutral
 Levels: Dislike &lt; Neutral &lt; Like</code></pre>
 </div>
 </div>
@@ -1894,6 +1896,7 @@ Column Total |     40565 |     61617 |    102182 |
 
 <!-- -->
 
+<div data-rsa-signup="" data-site="wrangle-r.rsquaredacademy.com" data-privacy-url="https://www.rsquaredacademy.com/privacy-policy.html"></div>
 </section>
 </section>
 
@@ -3194,6 +3197,7 @@ Column Total |     40565 |     61617 |    102182 |
     </div>   
     <div class="nav-footer-center">
 <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don’t use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout="">Turn off analytics</a>.</p>
+<p>Sites that show the newsletter sign-up form use Zoho Campaigns to send updates. If you sign up, we collect your email address, an optional first name, and which site you signed up on, and we use them only to send you updates. Sign-up uses double opt-in, so you must confirm by email before you are added; every email includes an unsubscribe link, and we never sell or share the list.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

@@ -131,9 +131,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_author" content="Aravind Hebbali">
 <meta name="citation_language" content="en">
 <meta name="citation_book_title" content="Data Wrangling with R">
-<!-- Rsquared site-kit v1.0.1: GA4 + region-based consent. Kit files are vendored in site-kit/. -->
+<!-- Rsquared site-kit v1.2.0: GA4 + region-based consent + email sign-up. Kit files are vendored in site-kit/. -->
 <link rel="stylesheet" href="./site-kit/rsa-consent.css">
 <script src="./site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async=""></script>
+<link rel="stylesheet" href="./site-kit/rsa-signup.css">
+<script src="./site-kit/rsa-signup.js" defer=""></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
@@ -2647,16 +2649,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 700 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 bing     tablet FALSE          2       1       23 FALSE   
- 2 direct   mobile TRUE           7       1      797 FALSE   
- 3 google   mobile FALSE          2       9      162 FALSE   
- 4 yahoo    laptop FALSE          7      15      150 FALSE   
- 5 social   laptop TRUE           7       1      122 FALSE   
- 6 yahoo    mobile TRUE           8       1      160 FALSE   
- 7 bing     tablet FALSE          0      14      280 FALSE   
- 8 direct   mobile FALSE         10      17      272 FALSE   
- 9 bing     tablet FALSE          2       5      150 FALSE   
-10 google   laptop FALSE          2      13      169 FALSE   
+ 1 social   laptop TRUE           1       1       10 FALSE   
+ 2 direct   mobile FALSE          2       9      243 FALSE   
+ 3 google   tablet TRUE           5       1      391 FALSE   
+ 4 direct   laptop FALSE          9       4       80 FALSE   
+ 5 social   laptop FALSE          1      20      420 TRUE    
+ 6 direct   laptop FALSE          6      16      368 TRUE    
+ 7 social   mobile FALSE          3       8      184 FALSE   
+ 8 social   tablet TRUE          10       1      674 FALSE   
+ 9 bing     laptop FALSE         10       6       90 FALSE   
+10 yahoo    laptop FALSE          7       8      216 FALSE   
 # ℹ 690 more rows</code></pre>
 </div>
 </div>
@@ -2667,16 +2669,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 500 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 google   laptop FALSE          0      19      418 TRUE    
- 2 google   tablet FALSE          1      12      216 FALSE   
- 3 google   tablet TRUE           2       1      614 FALSE   
- 4 google   mobile FALSE          1      20      320 FALSE   
- 5 google   tablet FALSE          1      18      180 FALSE   
- 6 google   laptop FALSE          8      18      522 TRUE    
- 7 google   laptop TRUE           6       1      402 FALSE   
- 8 google   tablet FALSE          1       9       90 FALSE   
- 9 google   mobile FALSE          3      10      190 FALSE   
-10 google   mobile TRUE           6       1      644 FALSE   
+ 1 google   laptop FALSE          2       7      154 FALSE   
+ 2 google   laptop TRUE           4       1      164 FALSE   
+ 3 google   laptop FALSE          3       8      192 FALSE   
+ 4 google   tablet FALSE          7      12      324 TRUE    
+ 5 google   tablet FALSE          4      16      448 TRUE    
+ 6 google   mobile TRUE           9       1      269 FALSE   
+ 7 google   laptop FALSE          6       9      135 FALSE   
+ 8 google   laptop TRUE           1       1      958 FALSE   
+ 9 google   laptop FALSE         10      18      450 FALSE   
+10 google   laptop FALSE          5       5      125 FALSE   
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -2687,16 +2689,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 700 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 direct   mobile FALSE         10       3       33 FALSE   
- 2 direct   tablet FALSE          0      18      252 FALSE   
- 3 direct   laptop FALSE          9      17      425 TRUE    
- 4 google   laptop FALSE          9      19      228 FALSE   
- 5 yahoo    mobile TRUE           4       1      464 FALSE   
- 6 bing     mobile TRUE           5       1      190 FALSE   
- 7 social   laptop TRUE           6       1      426 FALSE   
- 8 google   tablet TRUE          10       1      512 FALSE   
- 9 direct   laptop FALSE          3      13      260 TRUE    
-10 yahoo    mobile TRUE           7       1      520 FALSE   
+ 1 google   tablet FALSE          8       3       69 FALSE   
+ 2 direct   mobile TRUE           5       1      352 FALSE   
+ 3 bing     laptop FALSE         10      16      304 FALSE   
+ 4 google   mobile TRUE           0       1      851 FALSE   
+ 5 google   mobile FALSE          3      18      270 TRUE    
+ 6 social   tablet TRUE           9       1      717 FALSE   
+ 7 direct   laptop FALSE          2       4       40 FALSE   
+ 8 social   mobile TRUE           3       1      876 FALSE   
+ 9 google   mobile TRUE           6       1      965 FALSE   
+10 social   mobile TRUE          10       1      479 FALSE   
 # ℹ 690 more rows</code></pre>
 </div>
 </div>
@@ -2722,7 +2724,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] tablet tablet laptop tablet mobile mobile laptop laptop tablet laptop
+<pre><code> [1] laptop laptop mobile mobile laptop tablet laptop laptop tablet mobile
 Levels: laptop tablet mobile</code></pre>
 </div>
 </div>
@@ -2730,7 +2732,7 @@ Levels: laptop tablet mobile</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] yahoo  google yahoo  social direct yahoo  social google google social
+<pre><code> [1] yahoo  google direct bing   social yahoo  social bing   social direct
 Levels: bing direct social yahoo google</code></pre>
 </div>
 </div>
@@ -2738,7 +2740,7 @@ Levels: bing direct social yahoo google</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, <span class="sc">-</span><span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre><code> [1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>Let us now look at extracting rows using <code>slice()</code>. In the below example, we extract data starting from the 5th row and upto the 15th row.</p>
@@ -2792,9 +2794,9 @@ Levels: bing direct social yahoo google</code></pre>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_pages) <span class="sc">|&gt;</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(<span class="dv">5</span>, <span class="dv">15</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
-[13] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE
-[25] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre><code> [1] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
+[25]  TRUE FALSE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
 </section>
@@ -2849,6 +2851,7 @@ Levels: bing direct social yahoo google</code></pre>
 
 <!-- -->
 
+<div data-rsa-signup="" data-site="wrangle-r.rsquaredacademy.com" data-privacy-url="https://www.rsquaredacademy.com/privacy-policy.html"></div>
 </section>
 
 </main> <!-- /main -->
@@ -3629,6 +3632,7 @@ Levels: bing direct social yahoo google</code></pre>
     </div>   
     <div class="nav-footer-center">
 <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don’t use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout="">Turn off analytics</a>.</p>
+<p>Sites that show the newsletter sign-up form use Zoho Campaigns to send updates. If you sign up, we collect your email address, an optional first name, and which site you signed up on, and we use them only to send you updates. Sign-up uses double opt-in, so you must confirm by email before you are added; every email includes an unsubscribe link, and we never sell or share the list.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

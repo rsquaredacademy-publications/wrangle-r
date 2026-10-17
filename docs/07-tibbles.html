@@ -131,9 +131,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_author" content="Aravind Hebbali">
 <meta name="citation_language" content="en">
 <meta name="citation_book_title" content="Data Wrangling with R">
-<!-- Rsquared site-kit v1.0.1: GA4 + region-based consent. Kit files are vendored in site-kit/. -->
+<!-- Rsquared site-kit v1.2.0: GA4 + region-based consent + email sign-up. Kit files are vendored in site-kit/. -->
 <link rel="stylesheet" href="./site-kit/rsa-consent.css">
 <script src="./site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async=""></script>
+<link rel="stylesheet" href="./site-kit/rsa-signup.css">
+<script src="./site-kit/rsa-signup.js" defer=""></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
@@ -2416,16 +2418,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 26 × 3
    x         y     z
    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
- 1 a         1    54
- 2 b         2   100
- 3 c         3    36
- 4 d         4    73
- 5 e         5    10
- 6 f         6    57
- 7 g         7    61
- 8 h         8    90
- 9 i         9     9
-10 j        10     2
+ 1 a         1    19
+ 2 b         2    89
+ 3 c         3    47
+ 4 d         4    14
+ 5 e         5    72
+ 6 f         6    34
+ 7 g         7     9
+ 8 h         8    73
+ 9 i         9    85
+10 j        10    66
 # ℹ 16 more rows</code></pre>
 </div>
 </div>
@@ -2444,16 +2446,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 26 × 3
    x         y     z
    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
- 1 a         1    61
- 2 b         2    20
- 3 c         3    19
- 4 d         4    30
- 5 e         5    25
- 6 f         6    98
- 7 g         7    97
- 8 h         8    86
- 9 i         9    28
-10 j        10    83
+ 1 a         1    50
+ 2 b         2    31
+ 3 c         3    36
+ 4 d         4     5
+ 5 e         5    46
+ 6 f         6    95
+ 7 g         7    58
+ 8 h         8    85
+ 9 i         9    41
+10 j        10    73
 # ℹ 16 more rows</code></pre>
 </div>
 </div>
@@ -2484,16 +2486,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 100 × 3
        x y     z    
    &lt;int&gt; &lt;chr&gt; &lt;lgl&gt;
- 1     1 a     FALSE
+ 1     1 a     TRUE 
  2     2 a     TRUE 
- 3     3 a     FALSE
- 4     4 a     FALSE
+ 3     3 a     TRUE 
+ 4     4 a     TRUE 
  5     5 a     TRUE 
  6     6 a     FALSE
- 7     7 a     FALSE
- 8     8 a     TRUE 
- 9     9 a     TRUE 
-10    10 a     TRUE 
+ 7     7 a     TRUE 
+ 8     8 a     FALSE
+ 9     9 a     FALSE
+10    10 a     FALSE
 # ℹ 90 more rows</code></pre>
 </div>
 </div>
@@ -2821,6 +2823,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 
 <!-- -->
 
+<div data-rsa-signup="" data-site="wrangle-r.rsquaredacademy.com" data-privacy-url="https://www.rsquaredacademy.com/privacy-policy.html"></div>
 </section>
 
 </main> <!-- /main -->
@@ -3573,6 +3576,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
     </div>   
     <div class="nav-footer-center">
 <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don’t use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout="">Turn off analytics</a>.</p>
+<p>Sites that show the newsletter sign-up form use Zoho Campaigns to send updates. If you sign up, we collect your email address, an optional first name, and which site you signed up on, and we use them only to send you updates. Sign-up uses double opt-in, so you must confirm by email before you are added; every email includes an unsubscribe link, and we never sell or share the list.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
