@@ -760,7 +760,7 @@ Next, we will look at different R packages for two way/contingency tables.
 
 For cross tables with output similar to SAS or SPSS, use any of the below:
 
-- `CrossTable()` from the [gmodels](cran.r-project.org/package=gmodels) package
+- `CrossTable()` from the [gmodels](https://cran.r-project.org/package=gmodels) package
 - `ds_cross_table()` from the [descriptr](https://descriptr.rsquaredacademy.com) package
 
 ```{r summarize_16}
