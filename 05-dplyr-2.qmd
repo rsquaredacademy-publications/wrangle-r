@@ -33,14 +33,14 @@ Let us import both the data sets using `read_csv`.
 ### Data: Orders
 
 ```{r dplyr2b, message=FALSE}
-order <- read_delim('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/order.csv', delim = ';')
+order <- read_delim('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/order.csv', delim = ';')
 order
 ```
 
 ### Data: Customers
 
 ```{r dplyr, message=FALSE}
-customer <- read_delim('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/customer.csv', delim = ';')
+customer <- read_delim('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/customer.csv', delim = ';')
 customer
 ```
 
@@ -111,8 +111,7 @@ the matches are returned.
 knitr::include_graphics("img/draw_left.png")
 ```
 
-## Case Study: Details of customers and their orders irrespective of whether a customer has 
-placed orders or not.
+### Case Study: Details of customers and their orders irrespective of whether a customer has placed orders or not.
 
 To get data for all those customers and their orders irrespective of whether a 
 customer has placed orders or not let us join the `order` data with the 
@@ -271,7 +270,7 @@ The runtime downloads once, on this page only.
 ```{webr-r}
 library(dplyr)
 library(readr)
-order <- read_delim("https://raw.githubusercontent.com/rsquaredacademy/datasets/master/order.csv", delim = ";", show_col_types = FALSE)
-customer <- read_delim("https://raw.githubusercontent.com/rsquaredacademy/datasets/master/customer.csv", delim = ";", show_col_types = FALSE)
+order <- read_delim("https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/order.csv", delim = ";", show_col_types = FALSE)
+customer <- read_delim("https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/customer.csv", delim = ";", show_col_types = FALSE)
 left_join(customer, order, by = join_by(id))
 ```

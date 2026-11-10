@@ -74,7 +74,7 @@ library(purrr)
 
 ```{r showed, message=FALSE}
 ecom <- 
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       n_pages = col_double(), duration = col_double(), purchase = col_logical()
@@ -201,7 +201,7 @@ visitors who purchased some product. Below are the steps for computing correlati
 knitr::include_graphics("img/pipes_correlation.png")
 ```
 
-```{r mag6, collpase = TRUE}
+```{r mag6, collapse = TRUE}
 # without pipe
 ecom1 <- subset(ecom, purchase)
 cor(ecom1$n_pages, ecom1$duration)
@@ -262,7 +262,7 @@ email |>
   str_to_upper()
 ```
 
-Another method that uses `map_chr()` from the [purrr](https://readr.tidyverse.org/) package.
+Another method that uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package.
 
 ```{r map39}
 email |>
@@ -403,7 +403,7 @@ divide_by(1:10, 2)
 ### Power
 
 ```{r mag18}
-1:10 ^ 2
+(1:10)^2
 
 raise_to_power(1:10, 2)
 

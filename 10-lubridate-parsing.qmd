@@ -98,11 +98,11 @@ invoice and payment dates.
 ### Data
 
 ```{r import, eval=FALSE}
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 ```
 
 ```{r show, echo=FALSE, eval=TRUE, message=FALSE}
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 transact
 ```
 

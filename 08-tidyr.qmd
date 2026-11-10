@@ -32,7 +32,7 @@ already used in @strings-in-r and @date-and-time-in-r.
 
 ```{r tidyr_data, message=FALSE}
 ecom <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(device = col_factor(levels = c("laptop", "tablet", "mobile")),
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       purchase = col_logical(), n_pages = col_double(), n_visit = col_double(),
@@ -117,7 +117,7 @@ columns:
 
 ```{r tidyr_separate_url, message=FALSE}
 mockstring <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv')
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/mock_strings.csv')
 
 tibble(url = head(mockstring$url, 3)) |>
   separate_wider_delim(url, delim = "://", names = c("protocol", "rest")) |>
@@ -129,7 +129,7 @@ The same verb splits calendar dates. The `Due` column of `transact` is
 
 ```{r tidyr_separate_date, message=FALSE}
 transact <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 
 tibble(due_iso = as.character(head(transact$Due, 5))) |>
   separate_wider_delim(due_iso, delim = "-", names = c("due_year", "due_month", "due_day"))
@@ -154,8 +154,8 @@ tibble(due_iso = as.character(head(transact$Due, 5))) |>
 every unmatched row. `drop_na()` keeps only complete rows:
 
 ```{r tidyr_dropna, message=FALSE}
-order <- read_delim('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/order.csv', delim = ';')
-customer <- read_delim('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/customer.csv', delim = ';')
+order <- read_delim('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/order.csv', delim = ';')
+customer <- read_delim('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/customer.csv', delim = ';')
 
 joined <- full_join(customer, order, by = join_by(id))
 nrow(joined)

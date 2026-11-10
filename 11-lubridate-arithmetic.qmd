@@ -13,7 +13,7 @@ library(lubridate)
 library(readr)
 library(dplyr)
 release_date <- lubridate::ymd_hms("2019-12-12 08:05:03")
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 ```
 
 ## Date Arithmetic 

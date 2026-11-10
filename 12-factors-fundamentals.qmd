@@ -197,11 +197,11 @@ The data set is available in both **CSV** & **RDS** formats.
 
 **CSV**
 
-If you want to specify the data types while reading the data, use the [readr](https://readr.tidyverse.org/) package. We have explored how to import data into R in a previous [chapter](01-import-1.qmd). We will read a subset of columns from the data set (it has 20 columns) which will cover both nominal and ordinal data types. To import the data, we will use the `read_csv()` function. The first input is the name of the data set,
-`analytics.csv`. Ensure that the name is enclosed in single/double quotes.
+If you want to specify the data types while reading the data, use the [readr](https://readr.tidyverse.org/) package. We have explored how to import data into R in a previous [chapter](01-import-1.qmd). We will read a subset of columns from the data set (it has 20 columns) which will cover both nominal and ordinal data types. To import the data, we will use the `read_csv()` function. The first input is the URL of the data set,
+`analytics_raw.csv`. Ensure that the URL is enclosed in single/double quotes.
 
 ```{r read_data}
-read_csv("analytics_raw.csv", 
+read_csv("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics_raw.csv", 
          col_types = cols_only(device = col_factor(levels = c("Desktop", "Tablet", "Mobile")), 
                                gender = col_factor(levels = c("female", "male", "NA")), 
                                user_rating = col_factor(levels = c("1", "2", "3", "4", "5"),
@@ -221,7 +221,7 @@ Categorical data and the levels/groups are specified using the `col_factor()` fu
 The `.rds` file can be read using `readRDS()`.
 
 ```{r imports}
-data <- readRDS('analytics.rds')
+data <- readRDS(url('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds'))
 head(data)
 ```
 

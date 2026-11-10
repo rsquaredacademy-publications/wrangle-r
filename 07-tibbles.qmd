@@ -93,7 +93,10 @@ x <- 1:100
 y <- letters
 z <- sample(c(TRUE, FALSE), 100, replace = TRUE)
 tibble(x, y, z)
-Error in overscope_eval_next(overscope, expr) : object 'y' not found
+#> Error: Tibble columns must have compatible sizes.
+#> • Size 100: Existing data.
+#> • Size 26: Column at position 2.
+#> ℹ Only values of size one are recycled.
 ```
 
 ## Membership Testing
@@ -127,7 +130,7 @@ tribble(
 
 Names of the columns in tibbles need not be valid R variable names. They can 
 contain unusual characters like a space or a smiley but must be enclosed in 
-ticks. 
+backticks. 
 
 ```{r tibble16}
 tibble(
@@ -170,7 +173,7 @@ add_column(browsers, visits = c(4000, 2000, 3000, 1000))
 
 ## Rownames
 
-The [tibble](tibble.tidyverse.org) package provides a set of functions to deal 
+The [tibble](https://tibble.tidyverse.org/) package provides a set of functions to deal 
 with rownames. Remember, `tibble` does not have `rownames` unlike `data.frame`. 
 To check whether a data set has rownames, use `has_rownames()`.
 
@@ -230,7 +233,7 @@ has_name(mtcars, 'gears')
 - use `add_row()` to add a new row
 - use `add_column()` to add a new column
 - use `remove_rownames()` to remove rownames from data
-- use `rownames_to_colum()` to coerce rowname to first column
+- use `rownames_to_column()` to coerce rowname to first column
 - use `column_to_rownames()` to coerce first column to rownames
 
 ### Testing tibbles

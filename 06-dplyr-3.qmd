@@ -35,7 +35,7 @@ underlying data set.
 
 ```{r showc, message=FALSE}
 ecom <- 
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(device = col_factor(levels = c("laptop", "tablet", "mobile")),
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       purchase = col_logical(), bouncers = col_logical(), duration = col_double(),
@@ -184,7 +184,7 @@ slice_sample(ecom, prop = 0.7)
 
 ## Data Extraction
 
-In the first [chapter](https://blog.aravindhebbali.com/2017/12/25/data-wrangling-with-dplyr-part-1/),
+In the [dplyr Basics chapter](04-dplyr-1.qmd),
 we had observed that dplyr verbs always returned a tibble. What if you want to
 extract a specific column or a bunch of rows but not as a tibble? 
 

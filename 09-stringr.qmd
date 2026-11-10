@@ -29,7 +29,7 @@ library(readr)
 ### Data
 
 ```{r shows, message=FALSE, collapse=FALSE}
-mockstring <- read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv')
+mockstring <- read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/mock_strings.csv')
 mockstring
 ```
 

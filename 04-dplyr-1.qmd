@@ -38,7 +38,7 @@ manipulation challenges while working with tabular data (dataframes, tibbles):
 
 ```{r showa, message=FALSE}
 ecom <- 
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(device = col_factor(levels = c("laptop", "tablet", "mobile")),
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       purchase = col_logical(), n_pages = col_double(), n_visit = col_double(), 
@@ -224,8 +224,8 @@ select(ecom, device, order_value)
 ```
 
 But we want the above data only for purchasers. Let us combine `filter()` and 
-`select()` functions to extract `order_value` and `order_items` only for those
-visis that resulted in a purchase.
+`select()` functions to extract `device` and `order_value` only for those
+visits that resulted in a purchase.
 
 ```{r dplyr10}
 # filter all visits that resulted in a purchase
@@ -240,9 +240,9 @@ ecom2
 
 ## Grouping Data
 
-We need to compute the total order value and total order items for each device 
+We need to compute the total revenue and the number of orders for each device 
 in order to compute their AOV. To achieve this, we need to group the selected 
-`order_value` and `order_items` by device type. `group_by()` allows us to group 
+`order_value` by device type. `group_by()` allows us to group 
 or split data based on particular (discrete) variable. The first argument is the 
 name of the data set and the second argument is the name of the column based on 
 which the data will be split. 
@@ -268,8 +268,8 @@ ecom3
 
 ## Summarise Data
 
-The next step is to compute the total order value and total order items for each 
-device. i.e. we need to reduce the order value and order items data to a single 
+The next step is to compute the total revenue and the number of orders for each 
+device. i.e. we need to reduce the order value data to a single 
 summary. We can achieve this using `summarise()`. As usual, the first argument 
 is the name of a data set and the subsequent arguments are functions that can 
 summarise data. For example, we can use `min`, `max`, `sum`, `mean` etc.
@@ -317,15 +317,15 @@ One difference to know: `group_by()` sorts the result by group, while `.by`
 keeps the rows in order of first appearance. Use `arrange()` afterwards when
 the order matters.
 
-Another way to achieve the above result is to use
+Another way to summarise the order value is to use
 `across()` inside `summarise()`. It applies the specified summary
 function to all the columns in the data set except for the grouping
 column. So we need to ensure that the data does not have any
 irrelevant columns.
 
 - split data by `referrer` type
-- select `order_value` and `order_items`
-- compute the average number of pages by applying the `mean` function to all 
+- select `referrer` and `order_value`
+- compute the average order value by applying the `mean` function to all 
 the columns
 
 
@@ -336,12 +336,12 @@ step_1 <- select(ecom, referrer, order_value)
 # split data by referrer type
 step_2 <- group_by(step_1, referrer)
 
-# compute average number of pages
+# compute average order value by referrer
 step_3 <- summarise(step_2, across(everything(), mean))
 step_3
 ```
 
-Let us compute `mean` and `median` number of pages for each referre type using
+Let us compute the `mean` and `median` order value for each referrer type using
 `summarise()` with `across()`.
 
 ```{r sumall_eg2}
@@ -351,7 +351,7 @@ step_1 <- select(ecom, referrer, order_value)
 # split data by referrer type
 step_2 <- group_by(step_1, referrer)
 
-# compute mean and median number of pages
+# compute mean and median order value
 step_3 <- summarise(step_2, across(everything(), list(mean = mean, median = median)))
 step_3
 ```
@@ -359,10 +359,11 @@ step_3
 ### Case Study
 
 So far, we have split the data based on the `device` type and we have selected 2 
-columns,  `order_value` and `order_items`. We need the sum of order value and 
-order items. What function can we use to obtain them? The `sum()` function will 
-generate the sum of the values and hence we will use it inside the `summarise()` 
-function. Remember, we need to provide a name to the summary being generated. 
+columns, `device` and `order_value`. We need the total revenue and the number of
+orders. What functions can we use to obtain them? The `sum()` function will 
+generate the sum of the values and `n()` will count the rows, so we will use
+them inside the `summarise()` function. Remember, we need to provide a name to
+the summary being generated. 
 
 ```{r dplyr13}
 ecom4 <- summarise(ecom3, revenue = sum(order_value),
@@ -370,7 +371,7 @@ ecom4 <- summarise(ecom3, revenue = sum(order_value),
 ecom4
 ```
 
-There you go, we have the total order value and total order items for each
+There you go, we have the total revenue and the number of orders for each
 device type. The same grouped summary can be written more directly with
 the `.by` argument, which avoids keeping the data grouped with
 `group_by()`/`ungroup()`:
@@ -407,8 +408,8 @@ mutate(mutate_1,
 
 ### Case Study
 
-Back to our case study, from the last step we have the total order value and 
-total order items for each device category and can compute the AOV. We will 
+Back to our case study, from the last step we have the total revenue and the
+number of orders for each device category and can compute the AOV. We will 
 create a new column to store AOV. 
 
 ```{r img11, echo=FALSE, out.width="100%", fig.align="center"}
@@ -459,7 +460,7 @@ arrange(ecom, n_visit, desc(n_pages))
 
 ### Case Study
 
-If you observe `ecom6`, the `aov` column is arranged in descending order. 
+`ecom6` is in device order; sort it by `aov`:
 
 ```{r arrange4}
 arrange(ecom6, aov)

@@ -24,7 +24,7 @@ library(readr)
 
 ```{r sol_data, message=FALSE}
 ecom <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(device = col_factor(levels = c("laptop", "tablet", "mobile")),
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       purchase = col_logical(), n_pages = col_double(), n_visit = col_double(),
@@ -68,7 +68,7 @@ ecom |>
 ```{r sol_tidyr_data, message=FALSE}
 library(tidyr)
 mockstring <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/mock_strings.csv',
     show_col_types = FALSE)
 ```
 
@@ -117,7 +117,7 @@ absent combinations but has no value to put in `n`, so the count is unknown
 ```{r sol_lub10_libs, message=FALSE}
 library(lubridate)
 transact <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv',
     show_col_types = FALSE)
 ```
 
@@ -230,7 +230,7 @@ vac_end2 <- vac_end + weeks(2)
 as.period(vac_start2 %--% vac_end2)
 
 receivables <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/receivables.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/receivables.csv',
     show_col_types = FALSE)
 receivables |>
   mutate(invoice_date = mdy(invoice_date), due_date = mdy(due_date),
@@ -241,7 +241,7 @@ receivables |>
   head()
 
 hr <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/hr-data.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/hr-data.csv',
     show_col_types = FALSE)
 hr |>
   filter(Termd == 1, !is.na(DateofTermination)) |>
@@ -281,7 +281,7 @@ already); `ceiling_date()` moves each due date forward to its week boundary.
 ## Categorical Data Fundamentals
 
 ```{r sol_fct12_data, message=FALSE}
-analytics_raw <- readRDS("analytics_raw.rds")
+analytics_raw <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics_raw.rds"))
 ```
 
 **Q1. Quantitative or qualitative?** Quantitative: Age, Annual Sales, Weight,
@@ -355,7 +355,7 @@ proportions(table(factor(analytics_raw$channel),
 
 ```{r sol_fc13_data, message=FALSE}
 library(forcats)
-data <- readRDS("analytics.rds")
+data <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds"))
 ```
 
 **Q1–Q2. Frequencies in descending order; is `laptop` a `device` level?**

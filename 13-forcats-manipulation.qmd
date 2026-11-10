@@ -17,7 +17,7 @@ library(dplyr)
 library(ggplot2)
 library(ggpubr)
 library(plotrix)
-data <- readRDS('analytics.rds')
+data <- readRDS(url('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds'))
 ```
 
 ## Data Manipulation {#manipulate}
