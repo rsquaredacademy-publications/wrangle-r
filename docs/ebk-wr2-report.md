@@ -5,11 +5,12 @@ Against `docs/style-guide.md` (origin/style-audit), `docs/voice-spoken.md`,
 `docs/williams-checklist.md` and the approved pilot level
 (`F:/pm/notes/2026-11-06-ebook-style-pilot.md`, ebk-ir2 as the worked example).
 
-Prose only. No code, chunk label or option, output, heading or anchor, file name,
-webR cell, `<details>` block, callout type, number, data name, link target or chapter footer was
-edited. Inline code was edited in four files (eight removals and two insertions); the Checks
-section below and the ebk-wr3 report reconcile those exceptions. No new content, no restructuring,
-no new examples (the learner review is context only).
+Prose only in the style pass. No fenced code line, chunk label or option, output, heading or anchor,
+file name, webR cell, `<details>` block, callout type, number, data name, link target or chapter
+footer was edited. Inline code was edited in four files (eight removals and two insertions); the
+Checks section below and the ebk-wr3 report reconcile those exceptions. Later correctness rounds
+(ebk-wr3/ebk-wr4) changed the code lines and inline spans recorded in the Guard and Not done
+sections. No new content, no restructuring, no new examples (the learner review is context only).
 
 Line numbers are from the file at the chapter's own commit. One row is one changed sentence or
 paragraph; refusals are rows too.
