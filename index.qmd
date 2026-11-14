@@ -18,7 +18,7 @@ and @dplyr-helper-functions focus on wrangling data using the **dplyr** package,
 verbs with the base R pipe `|>` (see the primer below). Chapter
 @r-pipe-magrittr covers the pipe mechanic in detail, including the `_` placeholder,
 anonymous functions with `\(x)`, and reading older magrittr code.
-Chapter @tibbles-in-r explores `tibble()`, an alternative for `data.frame()`.
+Chapter @tibbles-in-r explores `tibble()`, an alternative to `data.frame()`.
 Chapter @tidying-data-with-tidyr reshapes data with the **tidyr** package
 (pivots, splitting/combining columns, missing-value helpers).
 Chapters @strings-in-r, @date-and-time-in-r and @categorical-data-in-r explore ways to
@@ -46,7 +46,7 @@ variants) are covered in @r-pipe-magrittr.
 
 This book requires R >= 4.1 (for the native pipe `|>`) and dplyr >= 1.1.0
 (for `.by`, `slice_*()` and `join_by()`); package versions are pinned in
-`renv.lock`. The R session information when compiling this book is shown below:
+`renv.lock`. The session information used to compile this book is shown below:
 
 ```{r session}
 sessionInfo()
