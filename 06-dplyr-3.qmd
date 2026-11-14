@@ -202,8 +202,8 @@ knitr::include_graphics("img/pull_1.png")
 pull(ecom_mini, device)
 ```
 
-Let us extract the first column from `ecom` using column position instead of 
-name.
+Let us extract the first column from `ecom_mini` using column position
+instead of name.
 
 ```{r dplyr9c}
 pull(ecom_mini, 1) 

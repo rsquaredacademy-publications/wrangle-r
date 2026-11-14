@@ -159,8 +159,8 @@ If you do not see the timezone, use `Sys.getenv()` to get the value of the
 Sys.getenv("TZ")
 ```
 
-If nothing is returned, we have to set the timezone. Use `Sys.setenv()` 
-to set the timezone, as shown below. The author resides in India, and hence the 
+If nothing is returned, R uses the system timezone. Use `Sys.setenv()` 
+to override it when needed, as shown below. The author resides in India, and hence the 
 timezone is set to `Asia/Calcutta`. You need to set the timezone in which you 
 reside or work.
 
