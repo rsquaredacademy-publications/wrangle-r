@@ -104,7 +104,7 @@ read_excel('sample.xls', sheet = 1, col_names = FALSE,
 
 ### Method 3
 
-In this method, we use `cell_limit()` and specify the two ends 
+In this method, we use `cell_limits()` and specify the two ends 
 of a rectangle covering the cells we want to read. For example, to read 
 the first 6 rows and 4 columns, we specify the range as follows:
 

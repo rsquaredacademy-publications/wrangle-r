@@ -406,7 +406,7 @@ elements of the resulting list
 
 In the first method, we know that the image type is 3 characters, so 
 we use `str_sub` to subset the first 3 characters. The index positions 
-are specified using `start` and `stop`.
+are specified using `start` and `end`.
 
 ```{r str24}  
 img |>

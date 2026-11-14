@@ -399,7 +399,7 @@ R returns `FALSE` as the variable `rating` is not ordered. Let us use `as.ordere
 as.ordered(rating)
 ```
 
-Look at the last line where the levels are displayed. In the case of ordered factors, you will see a `<` between the labels. This indicates the order of the levels. Now `rating` is ordered, but the order of the levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in alphabetical order. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
+Look at the last line where the levels are displayed. In the case of ordered factors, you will see a `<` between the labels. This indicates the order of the levels. The call does not change `rating`; the returned factor is ordered, but the order of its levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in alphabetical order. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
 
 ```{r factor_10}
 factor(rating, ordered = TRUE)

@@ -361,14 +361,14 @@ data <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-publicati
 **Q1–Q2. Frequencies in descending order; is `laptop` a `device` level?**
 
 ```{r sol_fc13a}
-data |> pull(device) |> fct_count()
-data |> pull(landing_page) |> fct_count()
-data |> pull(exit_page) |> fct_count()
+data |> pull(device) |> fct_count(sort = TRUE)
+data |> pull(landing_page) |> fct_count(sort = TRUE)
+data |> pull(exit_page) |> fct_count(sort = TRUE)
 "laptop" %in% levels(data$device)
 ```
 
-`fct_count()` lists levels in their current level order; set `sort = TRUE` to
-order them by frequency. (`device` here holds
+`fct_count()` lists levels in their current level order; `sort = TRUE` orders
+them by descending frequency. (`device` here holds
 Desktop/Mobile/Tablet, so `"laptop"` is not a level: it belongs to the
 `ecom` schema, not `analytics`.)
 
