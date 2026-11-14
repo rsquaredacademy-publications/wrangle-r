@@ -6,10 +6,10 @@ description: "Data Wrangling in R: filter, arrange, select, mutate and summarise
 
 ## Introduction
 
-According to  a [survey](http://visit.crowdflower.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf) by [CrowdFlower](https://www.crowdflower.com/), data scientists spend most of their 
-time cleaning and manipulating data rather than mining or modeling them for 
-insights. As such, it becomes important to have tools that make data 
-manipulation faster and easier. In today's chapter, we introduce you to 
+According to a [survey](http://visit.crowdflower.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf) by [CrowdFlower](https://www.crowdflower.com/), data scientists spend most of their 
+time cleaning and manipulating data rather than mining or modeling it for 
+insights. As such, we need tools that make data 
+manipulation faster and easier. In this chapter, we introduce 
 [dplyr](http://dplyr.tidyverse.org/), a grammar of data manipulation.
 
 ```{r img1a, echo=FALSE, out.width="70%", fig.align="center"}
@@ -114,16 +114,15 @@ take action
 
 ## Filter Rows
 
-In order to compute the AOV, we must first separate the purchasers from 
-non-purchasers. We will do this by filtering the data related to purchasers
-using the `filter()` function. It allows us to filter rows that meet a specific 
-criteria/condition. The first argument is the name of the data frame and the 
-rest of the arguments are expressions for filtering the data. Let us look at a 
+To compute the AOV, we must first separate the purchasers from 
+the non-purchasers. We do this with the `filter()` function, which keeps the
+rows that meet a specific condition. The first argument is the name of the data
+frame and the rest are expressions for filtering the data. Let us look at a 
 few examples:
 
-The first example we will look at filters all visits from device **mobile**. As 
-we had learnt in the previous section, the first argument is our data set `ecom` 
-and the next argument is the condition for filtering rows.
+The first example filters all visits from device **mobile**. As 
+we learned in the previous section, the first argument is our data set `ecom` 
+and the next is the condition for filtering rows.
 
 ```{r img4bb, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/filter_1.png")
@@ -133,7 +132,7 @@ knitr::include_graphics("img/filter_1.png")
 filter(ecom, device == "mobile")
 ```
 
-We can specify multiple filtering conditions as well. In the below example, we
+We can specify multiple filtering conditions as well. In the example below, we
 specify two filter conditions:
 
 - visit from device **mobile**
@@ -159,7 +158,7 @@ filter(ecom, device == "tablet", purchase, n_pages < 15)
 
 ### Case Study
 
-Let us apply what we have learnt to the case study. We want to filter all
+Let us apply what we have learned to the case study. We want to filter all
 visits that resulted in a purchase. 
 
 ```{r dplyr5}
@@ -168,14 +167,14 @@ filter(ecom, purchase)
 
 ## Select Columns
 
-After filtering the data, we need to select relevent variables to compute the 
-AOV. Remember, we do not need all the columns in the data to compute a required 
-metric (in our case, AOV). The `select()` function allows us to select a subset 
+After filtering the data, we need to select the relevant variables to compute the 
+AOV. Remember, we do not need every column in the data to compute the metric 
+we need. The `select()` function keeps a subset 
 of columns. The first argument is the name of the data frame and the subsequent 
 arguments specify the columns by name or position. 
 
-To select the `device` and `duration` columns, we specify the data set i.e. 
-`ecom` followed by the name of the columns.
+To select the `device` and `duration` columns, we specify the data set, 
+`ecom`, followed by the column names.
 
 ```{r img6a, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/select_1.png")
@@ -185,9 +184,9 @@ knitr::include_graphics("img/select_1.png")
 select(ecom, device, duration)
 ```
 
-We can select a set of columns using `:`. In the below example, we select all 
+We can select a set of columns using `:`. In the example below, we select all 
 the columns starting from `referrer` up to `order_items`. Remember that we can use `:` only when
-the columns are adjacent to each other in the data set.
+the columns are adjacent in the data set.
 
 
 ```{r img7a, echo=FALSE, out.width="100%", fig.align="center"}
@@ -198,11 +197,11 @@ knitr::include_graphics("img/select_2.png")
 select(ecom, referrer:order_items)
 ```
 
-What if you want to select all columns except a few? Typing the name of many
+What if you want to select all the columns except a few? Typing the names of many
 columns can be cumbersome and may also result in spelling errors. We may use `:`
-only if the columns are adjacent to each other but that may not always be
-the case. dplyr allows us to specify columns that need not be
-selected using `-`. In the below example, we select all columns except `n_pages` and 
+only if the columns are adjacent, but that may not always be
+the case. dplyr allows us to drop columns using `-`. In the example below, we
+select all columns except `n_pages` and 
 `duration`. Notice the `-` before both of them.
 
 ```{r img8a, echo=FALSE, out.width="100%", fig.align="center"}
@@ -224,7 +223,7 @@ select(ecom, device, order_value)
 ```
 
 But we want the above data only for purchasers. Let us combine `filter()` and 
-`select()` functions to extract `device` and `order_value` only for those
+`select()` to keep `device` and `order_value` only for the
 visits that resulted in a purchase.
 
 ```{r dplyr10}
@@ -240,15 +239,15 @@ ecom2
 
 ## Grouping Data
 
-We need to compute the total revenue and the number of orders for each device 
-in order to compute their AOV. To achieve this, we need to group the selected 
-`order_value` by device type. `group_by()` allows us to group 
-or split data based on particular (discrete) variable. The first argument is the 
-name of the data set and the second argument is the name of the column based on 
-which the data will be split. 
+We need the total revenue and the number of orders for each device 
+to compute their AOV. To achieve this, we group the selected data by device
+type. `group_by()` groups 
+or splits data based on a particular (discrete) variable. The first argument is the 
+name of the data set and the second is the column to split 
+the data by. 
 
-To split the data by referrer type, we use `group_by` and specify the data set
-i.e. `ecom` and the column based on which to split the data i.e. `referrer`.
+To split the data by referrer type, we use `group_by` and specify the data set,
+`ecom`, and the column to split by, `referrer`.
 
 ```{r dplyr11}
 group_by(ecom, referrer)
@@ -256,7 +255,7 @@ group_by(ecom, referrer)
 
 ### Case Study
 
-In the second line in the previous output, you can observe `Groups: referrer [5]`
+In the second line of the output above, you can observe `Groups: referrer [5]`
 . The data is split into 5 groups as the referrer variable has 5 distinct values. 
 For our case study, we need to group the data by `device` type.
 
@@ -269,9 +268,9 @@ ecom3
 ## Summarise Data
 
 The next step is to compute the total revenue and the number of orders for each 
-device. i.e. we need to reduce the order value data to a single 
+device, i.e. we need to reduce the order value data to a single 
 summary. We can achieve this using `summarise()`. As usual, the first argument 
-is the name of a data set and the subsequent arguments are functions that can 
+is the name of a data set and the subsequent arguments are functions that 
 summarise data. For example, we can use `min`, `max`, `sum`, `mean` etc.
 
 Let us compute the average number of pages browsed by referrer type:
@@ -303,7 +302,7 @@ step_2 <- summarise(step_1, mean(n_pages), median(n_pages))
 step_2
 ```
 
-The two steps above — split with `group_by()`, then `summarise()` — can also be
+The two steps above, split with `group_by()` and then `summarise()`, can also be
 written in one step with the `.by` argument, which groups only for that verb
 and leaves the data ungrouped afterwards:
 
@@ -318,9 +317,9 @@ keeps the rows in order of first appearance. Use `arrange()` afterwards when
 the order matters.
 
 Another way to summarise the order value is to use
-`across()` inside `summarise()`. It applies the specified summary
-function to all the columns in the data set except for the grouping
-column. So we need to ensure that the data does not have any
+`across()` inside `summarise()`. It applies the summary
+function to all the columns in the data set except the grouping
+column. We therefore need to ensure that the data does not have any
 irrelevant columns.
 
 - split data by `referrer` type
@@ -358,12 +357,12 @@ step_3
 
 ### Case Study
 
-So far, we have split the data based on the `device` type and we have selected 2 
+So far, we have split the data by `device` type and we have selected 2 
 columns, `device` and `order_value`. We need the total revenue and the number of
 orders. What functions can we use to obtain them? The `sum()` function will 
-generate the sum of the values and `n()` will count the rows, so we will use
-them inside the `summarise()` function. Remember, we need to provide a name to
-the summary being generated. 
+generate the sum of the values and `n()` will count the rows, so we use
+them inside the `summarise()` function. Remember, we need to provide a name for
+each summary being generated. 
 
 ```{r dplyr13}
 ecom4 <- summarise(ecom3, revenue = sum(order_value),
@@ -385,10 +384,10 @@ ecom4
 
 To create a new column, we will use `mutate()`. The first argument is the name 
 of the data set and the subsequent arguments are expressions for creating new 
-columns based out of existing columns. 
+columns based on existing columns. 
 
-Let us add a new column `avg_page_time` i.e. time on site divided by number of
-pages visited.
+Let us add a new column `avg_page_time` i.e. time on site divided by the number
+of pages visited.
 
 ```{r mutateg}
 # select duration and n_pages from ecom
@@ -396,8 +395,8 @@ mutate_1 <- select(ecom, n_pages, duration)
 mutate(mutate_1, avg_page_time = duration / n_pages)
 ```
 
-We can create new columns based on other columns created using `mutate`. Let us 
-create another column `sqrt_avg_page_time` i.e. square root of the average time
+We can create new columns from other columns created using `mutate`. Let us 
+create another column, `sqrt_avg_page_time`, the square root of the average time
 on page using `avg_page_time`.
 
 ```{r mutateg2}
@@ -408,9 +407,9 @@ mutate(mutate_1,
 
 ### Case Study
 
-Back to our case study, from the last step we have the total revenue and the
-number of orders for each device category and can compute the AOV. We will 
-create a new column to store AOV. 
+Back to our case study: from the last step we have the total revenue and the
+number of orders for each device category, so we can compute the AOV. We will 
+create a new column to store it. 
 
 ```{r img11, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/mutate_1.png")
@@ -421,8 +420,8 @@ ecom5 <- mutate(ecom4, aov = revenue / orders)
 ecom5
 ```
 
-The last step is to select the relevant columns. We will select the device type 
-and the corresponding aov while getting rid of other columns. Use `select()`
+The last step is to select the relevant columns. We keep the device type 
+and the corresponding aov and drop the rest. Use `select()`
 to extract the relevant columns.
 
 ```{r dplyr16}
@@ -444,15 +443,14 @@ knitr::include_graphics("img/arrange_1.png")
 arrange(ecom, n_pages)
 ```
 
-If we want to arrange the data in descending order, we can use `desc()`. Let us 
-arrange the data in descending order.
+If we want the data in descending order, we use `desc()`:
 
 ```{r arrange_eg2}
 arrange(ecom , desc(n_pages))
 ```
 
-Data can be arranged by multiple variables as well. Let us arrange data first by 
-number of visits and then by number of pages in a descending order.
+Data can be arranged by multiple variables as well. Let us arrange the data first by 
+number of visits and then by number of pages in descending order.
 
 ```{r arrange_eg3}
 arrange(ecom, n_visit, desc(n_pages))
@@ -481,9 +479,9 @@ ecom7 <- arrange(ecom6, aov)
 ecom7
 ```
 
-If you observe, at each step we create a new variable(data frame) and then use
-it as an input in the next step i.e. the output from one step becomes the input
-for the next. Can we achieve the final outcome i.e. `ecom7` without creating the
+At each step we create a new variable (data frame) and then use
+it as an input in the next step; the output from one step becomes the input
+for the next. Can we achieve the final outcome, `ecom7`, without creating the
 intermediate data (ecom1 - ecom6)? Yes, we can. We will use the `|>` operator
 to chain the steps and get rid of the intermediate data.
 
