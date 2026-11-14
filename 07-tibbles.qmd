@@ -72,9 +72,9 @@ names(tibble(`order value` = 10))
 
 ### never prints all rows
 
-`tibble()` never prints all the rows and clutters your console. It prints only 
-the first 10 rows and only as many columns as fit the width of the 
-console.
+`tibble()` prints only the first rows of a large tibble, so it does not clutter
+your console. It prints only the first 10 rows and only as many columns as fit
+the width of the console.
 
 ```{r tibble5}
 x <- 1:100

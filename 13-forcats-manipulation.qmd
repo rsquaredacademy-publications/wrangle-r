@@ -24,7 +24,7 @@ data <- readRDS(url('https://raw.githubusercontent.com/rsquaredacademy-publicati
 
 ### Introduction
 
-In this section, our focus will be on handling the levels of a categorical variable, and and on the [forcats](https://forcats.tidyverse.org/) package. We will look at 3 key operations or transformations we would like to do when it comes to factors:
+In this section, our focus will be on handling the levels of a categorical variable, and on the [forcats](https://forcats.tidyverse.org/) package. We will look at 3 key operations or transformations we would like to do when it comes to factors:
 
 - change value of levels
 - add or remove levels

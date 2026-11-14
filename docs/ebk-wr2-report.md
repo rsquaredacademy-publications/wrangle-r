@@ -16,7 +16,7 @@ paragraph; refusals are rows too.
 
 ## Chapters
 
-| Chapter | File | Rows |
+| Chapter | File | Sentences |
 | :-- | :-- | --: |
 | Preface | `index.qmd` | 2 |
 | About the Author | `00-author.qmd` | 1 |
@@ -35,7 +35,8 @@ paragraph; refusals are rows too.
 | Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 36 |
 | Exercise Solutions | `14-solutions.qmd` | 9 |
 
-Total: 323 sentences. Appendices not done (see "Not done").
+Total: 323 sentences. Appendices not done (see "Not done"). The chapter tables list edit-group
+rows; one row can cover more than one sentence, so the row counts do not sum to this sentence total.
 
 ## Preface
 
@@ -290,8 +291,8 @@ advice, not hype.
 
 ## Date & Time: Parsing and Components
 
-64 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
-other 32 are the same kinds (spelling, "i.e." commas, `will` → present tense) and are counted here
+64 prose sentences changed. The 36 rows below are the ones that alter grammar, sense or a term; the
+other 28 are the same kinds (spelling, "i.e." commas, `will` → present tense) and are counted here
 rather than itemized.
 
 | file:line | principle | before | after |
@@ -375,8 +376,8 @@ reference prose and already in his voice. `round_dates()` (580) is an inline-cod
 
 ## Categorical Data Fundamentals
 
-34 prose sentences changed. The 24 rows below are the ones that alter grammar, sense or a term; the
-other 10 are small comma/`will` fixes of the same kinds and are counted here.
+34 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
+other 2 are small comma/`will` fixes of the same kinds and are counted here.
 
 | file:line | principle | before | after |
 | :-- | :-- | :-- | :-- |
@@ -421,8 +422,8 @@ it is reported as a follow-up, not edited here.
 
 ## Factor Manipulation with forcats
 
-36 prose sentences changed. The 26 rows below are the ones that alter grammar, sense or a term; the
-other 10 are the same kinds (comma, `will` → present tense) and are counted here.
+36 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
+other 4 are the same kinds (comma, `will` → present tense) and are counted here.
 
 | file:line | principle | before | after |
 | :-- | :-- | :-- | :-- |

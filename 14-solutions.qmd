@@ -287,7 +287,7 @@ analytics_raw <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-
 **Q1. Quantitative or qualitative?** Quantitative: Age, Annual Sales, Weight,
 Height, Job/Work Experience. Qualitative: Gender, Education Level, Vehicle
 Type, Ice Cream Flavor, Blood Group, Color, Mode of Payment. (Education Level
-is qualitative but *ordered*, see ordered factors below.)
+is qualitative but *ordered*; see ordered factors below.)
 
 **Q2. Dichotomous or polychotomous?** Dichotomous (exactly two outcomes):
 Heads / Tails, Rich / Poor, Democrat / Republican. Polychotomous (three or
