@@ -107,8 +107,8 @@ knitr::include_graphics("img/str_split.png")
 str_split(mockdata$domain, pattern = "\\.")
 ```
 
-We can truncate a string using `str_trunc()`. The default truncation happens at the beginning
-of the string, but we can truncate the central part or the end as well. 
+We can truncate a string using `str_trunc()`. The default truncation happens at the end
+(the right side) of the string, but we can truncate the central part or the beginning as well. 
 
 ```{r str65, collapse=FALSE}
 str_trunc(mockdata$email, width = 10)

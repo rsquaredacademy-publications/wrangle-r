@@ -1110,9 +1110,9 @@ prev_release |>
 ### Date Sequence
 
 So far we have created a single date-time instance. How about creating a 
-sequence of dates? We can do that using `seq.Date()`. We need to specify the 
-from date as the bare minimum input. If the end date is not specified, it 
-creates the sequence up to the current date.
+sequence of dates? We can do that using `seq.Date()`. We need to supply the 
+from date and either an end date (`to`) or a length (`length.out`); there is
+no implicit current-date endpoint, so an incomplete call returns an error.
 
 The interval of the sequence can be specified in any of the following units:
 

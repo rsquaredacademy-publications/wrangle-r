@@ -50,8 +50,7 @@ is the same.
 ### never changes input's types
 
 `tibble()` never alters the input's type. For example, if you supply a 
-character vector, it is not converted to factor, unlike a data.frame, where
-you need to set `stringsAsFactors` to `FALSE`.
+character vector, it is not converted to a factor.
 
 ```{r tibble3}
 tibble(x = letters,

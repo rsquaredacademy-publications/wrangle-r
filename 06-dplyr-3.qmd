@@ -182,7 +182,7 @@ slice_sample(ecom, prop = 0.7)
 ## Data Extraction
 
 In the [dplyr Basics chapter](04-dplyr-1.qmd),
-we observed that dplyr verbs always return a tibble. What if you want to
+we observed that dplyr verbs return a tibble when the input is a tibble. What if you want to
 extract a specific column or a bunch of rows but not as a tibble? 
 
 Use `pull` to extract columns either by name or position. It returns a 

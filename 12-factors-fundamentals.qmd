@@ -290,7 +290,7 @@ Great! We have successfully generated the sample data, and along the way learned
 is.factor(device)
 ```
 
-Membership testing functions always have the prefix `is_` and return only logical values. If the object is a member of the specified class, they return `TRUE` and `FALSE` otherwise. Since our sample data is not stored as a factor, R has returned `FALSE`.
+Membership testing functions use the prefix `is.` in base R (as in `is.factor()`) or `is_` in many tidyverse packages (as in `is_tibble()`), and return only logical values. If the object is a member of the specified class, they return `TRUE` and `FALSE` otherwise. Since our sample data is not stored as a factor, R has returned `FALSE`.
 
 ### Coercion
 
@@ -399,13 +399,13 @@ R returns `FALSE` as the variable `rating` is not ordered. Let us use `as.ordere
 as.ordered(rating)
 ```
 
-Look at the last line where the levels are displayed. In the case of ordered factors, you will see a `<` between the labels. This indicates the order of the levels. Now `rating` is ordered, but the order of the levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in order of appearance in the data. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
+Look at the last line where the levels are displayed. In the case of ordered factors, you will see a `<` between the labels. This indicates the order of the levels. Now `rating` is ordered, but the order of the levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in alphabetical order. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
 
 ```{r factor_10}
 factor(rating, ordered = TRUE)
 ```
 
-The ranking of the levels has not changed. Why is this happening? The ranking follows the alphabetical order (**D**esktop, **M**obile, **T**able). The `factor()` function uses the same order for the levels. 
+The ranking of the levels has not changed. Why is this happening? The ranking follows the alphabetical order (**D**islike, **L**ike, **N**eutral). The `factor()` function uses the same order for the levels. 
 
 ### Modify Order of Levels
 

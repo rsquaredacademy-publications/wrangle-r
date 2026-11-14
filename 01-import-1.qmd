@@ -185,8 +185,8 @@ knitr::include_graphics('img/column_types_list_canva.png')
 
 Before you read data from a file, use `spec_csv()` to see the data types as 
 determined by `readr`. If it determines them correctly, go ahead and read the
-data. Otherwise, we have to specify the types for all the columns we want to
-read, not just for those whose type was wrongly determined by `readr`.
+data. Otherwise, we can specify the types for just the columns whose type was
+wrongly determined by `readr`; the rest can still be guessed.
 
 To specify the data types, we will use the `col_types` argument and supply it
 a list of data types. The data types can be specified using:
@@ -215,8 +215,9 @@ read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/dataset
 )
 ```
 
-If we do not specify the data type for all the columns, `readr` returns an 
-error, which leads to the following questions:
+Specifying types for only some of the columns is allowed: `readr` uses the
+types we supply and guesses the rest. This still leaves the following
+questions:
 
 1. What if I want to skip a few columns?
 2. What if I want to read certain columns only?
