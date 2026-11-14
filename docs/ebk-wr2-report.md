@@ -270,3 +270,53 @@ Refusals: `### Extract Image Dimesion from URL` (432) and `#### Step 3: Detect t
 staritng position` (577) carry the same typos as the prose rows above, but headings are not
 edited; both are listed as follow-ups. "Reach for the one-step regex…" (357) is kept: it is
 advice, not hype.
+
+## Date & Time: Parsing and Components
+
+64 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
+other 32 are the same kinds (spelling, "i.e." commas, `will` → present tense) and are counted here
+rather than itemized.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `10-lubridate-parsing.qmd:53` | 3 | `am()` and `pm()` allow us to check whether date/time occur in the am or pm? They return a logical value i.e. `TRUE` or `FALSE` | `am()` and `pm()` allow us to check whether a date/time occurs in the am or pm. They return a logical value, i.e. `TRUE` or `FALSE`. |
+| `10-lubridate-parsing.qmd:95` | 3, 8 | Throughout the tutorial, we will work on a case study related to transactions of a imaginary company. | Throughout this chapter, we will work on a case study related to transactions of an imaginary company. |
+| `10-lubridate-parsing.qmd:156` | 3, 11 | The data type is `numeric` i.e. R has subtracted `12` twice … Let us see if we can get some hints … If you observe the output, all of them returned | The data type is `numeric`: R has subtracted `12` twice … Let us see whether we can get some hints … In the output, all of them returned |
+| `10-lubridate-parsing.qmd:170` | 3, 9 | The problem is the nature or type of operations done on date or time is different when compared to string/character, number or logical values. | The problem is that the nature of the operations done on date or time is different from those on string/character, number or logical values. |
+| `10-lubridate-parsing.qmd:186` | 11, 5 | As you can see from the above output, there are 3 different classes for storing date/time in R | In the output above, there are 3 different classes for storing date/time in R: |
+| `10-lubridate-parsing.qmd:199` | 9, 2 | If you check the class of `Sys.Date()`, it is `Date`. … The `unclass()` function will show dates are stored internally. | If you check its class, it is `Date`. … The `unclass()` function shows how dates are stored internally. |
+| `10-lubridate-parsing.qmd:210` | 13 | All the dates in R are internally stored in this way. | all the dates in R are stored in this way. |
+| `10-lubridate-parsing.qmd:215` | 9 | `as.Date()` is the easiest and simplest way to create dates in R. | `as.Date()` is the easiest way to create dates in R. |
+| `10-lubridate-parsing.qmd:230` | 3 | it will be the same as `unclass(release_date)`. | it is the same as `unclass(release_date)`. |
+| `10-lubridate-parsing.qmd:267` | 9 | How about converting numbers to date? Sure, we can create date from numbers by specifying the origin and number of days since it. | How about converting numbers to date? We can create a date from numbers by specifying the origin and the number of days since it. |
+| `10-lubridate-parsing.qmd:286` | 11, 3 | If you have carefully observed, the format in which we have been specifying the dates as well as of those returned by functions … is the same i.e. `YYYY-MM-DD`. | In the examples above, the format in which we specify the dates, and the format returned by functions …, is the same, i.e. `YYYY-MM-DD`. |
+| `10-lubridate-parsing.qmd:311` | 3 | The next class we are going to look at is `POSIXct/POSIXlt`. | The next classes we are going to look at are `POSIXct/POSIXlt`. |
+| `10-lubridate-parsing.qmd:316` | 3 | You might be wondering what is this POSIX thing? … standards specified for maintaining compatibility | You might be wondering what this POSIX thing is. … standards specified for maintaining compatibility (a word broken across two lines) |
+| `10-lubridate-parsing.qmd:338` | 3 | Let us now store the latest R release date as `POSIXct` as shown below | Let us now store the latest R release date as `POSIXct`, as shown below. |
+| `10-lubridate-parsing.qmd:413` | 8, 9 | a few tips/suggestions on when to use | a few tips on when to use |
+| `10-lubridate-parsing.qmd:439` | 3, 9 | a good practice to adher to ISO 8601 format … In real world … Below is a sample | good practice to adhere to the ISO 8601 format … In the real world … Below is a sample. |
+| `10-lubridate-parsing.qmd:482` | 15, 3 | the year comes first followed by month and the date; each separated by a backslash (`/`). | the year comes first, followed by the month and the date, each separated by a `/`. |
+| `10-lubridate-parsing.qmd:496` | 2, 3 | Using the format argument, we will specify the date format as a character vector i.e. enclosed in quotes. | Using the format argument, we specify the date format as a character vector, i.e. enclosed in quotes. |
+| `10-lubridate-parsing.qmd:503` | 3 | Another way in which the release data can be written is `2019-Dec-12`. | Another way in which the release date can be written is `2019-Dec-12`. |
+| `10-lubridate-parsing.qmd:550` | §3a.3 | In the below table, we look at some of the most widely used conversion specifications. | In the table below, we look at some of the most widely used conversion specifications. |
+| `10-lubridate-parsing.qmd:587` | 2 | It will guess the date/time format | It guesses the date/time format |
+| `10-lubridate-parsing.qmd:621` | 13, 9 | but most often you will not create date/time and instead deal with data thay comes your way from a system or colleague/collaborator. | Most often though, you will not create date/time; you will deal with data that comes your way from a system or a colleague. |
+| `10-lubridate-parsing.qmd:632` | 2 | `strptime()` will convert character data to `POSIXlt`. | `strptime()` converts character data to `POSIXlt`. |
+| `10-lubridate-parsing.qmd:642` | 9, 3 | date/time as character data and in the format `YYYYMMDD` i.e. nothing separates | date/time as character data in the format `YYYYMMDD`, i.e. nothing separates |
+| `10-lubridate-parsing.qmd:653` | 9 | Let us quickly explore the functions to convert date/time to character data before moving on to the functions from lubridate. | Let us explore the functions that convert date/time to character data before moving on to lubridate. |
+| `10-lubridate-parsing.qmd:669` | 11, 13 | As you can see, all the 3 functions converted date/time to character. … but they have one thing in common i.e. the order | In the output above, all the 3 functions converted date/time to character. … but they have one thing in common: the order |
+| `10-lubridate-parsing.qmd:690` | 3 | What happens in the below case? … specify mutiple date-time formats. | What happens in the case below? … specify multiple date-time formats. |
+| `10-lubridate-parsing.qmd:711` | 9 | Can you tell what differentiates `parse_date_time()` when compared to `strptime()`? | Can you tell what differentiates `parse_date_time()` from `strptime()`? |
+| `10-lubridate-parsing.qmd:774` | 3 | One of the points we discussed was that we can't extract components | One of the points we discussed was that we cannot extract components |
+| `10-lubridate-parsing.qmd:942` | 2, 9 | `quarter()` will return the quarter from the date. December is in the 4th quarter and hence it returns 4. | `quarter()` returns the quarter from the date. December is in the 4th quarter, so it returns 4. |
+| `10-lubridate-parsing.qmd:956` | 3, 9 | In India, the fiscal starts in April and December falls in the 3rd quarter. … We will set it to 4 for April. Now it returns 3 instead of 4. | In India, the fiscal year starts in April, and December falls in the 3rd quarter. … We set it to 4 for April, and it now returns 3 instead of 4. |
+| `10-lubridate-parsing.qmd:1008` | 3 | - we will then create a new column `is_leap` which will have be set to `TRUE` if the year is a leap year else it will be set to `FALSE` | - we will then create a new column `is_leap` which will be set to `TRUE` if the year is a leap year, and `FALSE` otherwise |
+| `10-lubridate-parsing.qmd:1051` | §3a.10, 2 | In the second section, we learnt to create date-time objects … functions that will allow us to do the same | In the second section, we learned to create date-time objects … functions that allow us to do the same. |
+| `10-lubridate-parsing.qmd:1098` | §3a.3, 2 | In the below example, we will start with the date of release of R version 3.6.1 and using `update()`, we will change it to `2019-12-12`. | In the example below, we start with the date of release of R version 3.6.1 and, using `update()`, change it to `2019-12-12`. |
+| `10-lubridate-parsing.qmd:1115` | 3 | it will create the sequence uptil the current date. | it creates the sequence up to the current date. |
+| `10-lubridate-parsing.qmd:1201` | 3 | goes back upto `1992` and the difference between the dates in 2 years. | goes back up to `1992`, and the difference between the dates is 2 years. |
+
+Refusals: the `### Your Turn` items, the numbered/bulleted step lists and every table description
+inside a chunk are left alone (the tables are code). "Okay!", "Hmmm...", "Ah!" and "Great!" stay:
+they are his rare light lines (§3a.12). Three `## Summary` blocks and the `####` step headings are
+not edited.
