@@ -401,3 +401,47 @@ qualitative/quantitative summary are teaching content and are left as written ap
 rows above. The table descriptions and every `- ifany / - always` value inside chunks are code.
 `**D**esktop, **M**obile, **T**able` at 409 is a content error (the levels are Dislike/Neutral/Like);
 it is reported as a follow-up, not edited here.
+
+## Factor Manipulation with forcats
+
+36 prose sentences changed. The 26 rows below are the ones that alter grammar, sense or a term; the
+other 10 are the same kinds (comma, `will` → present tense) and are counted here.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `13-forcats-manipulation.qmd:27` | 9, 3 | exploring the [forcats](https://forcats.tidyverse.org/) package for the same. We will basically look at 3 key operations or transformations we would like to do when it comes to factors which are: | and on the [forcats](https://forcats.tidyverse.org/) package. We will look at 3 key operations or transformations we would like to do when it comes to factors: |
+| `13-forcats-manipulation.qmd:33` | 9, 2 | let us take a quick look at some of the functions … We will store the source of traffic as `channel` | let us look at some of the functions … We store the source of traffic as `channel` |
+| `13-forcats-manipulation.qmd:39` | 11 | If you observe the result, it is in the same order as displayed by `levels()`. | In the result, the levels are in the same order as displayed by `levels()`. |
+| `13-forcats-manipulation.qmd:45` | 3 | sort the results by the count i.e. most common level comes at the top | sort the results by count, i.e. the most common level comes at the top |
+| `13-forcats-manipulation.qmd:61` | 3, 2, 9 | is to check if the levels are valid i.e. only levels which should be present in the data are actually present. `fct_match()` can be used to check validity of levels. | is to check that the levels are valid, i.e. that only the levels which should be present in the data are actually present. Use `fct_match()` to check the validity of the levels. |
+| `13-forcats-manipulation.qmd:81` | 9, 3 | In order to keep it interesting … map it into a function | To keep it interesting … map it to a function |
+| `13-forcats-manipulation.qmd:89` | 13 | two levels, *Paid Search* & *Organic Search* and give them the common value | two levels, *Paid Search* and *Organic Search*, and give them the common value |
+| `13-forcats-manipulation.qmd:94` | 13 | not enclosed in quotes (single or double) but the existing values must be a `character` vector. | not enclosed in quotes (single or double), but the existing values must be a `character` vector. |
+| `13-forcats-manipulation.qmd:103` | 13 | not enclosed in quotes but the existing values must be. | not enclosed in quotes, but the existing values must be. |
+| `13-forcats-manipulation.qmd:126` | 9, 15 | we desire to retain only those channels … will lump together all levels which do not have a minimum count specified. | we want to retain only those channels … will lump together all levels which do not meet the specified minimum count. |
+| `13-forcats-manipulation.qmd:141` | 2 | `fct_lump_n()` will retain top `n` levels by count/frequency and lump the rest | `fct_lump_n()` retains the top `n` levels by count/frequency and lumps the rest |
+| `13-forcats-manipulation.qmd:158` | 3 | The criteria was count of visits. If you want to specify the criteria … The criteria is a value between **0** and **1**. | The criterion was the count of visits. If you want to specify the criterion … The criterion is a value between **0** and **1**. |
+| `13-forcats-manipulation.qmd:175` | 3, 9 | based on some criteria like count or percentage of traffic … We will do a comparison of the three functions in a short while. | based on criteria such as count or percentage of traffic … We will compare the three functions in a short while. |
+| `13-forcats-manipulation.qmd:184` | 9, 3 | `keep` is used when we know the levels we want to retain and `drop` is used when we know the levels we want to drop. … and hence we will use the `keep` argument | `keep` is used when we know the levels to retain and `drop` when we know the levels to drop. … so we use the `keep` argument |
+| `13-forcats-manipulation.qmd:248` | 9 | so that we can share it with others without divulging the names of the channels. `fct_anon()` allows us to anonymize the levels | so that we can share it without divulging their names. `fct_anon()` anonymizes the levels |
+| `13-forcats-manipulation.qmd:317` | 2 | `fct_expand()` allows us to add new levels to the data. … it will be ignored. | `fct_expand()` adds new levels to the data. … it is ignored. |
+| `13-forcats-manipulation.qmd:331` | 2, 3 | `fct_drop()` will drop levels which have no values i.e. unused levels. | `fct_drop()` drops levels which have no values, i.e. unused levels. |
+| `13-forcats-manipulation.qmd:347` | 3, 9 | explicit i.e. it will appear as `(Missing)` … This will help non R users to understand | explicit, i.e. it will appear as `(Missing)` … This will help non-R users understand |
+| `13-forcats-manipulation.qmd:386` | 2, 9 | `fct_relevel()` allows us to manually reorder the levels. | `fct_relevel()` manually reorders the levels. |
+| `13-forcats-manipulation.qmd:402` | 3, 9 | move the level to the end or anywhere between the beginning and end … we will set the value of `after` to `2` i.e. | move a level to the end or anywhere between the beginning and the end … we set the value of `after` to `2`, i.e. |
+| `13-forcats-manipulation.qmd:418` | 3 | there are eight channels i.e. eight levels, so we can set | there are eight channels, i.e. eight levels, so we can set |
+| `13-forcats-manipulation.qmd:439` | 2 | `fct_infreq()` will order the levels by their frequency. | `fct_infreq()` orders the levels by their frequency. |
+| `13-forcats-manipulation.qmd:457` | 2 | `fct_inorder()` will order the levels according to the order in which they appear | `fct_inorder()` orders the levels according to the order in which they appear |
+| `13-forcats-manipulation.qmd:540` | 3, 11 | the following type of plots … We will be using [ggplot2](https://ggplot2.tidyverse.org) in this chapter. | the following types of plots … We will be using [ggplot2](https://ggplot2.tidyverse.org) in this section. |
+| `13-forcats-manipulation.qmd:551` | 3 | on ggplot2, you can go through them first and then come back to this section. | on ggplot2; you can go through them first and then come back to this section. |
+| `13-forcats-manipulation.qmd:563` | 15, 3 | If the bars represent continuous data, the value could be *mean* or *sum* of the variable being represented. | If the bars represent a continuous value, it could be the *mean* or *sum* of the variable being represented. |
+| `13-forcats-manipulation.qmd:567` | 3 | You should use grouped bar chart when making comparisons | You should use a grouped bar chart when making comparisons |
+| `13-forcats-manipulation.qmd:577` | 15 | Use stacked bar plots while looking at cumulative value. | Use stacked bar plots when you look at a cumulative value. |
+| `13-forcats-manipulation.qmd:587` | 3 | the height of all bars in this plot are the same … as their percentage ratio's change. | the height of all the bars in this plot is the same … as their percentage ratios change. |
+| `13-forcats-manipulation.qmd:611` | 3, 15 | Pie chart is a circular chart, divided into slices to show relevant sizes of data. | A pie chart is a circular chart, divided into slices to show the relative sizes of the data. |
+| `13-forcats-manipulation.qmd:645` | 3 | Donut chart is a variation of the pie chart. | A donut chart is a variation of the pie chart. |
+| `13-forcats-manipulation.qmd:765` | 3 | Below are a list of functions from different R pacakges | Below is a list of functions from different R packages |
+
+Refusals: the numbered Your Turn items 3–15 and the plot titles inside chunks are teaching/code.
+The Data Visualization section (536) is the review's call to move, not this pass: its prose is
+left in place, only grammar fixed. `geom_bar(stat = "identity")` stays as code.
