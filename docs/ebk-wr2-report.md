@@ -166,3 +166,25 @@ data set:" is the chapter's pointer to a list, not a sentence about the text.
 Refusals: the rules keep their `Age`/`Height` example tables and the singular "join" noun, as
 taught; only the verb agreement changed. The webR lead-in (265) is identical to ch 4's and is left
 as written so the two callouts match.
+
+## dplyr Helpers
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `06-dplyr-3.qmd:30` | 3, 9 | answer questions we have about and to modify/transform the underlying data set. | answer questions about it and to modify the underlying data set. |
+| `06-dplyr-3.qmd:61` | 2, 3 | We will use `distinct` to examine the values in the `referrer` column | We use `distinct` to examine the values in the `referrer` column. |
+| `06-dplyr-3.qmd:106` | 15 | the number of bouncers driven by the different sources of traffic. | the number of bouncers from the different sources of traffic. |
+| `06-dplyr-3.qmd:124` | 3 | Another way to extract the above information is by using `count` | Another way to extract the above information is by using `count`. |
+| `06-dplyr-3.qmd:159` | 3, 2 | dplyr offers a sampling function which allows us to specify either the number or percentage of observations. `slice_sample()` allows sampling a specific number of observations. | dplyr offers a sampling function that allows us to specify either the number or the percentage of observations. `slice_sample()` samples a specific number of observations. |
+| `06-dplyr-3.qmd:171` | 13 | We can combine the sampling function with grouping as shown below where we sample observations after grouping them according to the source of traffic. | We can combine the sampling function with grouping, as shown below, where we sample observations after grouping them by the source of traffic. |
+| `06-dplyr-3.qmd:187` | 2, 11, §3a.3 | we had observed that dplyr verbs always returned a tibble. … It will return a vector. In the below example, we extract the `device` column as a vector. I am using `head` in addition to limit the output printed. | we observed that dplyr verbs always return a tibble. … It returns a vector. In the example below, we extract the `device` column as a vector. |
+| `06-dplyr-3.qmd:216` | §3a.3 | The below example extracts data from the last column. | The example below extracts data from the last column. |
+| `06-dplyr-3.qmd:223` | §3a.3, 3 | In the below example, we extract data starting from the 5th row and upto the 15th row. | In the example below, we extract data starting from the 5th row up to the 15th row. |
+| `06-dplyr-3.qmd:241` | 2, §3a.3 | `between()` allows us to test if the values in a column lie between two specific values. In the below example, we check how many visits browsed pages between 5 and 15. | `between()` tests whether the values in a column lie between two specific values. In the example below, we check how many visits browsed between 5 and 15 pages. |
+| `06-dplyr-3.qmd:255` | 9, §3a.3 | It allows us to lay down the conditions clearly … In the below example, we create a new column | It lets us lay down the conditions clearly … In the example below, we create a new column |
+
+Refusals: the sentence "I am using `head` in addition to limit the output printed." was cut, not
+rewritten: it is the chapter's only first-person-singular line (guide §3a.2) and the chunk below no
+longer calls `head`. The syllabus bullets at 16–18 promise sections the chapter does not have; that
+is a content decision for the review, not a style row. `pull(ecom_mini, 1)` is described as
+"from `ecom`" (209); the variable name is left as the author wrote it.

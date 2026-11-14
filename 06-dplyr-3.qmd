@@ -28,7 +28,7 @@ library(readr)
 ## Case Study
 
 Let us look at a case study (e-commerce data) and see how we can use dplyr 
-helper functions to answer questions we have about and to modify/transform the 
+helper functions to answer questions about it and to modify the 
 underlying data set. 
 
 ### Data
@@ -59,8 +59,8 @@ ecom
 ## Data Sanitization
 
 Let us ensure that the data is sanitized by checking the sources of traffic
-and devices used to visit the site. We will use `distinct` to examine the
-values in the `referrer` column
+and devices used to visit the site. We use `distinct` to examine the
+values in the `referrer` column.
 
 ```{r img1c, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/distinct_1.png")
@@ -103,7 +103,7 @@ ecom |>
   tally()
 ```
 
-We would also like to know the number of bouncers driven by the different 
+We would also like to know the number of bouncers from the different 
 sources of traffic.
 
 ```{r dplyr15c}
@@ -121,7 +121,7 @@ ecom |>
   filter(purchase)
 ```
 
-Another way to extract the above information is by using `count`
+Another way to extract the above information is by using `count`.
 
 ```{r dplyr17c}
 ecom |>
@@ -156,8 +156,8 @@ ecom |>
 
 ## Sampling Data
 
-dplyr offers a sampling function which allows us to specify either the
-number or percentage of observations. `slice_sample()` allows sampling a specific
+dplyr offers a sampling function that allows us to specify either the
+number or the percentage of observations. `slice_sample()` samples a specific
 number of observations.  
 
 ```{r img3c, echo=FALSE, out.width="100%", fig.align="center"}
@@ -168,8 +168,8 @@ knitr::include_graphics("img/sample_frac_n.png")
 slice_sample(ecom, n = 700)
 ```
 
-We can combine the sampling function with grouping as shown below
-where we sample observations after grouping them according to the source of
+We can combine the sampling function with grouping, as shown below,
+where we sample observations after grouping them by the source of
 traffic.
 
 ```{r dplyr5c}
@@ -185,12 +185,11 @@ slice_sample(ecom, prop = 0.7)
 ## Data Extraction
 
 In the [dplyr Basics chapter](04-dplyr-1.qmd),
-we had observed that dplyr verbs always returned a tibble. What if you want to
+we observed that dplyr verbs always return a tibble. What if you want to
 extract a specific column or a bunch of rows but not as a tibble? 
 
-Use `pull` to extract columns either by name or position. It will return a 
-vector. In the below example, we extract the `device` column as a vector. I am 
-using `head` in addition to limit the output printed.
+Use `pull` to extract columns either by name or position. It returns a 
+vector. In the example below, we extract the `device` column as a vector.
 
 ### Sample Data
 
@@ -214,14 +213,14 @@ pull(ecom_mini, 1)
 ```
 
 You can use `-` before the column position to indicate the position in reverse.
-The below example extracts data from the last column.
+The example below extracts data from the last column.
 
 ```{r dplyr10c}
 pull(ecom_mini, -1) 
 ```
 
-Let us now look at extracting rows using `slice()`. In the below example, we 
-extract data starting from the 5th row and upto the 15th row.
+Let us now look at extracting rows using `slice()`. In the example below, we 
+extract data starting from the 5th row up to the 15th row.
 
 ```{r img5c, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/slice_1.png")
@@ -239,9 +238,9 @@ slice(ecom, n())
 
 ## Between
 
-`between()` allows us to test if the values in a column lie between two specific
-values. In the below example, we check how many visits browsed pages between 5 
-and 15.
+`between()` tests whether the values in a column lie between two specific
+values. In the example below, we check how many visits browsed between 5 
+and 15 pages.
 
 ```{r dplyr19c}
 ecom_sample <- slice_sample(ecom, n = 30)
@@ -253,8 +252,8 @@ ecom_sample |>
 
 ## Case When
 
-`case_when()` is an alternative to `if else`. It allows us to lay down the 
-conditions clearly and makes the code more readable. In the below example, we
+`case_when()` is an alternative to `if else`. It lets us lay down the 
+conditions clearly and makes the code more readable. In the example below, we
 create a new column `repeat_visit` from `n_visit` (the number of previous visits).
 
 ```{r dplyr20c}
