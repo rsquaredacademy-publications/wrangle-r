@@ -14,11 +14,26 @@ paragraph; refusals are rows too.
 
 ## Chapters
 
-| Chapter | File | Rows | Refusals |
-| :-- | :-- | --: | --: |
-| Preface | `index.qmd` | 2 | 0 |
-| About the Author | `00-author.qmd` | 1 | 0 |
-| Import Data - Basics | `01-import-1.qmd` | 17 | 0 |
+| Chapter | File | Rows |
+| :-- | :-- | --: |
+| Preface | `index.qmd` | 2 |
+| About the Author | `00-author.qmd` | 1 |
+| Import Data - Basics | `01-import-1.qmd` | 17 |
+| Import Data - Advanced | `02-import-2.qmd` | 14 |
+| Pipe Operator | `03-pipes.qmd` | 17 |
+| dplyr Basics | `04-dplyr-1.qmd` | 24 |
+| Joining Tables using dplyr | `05-dplyr-2.qmd` | 13 |
+| dplyr Helpers | `06-dplyr-3.qmd` | 11 |
+| tibbles | `07-tibbles.qmd` | 14 |
+| Tidying Data with tidyr | `08-tidyr.qmd` | 8 |
+| Hacking Strings | `09-stringr.qmd` | 32 |
+| Date & Time: Parsing and Components | `10-lubridate-parsing.qmd` | 64 |
+| Date & Time: Arithmetic and Time Zones | `11-lubridate-arithmetic.qmd` | 27 |
+| Categorical Data Fundamentals | `12-factors-fundamentals.qmd` | 34 |
+| Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 36 |
+| Exercise Solutions | `14-solutions.qmd` | 9 |
+
+Total: 323 sentences. Appendices not done (see "Not done").
 
 ## Preface
 
@@ -462,3 +477,60 @@ left in place, only grammar fixed. `geom_bar(stat = "identity")` stays as code.
 Refusals: the question stems in bold and every solution chunk are answers, not prose to restyle; the
 section headings (including "Open stubs") are untouched. The `separate()` solution the review flags
 is code and a follow-up.
+
+## Checks
+
+**Guard** (`git diff 90425d8 HEAD`, per file):
+
+- Heading lines (`^#{1,6} `): **0 changed**.
+- Fenced-code and chunk-header lines (every line starting with ` ``` `): **0 changed**.
+- Inline-code spans (the text inside backticks): **0 edited**. Four *occurrences* disappeared with sentences
+  that were cut or merged: one `` `order_value` `` in `04-dplyr-1.qmd` (the grouping sentence now says "the
+  selected data"), `` `head` `` in `06-dplyr-3.qmd` (the false "I am using `head`" line), three `` `:` `` in
+  `09-stringr.qmd` (the paragraph that claimed the `:` must be escaped, while the chunk splits on `://`),
+  and one each of `` `Sys.Date()` `` and `` `along.with` `` in `10-lubridate-parsing.qmd` (duplicate
+  pointings). No span text was rewritten and no code line moved.
+- `git diff 90425d8 --stat`: 16 `.qmd` files plus `docs/ebk-wr2-report.md`. Nothing else. No `docs/` HTML,
+  no `_freeze`, no YAML, no image, no data file.
+
+**Renders**: chapter by chapter in a throwaway `git archive HEAD` copy outside the repo
+(`…/Temp/opencode/ebk-wr2-build`), one chapter in `_quarto.yml` at a time, through
+`heavy-slot.sh ebk-wr2 quarto render <file>.qmd`. Rendered: `01-import-1`, `02-import-2`, `03-pipes`,
+`04-dplyr-1`, `05-dplyr-2`, `06-dplyr-3`, `07-tibbles`, `08-tidyr`, `09-stringr`,
+`10-lubridate-parsing`, `11-lubridate-arithmetic`, `12-factors-fundamentals`,
+`13-forcats-manipulation`, `14-solutions`. No new errors or warnings; each page was checked for a
+changed sentence. `index.qmd`/`00-author.qmd` rode along in the book list without error.
+
+Packages installed in the *global* library to make the pre-existing chunks run — none are committed:
+`haven`, `forcats`, `gmodels`, `descriptr`, `ggpubr`, `plotrix`, `Hmisc`, `janitor`, `epiDisplay`,
+`summarytools`, `questionr`, `psych`, `skimr`, `tableone`. Without them chapters 2, 12 and 13 stop at a
+`library()` call that predates this pass.
+
+## Not done
+
+- **Appendices** (`appendices/arrow-duckdb.qmd`, `legacy-magrittr.qmd`, `rosetta-pandas.qmd`): read,
+  not edited. They are reference stubs and `arrow`/`duckdb` are not installed here, so they could not
+  be rendered. One pass each would finish the book.
+- **`docs/` output** is deliberately not committed; CI owns it.
+- **Four removed inline-code occurrences** listed under Guard. Restoring them means re-adding the
+  sentence each one sat in; the sentences were a false claim, a duplicate and two repetitions.
+
+## Follow-ups
+
+1. **Heading typos** (`09-stringr`): `### Extract Image Dimesion from URL` and
+   `#### Step 3: Detect the staritng position of file type`. Renaming needs the redirect that CI
+   checks; left for a heading pass with Aravind's call.
+2. **`round_dates()`** (`11-lubridate-arithmetic:580`) is inline code for `round_date()`.
+3. **`**D**esktop, **M**obile, **T**able`** (`12-factors-fundamentals:409`): the levels under discussion
+   are Dislike/Neutral/Like. A content fix, not a style one.
+4. **`pull(ecom_mini, 1)` described as "from `ecom`"** (`06-dplyr-3:209`): variable name left as
+   written, but text and chunk disagree.
+5. **Syllabus promises** (`06-dplyr-3:16-18`: compare tables, arrange rows, predicate functions) are
+   sections the chapter does not have. That is the review's item, not this pass.
+6. **`geom_bar(stat = "identity")`** (`08-tidyr:106`, `13-forcats` plots) is code; `geom_col()` is the
+   idiom.
+7. **`separate()` in the tidyr solution** (`14-solutions`) contradicts ch 8's `separate_wider_delim()`.
+8. **Em dashes that remain** are single em dashes in the shared webR callout ("— no R installation
+   needed"), identical in every chapter; changing one means changing all seven at once.
+9. The learner review's structural asks (course links, missing-values section, join pitfalls, Part I/II
+   split) are untouched by design.
