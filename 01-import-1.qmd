@@ -137,7 +137,7 @@ knitr::include_graphics('img/mtcars_skip.png')
 Let us read the data without skipping any rows and look at the result.
 
 ```{r skip_1, message=FALSE}
-read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/hsb4.csv')
+read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/hsb4.csv')
 ```
 
 Use the `skip` argument to indicate the number of rows to skip while 
@@ -147,7 +147,7 @@ example below, we skip the first 3 lines, which contain information about
 the data set that we do not need.
 
 ```{r skip, message=FALSE}
-read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/hsb4.csv', skip = 3)
+read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/hsb4.csv', skip = 3)
 ```
 
 ## Maximum Lines 
