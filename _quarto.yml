@@ -19,7 +19,7 @@ book:
   title: "Data Wrangling with R"
   author: "Aravind Hebbali"
   date: last-modified
-  description: "R for Data Science teaches the whole game. Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors — on one realistic ecommerce dataset, runnable in your browser."
+  description: "R for Data Science teaches the whole game. Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors — on realistic web analytics, ecommerce and business datasets, runnable in your browser."
   # Site-level keys (and the social metadata) live under `book:` in a book
   # project: Quarto ignores `website:` entirely when `project: type: book`.
   site-url: https://wrangle-r.rsquaredacademy.com

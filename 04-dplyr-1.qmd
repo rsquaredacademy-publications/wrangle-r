@@ -6,7 +6,7 @@ description: "Data Wrangling in R: filter, arrange, select, mutate and summarise
 
 ## Introduction
 
-According to a [survey](http://visit.crowdflower.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf) by [CrowdFlower](https://www.crowdflower.com/), data scientists spend most of their 
+According to a 2016 [CrowdFlower survey](https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/) reported by [Forbes](https://www.forbes.com/), data scientists spend most of their 
 time cleaning and manipulating data rather than mining or modeling it for 
 insights. As such, we need tools that make data 
 manipulation faster and easier. In this chapter, we introduce 
@@ -317,7 +317,8 @@ keeps the rows in order of first appearance. Use `arrange()` afterwards when
 the order matters.
 
 Another way to summarise the order value is to use
-`across()` inside `summarise()`. It applies the summary
+`across()` inside `summarise()`. AOV is a per-order metric, so we start from
+the purchasers in `ecom1`. `across()` applies the summary
 function to all the columns in the data set except the grouping
 column. We therefore need to ensure that the data does not have any
 irrelevant columns.
@@ -330,7 +331,7 @@ the columns
 
 ```{r sumall_eg}
 # select relevant columns
-step_1 <- select(ecom, referrer, order_value)
+step_1 <- select(ecom1, referrer, order_value)
 
 # split data by referrer type
 step_2 <- group_by(step_1, referrer)
@@ -345,7 +346,7 @@ Let us compute the `mean` and `median` order value for each referrer type using
 
 ```{r sumall_eg2}
 # select relevant columns
-step_1 <- select(ecom, referrer, order_value)
+step_1 <- select(ecom1, referrer, order_value)
 
 # split data by referrer type
 step_2 <- group_by(step_1, referrer)

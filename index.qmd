@@ -1,5 +1,5 @@
 ---
-description: "Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors - on one realistic ecommerce dataset, runnable in your browser."
+description: "Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors - on realistic web analytics, ecommerce and business datasets, runnable in your browser."
 ---
 
 # Preface {.unnumbered}

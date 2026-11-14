@@ -1,6 +1,6 @@
 # Data Wrangling with R
 
-*R for Data Science teaches the whole game. Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors — on one realistic ecommerce dataset.*
+*R for Data Science teaches the whole game. Data Wrangling with R drills the hardest 20%: joins, grouped summaries, messy strings, datetimes, and factors — on realistic web analytics, ecommerce and business datasets.*
 
 Read the live book: https://wrangle-r.rsquaredacademy.com
 
@@ -8,8 +8,8 @@ Read the live book: https://wrangle-r.rsquaredacademy.com
 
 R4DS surveys the whole data-science workflow; this book drills data preparation
 end to end (flat-file/Excel/SPSS/SAS import, dplyr verbs and joins, pipes,
-tibbles, strings, datetimes, factors) on a single ecommerce schema. Use it as a
-companion drill book after or alongside R4DS.
+tibbles, strings, datetimes, factors) on realistic web analytics, ecommerce and
+business datasets. Use it as a companion drill book after or alongside R4DS.
 
 ## Build
 

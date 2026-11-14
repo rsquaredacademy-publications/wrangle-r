@@ -13,9 +13,6 @@ In this chapter, we will explore a set of helper functions in order to:
 - sample data
 - extract columns
 - slice rows
-- arrange rows
-- compare tables
-- extract/mutate data using predicate functions
 - count observations for different levels of a variable
 
 We will use the following R packages:
@@ -239,7 +236,7 @@ slice(ecom, n())
 ## Between
 
 `between()` tests whether the values in a column lie between two specific
-values. In the example below, we check how many visits browsed between 5 
+values. In the example below, we check which visits browsed between 5 
 and 15 pages.
 
 ```{r dplyr19c}
