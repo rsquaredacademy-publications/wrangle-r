@@ -227,3 +227,46 @@ Refusals: the guide quote in the opening callout is a quotation and is untouched
 Refusals: `geom_bar(stat = "identity")` at 106 is code and stays even though `geom_col()` is the
 idiom; the Your Turn items and their "does the round-trip hold?" questions are teaching, not prose
 to flatten.
+
+## Hacking Strings
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `09-stringr.qmd:44` | 3 | - url: randomyly generated urls | - url: randomly generated urls |
+| `09-stringr.qmd:51` | 9, 3 | introduce ourselves to some of the functions we will be using later in the case study. One of the columns in the case study data is `email`. It contains random email ids. We want to ensure that the email ids adher to a particular format .i.e | introduce ourselves to some of the functions we will use later. One of the columns in the case study data is `email`, which contains random email ids. We want to ensure that the email ids adhere to a particular format, i.e. |
+| `09-stringr.qmd:59` | 3, 2 | Let us first detect if the email ids contain `@`. Since the data set has 1000 rows, we will use a smaller sample in the examples. | Let us first detect whether the email ids contain `@`. Since the data set has 1000 rows, we use a smaller sample in the examples. |
+| `09-stringr.qmd:98` | 2, 9 | Let us split the domain name and extension from the domain column in the data. … separated by `.` and we will use it to split the domain column. … we will use two slashes to escape the special character. | Let us split the domain name and extension from the domain column. … separated by `.`, and we use it to split the domain column. … we use two slashes to escape it. |
+| `09-stringr.qmd:110` | 3 | The default truncation happens at the beggining of the string but we can truncate the central part or the end of the string as well. | The default truncation happens at the beginning of the string, but we can truncate the central part or the end as well. |
+| `09-stringr.qmd:123` | 9, 3 | Let us quickly sort the emails in both ascending and descending orders. | Let us sort the emails in both ascending and descending order. |
+| `09-stringr.qmd:136` | 2 | The case of a string can be changed to upper, lower or title case as shown below. | We can change the case of a string to upper, lower or title case as shown below. |
+| `09-stringr.qmd:147` | 2 | Parts of a string can be replaced using `str_replace()`. | We can replace parts of a string using `str_replace()`. |
+| `09-stringr.qmd:172` | 3, 9 | text that match our pattern. Use `str_match()` to see if the pattern is present in the string. | text that matches our pattern. Use `str_match()` to see whether the pattern is present in the string. |
+| `09-stringr.qmd:194` | 3 | the position of `@`  in the email ids | the position of `@` in the email ids |
+| `09-stringr.qmd:206` | 2, 15 | The length of the string can be computed using `str_length()`. Let us ensure that the length of the strings in the `password` column is 16. | We can compute the length of a string using `str_length()`. Let us ensure that the strings in the `password` column are 16 characters long. |
+| `09-stringr.qmd:228` | 3, 9 | One final function that we will look at before the case study is `word()`. It extracts word(s) from sentences. | One final function before the case study is `word()`. It extracts words from sentences. |
+| `09-stringr.qmd:265` | 2, 3 | We will split the email using `str_split`. It will split a string using the pattern supplied. In our case the pattern is `@`. | We split the email using `str_split`. It splits a string using the pattern supplied. In our case, the pattern is `@`. |
+| `09-stringr.qmd:274` | 13, 9 | Each element of the list has two values. The first one is the username … we want the second value from each element of the list. | Each element of the list has two values: the first one is the username … we want the second value from each element. |
+| `09-stringr.qmd:278` | 2 | We will use `map_chr()` from purrr … It will return … `map_chr()` will return a character vector. | We use `map_chr()` from purrr … It returns … `map_chr()` returns a character vector. |
+| `09-stringr.qmd:290` | 13, 9 | Step 2 returned a character vector and we need to split the domain name and the domain extension. … Let us split the domain name and domain extension using `str_split` and `\.` as the pattern. | Step 2 returned a character vector, and we need to split the domain name from the domain extension. … Let us split them using `str_split` and `\.` as the pattern. |
+| `09-stringr.qmd:305` | 9, 2 | We will again use `map_chr` to achieve this. | We again use `map_chr` for this. |
+| `09-stringr.qmd:319` | §3a.3 | The below code extracts the domain extension instead of the domain name. | The code below extracts the domain extension instead of the domain name. |
+| `09-stringr.qmd:333` | 13 | does the same job — verified identical on all 1001 addresses: | does the same job, verified identical on all 1001 addresses: |
+| `09-stringr.qmd:389` | 3, 11 | Step 1 returned a list the elements of which have 3 values each. If you observe the list, the image type is in the 3rd value. We will now extract | Step 1 returned a list whose elements have 3 values each. In the list, the image type is the 3rd value. We now extract |
+| `09-stringr.qmd:407` | 4, 3 | Below is the first method. We know that the image type is 3 characters. So we use `str_sub` … are mentioned using `start` and `stop`. | In the first method, we know that the image type is 3 characters, so we use `str_sub` … are specified using `start` and `stop`. |
+| `09-stringr.qmd:418` | 3, 2 | In case you are not sure about the length of the image type. In such cases, we will split the string | What if we are not sure about the length of the image type? In such cases, we split the string |
+| `09-stringr.qmd:441` | 3, 9 | there are no numbers in the url before. We will locate the position or index of the first number in the url using `str_locate()` and using the pattern `[0-9]` which instructs | there are no numbers in the url before it. We locate the position or index of the first number in the url using `str_locate()` and the pattern `[0-9]`, which instructs it |
+| `09-stringr.qmd:463` | 2, 9 | To extract the dimension, we will split it from the rest of the url using `str_split()` and using the pattern `\.` as it separates the dimension and the image extension. | To extract the dimension, we split it from the rest of the url using `str_split()` and the pattern `\.`, which separates the dimension from the image extension. |
+| `09-stringr.qmd:477` | 3, 9 | a list which contains the image dimension … Each element of the list is a character vector. We want to extract the first value in the character vector. | a list that contains the image dimension … Each element of the list is a character vector, and we want the first value in it. |
+| `09-stringr.qmd:509` | 15, 2 | separated from the rest of the url by `:`. Let us split the url using `str_split()` and using the pattern `:`. Since `:` is a special character, we will escape it using `\`. | separated from the rest by `://`. Let us split the url using `str_split()` and the pattern `://`. |
+| `09-stringr.qmd:520` | 2 | we will extract it using `map_chr()` with the element position. | we extract it using `map_chr()` with the element position. |
+| `09-stringr.qmd:544` | 3 | - detect the staritng position of file type - tetect the ending position of file type | - detect the starting position of file type - detect the ending position of file type |
+| `09-stringr.qmd:550` | 3 | and see if any of them contain more than 2 dots. | and see whether any of them contains more than 2 dots. |
+| `09-stringr.qmd:563` | 3 | to check if there is only one `?` | to check whether there is only one `?` |
+| `09-stringr.qmd:576` | 3, 13 | the first quesiton mark in the url, let us extract the location of the second dot and add 1 as the file type starts after the dot. | the first question mark in the url, let us extract the location of the second dot and add 1, as the file type starts after the dot. |
+| `09-stringr.qmd:595` | 3 | the ending chapterion of the file type. followed by a stray full stop on its own line | the ending position of the file type. |
+
+
+Refusals: `### Extract Image Dimesion from URL` (432) and `#### Step 3: Detect the
+staritng position` (577) carry the same typos as the prose rows above, but headings are not
+edited; both are listed as follow-ups. "Reach for the one-step regex…" (357) is kept: it is
+advice, not hype.
