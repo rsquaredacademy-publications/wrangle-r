@@ -445,3 +445,20 @@ other 10 are the same kinds (comma, `will` → present tense) and are counted he
 Refusals: the numbered Your Turn items 3–15 and the plot titles inside chunks are teaching/code.
 The Data Visualization section (536) is the review's call to move, not this pass: its prose is
 left in place, only grammar fixed. `geom_bar(stat = "identity")` stays as code.
+
+## Exercise Solutions
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `14-solutions.qmd:9` | 13 | before reading its solution — the struggle is the lesson. … Remaining chapters are open stubs — to contribute one, open an issue | before reading its solution: the struggle is the lesson. … Remaining chapters are open stubs. To contribute one, open an issue |
+| `14-solutions.qmd:47` | 13 | Purchasers browse far more pages (~16 vs ~5) — the signal behind the AOV case study. | Purchasers browse far more pages (~16 vs ~5), the signal behind the AOV case study. |
+| `14-solutions.qmd:70` | 13 | Yes — every row round-trips (`TRUE`) | Yes, every row round-trips (`TRUE`) |
+| `14-solutions.qmd:110` | 13 | day-first vs month-first — the format string, not the data, decides. | day-first vs month-first: the format string, not the data, decides. |
+| `14-solutions.qmd:128` | 13 | handles the whole mixed vector — prefer helpers | handles the whole mixed vector. Prefer helpers |
+| `14-solutions.qmd:255` | 13 | is qualitative but *ordered* — see ordered factors below. | is qualitative but *ordered*, see ordered factors below. |
+| `14-solutions.qmd:330` | 13 | so `"laptop"` is not a level — it belongs to the `ecom` schema | so `"laptop"` is not a level: it belongs to the `ecom` schema |
+| `14-solutions.qmd:478` | 13 | still need proposed drills + solutions — contributions welcome | still need proposed drills and solutions; contributions welcome |
+
+Refusals: the question stems in bold and every solution chunk are answers, not prose to restyle; the
+section headings (including "Open stubs") are untouched. The `separate()` solution the review flags
+is code and a follow-up.
