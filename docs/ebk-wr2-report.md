@@ -188,3 +188,25 @@ rewritten: it is the chapter's only first-person-singular line (guide §3a.2) an
 longer calls `head`. The syllabus bullets at 16–18 promise sections the chapter does not have; that
 is a content decision for the review, not a style row. `pull(ecom_mini, 1)` is described as
 "from `ecom`" (209); the variable name is left as the author wrote it.
+
+## tibbles
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `07-tibbles.qmd:15` | 11, 3 | In this chapter, we will explore tibbles. To be more precise, we will learn: - how tibbles are different from data frames? - how to create tibbles? - how to manipulate tibbles? | In this chapter, we will explore tibbles. We will learn: - how tibbles differ from data frames - how to create tibbles - how to manipulate tibbles |
+| `07-tibbles.qmd:30` | 3 | tibble can be created using any of the following: | A tibble can be created using any of the following: |
+| `07-tibbles.qmd:44` | 3, 2 | We mentioned the column names followed by the data. If you do not specify the column names, `tibble()` will supply them. Ensure that the length of each column is same. | We specified the column names followed by the data. If you do not specify the column names, `tibble()` supplies them. Ensure that the length of each column is the same. |
+| `07-tibbles.qmd:52` | 2, 3, 13 | `tibble()` will never alter the input's type. For example, if you supply a character vector it will not be converted to factor unlike data.frame where you need to set `stringsAsFactors` to `FALSE`. | `tibble()` never alters the input's type. For example, if you supply a character vector, it is not converted to factor, unlike a data.frame, where you need to set `stringsAsFactors` to `FALSE`. |
+| `07-tibbles.qmd:64` | 2, §3a.3 | `tibble()` will never modify the column names. In the below example | `tibble()` never modifies the column names. In the example below |
+| `07-tibbles.qmd:75` | 2, 3 | `tibble()` will never print all the rows and clutter your console. It will only print the first 10 rows and only as many columns that fit the width of the console. | `tibble()` never prints all the rows and clutters your console. It prints only the first 10 rows and only as many columns as fit the width of the console. |
+| `07-tibbles.qmd:88` | 9, 2 | Recycling vectors of length greater than 1 often leads to errors and as such `tibble()` will only recycle vectors of length 1. | Recycling vectors of length greater than 1 often leads to errors, so `tibble()` recycles only vectors of length 1. |
+| `07-tibbles.qmd:104` | 3 | We can test if an object is a tibble using `is_tibble()`. | We can test whether an object is a tibble using `is_tibble()`. |
+| `07-tibbles.qmd:113` | 3 | Another way to create tibbles is using `tribble()`: | Another way to create a tibble is with `tribble()`: |
+| `07-tibbles.qmd:131` | 3, 8, 13 | Names of the columns in tibbles need not be valid R variable names. They can contain unusual characters like a space or a smiley but must be enclosed in backticks. | Column names in tibbles need not be valid R variable names. They can contain unusual characters, like a space or a smiley, but must be enclosed in backticks. |
+| `07-tibbles.qmd:145` | 3 | Let us add data related to **Safari** browser | Let us add data related to the **Safari** browser |
+| `07-tibbles.qmd:157` | 3, 9 | If we want to add the data at a particular row, we can specify the row number using the `.before` argument. … data related to **Safari** browser | If we want to add the data at a particular row, we specify the row number using the `.before` argument. … data related to the **Safari** browser |
+| `07-tibbles.qmd:177` | 3, 13 | `tibble` does not have `rownames` unlike `data.frame`. | `tibble` does not have `rownames`, unlike `data.frame`. |
+| `07-tibbles.qmd:215` | 2, 3 | `has_name()` can be used to check if a tibble has a specific column. | Use `has_name()` to check whether a tibble has a specific column. |
+
+Refusals: the guide quote in the opening callout is a quotation and is untouched, including its
+"i.e." and "e.g.". The `### never …` headings and the `tribble()` feature bullets keep their wording.
