@@ -5,9 +5,11 @@ Against `docs/style-guide.md` (origin/style-audit), `docs/voice-spoken.md`,
 `docs/williams-checklist.md` and the approved pilot level
 (`F:/pm/notes/2026-11-06-ebook-style-pilot.md`, ebk-ir2 as the worked example).
 
-Prose only. No code, chunk label or option, inline code, output, heading or anchor, file name,
+Prose only. No code, chunk label or option, output, heading or anchor, file name,
 webR cell, `<details>` block, callout type, number, data name, link target or chapter footer was
-edited. No new content, no restructuring, no new examples (the learner review is context only).
+edited. Inline code was edited in four files (eight removals and two insertions); the Checks
+section below and the ebk-wr3 report reconcile those exceptions. No new content, no restructuring,
+no new examples (the learner review is context only).
 
 Line numbers are from the file at the chapter's own commit. One row is one changed sentence or
 paragraph; refusals are rows too.
@@ -484,12 +486,13 @@ is code and a follow-up.
 
 - Heading lines (`^#{1,6} `): **0 changed**.
 - Fenced-code and chunk-header lines (every line starting with ` ``` `): **0 changed**.
-- Inline-code spans (the text inside backticks): **0 edited**. Four *occurrences* disappeared with sentences
-  that were cut or merged: one `` `order_value` `` in `04-dplyr-1.qmd` (the grouping sentence now says "the
-  selected data"), `` `head` `` in `06-dplyr-3.qmd` (the false "I am using `head`" line), three `` `:` `` in
-  `09-stringr.qmd` (the paragraph that claimed the `:` must be escaped, while the chunk splits on `://`),
-  and one each of `` `Sys.Date()` `` and `` `along.with` `` in `10-lubridate-parsing.qmd` (duplicate
-  pointings). No span text was rewritten and no code line moved.
+- Inline-code spans: **not zero edited**. Against `90425d8..ffcf40b` the wr2 pass removed eight
+  occurrences and inserted two `://` spans. The ebk-wr3 follow-up restored three of the removals
+  (`` `order_value` ``, `` `Sys.Date()` ``, `` `along.with` ``), leaving five removals and two
+  insertions. The remaining changes are the false "I am using `head`" line in `06-dplyr-3.qmd` and
+  the false `:`/escape explanation in `09-stringr.qmd`. They correct content, but they exceeded the
+  protected-inline-code scope, so the earlier "0 edited" claim was wrong. No other span changed and
+  no code line moved.
 - `git diff 90425d8 --stat`: 16 `.qmd` files plus `docs/ebk-wr2-report.md`. Nothing else. No `docs/` HTML,
   no `_freeze`, no YAML, no image, no data file.
 

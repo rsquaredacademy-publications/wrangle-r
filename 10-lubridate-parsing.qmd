@@ -197,7 +197,7 @@ Let us explore each of the above classes one by one.
 #### Introduction
 
 The `Date` class represents calendar dates. Let us go back to `Sys.Date()`. If 
-you check its class, it is `Date`. Internally, this date is a 
+you check the class of `Sys.Date()`, it is `Date`. Internally, this date is a 
 number, i.e. an integer. The `unclass()` function shows how dates are stored 
 internally.
 
@@ -1207,7 +1207,9 @@ seq.Date(from = as.Date("2010-01-01"), by = "-2 year", length.out = 10)
 
 In the last example, we will explore the `along.with` argument. Here we have 
 supplied a vector which is a sequence of numbers from 1 to 10. The length of 
-this vector is 10, and the same length is used as the length of the sequence.
+this vector is 10, and the same length is used as the length of the sequence
+i.e. the length of value supplied to `along.with` is also the length of the
+sequence.
 
 ```{r seq_date_7}
 seq.Date(from = as.Date("2010-01-01"), by = "-2 year", along.with = 1:10)

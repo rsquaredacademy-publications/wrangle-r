@@ -240,7 +240,7 @@ ecom2
 ## Grouping Data
 
 We need the total revenue and the number of orders for each device 
-to compute their AOV. To achieve this, we group the selected data by device
+to compute their AOV. To achieve this, we need to group the selected `order_value` by device
 type. `group_by()` groups 
 or splits data based on a particular (discrete) variable. The first argument is the 
 name of the data set and the second is the column to split 
