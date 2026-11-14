@@ -491,9 +491,10 @@ is code and a follow-up.
   occurrences and inserted two `://` spans. The ebk-wr3 follow-up restored three of the removals
   (`` `order_value` ``, `` `Sys.Date()` ``, `` `along.with` ``), leaving five removals and two
   insertions. The remaining changes are the false "I am using `head`" line in `06-dplyr-3.qmd` and
-  the false `:`/escape explanation in `09-stringr.qmd`. They correct content, but they exceeded the
-  protected-inline-code scope, so the earlier "0 edited" claim was wrong. No other span changed and
-  no code line moved.
+  the false `:`/escape explanation in `09-stringr.qmd`. ebk-wr3 also added four inline spans while
+  correcting prose (`across()`, `ecom1`, `to`, `length.out`). The remaining wr2 changes correct
+  content, but they exceeded the protected-inline-code scope, so the earlier "0 edited" claim was
+  wrong. No other wr2 span changed and no code line moved.
 - `git diff 90425d8 --stat`: 16 `.qmd` files plus `docs/ebk-wr2-report.md`. Nothing else. No `docs/` HTML,
   no `_freeze`, no YAML, no image, no data file.
 
@@ -526,11 +527,11 @@ Packages installed in the *global* library to make the pre-existing chunks run â
    checks; left for a heading pass with Aravind's call.
 2. **`round_dates()`** (`11-lubridate-arithmetic:580`) is inline code for `round_date()`.
 3. **`**D**esktop, **M**obile, **T**able`** (`12-factors-fundamentals:409`): the levels under discussion
-   are Dislike/Neutral/Like. A content fix, not a style one.
+   are Dislike/Neutral/Like. Fixed in ebk-wr3.
 4. **`pull(ecom_mini, 1)` described as "from `ecom`"** (`06-dplyr-3:209`): variable name left as
    written, but text and chunk disagree.
 5. **Syllabus promises** (`06-dplyr-3:16-18`: compare tables, arrange rows, predicate functions) are
-   sections the chapter does not have. That is the review's item, not this pass.
+   sections the chapter does not have. The unsupported bullets were removed in ebk-wr3.
 6. **`geom_bar(stat = "identity")`** (`08-tidyr:106`, `13-forcats` plots) is code; `geom_col()` is the
    idiom.
 7. **`separate()` in the tidyr solution** (`14-solutions`) contradicts ch 8's `separate_wider_delim()`.
