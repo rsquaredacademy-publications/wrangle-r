@@ -229,9 +229,9 @@ Probes at HEAD:
 
 | Old ID | Current source | Status / evidence |
 | --- | --- | --- |
-| M7 | `01-import-1.qmd:186`, :218 | Pass. `col_types = list(col_integer())` reads 200 × 11 with zero problems; unspecified columns are guessed. |
+| M7 | `01-import-1.qmd:187`–189, :218–220 | Pass. `col_types = list(col_integer())` reads 200 × 11 with zero problems; unspecified columns are guessed. |
 | M8 | `07-tibbles.qmd:52` | Pass. `data.frame(x = letters)$x` is `character` in current R; the obsolete contrast is gone. |
-| M9 | `06-dplyr-3.qmd:187` | Pass. `filter(tibble(...))` returns `tbl_df`; `filter(data.frame(...))` returns `data.frame`, matching the scoped sentence. |
+| M9 | `06-dplyr-3.qmd:185` | Pass. `filter(tibble(...))` returns `tbl_df`; `filter(data.frame(...))` returns `data.frame`, matching the scoped sentence. |
 | M10 | `09-stringr.qmd:110` | Pass. `str_trunc("abcdefghijklmnop", 10)` returns `abcdefg...`, i.e. truncation at the end. |
 | M11 | `10-lubridate-parsing.qmd:1113` | Resolved by R-L1. |
 | M12 | `12-factors-fundamentals.qmd:402` | Resolved by R-M1; levels are `Dislike,Like,Neutral`, alphabetical. |
