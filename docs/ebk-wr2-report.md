@@ -210,3 +210,20 @@ is a content decision for the review, not a style row. `pull(ecom_mini, 1)` is d
 
 Refusals: the guide quote in the opening callout is a quotation and is untouched, including its
 "i.e." and "e.g.". The `### never …` headings and the `tribble()` feature bullets keep their wording.
+
+## Tidying Data with tidyr
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `08-tidyr.qmd:9` | 13 | In this chapter we reshape data with **tidyr**: - `pivot_longer()` / `pivot_wider()` — move between long and wide layouts - `separate_wider_delim()` / `unite()` — split one column into several and back - `drop_na()` / `complete()` / `fill()` — handle missing values and combinations | In this chapter, we reshape data with **tidyr**: - `pivot_longer()` / `pivot_wider()`: move between long and wide layouts - `separate_wider_delim()` / `unite()`: split one column into several and back - `drop_na()` / `complete()` / `fill()`: handle missing values and combinations |
+| `08-tidyr.qmd:57` | 13 | `metric`/`mean_value` pairs — one row per device-metric observation: | `metric`/`mean_value` pairs, one row per device-metric observation: |
+| `08-tidyr.qmd:77` | 13 | a single row — the layout managers usually want in a report: | a single row, the layout managers usually want in a report: |
+| `08-tidyr.qmd:87` | 13 | Reshaping has two directions — pick by what the next step needs: | Reshaping has two directions: pick by what the next step needs: |
+| `08-tidyr.qmd:95` | 13 | draws every metric in a single call — no per-metric layers: | draws every metric in a single call, with no per-metric layers: |
+| `08-tidyr.qmd:109` | 13 | And the trip reverses cleanly — `pivot_wider()` on the long table restores the wide summary exactly | And the trip reverses cleanly: `pivot_wider()` on the long table restores the wide summary exactly |
+| `08-tidyr.qmd:140` | 13 | returns the input exactly — a useful check that a separate/unite round-trip loses nothing: | returns the input exactly, a useful check that a separate/unite round-trip loses nothing: |
+| `08-tidyr.qmd:166` | 13 | Only the 55 fully matched rows survive — the same rows `inner_join()` returns. | Only the 55 fully matched rows survive, the same rows `inner_join()` returns. |
+
+Refusals: `geom_bar(stat = "identity")` at 106 is code and stays even though `geom_col()` is the
+idiom; the Your Turn items and their "does the round-trip hold?" questions are teaching, not prose
+to flatten.

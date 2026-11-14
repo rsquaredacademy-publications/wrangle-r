@@ -8,12 +8,12 @@ description: "Data Wrangling in R: pivot longer and wider, separate and unite co
 
 Tidy data has one row per observation and one column per variable. Real data
 rarely arrives that way: metrics sprawl across columns, several values share
-one column, and combinations go missing. In this chapter we reshape data with
+one column, and combinations go missing. In this chapter, we reshape data with
 **tidyr**:
 
-- `pivot_longer()` / `pivot_wider()` — move between long and wide layouts
-- `separate_wider_delim()` / `unite()` — split one column into several and back
-- `drop_na()` / `complete()` / `fill()` — handle missing values and combinations
+- `pivot_longer()` / `pivot_wider()`: move between long and wide layouts
+- `separate_wider_delim()` / `unite()`: split one column into several and back
+- `drop_na()` / `complete()` / `fill()`: handle missing values and combinations
 
 We will use the following R packages:
 
@@ -54,7 +54,7 @@ wide <- ecom |>
 wide
 ```
 
-`pivot_longer()` stacks the metric columns into `metric`/`mean_value` pairs —
+`pivot_longer()` stacks the metric columns into `metric`/`mean_value` pairs,
 one row per device-metric observation:
 
 ```{r tidyr_long}
@@ -75,7 +75,7 @@ counts
 ```
 
 `pivot_wider()` spreads `purchase` into columns so each device occupies a
-single row — the layout managers usually want in a report:
+single row, the layout managers usually want in a report:
 
 ```{r tidyr_wider}
 counts |>
@@ -84,7 +84,7 @@ counts |>
 
 ## pivot_longer vs pivot_wider: which direction?
 
-Reshaping has two directions — pick by what the next step needs:
+Reshaping has two directions: pick by what the next step needs:
 
 | Next step | Direction |
 |---|---|
@@ -93,7 +93,7 @@ Reshaping has two directions — pick by what the next step needs:
 | Model matrix / spreadsheet handoff | `pivot_wider()` |
 
 The payoff for going long: `ggplot2` maps variables to aesthetics, so one
-long table draws every metric in a single call — no per-metric layers:
+long table draws every metric in a single call, with no per-metric layers:
 
 ```{r tidyr_long_plot, fig.height=4, fig.width=7, message=FALSE}
 library(ggplot2)
@@ -106,7 +106,7 @@ ggplot(long_metrics, aes(x = metric, y = mean_value, fill = device)) +
   geom_bar(stat = "identity", position = "dodge")
 ```
 
-And the trip reverses cleanly — `pivot_wider()` on the long table restores the
+And the trip reverses cleanly: `pivot_wider()` on the long table restores the
 wide summary exactly, so reshaping is safe to do mid-pipeline.
 
 ## Split columns with `separate_wider_delim()`
@@ -138,7 +138,7 @@ tibble(due_iso = as.character(head(transact$Due, 5))) |>
 ## Combine columns with `unite()`
 
 `unite()` is the inverse: it pastes several columns back into one. Splitting
-the ISO date and reuniting it returns the input exactly — a useful check that
+the ISO date and reuniting it returns the input exactly, a useful check that
 a separate/unite round-trip loses nothing:
 
 ```{r tidyr_unite}
@@ -163,7 +163,7 @@ nrow(joined)
 nrow(drop_na(joined))
 ```
 
-Only the 55 fully matched rows survive — the same rows `inner_join()` returns.
+Only the 55 fully matched rows survive, the same rows `inner_join()` returns.
 Use `drop_na()` when a downstream step needs complete cases, and prefer it over
 filtering each column by hand.
 
