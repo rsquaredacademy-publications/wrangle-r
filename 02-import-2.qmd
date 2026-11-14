@@ -27,8 +27,8 @@ library(haven)
 
 ## List Sheets
 
-An excel file may contain several sheets. Let us see how many sheets are 
-present in `sample.xls` file and their respective names using `excel_sheets()`.
+An excel file may contain several sheets. Let us see how many are 
+present in `sample.xls` and what they are called, using `excel_sheets()`.
 
 ```{r list_sheets}
 excel_sheets('sample.xls')
@@ -38,7 +38,7 @@ excel_sheets('sample.xls')
 
 Now that we know the number of sheets and their names, let us read data from 
 the `ecom` sheet of the `sample.xls` file using `read_excel()`. We will specify
-the file name, and the sheet name or sheet number. 
+the file name and the sheet name or number. 
 
 ### Case 1: Specify the sheet number
 
@@ -52,16 +52,14 @@ read_excel('sample.xls', sheet = 1)
 read_excel('sample.xls', sheet = 'ecom')
 ```
 
-Notice when you use the sheet name, the name should be enclosed in 
-single/double quotes.
+When you use the sheet name, enclose it in single or double quotes.
 
 ## Read Specific Cells
 
 You may not always want to read all the columns or rows from the excel sheet.
-In such cases, you can specify the cells from which the data must be read 
-which can be achieved using the `range` argument. So how do we specify the 
-cells from which to read data? There are different ways of specifying the 
-cell range and we will look at them one by one:
+In such cases, specify the cells to read from using the `range` argument. 
+So how do we specify them? There are different ways of specifying the 
+cell range, and we will look at them one by one:
 
 
 ### Method 1
@@ -73,14 +71,14 @@ knitr::include_graphics("img/readxl_range.png")
 <br>
 
 The first method uses the cell names along with `:` to specify the cell range. 
-For example, to read data from first 4 rows of columns **B** and **C**, we will 
+For example, to read data from the first 4 rows of columns **B** and **C**, we 
 specify the range as `"B1:C4"`.
 
 ```{r import58, echo=TRUE, results='markup', message=FALSE}
 read_excel('sample.xls', sheet = 1, range = "B1:C4")
 ```
 
-To read data from first 5 rows of columns **A**, **B** and **C**, we will specify the range as `"A1:C5"`.
+To read data from the first 5 rows of columns **A**, **B** and **C**, we specify the range as `"A1:C5"`.
 
 ```{r import59, echo=TRUE, results='markup', message=FALSE}
 read_excel('sample.xls', sheet = 1, range = "A1:C5")
@@ -95,8 +93,8 @@ knitr::include_graphics("img/readxl_anchored_lucid.png")
 <br>
 
 In the second method, we start from a particular cell and specify the number 
-of rows and columns to be covered keeping the initial cell as anchorage. 
-In the below example, we want to read 3 rows and 2 columns starting from the 
+of rows and columns to cover, keeping the initial cell as the anchor. 
+In the example below, we read 3 rows and 2 columns starting from the 
 cell `A4`.
 
 ```{r import61, echo=TRUE, results='markup', message=FALSE}
@@ -106,9 +104,9 @@ read_excel('sample.xls', sheet = 1, col_names = FALSE,
 
 ### Method 3
 
-In this method, we use the `cell_limit()` and specify the location of two ends 
-of a rectangle covering the cells we want to read. For example, to read data 
-from the first 6 rows and 4 columns, we will specify the range as following:
+In this method, we use `cell_limit()` and specify the two ends 
+of a rectangle covering the cells we want to read. For example, to read 
+the first 6 rows and 4 columns, we specify the range as follows:
 
 - start from the first row of the first column
 - cover all cells upto the 6th row of the 4th column
@@ -132,8 +130,8 @@ read_excel('sample.xls', sheet = 1,
   range = cell_limits(c(1, 2), c(NA, NA)))
 ```
 
-Let us quickly look at how we will specify range of cells using the above 3 
-methods when we want to read data from the first 4 rows of columns `B` and `C`:
+Let us look at how we specify a range of cells using the three 
+methods above when we want to read data from the first 4 rows of columns `B` and `C`:
 
 ### Method 1
 
@@ -159,7 +157,7 @@ read_excel('sample.xls', sheet = 1,
 ## Read Specific Rows
 
 When you want to read a subset of rows from the data, use `cell_rows()` and 
-specify the row numbers or the range. In the below example, we want to read 
+specify the row numbers or the range. In the example below, we read 
 the first 4 rows of data from the file.
 
 ```{r import62, echo=TRUE, results='markup', message=FALSE}
@@ -169,7 +167,7 @@ read_excel('sample.xls', sheet = 1, range = cell_rows(1:4))
 ## Read Single Column
 
 If you want to read a single column from the data, use `cell_cols()` and 
-specify the column number. In the below example, we read the second column
+specify the column number. In the example below, we read the second column
 from the `sample.xls` file.
 
 ```{r import63a, echo=TRUE, results='markup', message=FALSE}
@@ -178,15 +176,15 @@ read_excel('sample.xls', sheet = 1, range = cell_cols(2))
 
 ## Read Multiple Columns
 
-In case of multiple columns, we need to specify the column numbers or the
-column range. In the below example, we want to read the 2nd, 4th and 6th column from 
+For multiple columns, we specify the column numbers or the
+column range. In the example below, we read the 2nd, 4th and 6th column from 
 the `sample.xls` file.
 
 ```{r import63b, echo=TRUE, results='markup', message=FALSE}
 read_excel('sample.xls', sheet = 1, range = cell_cols(c(2, 4, 6)))
 ```
 
-In the next example, we want to read data from the 2nd column upto and 
+In the next example, we read data from the 2nd column up to and 
 including the 6th column.
 
 ```{r import63c, echo=TRUE, results='markup', message=FALSE}
@@ -201,7 +199,7 @@ knitr::include_graphics("img/range_summary.png")
 
 ## Statistical Softwares
 
-We will use the [haven](https://haven.tidyverse.org) package to read data from files of other statistical softwares such as:
+We will use the [haven](https://haven.tidyverse.org) package to read data from files created by other statistical software such as:
 
 - SAS
 - SPSS

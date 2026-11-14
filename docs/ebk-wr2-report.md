@@ -61,3 +61,25 @@ paragraph; refusals are rows too.
 Refusals: `01-import-1.qmd:62` keeps "Great!", his rare light line (§3a.12), and `:152` keeps
 "What can we do in such cases?", his rhetorical question before the fix (point first, 7).
 "reread" (114) and "i.e." in the pointer list at 195–197 are left: the pointer list is a syllabus.
+
+## Import Data - Advanced
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `02-import-2.qmd:30` | 9, 3 | Let us see how many sheets are present in `sample.xls` file and their respective names using `excel_sheets()`. | Let us see how many are present in `sample.xls` and what they are called, using `excel_sheets()`. |
+| `02-import-2.qmd:41` | 9 | We will specify the file name, and the sheet name or sheet number. | We will specify the file name and the sheet name or number. |
+| `02-import-2.qmd:55` | 2, 3, 8 | Notice when you use the sheet name, the name should be enclosed in single/double quotes. | When you use the sheet name, enclose it in single or double quotes. |
+| `02-import-2.qmd:60` | 2, 3, 9 | In such cases, you can specify the cells from which the data must be read which can be achieved using the `range` argument. So how do we specify the cells from which to read data? There are different ways of specifying the cell range and we will look at them one by one: | In such cases, specify the cells to read from using the `range` argument. So how do we specify them? There are different ways of specifying the cell range, and we will look at them one by one: |
+| `02-import-2.qmd:74` | 3 | For example, to read data from first 4 rows of columns **B** and **C**, we will specify the range | For example, to read data from the first 4 rows of columns **B** and **C**, we specify the range |
+| `02-import-2.qmd:81` | 3 | To read data from first 5 rows of columns **A**, **B** and **C**, we will specify the range | To read data from the first 5 rows of columns **A**, **B** and **C**, we specify the range |
+| `02-import-2.qmd:96` | 3, 2, §3a.3 | of rows and columns to be covered keeping the initial cell as anchorage. In the below example, we want to read 3 rows and 2 columns | of rows and columns to cover, keeping the initial cell as the anchor. In the example below, we read 3 rows and 2 columns |
+| `02-import-2.qmd:107` | 3, 9 | we use the `cell_limit()` and specify the location of two ends of a rectangle … to read data from the first 6 rows and 4 columns, we will specify the range as following: | we use `cell_limit()` and specify the two ends of a rectangle … to read the first 6 rows and 4 columns, we specify the range as follows: |
+| `02-import-2.qmd:133` | 9, 3 | Let us quickly look at how we will specify range of cells using the above 3 methods | Let us look at how we specify a range of cells using the three methods above |
+| `02-import-2.qmd:160` | §3a.3, 2 | In the below example, we want to read the first 4 rows of data from the file. | In the example below, we read the first 4 rows of data from the file. |
+| `02-import-2.qmd:170` | §3a.3 | In the below example, we read the second column | In the example below, we read the second column |
+| `02-import-2.qmd:179` | 3, 2, §3a.3 | In case of multiple columns, we need to specify the column numbers or the column range. In the below example, we want to read the 2nd, 4th and 6th column | For multiple columns, we specify the column numbers or the column range. In the example below, we read the 2nd, 4th and 6th column |
+| `02-import-2.qmd:187` | 2, 3 | In the next example, we want to read data from the 2nd column upto and including the 6th column. | In the next example, we read data from the 2nd column up to and including the 6th column. |
+| `02-import-2.qmd:202` | 3, 18 | read data from files of other statistical softwares such as: | read data from files created by other statistical software such as: |
+
+Refusals: the `## Method 1`/`## Method 2`/`## Method 3` headings repeat across two sections, but
+headings are not edited. "i.e." and the `- SAS / - SPSS / - STATA` syllabus are left as written.
