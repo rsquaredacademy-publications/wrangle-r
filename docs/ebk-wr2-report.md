@@ -144,3 +144,25 @@ function is written without backticks, and adding inline code is out of scope.
 Refusals: "There you go" (374), "Let us say we want to…" (437) and the two "What functions can we
 use…" questions are his warm hand-offs and stay. `04-dplyr-1.qmd:54` "Below is the description of the
 data set:" is the chapter's pointer to a list, not a sentence about the text.
+
+## Joining Tables using dplyr
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `05-dplyr-2.qmd:23` | 3, §3a.3, 2 | The second data set, `customer` contains details of each customer. The below table displays the details stored in each data set. | The second data set, `customer`, contains details of each customer. The table below shows the details stored in each data set. |
+| `05-dplyr-2.qmd:86` | 3 | Inner join return all rows from `Age` … all combination of the matches are returned. | An inner join returns all rows from `Age` … all combinations of the matches are returned. |
+| `05-dplyr-2.qmd:96` | 3, 13 | To get data for all those customers who have placed orders in the past let us join | To get data for all the customers who have placed orders in the past, let us join |
+| `05-dplyr-2.qmd:105` | 3 | Left join return all rows … Rows in `Age` with  no match … If there are multiple  matches | A left join returns all rows … Rows in `Age` with no match … If there are multiple matches |
+| `05-dplyr-2.qmd:117` | 13 | irrespective of whether a customer has placed orders or not let us join | irrespective of whether a customer has placed orders or not, let us join |
+| `05-dplyr-2.qmd:126` | 3 | Right join return all rows from `Height` | A right join returns all rows from `Height` |
+| `05-dplyr-2.qmd:146` | 3, 9 | Semi join return all rows … an inner join will return one row of `Age` for each matching row of `Height`, where a semi join will never duplicate rows of `Age`. | A semi join returns all rows … an inner join returns one row of `Age` for each matching row of `Height`, while a semi join never duplicates rows of `Age`. |
+| `05-dplyr-2.qmd:158` | 3 | returned only for those cases where customer data is present. | returned only for the cases where customer data is present. |
+| `05-dplyr-2.qmd:167` | 3 | Anti join return all rows from `Age` where there are not matching values in `Height` | An anti join returns all rows from `Age` where there are no matching values in `Height` |
+| `05-dplyr-2.qmd:195` | 13 | 49 customers placed no orders — and 245 orders have no matching customer record. | 49 customers placed no orders, and 245 orders have no matching customer record. |
+| `05-dplyr-2.qmd:215` | 13 | An `inner_join()` duplicates the left row once per match — here 42 customers with orders explode to 55 joined rows — while `semi_join()` returns | An `inner_join()` duplicates the left row once per match (here 42 customers with orders explode to 55 joined rows), while `semi_join()` returns |
+| `05-dplyr-2.qmd:233` | 3 | Full join return all rows … Where there are not matching values, returns NA for the one missing. | A full join returns all rows … Where there are no matching values, it returns NA for the one missing. |
+| `05-dplyr-2.qmd:252` | 13 | Use it for grids — e.g. all size × color combinations — never for large tables | Use it for grids, such as all size × color combinations, and never for large tables |
+
+Refusals: the rules keep their `Age`/`Height` example tables and the singular "join" noun, as
+taught; only the verb agreement changed. The webR lead-in (265) is identical to ch 4's and is left
+as written so the two callouts match.

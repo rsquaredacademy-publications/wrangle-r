@@ -20,8 +20,8 @@ options(tibble.width = Inf)
 ## Case Study
 
 For our case study, we will use two data sets. The first one, `order`, contains
-details of orders placed by different customers. The second data set, `customer`
-contains details of each customer. The below table displays the details stored
+details of orders placed by different customers. The second data set, `customer`,
+contains details of each customer. The table below shows the details stored
 in each data set.
 
 ```{r img1b, echo=FALSE, out.width="100%", fig.align="center"}
@@ -83,9 +83,9 @@ findings, not join errors — investigate them first.
 
 ## Inner Join
 
-Inner join return all rows from `Age` where there are matching values in 
+An inner join returns all rows from `Age` where there are matching values in 
 `Height`, and all columns from `Age` and `Height`. If there are multiple matches 
-between `Age` and `Height`, all combination of the matches are returned.
+between `Age` and `Height`, all combinations of the matches are returned.
 
 ```{r img3b, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/draw_inner.png")
@@ -93,7 +93,7 @@ knitr::include_graphics("img/draw_inner.png")
 
 ### Case Study: Details of customers who have placed orders and their order details
 
-To get data for all those customers who have placed orders in the past let us 
+To get data for all the customers who have placed orders in the past, let us 
 join the `order` data with the `customer` data using `inner_join`. 
 
 ```{r dplyr3b}
@@ -102,9 +102,9 @@ inner_join(customer, order, by = join_by(id))
 
 ## Left Join
 
-Left join return all rows from `Age`, and all columns from `Age` and `Height`. 
-Rows in `Age` with  no match in `Height` will have NA values in the new columns. 
-If there are multiple  matches between `Age` and `Height`, all combinations of 
+A left join returns all rows from `Age`, and all columns from `Age` and `Height`. 
+Rows in `Age` with no match in `Height` will have NA values in the new columns. 
+If there are multiple matches between `Age` and `Height`, all combinations of 
 the matches are returned.
 
 ```{r img4b, echo=FALSE, out.width="100%", fig.align="center"}
@@ -114,7 +114,7 @@ knitr::include_graphics("img/draw_left.png")
 ### Case Study: Details of customers and their orders irrespective of whether a customer has placed orders or not.
 
 To get data for all those customers and their orders irrespective of whether a 
-customer has placed orders or not let us join the `order` data with the 
+customer has placed orders or not, let us join the `order` data with the 
 `customer` data using `left_join`. 
 
 ```{r dplyr4bb}
@@ -123,7 +123,7 @@ left_join(customer, order, by = join_by(id))
 
 ## Right Join
 
-Right join return all rows from `Height`, and all columns from `Age` and 
+A right join returns all rows from `Height`, and all columns from `Age` and 
 `Height`. Rows in `Height` with no match in `Age` will have NA values in the 
 new columns. If there are multiple matches between `Age` and `Height`, all 
 combinations of the matches are returned.
@@ -143,10 +143,10 @@ right_join(customer, order, by = join_by(id))
 
 ## Semi Join
 
-Semi join return all rows from `Age` where there are matching values in `Height`, 
+A semi join returns all rows from `Age` where there are matching values in `Height`, 
 keeping just columns from `Age`. A semi join differs from an inner join because 
-an inner join will return one row of `Age` for each matching row of `Height`, 
-where a semi join will never duplicate rows of `Age`.
+an inner join returns one row of `Age` for each matching row of `Height`, 
+while a semi join never duplicates rows of `Age`.
 
 ```{r img6b, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/draw_semi.png")
@@ -155,7 +155,7 @@ knitr::include_graphics("img/draw_semi.png")
 ### Case Study: Details of customers who have placed orders
 
 To get customer data for all orders where customer data exists, let us join the `order` data with the 
-`customer` data using `semi_join`. You can observe that data is returned only for those
+`customer` data using `semi_join`. You can observe that data is returned only for the
 cases where customer data is present.
 
 ```{r dplyr6bb}
@@ -164,7 +164,7 @@ semi_join(customer, order, by = join_by(id))
 
 ## Anti Join
 
-Anti join return all rows from `Age` where there are not matching values in 
+An anti join returns all rows from `Age` where there are no matching values in 
 `Height`, keeping just columns from `Age`.
 
 ```{r img7b, echo=FALSE, out.width="100%", fig.align="center"}
@@ -192,7 +192,7 @@ anti_join(customer, order, by = join_by(id))
 anti_join(order, customer, by = join_by(id))
 ```
 
-In this data, 49 customers placed no orders — and 245 orders have no matching
+In this data, 49 customers placed no orders, and 245 orders have no matching
 customer record. Those 245 rows are a data-quality finding (missing or
 mismatched customer data upstream), not a join mistake: an `inner_join()` will
 silently drop them, and a `left_join()`/`right_join()` will carry them with
@@ -212,8 +212,8 @@ by match status in `y` and never add columns from `y`.
 ### When to use semi_join instead of inner_join
 
 Use `semi_join()` when you want the *customers* (or *orders*) themselves, not
-the combined rows. An `inner_join()` duplicates the left row once per match —
-here 42 customers with orders explode to 55 joined rows — while `semi_join()`
+the combined rows. An `inner_join()` duplicates the left row once per match
+(here 42 customers with orders explode to 55 joined rows), while `semi_join()`
 returns each matching customer exactly once (42 rows, customer columns only):
 
 ```{r dplyr_semi_vs_inner}
@@ -230,8 +230,8 @@ columns → `inner_join()` / `left_join()` / `full_join()`; diagnosing coverage
 
 ## Full Join
 
-Full join return all rows and all columns from both `Age` and `Height`. Where 
-there are not matching values, returns NA for the one missing.
+A full join returns all rows and all columns from both `Age` and `Height`. Where 
+there are no matching values, it returns NA for the one missing.
 
 ```{r img8b, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/draw_full.png")
@@ -249,8 +249,8 @@ full_join(customer, order, by = join_by(id))
 ## Cross Join
 
 `cross_join()` returns every combination of rows from both tables (a Cartesian
-product), so it takes no key. Use it for grids — e.g. all size × color
-combinations — never for large tables, since the result has
+product), so it takes no key. Use it for grids, such as all size × color
+combinations, and never for large tables, since the result has
 `nrow(x) * nrow(y)` rows.
 
 ```{r dplyr9bb}
