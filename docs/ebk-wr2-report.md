@@ -320,3 +320,38 @@ Refusals: the `### Your Turn` items, the numbered/bulleted step lists and every 
 inside a chunk are left alone (the tables are code). "Okay!", "Hmmm...", "Ah!" and "Great!" stay:
 they are his rare light lines (§3a.12). Three `## Summary` blocks and the `####` step headings are
 not edited.
+
+## Date & Time: Arithmetic and Time Zones
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `11-lubridate-arithmetic.qmd:9` | 13 | round and roll back dates — including the receivables overdue case study. | round and roll back dates, including the receivables overdue case study. |
+| `11-lubridate-arithmetic.qmd:23` | 3 | Time to do some arithmetic with the dates. | Time to do some arithmetic with dates. |
+| `11-lubridate-arithmetic.qmd:67` | 3, 9 | subtracting the date of invoice from the date of payment. | subtracting the invoice date from the payment date. |
+| `11-lubridate-arithmetic.qmd:111` | 9 | Among the different components it returned were | Among the components it returned were |
+| `11-lubridate-arithmetic.qmd:117` | 3 | `gmtoff` is offset in seconds from GMT i.e. difference in hours and minutes from UTC. | `gmtoff` is the offset in seconds from GMT, i.e. the difference in hours and minutes from UTC. |
+| `11-lubridate-arithmetic.qmd:123` | 2, 9 | let us spend a little time on understanding the basics of time zones | let us spend a little time on the basics of time zones |
+| `11-lubridate-arithmetic.qmd:128` | 3, 9 | receive sun light at different times. … The timezones are based on Earth's rotation. The Earth moves ~15 degrees every 60 minutes i.e. 360 degrees in 24 hours. The planet is divided into 24 timezones each 15 degrees of longitude width. | receive sunlight at different times. … Timezones are based on Earth's rotation. The Earth moves about 15 degrees every 60 minutes, i.e. 360 degrees in 24 hours. The planet is divided into 24 timezones, each 15 degrees of longitude wide. |
+| `11-lubridate-arithmetic.qmd:121` | 8 | - Greenwich Meridian Time (GMT) | - Greenwich Mean Time (GMT) |
+| `11-lubridate-arithmetic.qmd:135` | 8, 9, 3 | you have heard of Greenwich Meridian Time (GMT) right? We just saw GMT off set in `POSIXlt` … For example, India timezone | you have heard of Greenwich Mean Time (GMT). We just saw the GMT offset in `POSIXlt` … For example, the India timezone |
+| `11-lubridate-arithmetic.qmd:139` | 3 | every 15 degree section is one hour earlier than GMT and every 15 degree section to the East is an hour later. | every 15-degree section is one hour earlier than GMT, and every 15-degree section to the East is an hour later. |
+| `11-lubridate-arithmetic.qmd:143` | 3 | **C**oordinated **U**niversal **T**ime (UTC) , on the other hand | **C**oordinated **U**niversal **T**ime (UTC), on the other hand |
+| `11-lubridate-arithmetic.qmd:148` | 9 | you should be able to see the timezone you are in. | you should see the timezone you are in. |
+| `11-lubridate-arithmetic.qmd:162` | 3, 13 | If nothing is returned, it means we have to set the timezone. Use `Sys.setenv()` to set the timezone as shown below. The author resides in India and hence the timezone is set to `Asia/Calcutta`. | If nothing is returned, we have to set the timezone. Use `Sys.setenv()` to set the timezone, as shown below. The author resides in India, and hence the timezone is set to `Asia/Calcutta`. |
+| `11-lubridate-arithmetic.qmd:190` | 3 | Daylight savings also known as | Daylight savings, also known as |
+| `11-lubridate-arithmetic.qmd:213` | 3 | - check if daylight savings in on | - check if daylight savings is on |
+| `11-lubridate-arithmetic.qmd:218` | 11 | In this chapter, we will learn about | In this section, we will learn about |
+| `11-lubridate-arithmetic.qmd:243` | 11 | If you observe carefully, the interval is represented by the course start and end dates. | The interval is represented by the course start and end dates. |
+| `11-lubridate-arithmetic.qmd:252` | 3 | - use `int_overlaps()` to check if two intervals overlap. | - use `int_overlaps()` to check whether two intervals overlap. |
+| `11-lubridate-arithmetic.qmd:310` | 3, 9 | You might be thinking why we incremented the due date … both the intervals will share a common date i.e. the due date and they will always overlap as shown below: | You might be wondering why we incremented the due date … both intervals share a common date, i.e. the due date, and they always overlap, as shown below: |
+| `11-lubridate-arithmetic.qmd:327` | §3a.3 | In the below example, we shift the course interval by: | In the example below, we shift the course interval by: |
+| `11-lubridate-arithmetic.qmd:357` | 13, 2 | We can answer this using `%within%` which will return `TRUE` if a date falls within an interval. | We can answer this using `%within%`, which returns `TRUE` if a date falls within an interval. |
+| `11-lubridate-arithmetic.qmd:393` | 3, 2 | Duration is timespan measured in seconds. … The timespan can be anything from seconds to years but it will be represented as seconds. | A duration is a timespan measured in seconds. … The timespan can be anything from seconds to years, but it is represented as seconds. |
+| `11-lubridate-arithmetic.qmd:407` | 3, 9 | the output is same in both the cases. | the output is the same in both cases. |
+| `11-lubridate-arithmetic.qmd:413` | 9, 3, §3a.3 | it also shows `~1 minutes` in the brackets. As the length of the timespan increases i.e. the number becomes large … In the below examples | it also shows `~1 minutes` in brackets. As the timespan gets longer, i.e. the number becomes large … In the examples below |
+| `11-lubridate-arithmetic.qmd:477` | 3, §3a.3 | we use `period()` to represent timespan using different units. | we use `period()` to represent a timespan using different units. |
+| `11-lubridate-arithmetic.qmd:521` | 3 | a timespan i.e. `duration`, `interval` or `period`. | a timespan, i.e. `duration`, `interval` or `period`. |
+
+Refusals: the "Rule of thumb" paragraph (566) and the interval/duration/period table are new
+reference prose and already in his voice. `round_dates()` (580) is an inline-code typo
+(`round_date()`), out of scope. The webR lead-in is left as in the other chapters.
