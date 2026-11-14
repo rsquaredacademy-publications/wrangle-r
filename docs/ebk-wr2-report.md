@@ -355,3 +355,49 @@ not edited.
 Refusals: the "Rule of thumb" paragraph (566) and the interval/duration/period table are new
 reference prose and already in his voice. `round_dates()` (580) is an inline-code typo
 (`round_date()`), out of scope. The webR lead-in is left as in the other chapters.
+
+## Categorical Data Fundamentals
+
+34 prose sentences changed. The 24 rows below are the ones that alter grammar, sense or a term; the
+other 10 are small comma/`will` fixes of the same kinds and are counted here.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `12-factors-fundamentals.qmd:31` | 13, 3 | data analysis.  Almost every … store, summarize, visualize & manipulate such data. | data analysis. Almost every … store, summarize, visualize and manipulate such data. |
+| `12-factors-fundamentals.qmd:41` | 3 | Quantitative data, on the other hand, consists of numbers and indicate how much or how many. | Quantitative data, on the other hand, consists of numbers and indicates how much or how many. |
+| `12-factors-fundamentals.qmd:46` | 3 | qualitative data is always **discrete** where as quantitative data | qualitative data is always **discrete** whereas quantitative data |
+| `12-factors-fundamentals.qmd:59` | 3, §3a.1 | We can have 5 0r 10 students but not 5.5 students (we can't have half a student). | We can have 5 or 10 students but not 5.5 students (we cannot have half a student). |
+| `12-factors-fundamentals.qmd:82` | 3 | is termed as **binary** or **dichotomous** variable. | is termed a **binary** or **dichotomous** variable. |
+| `12-factors-fundamentals.qmd:109` | 3, 9 | we cannot say that like is twice as positive as dislike i.e. we are unable to say … cannot be measured/determined or are meaningless. | we cannot say that like is twice as positive as dislike, i.e. we are unable to say … cannot be measured. |
+| `12-factors-fundamentals.qmd:184` | 3, 9 | as well as by third party cookies. Data collected is then used to display ads as well as to feed to recommendation algorithms. | as well as by third-party cookies. Data collected is then used to display ads as well as to feed recommendation algorithms. |
+| `12-factors-fundamentals.qmd:187` | 3 | It closely resembles real world data for an e-commerce store. | It closely resembles real-world data for an e-commerce store. |
+| `12-factors-fundamentals.qmd:200` | 13, 8 | We will read a subset of columns … which will cover both nominal and ordinal data types. … enclosed in single/double quotes. | We will read a subset of the columns …, which will cover both nominal and ordinal data types. … enclosed in single or double quotes. |
+| `12-factors-fundamentals.qmd:211` | 2, 9 | we will use the `col_types` argument to list out the data types. … we will use the `cols_only()` function indicating that only the columns specified must be read in and not all of them. | we use the `col_types` argument to list the data types. … we will use `cols_only()` to indicate that only the columns specified must be read. |
+| `12-factors-fundamentals.qmd:216` | 3 | the `ordered` argument to indicate if the data is ordinal. By default, it is set to `FALSE`, change this to `TRUE` if the column is ordinal. | the `ordered` argument to indicate whether the data is ordinal. By default, it is set to `FALSE`; change this to `TRUE` if the column is ordinal. |
+| `12-factors-fundamentals.qmd:264` | 9 | In this very important section, we will learn how R | In this section, we will learn how R |
+| `12-factors-fundamentals.qmd:275` | 11 | the sample data we will use in this module. | the sample data we will use in this section. |
+| `12-factors-fundamentals.qmd:288` | §3a.10, 3, 13 | We have successfully generated the sample data and along the way learnt … let us check if the sample is a `factor` | We have successfully generated the sample data, and along the way learned … let us check whether the sample is a `factor` |
+| `12-factors-fundamentals.qmd:294` | 3 | they return `TRUE` else `FALSE`. | they return `TRUE` and `FALSE` otherwise. |
+| `12-factors-fundamentals.qmd:304` | §3a.1 | Don't worry if you didn't spot it. | Do not worry if you did not spot it. |
+| `12-factors-fundamentals.qmd:323` | 13 | (i.e. 25 values) but 3 unique values. | (i.e. 25 values), but 3 unique values. |
+| `12-factors-fundamentals.qmd:368` | 2, 3, 9 | By default, it will ignore them. … set to `NA` by default i.e. `NA` is excluded automatically. … In order to treat `NA` as a level | By default, it ignores them. … set to `NA` by default, i.e. `NA` is excluded automatically. … To treat `NA` as a level |
+| `12-factors-fundamentals.qmd:387` | 3, 13, §3a.1 | three values Dislike, Neutral & Like in that order … Like is better than neutral which in turn is better than dislike. While we can order them, we can’t quantify … We can’t say | three values, Dislike, Neutral and Like, in that order … Like is better than neutral, which in turn is better than dislike. While we can order them, we cannot quantify … We cannot say |
+| `12-factors-fundamentals.qmd:403` | 3, 9 | In case of ordered factors … This is used to indicate the order of the levels. Now `rating` is both an ordered but the order of the levels is not correct. | In the case of ordered factors … This indicates the order of the levels. Now `rating` is ordered, but the order of the levels is not correct. |
+| `12-factors-fundamentals.qmd:409` | 9, 11 | The ranking of the levels has not changed and is still the same. … If you observe carefully, the ranking follows | The ranking of the levels has not changed. … The ranking follows |
+| `12-factors-fundamentals.qmd:490` | 3 | since data consists of a few distinct values only.  So how do we summarize | since the data consists of a few distinct values only. So how do we summarize |
+| `12-factors-fundamentals.qmd:511` | 3, 9 | for data sanitization i.e. as an analyst … into which any visitor can be classified into. | for data sanitization, i.e. as an analyst … into which any visitor can be classified. |
+| `12-factors-fundamentals.qmd:522` | 2, 13 | Both these functions will return the unique names/labels along with the levels while `levels()` returns | Both these functions return the unique names/labels along with the levels, while `levels()` returns |
+| `12-factors-fundamentals.qmd:531` | 3, 2, 13 | distribution i.e. count/frequency. `table()` and `summary()` will display … will return a tibble with 2 columns (level & count). | distribution, i.e. count/frequency. `table()` and `summary()` display … returns a tibble with 2 columns (level and count). |
+| `12-factors-fundamentals.qmd:554` | 13, 9 | we want to view the proportion or percentage instead of counts i.e. the proportion or percentage of traffic | we want the proportion or percentage instead of counts, i.e. the proportion or percentage of traffic |
+| `12-factors-fundamentals.qmd:579` | 3 | the order of the variables matter. | the order of the variables matters. |
+| `12-factors-fundamentals.qmd:592` | 9, 3 | another function at this point of time … the marginal frequencies i.e. the sum | another function at this point … the marginal frequencies, i.e. the sum |
+| `12-factors-fundamentals.qmd:680` | §3a.1 | We won’t explicitly specify `NA` as a level | We will not explicitly specify `NA` as a level |
+| `12-factors-fundamentals.qmd:687` | 2 | In order to ensure that missing values are also counted | To ensure that missing values are also counted |
+| `12-factors-fundamentals.qmd:693` | 2, 3 | In the first case, it will show `NA` … irrespective of whether there are missing values in the data or not. | In the first case, it shows `NA` … whether or not there are missing values in the data. |
+| `12-factors-fundamentals.qmd:700` | 8 | how to select/access the different parts of a `table`. | how to select the different parts of a `table`. |
+
+Refusals: the taxonomy section (Discrete/Continuous/Dichotomous/Ordinal/Nominal) and the
+qualitative/quantitative summary are teaching content and are left as written apart from the grammar
+rows above. The table descriptions and every `- ifany / - always` value inside chunks are code.
+`**D**esktop, **M**obile, **T**able` at 409 is a content error (the levels are Dislike/Neutral/Like);
+it is reported as a follow-up, not edited here.
