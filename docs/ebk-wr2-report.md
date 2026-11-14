@@ -16,27 +16,28 @@ paragraph; refusals are rows too.
 
 ## Chapters
 
-| Chapter | File | Sentences |
+| Chapter | File | Edit-group rows |
 | :-- | :-- | --: |
 | Preface | `index.qmd` | 2 |
 | About the Author | `00-author.qmd` | 1 |
-| Import Data - Basics | `01-import-1.qmd` | 17 |
+| Import Data - Basics | `01-import-1.qmd` | 20 |
 | Import Data - Advanced | `02-import-2.qmd` | 14 |
-| Pipe Operator | `03-pipes.qmd` | 17 |
-| dplyr Basics | `04-dplyr-1.qmd` | 24 |
+| Pipe Operator | `03-pipes.qmd` | 18 |
+| dplyr Basics | `04-dplyr-1.qmd` | 25 |
 | Joining Tables using dplyr | `05-dplyr-2.qmd` | 13 |
 | dplyr Helpers | `06-dplyr-3.qmd` | 11 |
 | tibbles | `07-tibbles.qmd` | 14 |
 | Tidying Data with tidyr | `08-tidyr.qmd` | 8 |
 | Hacking Strings | `09-stringr.qmd` | 32 |
-| Date & Time: Parsing and Components | `10-lubridate-parsing.qmd` | 64 |
-| Date & Time: Arithmetic and Time Zones | `11-lubridate-arithmetic.qmd` | 27 |
-| Categorical Data Fundamentals | `12-factors-fundamentals.qmd` | 34 |
-| Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 36 |
+| Date & Time: Parsing and Components | `10-lubridate-parsing.qmd` | 36 |
+| Date & Time: Arithmetic and Time Zones | `11-lubridate-arithmetic.qmd` | 26 |
+| Categorical Data Fundamentals | `12-factors-fundamentals.qmd` | 32 |
+| Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 32 |
 | Exercise Solutions | `14-solutions.qmd` | 9 |
 
-Total: 323 sentences. Appendices not done (see "Not done"). The chapter tables list edit-group
-rows; one row can cover more than one sentence, so the row counts do not sum to this sentence total.
+Total: 292 edit-group rows. Appendices not done (see "Not done"). The counts are the displayed
+data rows in the chapter tables below, so they are reproducible; a distinct sentence count is not
+claimed. One row can cover more than one sentence.
 
 ## Preface
 
@@ -488,13 +489,20 @@ is code and a follow-up.
 - Heading lines (`^#{1,6} `): **0 changed**.
 - Fenced-code and chunk-header lines (every line starting with ` ``` `): **0 changed**.
 - Inline-code spans: **not zero edited**. Against `90425d8..ffcf40b` the wr2 pass removed eight
-  occurrences and inserted two `://` spans. The ebk-wr3 follow-up restored three of the removals
-  (`` `order_value` ``, `` `Sys.Date()` ``, `` `along.with` ``), leaving five removals and two
-  insertions. The remaining changes are the false "I am using `head`" line in `06-dplyr-3.qmd` and
-  the false `:`/escape explanation in `09-stringr.qmd`. ebk-wr3 also added four inline spans while
-  correcting prose (`across()`, `ecom1`, `to`, `length.out`). The remaining wr2 changes correct
-  content, but they exceeded the protected-inline-code scope, so the earlier "0 edited" claim was
-  wrong. No other wr2 span changed and no code line moved.
+  occurrences and inserted two `://` spans. ebk-wr3 restored three of those removals
+  (`` `order_value` ``, `` `Sys.Date()` ``, `` `along.with` ``) and removed two more
+  (`stringsAsFactors`, `FALSE` in `07-tibbles.qmd`), so its own delta was **2 removals /
+  11 insertions**: the three restorations plus eight new spans (`across()`, `ecom1`, `to`,
+  `length.out`, `is.`, `is.factor()`, `is_tibble()`, `sort = TRUE`). ebk-wr4 added three more
+  content corrections, each one removal and one insertion: `cell_limit()` -> `cell_limits()`,
+  `stop` -> `end`, and `ecom` -> `ecom_mini`. Against wr1 the full `90425d8..HEAD` delta is
+  therefore **10 removals / 13 insertions**: `02` -1/+1; `04` +2; `06` -2/+1 (`head`, and
+  `ecom` -> `ecom_mini`); `07` -2 (`stringsAsFactors`, `FALSE`); `09` -5/+3 (`stop`, `:` x3
+  and `\\` removed; `end`, `://` x2 added); `10` +2; `12` +3; `14` +1. The remaining removals
+  are content repairs the audit endorses (the false `head` sentence, the obsolete
+  `stringsAsFactors`/`FALSE` contrast, the false `:` escape, the wrong `cell_limit`/`stop`
+  names, and the `ecom`/`ecom_mini` mismatch); they are exceptions to the inline-code guard, not
+  restorations to manufacture a clean guard. No other span changed and no code line moved.
 - `git diff 90425d8 --stat`: 16 `.qmd` files plus `docs/ebk-wr2-report.md`. Nothing else. No `docs/` HTML,
   no `_freeze`, no YAML, no image, no data file.
 
@@ -517,8 +525,11 @@ Packages installed in the *global* library to make the pre-existing chunks run â
   not edited. They are reference stubs and `arrow`/`duckdb` are not installed here, so they could not
   be rendered. One pass each would finish the book.
 - **`docs/` output** is deliberately not committed; CI owns it.
-- **Four removed inline-code occurrences** listed under Guard. Restoring them means re-adding the
-  sentence each one sat in; the sentences were a false claim, a duplicate and two repetitions.
+- **Ten inline-code removals** relative to wr1 are listed under Guard. Three wr2 removals were
+  restored in ebk-wr3; the rest are content repairs (the false `head` claim, the
+  `ecom`/`ecom_mini`, `cell_limit()`/`cell_limits()` and `stop`/`end` mismatches, the obsolete
+  R < 4.0 comparison, and the false regex escape). Restoring them would re-break a worked
+  example or explanation.
 
 ## Follow-ups
 
@@ -528,8 +539,8 @@ Packages installed in the *global* library to make the pre-existing chunks run â
 2. **`round_dates()`** (`11-lubridate-arithmetic:580`) is inline code for `round_date()`.
 3. **`**D**esktop, **M**obile, **T**able`** (`12-factors-fundamentals:409`): the levels under discussion
    are Dislike/Neutral/Like. Fixed in ebk-wr3.
-4. **`pull(ecom_mini, 1)` described as "from `ecom`"** (`06-dplyr-3:209`): variable name left as
-   written, but text and chunk disagree.
+4. **`pull(ecom_mini, 1)` described as "from `ecom`"** (`06-dplyr-3:209`): text now names
+   `ecom_mini`, matching the chunk. Fixed in ebk-wr4.
 5. **Syllabus promises** (`06-dplyr-3:16-18`: compare tables, arrange rows, predicate functions) are
    sections the chapter does not have. The unsupported bullets were removed in ebk-wr3.
 6. **`geom_bar(stat = "identity")`** (`08-tidyr:106`, `13-forcats` plots) is code; `geom_col()` is the

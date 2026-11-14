@@ -132,12 +132,15 @@ Report correction, **`docs/ebk-wr2-report.md:8-10` and `:490-497`**:
 
 - Before: "No ... inline code ... was edited" and "Inline-code spans ... **0 edited**".
 - After: the report states that wr2 removed eight occurrences and inserted two `://` spans across
-  four files, that ebk-wr3 restored three of those removals, that five removals and two insertions
-  remain, and that the remaining wr2 changes were content corrections that exceeded the protected
-  scope. It also records the four inline spans added by this round's prose corrections
-  (`across()`, `ecom1`, `to`, `length.out`).
-- Independent span comparison (`90425d8` vs working tree, outside fences): `04` 0 removed;
-  `06` 1 removed (`head`); `09` 4 removed, 2 added; `10` 0 removed.
+  four files, that ebk-wr3 restored three of those removals, and that the round's own delta is
+  **2 removals / 11 insertions**: the three restorations plus eight new spans (`across()`,
+  `ecom1`, `to`, `length.out`, `is.`, `is.factor()`, `is_tibble()`, `sort = TRUE`). Against wr1
+  the delta at this round was 7 removals / 10 insertions. ebk-wr4 later added three content
+  pairs (`cell_limit()` -> `cell_limits()`, `stop` -> `end`, `ecom` -> `ecom_mini`), making the
+  current wr1-to-HEAD delta 10 removals / 13 insertions.
+- Independent span comparison (`90425d8` vs HEAD at ebk-wr3, outside fences): `04` 0 removed,
+  2 added; `06` 1 removed (`head`); `07` 2 removed (`stringsAsFactors`, `FALSE`); `09` 4 removed,
+  2 added; `10` 0 removed, 2 added; `12` 0 removed, 3 added; `14` 0 removed, 1 added.
 
 ## Low items
 
@@ -147,10 +150,10 @@ Report correction, **`docs/ebk-wr2-report.md:8-10` and `:490-497`**:
   "`tibble()` prints only the first rows of a large tibble, so it does not clutter your console."
   This also removes the absolute "never".
 - **L4 `docs/ebk-wr2-report.md:17-38`, `:294`, `:379`, `:425`**: the summary column is now
-  "Sentences", with a note that chapter tables list edit-group rows and do not sum to the sentence
-  total. The three wrong captions now match their tables: Parsing 36 rows/28 other, Factors 32
-  rows/2 other, forcats 32 rows/4 other. The 323-sentence total is unchanged and now labelled as
-  sentences rather than rows.
+  "Edit-group rows" and the per-chapter counts are the displayed table rows (Import Basics 20,
+  Pipe Operator 18, dplyr Basics 25, Parsing 36, Categorical 32, forcats 32), totalling 292.
+  A distinct sentence count is no longer claimed. The three revised captions still match their
+  tables: Parsing 36 rows/28 other, Factors 32 rows/2 other, forcats 32 rows/4 other.
 
 ## M7-M14 - inherited accuracy corrections
 
