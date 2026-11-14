@@ -83,3 +83,30 @@ Refusals: `01-import-1.qmd:62` keeps "Great!", his rare light line (§3a.12), an
 
 Refusals: the `## Method 1`/`## Method 2`/`## Method 3` headings repeat across two sections, but
 headings are not edited. "i.e." and the `- SAS / - SPSS / - STATA` syllabus are left as written.
+
+## Pipe Operator
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `03-pipes.qmd:9` | 3, 2, 9 | R code contain a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. … provides pipes enabling us to write R code that is readable. | A sequence of multiple operations in R contains a lot of parentheses. When you deal with complex code, it results in nested function calls which are hard to read and maintain. … provides pipes that let us write R code that is readable. |
+| `03-pipes.qmd:31` | 13 | Older code — including the first edition of this chapter — used the magrittr pipe | Older code, including the first edition of this chapter, used the magrittr pipe |
+| `03-pipes.qmd:48` | 13 | For first-argument chains — every example in this book — the two pipes read identically | For first-argument chains, which is every example in this book, the two pipes read identically |
+| `03-pipes.qmd:87` | 9 | a smaller data set from the above data to be used in some examples: | a smaller data set from the above data to use in some examples: |
+| `03-pipes.qmd:103` | 8, 9, 2 | It returns the first few observations/rows of data. We can specify the number of observations it should return as well. | it returns the first few rows of data. We can also specify the number of rows it should return. |
+| `03-pipes.qmd:122` | 3, 9 | Time to try a slightly  more challenging example. We want the square root of `n_pages` column from the data set. | Time to try a slightly more challenging example. We want the square root of the `n_pages` column from the data set. |
+| `03-pipes.qmd:164` | 9, 3 | Let us look at the steps involved in creating the bar plot: | The steps involved in creating the bar plot are: |
+| `03-pipes.qmd:192` | 2 | In R, correlation is computed using `cor()`. | In R, we compute correlation using `cor()`. |
+| `03-pipes.qmd:194` | 3 | visitors who purchased some product. | visitors who purchased a product. |
+| `03-pipes.qmd:217` | 3 | We regress time spent on the site on number of pages visited. | We regress time spent on the site on the number of pages visited. |
+| `03-pipes.qmd:238` | §3a.3, 3 | the first name (jovial) from the below email id … Below are the steps to achieve this: | the first name (jovial) from the email id below … The steps to achieve this are: |
+| `03-pipes.qmd:265` | 3, 5 | Another method that uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package. | Another method uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package: |
+| `03-pipes.qmd:277` | 3 | Let us turn our attention towards data extraction. | Let us turn our attention to data extraction. |
+| `03-pipes.qmd:285` | 3, 8, 9 | To extract a specific column using the column name, we mention the name of the column in single/double quotes within `[` or `[[`. In case of `$`, we do not use quotes. | To extract a column by name, we put the name in single or double quotes within `[` or `[[`. With `$`, we do not use quotes. |
+| `03-pipes.qmd:297` | 3, 8, §3a.3 | We can extract columns using their index position. Keep in mind that index position starts from **1** in R. In the below example, we show how to extract `n_pages` column but instead of using the column name, we use the column position. | We can also extract columns by position. Keep in mind that positions start from **1** in R. In the example below, we extract the `n_pages` column by position instead of by name. |
+| `03-pipes.qmd:309` | 3 | One important differentiator between `[` and `[[` | One important difference between `[` and `[[` |
+| `03-pipes.qmd:330` | 3 | It is the tidyverse alternative for `[[`. | It is the tidyverse alternative to `[[`. |
+| `03-pipes.qmd:360` | 3, 9 | magrittr offer alternatives for arithemtic operations as well. | magrittr offers alternatives for arithmetic operations as well. |
+
+Refusals: the "select/expose" bullets (131, 167, 197) are left: they name the two functions the
+section shows, not a synonym. `03-pipes.qmd:324` keeps "using as.list() as shown below" — the
+function is written without backticks, and adding inline code is out of scope.
