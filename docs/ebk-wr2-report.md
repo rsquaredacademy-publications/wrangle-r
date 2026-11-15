@@ -34,7 +34,7 @@ paragraph; refusals are rows too.
 | Date & Time: Arithmetic and Time Zones | `11-lubridate-arithmetic.qmd` | 26 |
 | Categorical Data Fundamentals | `12-factors-fundamentals.qmd` | 32 |
 | Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 32 |
-| Exercise Solutions | `14-solutions.qmd` | 9 |
+| Exercise Solutions | `14-solutions.qmd` | 8 |
 
 Total: 292 edit-group rows. Appendices not done (see "Not done"). The counts are the displayed
 data rows in the chapter tables below, so they are reproducible; a distinct sentence count is not

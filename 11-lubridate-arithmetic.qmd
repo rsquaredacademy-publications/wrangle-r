@@ -161,7 +161,7 @@ Sys.getenv("TZ")
 
 If nothing is returned, R uses the system timezone. Use `Sys.setenv()` 
 to override it when needed, as shown below. The author resides in India, and hence the 
-timezone is set to `Asia/Calcutta`. You need to set the timezone in which you 
+timezone is set to `Asia/Calcutta`. Replace it with the timezone in which you 
 reside or work.
 
 ```{r set_time_zone}

@@ -169,8 +169,8 @@ read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/dataset
 
 In the output above, `readr` displays the column names and column types, 
 followed by the first 10 rows of data. 
-`readr` guesses the type of each column from the first 1,000 rows, then 
-checks that guess against a sample spread through the file. The data can be 
+`readr` guesses the type of each column from a sample of 1,000 rows spread 
+through the file. The data can be 
 of the following types:
 
 - integer
