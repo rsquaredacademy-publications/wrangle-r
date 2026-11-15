@@ -6,10 +6,10 @@ description: "Data Wrangling in R: worked solutions to chapter exercises, plus o
 
 ## Introduction
 
-Try every **Your Turn** before reading its solution — the struggle is the
+Try every **Your Turn** before reading its solution: the struggle is the
 lesson. Worked solutions below cover @dplyr-basics, @tidying-data-with-tidyr,
 @date-and-time-in-r, @date-arithmetic-time-zones, @categorical-data-in-r and
-@forcats-manipulation. Remaining chapters are open stubs — to contribute one,
+@forcats-manipulation. Remaining chapters are open stubs. To contribute one,
 open an issue or pull request with the chapter, the question, and a runnable
 chunk in this book's style (`|>`-first, same data as the chapter).
 
@@ -24,7 +24,7 @@ library(readr)
 
 ```{r sol_data, message=FALSE}
 ecom <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(device = col_factor(levels = c("laptop", "tablet", "mobile")),
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       purchase = col_logical(), n_pages = col_double(), n_visit = col_double(),
@@ -41,7 +41,7 @@ ecom |>
   summarise(mean_pages = mean(n_pages), .by = purchase)
 ```
 
-Purchasers browse far more pages (~16 vs ~5) — the signal behind the AOV case
+Purchasers browse far more pages (~16 vs ~5), the signal behind the AOV case
 study.
 
 **Q2. What is the average time on site for purchasers vs non-purchasers?**
@@ -68,7 +68,7 @@ ecom |>
 ```{r sol_tidyr_data, message=FALSE}
 library(tidyr)
 mockstring <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/mock_strings.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/mock_strings.csv',
     show_col_types = FALSE)
 ```
 
@@ -94,7 +94,7 @@ reunited <- split |>
 identical(reunited$rejoined, mockstring$email)
 ```
 
-Yes — every row round-trips (`TRUE`), since each address holds exactly one
+Yes, every row round-trips (`TRUE`), since each address holds exactly one
 `"@"`.
 
 **Q3. Run the `complete()` example without `fill`: what does the missing count
@@ -117,7 +117,7 @@ absent combinations but has no value to put in `n`, so the count is unknown
 ```{r sol_lub10_libs, message=FALSE}
 library(lubridate)
 transact <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv',
     show_col_types = FALSE)
 ```
 
@@ -167,7 +167,7 @@ as.Date("2019-07-05")
 ```
 
 Note the ambiguous pairs: `05/07/2019` vs `07/05/2019` is day-first vs
-month-first — the format string, not the data, decides. `as.Date()` matches
+month-first: the format string, not the data, decides. `as.Date()` matches
 literals (`"July "`, `"th"`, `", "`) character-for-character.
 
 **Q4. Parse the same spellings with `strptime()` / `parse_date_time()` /
@@ -185,7 +185,7 @@ ymd("2019-07-05")
 ```
 
 One `parse_date_time()` call with several `orders` handles the whole mixed
-vector — prefer helpers (`mdy()`/`dmy()`/`ymd()`) when a column uses a single
+vector. Prefer helpers (`mdy()`/`dmy()`/`ymd()`) when a column uses a single
 convention.
 
 **Q5. From the `Due` column of `transact`, tabulate year, labelled month,
@@ -230,7 +230,7 @@ vac_end2 <- vac_end + weeks(2)
 as.period(vac_start2 %--% vac_end2)
 
 receivables <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/receivables.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/receivables.csv',
     show_col_types = FALSE)
 receivables |>
   mutate(invoice_date = mdy(invoice_date), due_date = mdy(due_date),
@@ -241,7 +241,7 @@ receivables |>
   head()
 
 hr <-
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/hr-data.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/hr-data.csv',
     show_col_types = FALSE)
 hr |>
   filter(Termd == 1, !is.na(DateofTermination)) |>
@@ -281,13 +281,13 @@ already); `ceiling_date()` moves each due date forward to its week boundary.
 ## Categorical Data Fundamentals
 
 ```{r sol_fct12_data, message=FALSE}
-analytics_raw <- readRDS("analytics_raw.rds")
+analytics_raw <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics_raw.rds"))
 ```
 
 **Q1. Quantitative or qualitative?** Quantitative: Age, Annual Sales, Weight,
 Height, Job/Work Experience. Qualitative: Gender, Education Level, Vehicle
 Type, Ice Cream Flavor, Blood Group, Color, Mode of Payment. (Education Level
-is qualitative but *ordered* — see ordered factors below.)
+is qualitative but *ordered*; see ordered factors below.)
 
 **Q2. Dichotomous or polychotomous?** Dichotomous (exactly two outcomes):
 Heads / Tails, Rich / Poor, Democrat / Republican. Polychotomous (three or
@@ -355,20 +355,21 @@ proportions(table(factor(analytics_raw$channel),
 
 ```{r sol_fc13_data, message=FALSE}
 library(forcats)
-data <- readRDS("analytics.rds")
+data <- readRDS(url("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds"))
 ```
 
 **Q1–Q2. Frequencies in descending order; is `laptop` a `device` level?**
 
 ```{r sol_fc13a}
-data |> pull(device) |> fct_count()
-data |> pull(landing_page) |> fct_count()
-data |> pull(exit_page) |> fct_count()
+data |> pull(device) |> fct_count(sort = TRUE)
+data |> pull(landing_page) |> fct_count(sort = TRUE)
+data |> pull(exit_page) |> fct_count(sort = TRUE)
 "laptop" %in% levels(data$device)
 ```
 
-`fct_count()` sorts most-frequent-first. (`device` here holds
-Desktop/Mobile/Tablet, so `"laptop"` is not a level — it belongs to the
+`fct_count()` lists levels in their current level order; `sort = TRUE` orders
+them by descending frequency. (`device` here holds
+Desktop/Mobile/Tablet, so `"laptop"` is not a level: it belongs to the
 `ecom` schema, not `analytics`.)
 
 **Q3–Q8. Collapsing, lumping, keeping and anonymizing levels.**
@@ -473,7 +474,7 @@ data |>
 
 ## Open stubs
 
-Chapters without **Your Turn** blocks still need proposed drills + solutions —
+Chapters without **Your Turn** blocks still need proposed drills and solutions;
 contributions welcome (see above):
 
 - @joining-tables-in-r-dplyr: join puzzles on `customer`/`order`

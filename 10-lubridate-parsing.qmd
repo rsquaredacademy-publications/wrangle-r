@@ -31,7 +31,7 @@ Let us begin by looking at the current date and time.
 
 ### Date
 
-`Sys.Date()` and `today()`  will return the current date.
+`Sys.Date()` and `today()` return the current date.
 
 ```{r sys_date}
 Sys.Date()
@@ -50,7 +50,7 @@ lubridate::now(tzone = "UTC")
 
 ### AM or PM?
 
-`am()` and `pm()` allow us to check whether date/time occur in the am or pm? They return a logical value i.e. `TRUE` or `FALSE`
+`am()` and `pm()` allow us to check whether a date/time occurs in the am or pm. They return a logical value, i.e. `TRUE` or `FALSE`.
 
 ```{r lub_am}
 lubridate::am(now())
@@ -92,17 +92,17 @@ data.frame(Function = cname, Description = descrip) |>
 
 ## Case Study
 
-Throughout the tutorial, we will work on a case study related to transactions of a imaginary company. The data set includes information about
+Throughout this chapter, we will work on a case study related to transactions of an imaginary company. The data set includes information about
 invoice and payment dates.
 
 ### Data
 
 ```{r import, eval=FALSE}
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 ```
 
 ```{r show, echo=FALSE, eval=TRUE, message=FALSE}
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 transact
 ```
 
@@ -153,10 +153,10 @@ quickly check the data type of `release_date`.
 class(release_date)
 ```
 
-The data type is `numeric` i.e. R has subtracted `12` twice from `2019` to 
+The data type is `numeric`: R has subtracted `12` twice from `2019` to 
 return `1995`. Clearly, the above method is not the right way to store 
-date/time. Let us see if we can get some hints from the builtin R functions we 
-used in the previous section. If you observe the output, all of them returned 
+date/time. Let us see whether we can get some hints from the builtin R functions we 
+used in the previous section. In the output, all of them returned 
 date/time wrapped in quotes. Hmmm... let us wrap our date in quotes and see what 
 happens.
 
@@ -167,8 +167,8 @@ release_date
 
 Alright, now R does not do any arithmetic and returns the date as we specified. 
 Great! Is this the right format to store date/time? No. Why? What is the problem 
-if date/time is saved as character/string? The problem is the nature or type of 
-operations done on date or time is different when compared to string/character, 
+if date/time is saved as character/string? The problem is that the nature of the 
+operations done on date or time is different from those on string/character, 
 number or logical values.
 
 - how do we add/subtract dates?
@@ -183,8 +183,8 @@ class(lubridate::now())
 class(release_date)
 ```
 
-As you can see from the above output, there are 3 different classes for storing
-date/time in R 
+In the output above, there are 3 different classes for storing
+date/time in R: 
 
 - `Date`
 - `POSIXct`
@@ -198,7 +198,7 @@ Let us explore each of the above classes one by one.
 
 The `Date` class represents calendar dates. Let us go back to `Sys.Date()`. If 
 you check the class of `Sys.Date()`, it is `Date`. Internally, this date is a 
-number i.e. an integer. The `unclass()` function will show dates are stored 
+number, i.e. an integer. The `unclass()` function shows how dates are stored 
 internally.
 
 ```{r unclass_sys_date}
@@ -207,14 +207,13 @@ unclass(Sys.Date())
 
 What does this integer represent? Why has R stored the date as an integer? 
 Before we answer this question, we need to know something else. In R, dates are 
-represented as the number of days since `1970-01-01`. All the dates in R are 
-internally stored in this way. Before we explore this concept further, let us 
+represented as the number of days since `1970-01-01`; all the dates in R are 
+stored in this way. Before we explore this concept further, let us 
 learn to create `Date` objects in R. We will continue to use the latest R 
 release date, `2019-12-12`.
 
-Until now, we have stored the above date as character/string but now we will use 
-`as.Date()` to save it as a `Date` object. `as.Date()` is the easiest and 
-simplest way to create dates in R.
+Until now, we have stored the above date as character/string, but now we use 
+`as.Date()` to save it as a `Date` object. `as.Date()` is the easiest way to create dates in R.
 
 ```{r release_as_date}
 release_date <- as.Date("2019-12-12")
@@ -228,15 +227,15 @@ release_date <- lubridate::as_date("2019-12-12")
 release_date
 ```
 
-If you look at the difference between `release_date` and `1970-01-01`, it will 
-be the same as `unclass(release_date)`.
+If you look at the difference between `release_date` and `1970-01-01`, it is 
+the same as `unclass(release_date)`.
 
 ```{r release_date_unclass}
 release_date - as.Date("1970-01-01")
 unclass(release_date)
 ```
 
-Let us come back to `1970-01-01` i.e. the origin for dates in R. 
+Let us come back to `1970-01-01`, i.e. the origin for dates in R. 
 
 ```{r origin}
 lubridate::origin
@@ -265,7 +264,7 @@ object
 - factor (categorical/qualitative)
 
 We have explored how to convert strings to date. How about converting numbers to 
-date? Sure, we can create date from numbers by specifying the origin and number 
+date? We can create a date from numbers by specifying the origin and the number 
 of days since it. 
 
 ```{r release_date_origin}
@@ -284,9 +283,9 @@ as.Date(7285, origin = "2000-01-01")
 knitr::include_graphics('img/iso.png')
 ```
 
-If you have carefully observed, the format in which we have been specifying the 
-dates as well as of those returned by functions such as `Sys.Date()` or 
-`Sys.time()` is the same i.e. `YYYY-MM-DD`. It includes
+In the examples above, the format in which we specify the 
+dates, and the format returned by functions such as `Sys.Date()` or 
+`Sys.time()`, is the same, i.e. `YYYY-MM-DD`. It includes
 
 - the year including the century
 - the month
@@ -309,14 +308,14 @@ ISOdate(year  = 2019,
 
 We will look at all the different weird ways in which date/time are specified in 
 the real world in the [Date & Time Formats] section. For the time being, let us 
-continue exploring date/time classes in R. The next class we are going to look 
-at is `POSIXct/POSIXlt`.
+continue exploring date/time classes in R. The next classes we are going to look 
+at are `POSIXct/POSIXlt`.
 
 ### POSIX
 
-You might be wondering what is this POSIX thing? POSIX stands for **P**ortable 
-**O**perating **S**ystem **I**nterface. It is a family of standards specified f
-or maintaining compatibility between different operating systems. Before we 
+You might be wondering what this POSIX thing is. POSIX stands for **P**ortable 
+**O**perating **S**ystem **I**nterface. It is a family of standards specified 
+for maintaining compatibility between different operating systems. Before we 
 learn to create POSIX objects, let us look at `now()` from lubridate.
 
 ```{r now_class}
@@ -335,9 +334,9 @@ The output you see is the number of seconds since January 1, 1970.
 #### POSIXct
 
 `POSIXct` represents the number of seconds since the beginning of 1970 (UTC) and 
-`ct` stands for calendar time.  To store date/time as `POSIXct` objects, use 
-`as.POSIXct()`. Let us now store the latest R release date as `POSIXct` as shown 
-below
+`ct` stands for calendar time. To store date/time as `POSIXct` objects, use 
+`as.POSIXct()`. Let us now store the latest R release date as `POSIXct`, as shown 
+below.
 
 ```{r release_date_posixct}
 release_date <- as.POSIXct("2019-12-12 08:05:03")
@@ -363,7 +362,7 @@ unclass(release_date)
 
 The `lt` in `POSIXlt` stands for local time. Use `as.POSIXlt()` to store 
 date/time as `POSIXlt` objects. Let us store the release date as a `POSIXlt` 
-object as shown below
+object, as shown below.
 
 ```{r release_date_posixlt_1}
 release_date <- as.POSIXlt("2019-12-12 08:05:03")
@@ -396,7 +395,7 @@ release_date$zone
 ```
 
 Now, let us look at the components returned by `POSIXlt`. Some of them are 
-intuitive
+intuitive:
 
 ```{r table_posixlt_1, echo=FALSE}
 cname   <- c("`sec`", "`min`", "`hour`", "`mon`", "`zone`", "`wday`", "`mday`",              "`year`", "`yday`", "`isdst`", "`gmtoff`")
@@ -411,7 +410,7 @@ data.frame(Component = cname, Description = descrip) |>
   )
 ```
 
-Great! We will end this section with a few tips/suggestions on when to use 
+Great! We will end this section with a few tips on when to use 
 `Date` or `POSIXct/POSIXlt`. 
 
 - use `Date` when there is no time component
@@ -437,10 +436,10 @@ R 1.0.0 was released on `2000-02-29 08:55:23 UTC`. Save it as
 ### Introduction
 
 After the timezones and daylight savings detour, let us get back on path and 
-explore another important aspect, date & time formats. Although it is a good 
-practice to adher to ISO 8601 format, not all date/time data will comply with 
-it. In real world, date/time data may come in all types of weird formats. Below
-is a sample
+explore another important aspect, date & time formats. Although it is good 
+practice to adhere to the ISO 8601 format, not all date/time data will comply with 
+it. In the real world, date/time data may come in all types of weird formats. Below
+is a sample.
 
 ```{r table_formats_sample, echo=FALSE}
 cname   <- c("December 12, 2019", "12th Dec, 2019", "Dec 12th, 19", "12-Dec-19",
@@ -479,9 +478,9 @@ data.frame(Specification = cname, Description = descrip, Example = example) |>
 ```
 
 Time to work through a few examples. Let us say you are dealing with dates in 
-the format `19/12/12`. In this format, the year comes first followed by month 
-and the date; each separated by a backslash (`/`). The year consists of only 2 
-digits i.e. it does not include the century. Let us now map each component of 
+the format `19/12/12`. In this format, the year comes first, followed by the month 
+and the date, each separated by a `/`. The year consists of only 2 
+digits, i.e. it does not include the century. Let us now map each component of 
 the date to the format table shown at the beginning.
 
 ```{r table_formats_ex_1, echo=FALSE}
@@ -494,15 +493,15 @@ data.frame(Date = cname, Specification = descrip) |>
   )
 ```
 
-Using the format argument, we will specify the date format as a character vector
+Using the format argument, we specify the date format as a character vector,
 i.e. enclosed in quotes.
 
 ```{r format_examples_1}
 as.Date("19/12/12", format = "%y/%m/%d")
 ```
 
-Another way in which the release data can be written is `2019-Dec-12`. We still 
-have the year followed by the month and the date but there are a few changes 
+Another way in which the release date can be written is `2019-Dec-12`. We still 
+have the year followed by the month and the date, but there are a few changes 
 here:
 
 - the components are separated by a `-` instead of `/`
@@ -527,8 +526,8 @@ Let us specify the format for the date using the above mapping.
 as.Date("2019-Dec-12", format = "%Y-%b-%d")
 ```
 
-In both the above examples, we have not dealt with time components. Let us 
-include the time of the latest R release in the next one i.e. 
+In both the examples above, we have not dealt with time components. Let us 
+include the time of the latest R release in the next one, i.e. 
 `19/12/12 08:05:03`.
 
 ```{r table_formats_ex_3, echo=FALSE}
@@ -548,7 +547,7 @@ Since we are dealing with time, we will use `as.POSIXct()` instead of
 as.POSIXct("19/12/12 08:05:03", tz = "UTC", format = "%y/%m/%d %H:%M:%S")
 ```
 
-In the below table, we look at some of the most widely used conversion 
+In the table below, we look at some of the most widely used conversion 
 specifications. You can learn more about these specifications by running 
 `?strptime` or `help(strptime)`.
 
@@ -580,12 +579,12 @@ data.frame(Specification = cname, Description = descrip) |>
 ```
 
 We have included a lot of practice questions for you to explore the different 
-date/time formats. The solutions are available in the Learning Management system 
+date/time formats. The solutions are available in the learning management system 
 as well as in our GitHub repo. Try them and let us know if you have any doubts.
 
 ### Guess Format
 
-`guess_formats()` from lubridate is a very useful function. It will guess the 
+`guess_formats()` from lubridate is a very useful function. It guesses the 
 date/time format if you specify the order in which year, month, date, hour, 
 minute and second appear.
 
@@ -619,18 +618,18 @@ Below, we have specified `July 5th, 2019` in different ways. Create the date usi
 ## Parse Date & Time 
 
 While creating date-time objects, we specified different formats using the 
-conversion specification but most often you will not create date/time and
-instead deal with data thay comes your way from a system or 
-colleague/collaborator. In such cases, we need to be able to parse date/time 
+conversion specification. Most often though, you will not create date/time;
+you will deal with data that comes your way from a system or 
+a colleague. In such cases, we need to parse date/time 
 from the data provided to us. In this section, we will focus on parsing 
 date/time from character data. Both base R and the lubridate package offer 
-functions to parse date and time and we will explore a few of them in this 
-section. We will initially use functions from base R and later on explore those
-from lubridate which will give us an opportunity to compare and contrast. It 
+functions to parse date and time, and we will explore a few of them. 
+We will start with functions from base R and later explore those
+from lubridate, which gives us an opportunity to compare and contrast. It 
 will also allow us to choose the functions based on the data we are dealing 
 with.
 
-`strptime()` will convert character data to `POSIXlt`. You will use this when
+`strptime()` converts character data to `POSIXlt`. You will use this when
 converting from character data to date/time. On the other hand, if you want to
 convert date/time to character data, use any of the following:
 
@@ -640,7 +639,7 @@ convert date/time to character data, use any of the following:
 
 The above functions will convert `POSIXct/POSIXlt` to character. Let us start
 with a simple example. The data we have been supplied has date/time as 
-character data and in the format `YYYYMMDD` i.e. nothing separates the year, 
+character data in the format `YYYYMMDD`, i.e. nothing separates the year, 
 month and date from each other. We will use `strptime()` to convert this to an
 object of class `POSIXlt`.
 
@@ -650,9 +649,9 @@ class(rel_date)
 ```
 
 If you have a basic knowledge of conversion specifications, you can use 
-`strptime()` to convert character data to `POSIXlt`. Let us quickly explore the
-functions to convert date/time to character data before moving on to the 
-functions from lubridate.
+`strptime()` to convert character data to `POSIXlt`. Let us explore the
+functions that convert date/time to character data before moving on to 
+lubridate.
 
 ```{r}
 rel_date_strf <- strftime(rel_date)
@@ -665,13 +664,13 @@ rel_date_char <- as.character(rel_date)
 class(rel_date_char)
 ```
 
-As you can see, all the 3 functions converted date/time to character. Time to 
+In the output above, all the 3 functions converted date/time to character. Time to 
 move on and explore the lubridate package. We will start with an example in 
-which the release date is formatted in 3 different ways but they have one thing 
-in common i.e. the order in which the components appear. In all the 3 formats, 
+which the release date is formatted in 3 different ways, but they have one thing 
+in common: the order in which the components appear. In all the 3 formats, 
 the year is followed by the month and then the date.
 
-To parse the release date, we will use `parse_date_time()` from lubridate which 
+To parse the release date, we will use `parse_date_time()` from lubridate, which 
 parses the input into `POSIXct` objects.
 
 ```{r parse_date_time}
@@ -688,8 +687,8 @@ look at another data set.
 release_date <- c("19-07-05", "2019-07-05", "05-07-2019", "07-05-2019")
 ```
 
-What happens in the below case? The same date appears in multiple formats. How 
-do we parse them? `parse_date_time()` allows us to specify mutiple date-time 
+What happens in the case below? The same date appears in multiple formats. How 
+do we parse them? `parse_date_time()` allows us to specify multiple date-time 
 formats. Let us first map the dates to their formats.
 
 ```{r table_formats_pdt, echo=FALSE}
@@ -709,7 +708,7 @@ parse_date_time(release_date, c("ymd", "ymd", "dmy", "mdy"))
 ```
 
 Great! We have used both `strptime()` and `parse_date_time()` now. Can you tell 
-what differentiates `parse_date_time()` when compared to `strptime()`? We 
+what differentiates `parse_date_time()` from `strptime()`? We 
 summarize it in the points below:
 
 - no need to include `%` prefix or separator
@@ -721,7 +720,7 @@ There are other helper functions that can be used to
 - parse dates with year, month, day, hour, minute, seconds components
 - parse period with hour, minute, second components
 
-and are explored in the below examples.
+and are explored in the examples below.
 
 ```{r parse_ymd}
 # year/month/date
@@ -772,7 +771,7 @@ Below, we have specified `July 5th, 2019` in different ways. Parse the dates usi
 ## Date & Time Components 
 
 In the second section, we discussed the downside of saving date/time as 
-character/string in R. One of the points we discussed was that we can't extract 
+character/string in R. One of the points we discussed was that we cannot extract 
 components such as year, month, day etc. In this section, we will learn to 
 extract date/time components such as
 
@@ -792,7 +791,7 @@ extract date/time components such as
 knitr::include_graphics('img/day_week_month.png')
 ```
 
-The below table outlines the functions we will explore in the first part of this
+The table below outlines the functions we will explore in the first part of this
 section. 
 
 ```{r table_components_1, echo=FALSE}
@@ -817,14 +816,14 @@ year(release_date)
 
 ### Month
 
-`month()` will return the month as a number i.e. `07` for July. 
+`month()` returns the month as a number, i.e. `07` for July. 
 
 ```{r month_1}
 month(release_date)
 ```
 
 If you want the name of the month instead, use the `label` argument and set it 
-to `TRUE`. Now it returns `Jul` instead of `07`.
+to `TRUE`. It now returns `Jul` instead of `07`.
 
 ```{r month_2}
 month(release_date, label = TRUE)
@@ -837,8 +836,8 @@ name of the month? Set the `abbr` argument to `FALSE`.
 month(release_date, label = TRUE, abbr  = FALSE)
 ```
 
-Ah! now we can see the full name of the month. `months()` from base R will 
-return the full name of the month by default. If you want the abbreviated name, 
+Ah! Now we can see the full name of the month. `months()` from base R 
+returns the full name of the month by default. If you want the abbreviated name, 
 use the `abbreviate` argument and set it to `TRUE`.
 
 ```{r month_4}
@@ -847,7 +846,7 @@ months(release_date)
 
 ### Week
 
-`week()` returns the number of complete 7 day periods between the date and 1st 
+`week()` returns the number of complete 7-day periods between the date and 1st 
 January plus one. 
 
 ```{r week}
@@ -940,8 +939,8 @@ seconds(release_date)
 knitr::include_graphics('img/quarter_semester.png')
 ```
 
-`quarter()` will return the quarter from the date. December is in the 4th 
-quarter and hence it returns 4. 
+`quarter()` returns the quarter from the date. December is in the 4th 
+quarter, so it returns 4. 
 
 ```{r quarter_1}
 quarter(release_date)
@@ -954,9 +953,9 @@ If you want the year along with the quarter, set the `with_year` argument to
 quarter(release_date, with_year = TRUE)
 ```
 
-In India, the fiscal starts in April and December falls in the 3rd quarter. How 
+In India, the fiscal year starts in April, and December falls in the 3rd quarter. How 
 can we accommodate this change? The `fiscal_start` argument allows us to set the 
-month in which the fiscal begins. We will set it to 4 for April. Now it returns 
+month in which the fiscal year begins. We set it to 4 for April, and it now returns 
 3 instead of 4.
 
 ```{r quarter_3}
@@ -1000,14 +999,14 @@ transact |>
 
 Let us do some data sanitization. If the due day happens to be February 29, 
 let us ensure that the due year is a leap year. Below are the steps to check 
-if the due year is a leap year:
+whether the due year is a leap year:
 
 - we will extract the following from the due date:
     - day
     - month
     - year
-- we will then create a new column `is_leap` which will have be set to `TRUE` if 
-the year is a leap year else it will be set to `FALSE` 
+- we will then create a new column `is_leap` which will be set to `TRUE` if 
+the year is a leap year, and `FALSE` otherwise 
 - filter all the payments due on 29th Feb
 - select the following columns:
     - `Due`
@@ -1049,9 +1048,9 @@ Using the `transact` data, tabulate the following from the `Due` column:
 
 ## Create, Update & Verify
 
-In the second section, we learnt to create date-time objects using `as.Date()`, 
+In the second section, we learned to create date-time objects using `as.Date()`, 
 `as.POSIXct()` etc. In this section, we will explore a few other functions that 
-will allow us to do the same
+allow us to do the same.
 
 - `make_date()`
 - `make_datetime()`
@@ -1065,7 +1064,7 @@ following:
 - month
 - date
 
-We need to specify all the components in numbers i.e. we cannot use `Jul` or 
+We need to specify all the components in numbers, i.e. we cannot use `Jul` or 
 `July` for the month. It has to be `7`.
 
 ```{r make_date}
@@ -1089,15 +1088,15 @@ make_datetime(year  = 2019,
 ### Update
 
 Let us look at another scenario. You have a date-time object and want to change 
-one of its components i.e. any of the following
+one of its components, i.e. any of the following:
 
 - year
 - month
 - date
 
 Instead of creating another date-time object, you can change any of the 
-components using `update()`. In the below example, we will start with the date 
-of release of R version 3.6.1 and using `update()`, we will change it to
+components using `update()`. In the example below, we start with the date 
+of release of R version 3.6.1 and, using `update()`, change it to
 `2019-12-12`.
 
 ```{r update}
@@ -1111,9 +1110,9 @@ prev_release |>
 ### Date Sequence
 
 So far we have created a single date-time instance. How about creating a 
-sequence of dates? We can do that using `seq.Date()`. We need to specify the 
-from date as the bare minimum input. If the end date is not specified, it will 
-create the sequence uptil the current date.
+sequence of dates? We can do that using `seq.Date()`. For the first examples,
+we supply the from date and either an end date (`to`) or a length
+(`length.out`); there is no implicit current-date endpoint.
 
 The interval of the sequence can be specified in any of the following units:
 
@@ -1128,10 +1127,10 @@ We can add the following to the interval units
 - integer
 - `+` / `-` (increment or decrement)
 
-Using the integer, we can specify multiples of the units mentioned and using the 
+Using the integer, we can specify multiples of the units mentioned, and using the 
 sign, we can specify whether to increment or decrement.
 
-The below table displays the main arguments used in `seq.Date()`:
+The table below displays the main arguments used in `seq.Date()`:
 
 ```{r table_seq_date, echo=FALSE}
 cname   <- c("`from`", "`by`", "`to`", "`length.out`", "`along.with`")
@@ -1146,7 +1145,7 @@ data.frame(Function = cname, Description = descrip) |>
 ```
 
 In the first example, we will create a sequence of dates from `2010-01-01` to 
-`2019-12-31`. The unit of increment should be a year i.e. the difference
+`2019-12-31`. The unit of increment should be a year, i.e. the difference
 between the dates in the sequence should be 1 year, specified using the `by` 
 argument.
 
@@ -1154,8 +1153,8 @@ argument.
 seq.Date(from = as.Date("2010-01-01"), to = as.Date("2019-12-31"), by = "year")
 ```
 
-In the next example, we change the unit of increment to a quarter i.e. the 
-difference between the dates in the sequence should be a quarter or 3 months.
+In the next example, we change the unit of increment to a quarter, i.e. the 
+difference between the dates in the sequence should be a quarter, or 3 months.
 
 ```{r seq_date_2}
 seq.Date(from = as.Date("2009-12-12"), to = as.Date("2019-12-12"), by = "quarter")
@@ -1173,22 +1172,22 @@ seq.Date(from = as.Date("2010-01-01"), to = as.Date("2019-12-31"), length.out = 
 ```
 
 In all of the previous examples, we have specified both the start and the end
-date. Let us look at a few examples where we create a sequence of dates where 
-we only specify the start date. In the below example, we want to create a 
+date. Let us look at a few examples where 
+we only specify the start date. In the example below, we want to create a 
 sequence of dates starting from `2010-01-01`. The unit of increment should be 1
-year i.e. the difference between the dates in the sequence should be 1 year and
-the length of the sequence should be `10` i.e. the number of dates including the
+year, i.e. the difference between the dates in the sequence should be 1 year, and
+the length of the sequence should be `10`, i.e. the number of dates including the
 start date should be `10`.
 
 ```{r seq_date_4}
 seq.Date(from = as.Date("2010-01-01"), by = "year", length.out = 10)
 ```
 
-The unit of increment can include multiples and `+/-` sign i.e. it can be an
+The unit of increment can include multiples and `+/-` sign, i.e. it can be a
 unit of increment or decrement. In the next example, we can increment the dates
 in the sequence by `2` i.e. the difference between the dates should be `2`
 instead of `1`. This is achieved by specifying the unit of increment (multiple)
-first followed by a space and then the unit. In our example, it is `2 year`. As
+first, followed by a space and then the unit. In our example, it is `2 year`. As
 you can see, the sequence now goes all the way till `2028` and the gap between 
 the dates is 2 years.
 
@@ -1196,11 +1195,11 @@ the dates is 2 years.
 seq.Date(from = as.Date("2010-01-01"), by = "2 year", length.out = 10)
 ```
 
-Let us say instead of increment we want to decrement the dates i.e. the sequence 
+Let us say instead of increment we want to decrement the dates, i.e. the sequence 
 of dates will go backwards as shown in the next example. We achieve this by 
-using the `-` sign along with the unit of decrement. The sequence of dates in 
-next example starts from `2010` and goes back upto `1992` and the difference 
-between the dates in 2 years.
+using the `-` sign along with the unit of decrement. The sequence of dates in the 
+next example starts from `2010` and goes back up to `1992`, and the difference 
+between the dates is 2 years.
 
 ```{r seq_date_6}
 seq.Date(from = as.Date("2010-01-01"), by = "-2 year", length.out = 10)
@@ -1208,8 +1207,9 @@ seq.Date(from = as.Date("2010-01-01"), by = "-2 year", length.out = 10)
 
 In the last example, we will explore the `along.with` argument. Here we have 
 supplied a vector which is a sequence of numbers from 1 to 10. The length of 
-this vector is 10 and the same length is used as the length of the sequence i.e. 
-the length of value supplied to `along.with` is also the length of the sequence.
+this vector is 10, and the same length is used as the length of the sequence
+i.e. the length of value supplied to `along.with` is also the length of the
+sequence.
 
 ```{r seq_date_7}
 seq.Date(from = as.Date("2010-01-01"), by = "-2 year", along.with = 1:10)
@@ -1217,7 +1217,7 @@ seq.Date(from = as.Date("2010-01-01"), by = "-2 year", along.with = 1:10)
 
 ### Verify Type
 
-How do you check if the data is a date-time object? You can do that using any 
+How do you check whether the data is a date-time object? You can do that using any 
 of the following from the lubridate package.
 
 - `is.Date()`

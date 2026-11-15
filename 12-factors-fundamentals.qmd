@@ -28,22 +28,22 @@ library(dplyr)
 library(ggplot2)
 ```
 
-Handling categorical/qualitative data is integral to data analysis.  Almost every data science project involves working with categorical data and students should know how to store, summarize, visualize & manipulate such data. Working with categorical data is different from working with numbers or text. In this chapter, we will understand categorical data and explore the rich set of functions (built-in & through packages) provided by R for working with such data. The word categorical is used interchangeably with qualitative.
+Handling categorical/qualitative data is integral to data analysis. Almost every data science project involves working with categorical data, and students should know how to store, summarize, visualize and manipulate such data. Working with categorical data is different from working with numbers or text. In this chapter, we will understand categorical data and explore the rich set of functions (built-in & through packages) provided by R for working with such data. The word categorical is used interchangeably with qualitative.
 
 ### Data Types
 
-Before we begin our deep dive on categorical data, let us get a quick overview of different data types.
+Before we begin our deep dive on categorical data, let us get a quick overview of the different data types.
 
 ```{r data_types, echo=FALSE, fig.align="center", out.width="80%"}
 knitr::include_graphics("img/fct_data_types.png")
 ```
 
-In the chart above, we can see that data can be primarily classified into **qualitative** or **quantitative**. Qualitative data consists of labels or names. Quantitative data, on the other hand, consists of numbers and indicate how much or how many. This brings us to the next level of classification:
+In the chart above, we can see that data can be primarily classified into **qualitative** or **quantitative**. Qualitative data consists of labels or names. Quantitative data, on the other hand, consists of numbers and indicates how much or how many. This brings us to the next level of classification:
 
 - discrete
 - continuous
 
-In the chart, we can observe that qualitative data is always **discrete** where as quantitative data may be **discrete** or **continuous**. Qualitative data is further classified into 
+In the chart, we can observe that qualitative data is always **discrete** whereas quantitative data may be **discrete** or **continuous**. Qualitative data is further classified into 
 
 - nominal
 - ordinal
@@ -56,7 +56,7 @@ First, we will understand discrete and continuous data, and then proceed to expl
 knitr::include_graphics("img/fct_discrete.png")
 ```
 
-Discrete data arises in situations where counting is involved. It can take on only a finite number of values and cannot be divided into smaller parts. For example, let us consider the number of students in a class. We can have 5 0r 10 students but not 5.5 students (we can't have half a student).
+Discrete data arises in situations where counting is involved. It can take on only a finite number of values and cannot be divided into smaller parts. For example, let us consider the number of students in a class. We can have 5 or 10 students but not 5.5 students (we cannot have half a student).
 
 **Continuous Data**
 
@@ -79,7 +79,7 @@ Since our interest is in categorical data, we will spend more time understanding
 
 ### Dichotomous
 
-A categorical variable that can take on exactly two values is termed as **binary** or **dichotomous** variable.
+A categorical variable that can take on exactly two values is termed a **binary** or **dichotomous** variable.
 
 ```{r dichotomous_data, echo=FALSE, fig.align="center", out.width="80%"}
 knitr::include_graphics("img/fct_yes_no.png")
@@ -106,8 +106,8 @@ In ordinal data, the categories can be ordered or ranked. Examples include
 - income level
 - satisfaction rating
 
-While we can rank the categories, we cannot assign a value to them. For example, in satisfaction ranking, we cannot say that like is twice as positive as dislike i.e. we are unable to say how much they differ from each other.
-While the order or rank of data is meaningful, the difference between two pieces of data cannot be measured/determined or are meaningless. Ordinal data provide information about relative comparisons, but not the magnitude of the differences.
+While we can rank the categories, we cannot assign a value to them. For example, in satisfaction ranking, we cannot say that like is twice as positive as dislike, i.e. we are unable to say how much they differ from each other.
+While the order or rank of data is meaningful, the difference between two pieces of data cannot be measured. Ordinal data provide information about relative comparisons, but not the magnitude of the differences.
 
 ### Nominal 
 
@@ -181,10 +181,10 @@ Categorical data are sometimes coded with numbers, with those numbers replacing 
 
 ## Case Study {#casestudy}
 
-As is the practice, throughout this chapter, we will work on a case study related to an e-commerce firm. As most of you would already be aware, a lot of data is captured when you go on the internet by the websites you browse as well as by third party cookies. Data collected is then used to display ads as well as to feed to recommendation algorithms.
+As is the practice, throughout this chapter, we will work on a case study related to an e-commerce firm. As most of you would already be aware, a lot of data is captured when you go on the internet by the websites you browse as well as by third-party cookies. Data collected is then used to display ads as well as to feed recommendation algorithms.
 
 The data used in the case study represents the basic information that is captured when users visit any
-website. It closely resembles real world data for an e-commerce store. We will try to generate insights
+website. It closely resembles real-world data for an e-commerce store. We will try to generate insights
 about the visitors to be used by an imaginary marketing team for better targeting and promotion. The case study data set can be imported using the RStudio IDE or R code. 
 
 ```{r case_study, echo=FALSE, fig.align="center", out.width="80%"}
@@ -197,31 +197,30 @@ The data set is available in both **CSV** & **RDS** formats.
 
 **CSV**
 
-If you want to specify the data types while reading the data, use the [readr](https://readr.tidyverse.org/) package. We have explored how to import data into R in a previous [chapter](01-import-1.qmd). We will read a subset of columns from the data set (it has 20 columns) which will cover both nominal and ordinal data types. To import the data, we will use the `read_csv()` function. The first input is the name of the data set,
-`analytics.csv`. Ensure that the name is enclosed in single/double quotes.
+If you want to specify the data types while reading the data, use the [readr](https://readr.tidyverse.org/) package. We have explored how to import data into R in a previous [chapter](01-import-1.qmd). We will read a subset of the columns from the data set (it has 20 columns), which will cover both nominal and ordinal data types. To import the data, we will use the `read_csv()` function. The first input is the URL of the data set,
+`analytics_raw.csv`. Ensure that the URL is enclosed in single or double quotes.
 
 ```{r read_data}
-read_csv("analytics_raw.csv", 
+read_csv("https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics_raw.csv", 
          col_types = cols_only(device = col_factor(levels = c("Desktop", "Tablet", "Mobile")), 
                                gender = col_factor(levels = c("female", "male", "NA")), 
                                user_rating = col_factor(levels = c("1", "2", "3", "4", "5"),
                                                         ordered = TRUE)))
 ```
 
-Since we are specifying the column data types while importing the data, we will use the `col_types`
-argument to list out the data types. As we are reading in a subset of the columns and not all of them,
-we will use the `cols_only()` function indicating that only the columns specified must be read in and not
-all of them. 
+Since we are specifying the column data types while importing the data, we use the `col_types`
+argument to list the data types. As we are reading a subset of the columns and not all of them,
+we will use `cols_only()` to indicate that only the columns specified must be read. 
 
 Categorical data and the levels/groups are specified using the `col_factor()` function. Use the
-`levels` argument to specify the levels/groups and the `ordered` argument to indicate if the data is ordinal. By default, it is set to `FALSE`, change this to `TRUE` if the column is ordinal.
+`levels` argument to specify the levels/groups and the `ordered` argument to indicate whether the data is ordinal. By default, it is set to `FALSE`; change this to `TRUE` if the column is ordinal.
 
 **RDS**
 
 The `.rds` file can be read using `readRDS()`.
 
 ```{r imports}
-data <- readRDS('analytics.rds')
+data <- readRDS(url('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds'))
 head(data)
 ```
 
@@ -261,7 +260,7 @@ data.frame(Column = fname, Description = descrip) |>
 
 ## Factors {#factors}
 
-In this very important section, we will learn how R
+In this section, we will learn how R
 
 - stores categorical data
 - checks if given data is categorical
@@ -272,7 +271,7 @@ In this very important section, we will learn how R
 
 ### Introduction
 
-In R, categorical data is stored as `factor`. Before we explore the `factor` family of functions, let us generate the sample data we will use in this module. We will generate the `device` column from the case study data set using the `sample()` function. We provide the following inputs to generate the data:
+In R, categorical data is stored as `factor`. Before we explore the `factor` family of functions, let us generate the sample data we will use in this section. We will generate the `device` column from the case study data set using the `sample()` function. We provide the following inputs to generate the data:
 
 - values from which the data must be generated
 - the size of the sample
@@ -285,13 +284,13 @@ device
 
 ### Membership Testing
 
-Great! We have successfully generated the sample data and along the way learnt a new R function for sampling. First, let us check if the sample is a `factor` using the membership function `is.factor()`.
+Great! We have successfully generated the sample data, and along the way learned a new R function for sampling. First, let us check whether the sample is a `factor` using the membership function `is.factor()`.
 
 ```{r factor_2}
 is.factor(device)
 ```
 
-Membership testing functions always have the prefix `is_` and return only logical values. If the object is a member of the specified class, they return `TRUE` else `FALSE`. Since our sample data is not stored as a factor, R has returned `FALSE`.
+Membership testing functions use the prefix `is.` in base R (as in `is.factor()`) or `is_` in many tidyverse packages (as in `is_tibble()`), and return only logical values. If the object is a member of the specified class, they return `TRUE` and `FALSE` otherwise. Since our sample data is not stored as a factor, R has returned `FALSE`.
 
 ### Coercion
 
@@ -301,7 +300,7 @@ Let us try to coerce it into `factor` using the coercion function `as.factor()`.
 as.factor(device)
 ```
 
-Do you spot any difference in the output? In the last line, it displays the levels or categories of the variable. Don't worry if you didn't spot it. We are just getting started and you will pick it up by the end of this section. Another function that can be used to coerce data into factor is `as_factor()` from the [forcats](https://forcats.tidyverse.org/) package.
+Do you spot any difference in the output? In the last line, it displays the levels or categories of the variable. Do not worry if you did not spot it. We are just getting started and you will pick it up by the end of this section. Another function that can be used to coerce data into factor is `as_factor()` from the [forcats](https://forcats.tidyverse.org/) package.
 
 ```{r factor_4}
 as_factor(device)
@@ -320,7 +319,7 @@ If you want finer control while creating factors, use the `factor()` function. `
 - create ordered factors
 - specify order of levels
 
-The first input is a vector, usually a numeric or character vector with a small number of unique values. In our example, it is a character vector of length 25 (i.e. 25 values) but 3 unique values.
+The first input is a vector, usually a numeric or character vector with a small number of unique values. In our example, it is a character vector of length 25 (i.e. 25 values), but 3 unique values.
 
 ```{r factor_5a}
 factor(device)
@@ -365,8 +364,8 @@ device
 factor(device)
 ```
 
-`NA` is not shown as one of the levels. Why does this happen? By default, it will ignore them. If you look
-at the arguments of the `factor()` function, the `exclude` argument is set to `NA` by default i.e. `NA` is excluded automatically. What should we do to ensure that `NA` is also treated as a level? In order to treat `NA` as a level, set the `exclude` argument to `NULL`.
+`NA` is not shown as one of the levels. Why does this happen? By default, it ignores them. If you look
+at the arguments of the `factor()` function, the `exclude` argument is set to `NA` by default, i.e. `NA` is excluded automatically. What should we do to ensure that `NA` is also treated as a level? To treat `NA` as a level, set the `exclude` argument to `NULL`.
 
 ```{r factor_na_level}
 factor(device, exclude = NULL)
@@ -384,7 +383,7 @@ rating <- sample(c("Dislike", "Neutral", "Like"), size = 25, replace = TRUE)
 rating
 ```
 
-It consists of three values Dislike, Neutral & Like in that order. You can see that there is an intrinsic order here. Like is better than neutral which in turn is better than dislike. While we can order them, we can’t quantify the difference between them. We can’t say neutral is so many times better than dislike.
+It consists of three values, Dislike, Neutral and Like, in that order. You can see that there is an intrinsic order here. Like is better than neutral, which in turn is better than dislike. While we can order them, we cannot quantify the difference between them. We cannot say neutral is so many times better than dislike.
 
 **Membership Testing**
 
@@ -400,13 +399,13 @@ R returns `FALSE` as the variable `rating` is not ordered. Let us use `as.ordere
 as.ordered(rating)
 ```
 
-Look at the last line where the levels are displayed. In case of ordered factors, you will see a `<` between the labels. This is used to indicate the order of the levels. Now `rating` is both an ordered but the order of the levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in order of appearance in the data. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
+Look at the last line where the levels are displayed. In the case of ordered factors, you will see a `<` between the labels. This indicates the order of the levels. The call does not change `rating`; the returned factor is ordered, but the order of its levels is not correct. It should be `Dislike < Neutral < Like` but is displayed in alphabetical order. Let us use the `factor()` function since we need more control over how the levels are ranked and set the `ordered` argument to `TRUE`.
 
 ```{r factor_10}
 factor(rating, ordered = TRUE)
 ```
 
-The ranking of the levels has not changed and is still the same. Why is this happening? If you observe carefully, the ranking follows the alphabetical order (**D**esktop, **M**obile, **T**able). The `factor()` function uses the same order for the levels. 
+The ranking of the levels has not changed. Why is this happening? The ranking follows the alphabetical order (**D**islike, **L**ike, **N**eutral). The `factor()` function uses the same order for the levels. 
 
 ### Modify Order of Levels
 
@@ -487,7 +486,7 @@ Use `analytics_raw.rds` data set to answer the below questions.
 
 ### Introduction
 
-Categorical data cannot be summarized in the same way as numeric data. It does not make sense to look at range, standard deviation etc. since data consists of a few distinct values only.  So how do we summarize such data? We can look at 
+Categorical data cannot be summarized in the same way as numeric data. It does not make sense to look at range, standard deviation etc. since the data consists of a few distinct values only. So how do we summarize such data? We can look at 
 
 - count/frequency
 - proportion
@@ -509,7 +508,7 @@ nlevels(data$device)
 ```
 
 There are 3 categories of devices used by the visitors to browse the website. This can also be used for data
-sanitization i.e. as an analyst you know that there are only 3 valid categories of device into which any visitor can be classified into. If you see more than 3 categories, you might want to check if there are any issues in data collection or processing. Now that we know there are 3 categories of devices, let us check if they are valid. The `levels()` function will return the labels of the groups.
+sanitization, i.e. as an analyst you know that there are only 3 valid categories of device into which any visitor can be classified. If you see more than 3 categories, you might want to check if there are any issues in data collection or processing. Now that we know there are 3 categories of devices, let us check if they are valid. The `levels()` function will return the labels of the groups.
 
 ### Category Names
 
@@ -519,7 +518,7 @@ Knowing the number of levels is useful but not sufficient. `levels()` is one of 
 levels(data$device)
 ```
 
-Other functions that you can use include `unique()` and `fct_unique()`. Both these functions will return the unique names/labels along with the levels while `levels()` returns the labels of the levels.
+Other functions that you can use include `unique()` and `fct_unique()`. Both these functions return the unique names/labels along with the levels, while `levels()` returns the labels of the levels.
 
 ```{r summarize_1a}
 unique(data$device)
@@ -528,9 +527,9 @@ fct_unique(data$device)
 
 ### Names & Counts
 
-So we have checked the number of devices and their names. Let us now examine their distribution
-i.e. count/frequency. `table()` and `summary()` will display the levels and their counts while `fct_count()`
-will return a tibble with 2 columns (level & count). It is extremely useful for further data processing or
+So we have checked the number of devices and their names. Let us now examine their distribution,
+i.e. count/frequency. `table()` and `summary()` display the levels and their counts, while `fct_count()`
+returns a tibble with 2 columns (level and count). It is extremely useful for further data processing or
 visualization (using ggplot2).
 
 ```{r summarize_2}
@@ -551,8 +550,8 @@ tab
 
 What does this function return? It is not a `vector`, `list`, `data.frame` or `matrix`. Let us use the `class()` function to check the class of the object returned by `table()`. It returns an object of the class **table**. This is a new type of object. Let us spend some time understanding tables as they are useful for organizing and summarizing categorical data. **table** is also the most used object when it comes to dealing with categorical data.
 
-The `table()` function returns the counts of the categories but let us say we want to view the proportion or
-percentage instead of counts i.e. the proportion or percentage of traffic driven to our website by the different devices. The `proportions()` or `prop.table()` function comes in handy in such cases. It takes a table object as input (tab in our case).
+The `table()` function returns the counts of the categories, but let us say we want the proportion or
+percentage instead of counts, i.e. the proportion or percentage of traffic driven to our website by the different devices. The `proportions()` or `prop.table()` function comes in handy in such cases. It takes a table object as input (tab in our case).
 
 ```{r summarize_4}
 prop.table(tab)
@@ -576,7 +575,7 @@ tab2 <- table(data$gender, data$device)
 tab2
 ```
 
-Keep in mind that the order of the variables matter. Rows represent the first variable while column represents the second.
+Keep in mind that the order of the variables matters. Rows represent the first variable while column represents the second.
 
 ```{r summarize_5a}
 table(data$device, data$gender)
@@ -589,7 +588,7 @@ proportions(tab2)
 proportions(tab2) * 100
 ```
 
-We would like to introduce another function at this point of time, `margin.table()`. What does this function do? It computes the marginal frequencies i.e. the sum of the rows or columns. It takes a **table** object as input. The `margin` argument allows us to specify whether we want the sum of rows or columns. `1` indicates rows and `2` indicates columns. 
+We would like to introduce another function at this point, `margin.table()`. What does this function do? It computes the marginal frequencies, i.e. the sum of the rows or columns. It takes a **table** object as input. The `margin` argument allows us to specify whether we want the sum of rows or columns. `1` indicates rows and `2` indicates columns. 
 
 ```{r summarize_7a}
 margin.table(tab2, 1) # sum of rows
@@ -677,27 +676,27 @@ ftable(tab2)
 ftable(tab3)
 ```
 
-By default, missing values (NAs) are excluded from tables. Let us modify the gender data from our case study a bit and see how the `table()` function deals with missing values. We won’t explicitly specify `NA` as a level while recreating the gender data.
+By default, missing values (NAs) are excluded from tables. Let us modify the gender data from our case study a bit and see how the `table()` function deals with missing values. We will not explicitly specify `NA` as a level while recreating the gender data.
 
 ```{r summarize_13} 
 gen <- as.factor(as.character(data$gender))
 table(gen)
 ```
 
-As you can see, `table()` excludes missing values while tabulating the data. In order to ensure that missing
+As you can see, `table()` excludes missing values while tabulating the data. To ensure that missing
 values are also counted, we can use the `useNA` argument. It can take two values:
 
 - ifany
 - always
 
-In the first case, it will show `NA` as a level and the count only if there are missing values in the data. In the second case, it will always show `NA` as a level irrespective of whether there are missing values in the data or not. 
+In the first case, it shows `NA` as a level and the count only if there are missing values in the data. In the second case, it always shows `NA` as a level, whether or not there are missing values in the data. 
 
 ```{r summarize_13a} 
 table(gen, useNA = "ifany")
 table(data$device, useNA = "always")
 ```
 
-In this final section on tables, we will learn how to select/access the different parts of a `table`. We will use `[` operator to select rows and columns of a table (it is similar to selecting data from a
+In this final section on tables, we will learn how to select the different parts of a `table`. We will use `[` operator to select rows and columns of a table (it is similar to selecting data from a
 `data.frame`). Below are a few examples:
 
 - select first row

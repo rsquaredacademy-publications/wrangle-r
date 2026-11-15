@@ -1,0 +1,553 @@
+# Style pass report: Data Wrangling with R (ebk-wr2)
+
+Branch `task/wr-style-1114`, on top of the unmerged correctness round `90425d8` (wr1).
+Against `docs/style-guide.md` (origin/style-audit), `docs/voice-spoken.md`,
+`docs/williams-checklist.md` and the approved pilot level
+(`F:/pm/notes/2026-11-06-ebook-style-pilot.md`, ebk-ir2 as the worked example).
+
+Prose only in the style pass. No fenced code line, chunk label or option, output, heading or anchor,
+file name, webR cell, `<details>` block, callout type, number, data name, link target or chapter
+footer was edited. Inline code was edited in four files (eight removals and two insertions); the
+Checks section below and the ebk-wr3 report reconcile those exceptions. Later correctness rounds
+(ebk-wr3/ebk-wr4) changed the code lines and inline spans recorded in the Guard and Not done
+sections. No new content, no restructuring, no new examples (the learner review is context only).
+
+Line numbers are from the file at the chapter's own commit. One row is one changed sentence or
+paragraph; refusals are rows too.
+
+## Chapters
+
+| Chapter | File | Edit-group rows |
+| :-- | :-- | --: |
+| Preface | `index.qmd` | 2 |
+| About the Author | `00-author.qmd` | 1 |
+| Import Data - Basics | `01-import-1.qmd` | 20 |
+| Import Data - Advanced | `02-import-2.qmd` | 14 |
+| Pipe Operator | `03-pipes.qmd` | 18 |
+| dplyr Basics | `04-dplyr-1.qmd` | 25 |
+| Joining Tables using dplyr | `05-dplyr-2.qmd` | 13 |
+| dplyr Helpers | `06-dplyr-3.qmd` | 11 |
+| tibbles | `07-tibbles.qmd` | 14 |
+| Tidying Data with tidyr | `08-tidyr.qmd` | 8 |
+| Hacking Strings | `09-stringr.qmd` | 32 |
+| Date & Time: Parsing and Components | `10-lubridate-parsing.qmd` | 36 |
+| Date & Time: Arithmetic and Time Zones | `11-lubridate-arithmetic.qmd` | 26 |
+| Categorical Data Fundamentals | `12-factors-fundamentals.qmd` | 32 |
+| Factor Manipulation with forcats | `13-forcats-manipulation.qmd` | 32 |
+| Exercise Solutions | `14-solutions.qmd` | 8 |
+
+Total: 292 edit-group rows. Appendices not done (see "Not done"). The counts are the displayed
+data rows in the chapter tables below, so they are reproducible; a distinct sentence count is not
+claimed. One row can cover more than one sentence.
+
+## Preface
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `index.qmd:21` | 3 | `tibble()`, an alternative for `data.frame()`. | `tibble()`, an alternative to `data.frame()`. |
+| `index.qmd:49` | 2, 3 | The R session information when compiling this book is shown below: | The session information used to compile this book is shown below: |
+
+## About the Author
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `00-author.qmd:19` | 3 | an education initiative with focus on data science and analytics. | an education initiative with a focus on data science and analytics. |
+
+## Import Data - Basics
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `01-import-1.qmd:25` | 9, 3 | Before we start reading data from files, let us take a quick look at the different types of delimiters we have to deal with while reading or importing data. In general, it is a good practice to take a quick look at as you will clearly know the delimiter used in the file. | Before we start reading data from files, let us look at the different types of delimiters we have to deal with. In general, it is good practice to look at the file first, as you will then know which delimiter it uses. |
+| `01-import-1.qmd:62` | §3a.3, 9 | (which most of us see when we are trying to read data for the first time), follow the below instructions: | (which most of us see the first time we read data), follow the instructions below: |
+| `01-import-1.qmd:70` | 2, 9 | it will display the data type detected for each column/variable in the data set. | it displays the data type it has detected for each column in the data set. |
+| `01-import-1.qmd:81` | 2, 9, 10 | If we do not indicate the absence of column names, `readr` will treat the first row from the data as the column name. Like we said before, it is a good practice to take a quick look at the data to check for the presence/absence of column names. | If we do not say so, `readr` treats the first row of the data as the column names. As we said before, it is good practice to look at the data first to check for column names. |
+| `01-import-1.qmd:100` | 3, 9 | `readr` has converted the first row of the data into the column names. As a result, the first data row became the header, so the names are numbers and one row is lost. | `readr` has converted the first row of the data into the column names; the first data row is now the header, so the names are numbers and one row is lost. |
+| `01-import-1.qmd:105` | 3, 2 | Now `readr` will not convert the first row of data into column name and instead it will generate new column names. | `readr` then leaves the first row as data and generates new column names. |
+| `01-import-1.qmd:111` | 9, 4, §3a.3 | We may not always want to use the column names generated by `readr` and instead specify new column names. In such cases, we can use `col_names` to supply column names as shown in the below example. | We may not always want the column names generated by `readr`; we can supply our own instead. In such cases, use `col_names` to pass a vector of names, as in the example below. |
+| `01-import-1.qmd:129` | 2, 9 | The data will appear after/below such text/information. | The data appears below this text. |
+| `01-import-1.qmd:131` | 2, 9 | If we do not skip them, `readr` will consider them as part of the data. | If we do not skip them, `readr` will treat them as data. |
+| `01-import-1.qmd:137` | 8, 2 | Let us read the data without skipping any lines/rows and observe the result. | Let us read the data without skipping any rows and look at the result. |
+| `01-import-1.qmd:143` | 3, 8, §3a.3 | Use `skip` argument to indicate the number of lines/rows to be skipped while reading data from a file. … In the below example, we will skip the first 3 lines as they contain information about the data set which we do not need. | Use the `skip` argument to indicate the number of rows to skip while reading data from a file. … In the example below, we skip the first 3 lines, which contain information about the data set that we do not need. |
+| `01-import-1.qmd:155` | 9, 2, 3 | Suppose the data file contains several thousands of rows of data and we do not want to read all of it. … specify the maximum number of rows to be read … Suppose we want to read only 100 rows of data from a file, we can set `n_max` equal to 100. | Suppose the data file contains several thousand rows and we do not want to read all of them. … specify the maximum number of rows to read … If we want to read only 100 rows from a file, we set `n_max` equal to 100. |
+| `01-import-1.qmd:161` | 2, 3 | If you observe the last row in the output, it says `# ℹ 110 more rows`, indicating that only 120 rows of data has been read from the file. | The last line of the output, `# ℹ 110 more rows`, shows that only 120 rows were read from the file. |
+| `01-import-1.qmd:170` | 11, 2, 3 | If you have observed carefully, when you read data using `readr`, it displays the column names and column types followed by the first 10 rows of data. `readr` determines the data type for each column based on the first 1000 rows of data. | In the output above, `readr` displays the column names and column types, followed by the first 10 rows of data. `readr` determines the type of each column from the first 1000 rows of data. |
+| `01-import-1.qmd:187` | 3, 9 | If it determines the data types correctly, you can go ahead and read the data else we will have to specify the data types and we will have to do that for all the columns we want to read and not just for those columns whose data type was wrongly determined by `readr`. | If it determines them correctly, go ahead and read the data. Otherwise, we have to specify the types for all the columns we want to read, not just for those whose type was wrongly determined by `readr`. |
+| `01-import-1.qmd:218` | 2, 3 | If we do not specify the data type for all columns, `readr` will return an error which leads to the following questions: | If we do not specify the data type for all the columns, `readr` returns an error, which leads to the following questions: |
+| `01-import-1.qmd:230` | 9, 3 | For the first scenario, we can use `col_skip()` i.e. instead of specifying the data type, we indicate to `readr` to skip that particular column while reading the data. | For the first scenario, we use `col_skip()`: instead of specifying the data type, we tell `readr` to skip that column while reading the data. |
+| `01-import-1.qmd:234` | 3, 9 | In case of the second scenario, we will use `cols_only()` … we will use `cols_only()` and provide the following details: | For the second scenario, we will use `cols_only()` … we use `cols_only()` and provide the following details: |
+| `01-import-1.qmd:247` | 3 | use `col_skip()` instead if you plan to read only a couple of columns, use `cols_only()`. | use `col_skip()`. If you plan to read only a couple of columns, use `cols_only()`. |
+| `01-import-1.qmd:255` | 13 | remote files re-download on every knit — cache them locally | remote files re-download on every knit; cache them locally |
+
+Refusals: `01-import-1.qmd:62` keeps "Great!", his rare light line (§3a.12), and `:152` keeps
+"What can we do in such cases?", his rhetorical question before the fix (point first, 7).
+"reread" (114) and "i.e." in the pointer list at 195–197 are left: the pointer list is a syllabus.
+
+## Import Data - Advanced
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `02-import-2.qmd:30` | 9, 3 | Let us see how many sheets are present in `sample.xls` file and their respective names using `excel_sheets()`. | Let us see how many are present in `sample.xls` and what they are called, using `excel_sheets()`. |
+| `02-import-2.qmd:41` | 9 | We will specify the file name, and the sheet name or sheet number. | We will specify the file name and the sheet name or number. |
+| `02-import-2.qmd:55` | 2, 3, 8 | Notice when you use the sheet name, the name should be enclosed in single/double quotes. | When you use the sheet name, enclose it in single or double quotes. |
+| `02-import-2.qmd:60` | 2, 3, 9 | In such cases, you can specify the cells from which the data must be read which can be achieved using the `range` argument. So how do we specify the cells from which to read data? There are different ways of specifying the cell range and we will look at them one by one: | In such cases, specify the cells to read from using the `range` argument. So how do we specify them? There are different ways of specifying the cell range, and we will look at them one by one: |
+| `02-import-2.qmd:74` | 3 | For example, to read data from first 4 rows of columns **B** and **C**, we will specify the range | For example, to read data from the first 4 rows of columns **B** and **C**, we specify the range |
+| `02-import-2.qmd:81` | 3 | To read data from first 5 rows of columns **A**, **B** and **C**, we will specify the range | To read data from the first 5 rows of columns **A**, **B** and **C**, we specify the range |
+| `02-import-2.qmd:96` | 3, 2, §3a.3 | of rows and columns to be covered keeping the initial cell as anchorage. In the below example, we want to read 3 rows and 2 columns | of rows and columns to cover, keeping the initial cell as the anchor. In the example below, we read 3 rows and 2 columns |
+| `02-import-2.qmd:107` | 3, 9 | we use the `cell_limit()` and specify the location of two ends of a rectangle … to read data from the first 6 rows and 4 columns, we will specify the range as following: | we use `cell_limit()` and specify the two ends of a rectangle … to read the first 6 rows and 4 columns, we specify the range as follows: |
+| `02-import-2.qmd:133` | 9, 3 | Let us quickly look at how we will specify range of cells using the above 3 methods | Let us look at how we specify a range of cells using the three methods above |
+| `02-import-2.qmd:160` | §3a.3, 2 | In the below example, we want to read the first 4 rows of data from the file. | In the example below, we read the first 4 rows of data from the file. |
+| `02-import-2.qmd:170` | §3a.3 | In the below example, we read the second column | In the example below, we read the second column |
+| `02-import-2.qmd:179` | 3, 2, §3a.3 | In case of multiple columns, we need to specify the column numbers or the column range. In the below example, we want to read the 2nd, 4th and 6th column | For multiple columns, we specify the column numbers or the column range. In the example below, we read the 2nd, 4th and 6th column |
+| `02-import-2.qmd:187` | 2, 3 | In the next example, we want to read data from the 2nd column upto and including the 6th column. | In the next example, we read data from the 2nd column up to and including the 6th column. |
+| `02-import-2.qmd:202` | 3, 18 | read data from files of other statistical softwares such as: | read data from files created by other statistical software such as: |
+
+Refusals: the `## Method 1`/`## Method 2`/`## Method 3` headings repeat across two sections, but
+headings are not edited. "i.e." and the `- SAS / - SPSS / - STATA` syllabus are left as written.
+
+## Pipe Operator
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `03-pipes.qmd:9` | 3, 2, 9 | R code contain a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. … provides pipes enabling us to write R code that is readable. | A sequence of multiple operations in R contains a lot of parentheses. When you deal with complex code, it results in nested function calls which are hard to read and maintain. … provides pipes that let us write R code that is readable. |
+| `03-pipes.qmd:31` | 13 | Older code — including the first edition of this chapter — used the magrittr pipe | Older code, including the first edition of this chapter, used the magrittr pipe |
+| `03-pipes.qmd:48` | 13 | For first-argument chains — every example in this book — the two pipes read identically | For first-argument chains, which is every example in this book, the two pipes read identically |
+| `03-pipes.qmd:87` | 9 | a smaller data set from the above data to be used in some examples: | a smaller data set from the above data to use in some examples: |
+| `03-pipes.qmd:103` | 8, 9, 2 | It returns the first few observations/rows of data. We can specify the number of observations it should return as well. | it returns the first few rows of data. We can also specify the number of rows it should return. |
+| `03-pipes.qmd:122` | 3, 9 | Time to try a slightly  more challenging example. We want the square root of `n_pages` column from the data set. | Time to try a slightly more challenging example. We want the square root of the `n_pages` column from the data set. |
+| `03-pipes.qmd:164` | 9, 3 | Let us look at the steps involved in creating the bar plot: | The steps involved in creating the bar plot are: |
+| `03-pipes.qmd:192` | 2 | In R, correlation is computed using `cor()`. | In R, we compute correlation using `cor()`. |
+| `03-pipes.qmd:194` | 3 | visitors who purchased some product. | visitors who purchased a product. |
+| `03-pipes.qmd:217` | 3 | We regress time spent on the site on number of pages visited. | We regress time spent on the site on the number of pages visited. |
+| `03-pipes.qmd:238` | §3a.3, 3 | the first name (jovial) from the below email id … Below are the steps to achieve this: | the first name (jovial) from the email id below … The steps to achieve this are: |
+| `03-pipes.qmd:265` | 3, 5 | Another method that uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package. | Another method uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package: |
+| `03-pipes.qmd:277` | 3 | Let us turn our attention towards data extraction. | Let us turn our attention to data extraction. |
+| `03-pipes.qmd:285` | 3, 8, 9 | To extract a specific column using the column name, we mention the name of the column in single/double quotes within `[` or `[[`. In case of `$`, we do not use quotes. | To extract a column by name, we put the name in single or double quotes within `[` or `[[`. With `$`, we do not use quotes. |
+| `03-pipes.qmd:297` | 3, 8, §3a.3 | We can extract columns using their index position. Keep in mind that index position starts from **1** in R. In the below example, we show how to extract `n_pages` column but instead of using the column name, we use the column position. | We can also extract columns by position. Keep in mind that positions start from **1** in R. In the example below, we extract the `n_pages` column by position instead of by name. |
+| `03-pipes.qmd:309` | 3 | One important differentiator between `[` and `[[` | One important difference between `[` and `[[` |
+| `03-pipes.qmd:330` | 3 | It is the tidyverse alternative for `[[`. | It is the tidyverse alternative to `[[`. |
+| `03-pipes.qmd:360` | 3, 9 | magrittr offer alternatives for arithemtic operations as well. | magrittr offers alternatives for arithmetic operations as well. |
+
+Refusals: the "select/expose" bullets (131, 167, 197) are left: they name the two functions the
+section shows, not a synonym. `03-pipes.qmd:324` keeps "using as.list() as shown below" — the
+function is written without backticks, and adding inline code is out of scope.
+
+## dplyr Basics
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `04-dplyr-1.qmd:9` | 3, 2, 11 | data scientists spend most of their time cleaning and manipulating data rather than mining or modeling them for insights. As such, it becomes important to have tools that make data manipulation faster and easier. In today's chapter, we introduce you to [dplyr](http://dplyr.tidyverse.org/), a grammar of data manipulation. | data scientists spend most of their time cleaning and manipulating data rather than mining or modeling it for insights. As such, we need tools that make data manipulation faster and easier. In this chapter, we introduce [dplyr](http://dplyr.tidyverse.org/), a grammar of data manipulation. |
+| `04-dplyr-1.qmd:117` | 2, 9, 3 | In order to compute the AOV, we must first separate the purchasers from non-purchasers. We will do this by filtering the data related to purchasers using the `filter()` function. It allows us to filter rows that meet a specific criteria/condition. The first argument is the name of the data frame and the rest of the arguments are expressions for filtering the data. | To compute the AOV, we must first separate the purchasers from the non-purchasers. We do this with the `filter()` function, which keeps the rows that meet a specific condition. The first argument is the name of the data frame and the rest are expressions for filtering the data. |
+| `04-dplyr-1.qmd:123` | 2, 9, §3a.10 | The first example we will look at filters all visits from device **mobile**. As we had learnt in the previous section, the first argument is our data set `ecom` and the next argument is the condition for filtering rows. | The first example filters all visits from device **mobile**. As we learned in the previous section, the first argument is our data set `ecom` and the next is the condition for filtering rows. |
+| `04-dplyr-1.qmd:135` | §3a.3 | In the below example, we specify two filter conditions: | In the example below, we specify two filter conditions: |
+| `04-dplyr-1.qmd:162` | §3a.10 | Let us apply what we have learnt to the case study. | Let us apply what we have learned to the case study. |
+| `04-dplyr-1.qmd:170` | 2, 9 | After filtering the data, we need to select relevent variables to compute the AOV. Remember, we do not need all the columns in the data to compute a required metric (in our case, AOV). The `select()` function allows us to select a subset of columns. | After filtering the data, we need to select the relevant variables to compute the AOV. Remember, we do not need every column in the data to compute the metric we need. The `select()` function keeps a subset of columns. |
+| `04-dplyr-1.qmd:176` | 9, 8 | we specify the data set i.e. `ecom` followed by the name of the columns. | we specify the data set, `ecom`, followed by the column names. |
+| `04-dplyr-1.qmd:188` | §3a.3, 9 | In the below example, we select all the columns starting from `referrer` up to `order_items`. … the columns are adjacent to each other in the data set. | In the example below, we select all the columns starting from `referrer` up to `order_items`. … the columns are adjacent in the data set. |
+| `04-dplyr-1.qmd:200` | 3, 2, 9, §3a.3 | What if you want to select all columns except a few? Typing the name of many columns can be cumbersome … dplyr allows us to specify columns that need not be selected using `-`. In the below example, we select all columns except `n_pages` and `duration`. | What if you want to select all the columns except a few? Typing the names of many columns can be cumbersome … dplyr allows us to drop columns using `-`. In the example below, we select all columns except `n_pages` and `duration`. |
+| `04-dplyr-1.qmd:225` | 2, 9 | Let us combine `filter()` and `select()` functions to extract `device` and `order_value` only for those visits that resulted in a purchase. | Let us combine `filter()` and `select()` to keep `device` and `order_value` only for the visits that resulted in a purchase. |
+| `04-dplyr-1.qmd:242` | 3, 2, 9 | We need to compute the total revenue and the number of orders for each device in order to compute their AOV. To achieve this, we need to group the selected `order_value` by device type. `group_by()` allows us to group or split data based on particular (discrete) variable. The first argument is the name of the data set and the second argument is the name of the column based on which the data will be split. | We need the total revenue and the number of orders for each device to compute their AOV. To achieve this, we group the selected data by device type. `group_by()` groups or splits data based on a particular (discrete) variable. The first argument is the name of the data set and the second is the column to split the data by. |
+| `04-dplyr-1.qmd:249` | 9 | we use `group_by` and specify the data set i.e. `ecom` and the column based on which to split the data i.e. `referrer`. | we use `group_by` and specify the data set, `ecom`, and the column to split by, `referrer`. |
+| `04-dplyr-1.qmd:258` | 3, §3a.3 | In the second line in the previous output, you can observe `Groups: referrer [5]` | In the second line of the output above, you can observe `Groups: referrer [5]` |
+| `04-dplyr-1.qmd:271` | 3, 2 | device. i.e. we need to reduce the order value data to a single summary. … the subsequent arguments are functions that can summarise data. | device, i.e. we need to reduce the order value data to a single summary. … the subsequent arguments are functions that summarise data. |
+| `04-dplyr-1.qmd:305` | 13 | The two steps above — split with `group_by()`, then `summarise()` — can also be written in one step | The two steps above, split with `group_by()` and then `summarise()`, can also be written in one step |
+| `04-dplyr-1.qmd:320` | 9, 13 | It applies the specified summary function to all the columns in the data set except for the grouping column. So we need to ensure that the data does not have any irrelevant columns. | It applies the summary function to all the columns in the data set except the grouping column. We therefore need to ensure that the data does not have any irrelevant columns. |
+| `04-dplyr-1.qmd:360` | 2, 9, 3 | So far, we have split the data based on the `device` type … so we will use them inside the `summarise()` function. Remember, we need to provide a name to the summary being generated. | So far, we have split the data by `device` type … so we use them inside the `summarise()` function. Remember, we need to provide a name for each summary being generated. |
+| `04-dplyr-1.qmd:387` | 3 | expressions for creating new columns based out of existing columns. | expressions for creating new columns based on existing columns. |
+| `04-dplyr-1.qmd:390` | 3 | time on site divided by number of pages visited. | time on site divided by the number of pages visited. |
+| `04-dplyr-1.qmd:399` | 9, 3 | We can create new columns based on other columns created using `mutate`. Let us create another column `sqrt_avg_page_time` i.e. square root of the average time on page using `avg_page_time`. | We can create new columns from other columns created using `mutate`. Let us create another column, `sqrt_avg_page_time`, the square root of the average time on page using `avg_page_time`. |
+| `04-dplyr-1.qmd:410` | 3, 13 | Back to our case study, from the last step we have the total revenue and the number of orders for each device category and can compute the AOV. We will create a new column to store AOV. | Back to our case study: from the last step we have the total revenue and the number of orders for each device category, so we can compute the AOV. We will create a new column to store it. |
+| `04-dplyr-1.qmd:423` | 9, 2 | We will select the device type and the corresponding aov while getting rid of other columns. | We keep the device type and the corresponding aov and drop the rest. |
+| `04-dplyr-1.qmd:447` | 9 | If we want to arrange the data in descending order, we can use `desc()`. Let us arrange the data in descending order. | If we want the data in descending order, we use `desc()`: |
+| `04-dplyr-1.qmd:452` | 3, 9 | Let us arrange data first by number of visits and then by number of pages in a descending order. | Let us arrange the data first by number of visits and then by number of pages in descending order. |
+| `04-dplyr-1.qmd:482` | 11, 9, 2 | If you observe, at each step we create a new variable(data frame) and then use it as an input in the next step i.e. the output from one step becomes the input for the next. Can we achieve the final outcome i.e. `ecom7` without creating the intermediate data (ecom1 - ecom6)? | At each step we create a new variable (data frame) and then use it as an input in the next step; the output from one step becomes the input for the next. Can we achieve the final outcome, `ecom7`, without creating the intermediate data (ecom1 - ecom6)? |
+
+Refusals: "There you go" (374), "Let us say we want to…" (437) and the two "What functions can we
+use…" questions are his warm hand-offs and stay. `04-dplyr-1.qmd:54` "Below is the description of the
+data set:" is the chapter's pointer to a list, not a sentence about the text.
+
+## Joining Tables using dplyr
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `05-dplyr-2.qmd:23` | 3, §3a.3, 2 | The second data set, `customer` contains details of each customer. The below table displays the details stored in each data set. | The second data set, `customer`, contains details of each customer. The table below shows the details stored in each data set. |
+| `05-dplyr-2.qmd:86` | 3 | Inner join return all rows from `Age` … all combination of the matches are returned. | An inner join returns all rows from `Age` … all combinations of the matches are returned. |
+| `05-dplyr-2.qmd:96` | 3, 13 | To get data for all those customers who have placed orders in the past let us join | To get data for all the customers who have placed orders in the past, let us join |
+| `05-dplyr-2.qmd:105` | 3 | Left join return all rows … Rows in `Age` with  no match … If there are multiple  matches | A left join returns all rows … Rows in `Age` with no match … If there are multiple matches |
+| `05-dplyr-2.qmd:117` | 13 | irrespective of whether a customer has placed orders or not let us join | irrespective of whether a customer has placed orders or not, let us join |
+| `05-dplyr-2.qmd:126` | 3 | Right join return all rows from `Height` | A right join returns all rows from `Height` |
+| `05-dplyr-2.qmd:146` | 3, 9 | Semi join return all rows … an inner join will return one row of `Age` for each matching row of `Height`, where a semi join will never duplicate rows of `Age`. | A semi join returns all rows … an inner join returns one row of `Age` for each matching row of `Height`, while a semi join never duplicates rows of `Age`. |
+| `05-dplyr-2.qmd:158` | 3 | returned only for those cases where customer data is present. | returned only for the cases where customer data is present. |
+| `05-dplyr-2.qmd:167` | 3 | Anti join return all rows from `Age` where there are not matching values in `Height` | An anti join returns all rows from `Age` where there are no matching values in `Height` |
+| `05-dplyr-2.qmd:195` | 13 | 49 customers placed no orders — and 245 orders have no matching customer record. | 49 customers placed no orders, and 245 orders have no matching customer record. |
+| `05-dplyr-2.qmd:215` | 13 | An `inner_join()` duplicates the left row once per match — here 42 customers with orders explode to 55 joined rows — while `semi_join()` returns | An `inner_join()` duplicates the left row once per match (here 42 customers with orders explode to 55 joined rows), while `semi_join()` returns |
+| `05-dplyr-2.qmd:233` | 3 | Full join return all rows … Where there are not matching values, returns NA for the one missing. | A full join returns all rows … Where there are no matching values, it returns NA for the one missing. |
+| `05-dplyr-2.qmd:252` | 13 | Use it for grids — e.g. all size × color combinations — never for large tables | Use it for grids, such as all size × color combinations, and never for large tables |
+
+Refusals: the rules keep their `Age`/`Height` example tables and the singular "join" noun, as
+taught; only the verb agreement changed. The webR lead-in (265) is identical to ch 4's and is left
+as written so the two callouts match.
+
+## dplyr Helpers
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `06-dplyr-3.qmd:30` | 3, 9 | answer questions we have about and to modify/transform the underlying data set. | answer questions about it and to modify the underlying data set. |
+| `06-dplyr-3.qmd:61` | 2, 3 | We will use `distinct` to examine the values in the `referrer` column | We use `distinct` to examine the values in the `referrer` column. |
+| `06-dplyr-3.qmd:106` | 15 | the number of bouncers driven by the different sources of traffic. | the number of bouncers from the different sources of traffic. |
+| `06-dplyr-3.qmd:124` | 3 | Another way to extract the above information is by using `count` | Another way to extract the above information is by using `count`. |
+| `06-dplyr-3.qmd:159` | 3, 2 | dplyr offers a sampling function which allows us to specify either the number or percentage of observations. `slice_sample()` allows sampling a specific number of observations. | dplyr offers a sampling function that allows us to specify either the number or the percentage of observations. `slice_sample()` samples a specific number of observations. |
+| `06-dplyr-3.qmd:171` | 13 | We can combine the sampling function with grouping as shown below where we sample observations after grouping them according to the source of traffic. | We can combine the sampling function with grouping, as shown below, where we sample observations after grouping them by the source of traffic. |
+| `06-dplyr-3.qmd:187` | 2, 11, §3a.3 | we had observed that dplyr verbs always returned a tibble. … It will return a vector. In the below example, we extract the `device` column as a vector. I am using `head` in addition to limit the output printed. | we observed that dplyr verbs always return a tibble. … It returns a vector. In the example below, we extract the `device` column as a vector. |
+| `06-dplyr-3.qmd:216` | §3a.3 | The below example extracts data from the last column. | The example below extracts data from the last column. |
+| `06-dplyr-3.qmd:223` | §3a.3, 3 | In the below example, we extract data starting from the 5th row and upto the 15th row. | In the example below, we extract data starting from the 5th row up to the 15th row. |
+| `06-dplyr-3.qmd:241` | 2, §3a.3 | `between()` allows us to test if the values in a column lie between two specific values. In the below example, we check how many visits browsed pages between 5 and 15. | `between()` tests whether the values in a column lie between two specific values. In the example below, we check how many visits browsed between 5 and 15 pages. |
+| `06-dplyr-3.qmd:255` | 9, §3a.3 | It allows us to lay down the conditions clearly … In the below example, we create a new column | It lets us lay down the conditions clearly … In the example below, we create a new column |
+
+Refusals: the sentence "I am using `head` in addition to limit the output printed." was cut, not
+rewritten: it is the chapter's only first-person-singular line (guide §3a.2) and the chunk below no
+longer calls `head`. The syllabus bullets at 16–18 promise sections the chapter does not have; that
+is a content decision for the review, not a style row. `pull(ecom_mini, 1)` is described as
+"from `ecom`" (209); the variable name is left as the author wrote it.
+
+## tibbles
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `07-tibbles.qmd:15` | 11, 3 | In this chapter, we will explore tibbles. To be more precise, we will learn: - how tibbles are different from data frames? - how to create tibbles? - how to manipulate tibbles? | In this chapter, we will explore tibbles. We will learn: - how tibbles differ from data frames - how to create tibbles - how to manipulate tibbles |
+| `07-tibbles.qmd:30` | 3 | tibble can be created using any of the following: | A tibble can be created using any of the following: |
+| `07-tibbles.qmd:44` | 3, 2 | We mentioned the column names followed by the data. If you do not specify the column names, `tibble()` will supply them. Ensure that the length of each column is same. | We specified the column names followed by the data. If you do not specify the column names, `tibble()` supplies them. Ensure that the length of each column is the same. |
+| `07-tibbles.qmd:52` | 2, 3, 13 | `tibble()` will never alter the input's type. For example, if you supply a character vector it will not be converted to factor unlike data.frame where you need to set `stringsAsFactors` to `FALSE`. | `tibble()` never alters the input's type. For example, if you supply a character vector, it is not converted to factor, unlike a data.frame, where you need to set `stringsAsFactors` to `FALSE`. |
+| `07-tibbles.qmd:64` | 2, §3a.3 | `tibble()` will never modify the column names. In the below example | `tibble()` never modifies the column names. In the example below |
+| `07-tibbles.qmd:75` | 2, 3 | `tibble()` will never print all the rows and clutter your console. It will only print the first 10 rows and only as many columns that fit the width of the console. | `tibble()` never prints all the rows and clutters your console. It prints only the first 10 rows and only as many columns as fit the width of the console. |
+| `07-tibbles.qmd:88` | 9, 2 | Recycling vectors of length greater than 1 often leads to errors and as such `tibble()` will only recycle vectors of length 1. | Recycling vectors of length greater than 1 often leads to errors, so `tibble()` recycles only vectors of length 1. |
+| `07-tibbles.qmd:104` | 3 | We can test if an object is a tibble using `is_tibble()`. | We can test whether an object is a tibble using `is_tibble()`. |
+| `07-tibbles.qmd:113` | 3 | Another way to create tibbles is using `tribble()`: | Another way to create a tibble is with `tribble()`: |
+| `07-tibbles.qmd:131` | 3, 8, 13 | Names of the columns in tibbles need not be valid R variable names. They can contain unusual characters like a space or a smiley but must be enclosed in backticks. | Column names in tibbles need not be valid R variable names. They can contain unusual characters, like a space or a smiley, but must be enclosed in backticks. |
+| `07-tibbles.qmd:145` | 3 | Let us add data related to **Safari** browser | Let us add data related to the **Safari** browser |
+| `07-tibbles.qmd:157` | 3, 9 | If we want to add the data at a particular row, we can specify the row number using the `.before` argument. … data related to **Safari** browser | If we want to add the data at a particular row, we specify the row number using the `.before` argument. … data related to the **Safari** browser |
+| `07-tibbles.qmd:177` | 3, 13 | `tibble` does not have `rownames` unlike `data.frame`. | `tibble` does not have `rownames`, unlike `data.frame`. |
+| `07-tibbles.qmd:215` | 2, 3 | `has_name()` can be used to check if a tibble has a specific column. | Use `has_name()` to check whether a tibble has a specific column. |
+
+Refusals: the guide quote in the opening callout is a quotation and is untouched, including its
+"i.e." and "e.g.". The `### never …` headings and the `tribble()` feature bullets keep their wording.
+
+## Tidying Data with tidyr
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `08-tidyr.qmd:9` | 13 | In this chapter we reshape data with **tidyr**: - `pivot_longer()` / `pivot_wider()` — move between long and wide layouts - `separate_wider_delim()` / `unite()` — split one column into several and back - `drop_na()` / `complete()` / `fill()` — handle missing values and combinations | In this chapter, we reshape data with **tidyr**: - `pivot_longer()` / `pivot_wider()`: move between long and wide layouts - `separate_wider_delim()` / `unite()`: split one column into several and back - `drop_na()` / `complete()` / `fill()`: handle missing values and combinations |
+| `08-tidyr.qmd:57` | 13 | `metric`/`mean_value` pairs — one row per device-metric observation: | `metric`/`mean_value` pairs, one row per device-metric observation: |
+| `08-tidyr.qmd:77` | 13 | a single row — the layout managers usually want in a report: | a single row, the layout managers usually want in a report: |
+| `08-tidyr.qmd:87` | 13 | Reshaping has two directions — pick by what the next step needs: | Reshaping has two directions: pick by what the next step needs: |
+| `08-tidyr.qmd:95` | 13 | draws every metric in a single call — no per-metric layers: | draws every metric in a single call, with no per-metric layers: |
+| `08-tidyr.qmd:109` | 13 | And the trip reverses cleanly — `pivot_wider()` on the long table restores the wide summary exactly | And the trip reverses cleanly: `pivot_wider()` on the long table restores the wide summary exactly |
+| `08-tidyr.qmd:140` | 13 | returns the input exactly — a useful check that a separate/unite round-trip loses nothing: | returns the input exactly, a useful check that a separate/unite round-trip loses nothing: |
+| `08-tidyr.qmd:166` | 13 | Only the 55 fully matched rows survive — the same rows `inner_join()` returns. | Only the 55 fully matched rows survive, the same rows `inner_join()` returns. |
+
+Refusals: `geom_bar(stat = "identity")` at 106 is code and stays even though `geom_col()` is the
+idiom; the Your Turn items and their "does the round-trip hold?" questions are teaching, not prose
+to flatten.
+
+## Hacking Strings
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `09-stringr.qmd:44` | 3 | - url: randomyly generated urls | - url: randomly generated urls |
+| `09-stringr.qmd:51` | 9, 3 | introduce ourselves to some of the functions we will be using later in the case study. One of the columns in the case study data is `email`. It contains random email ids. We want to ensure that the email ids adher to a particular format .i.e | introduce ourselves to some of the functions we will use later. One of the columns in the case study data is `email`, which contains random email ids. We want to ensure that the email ids adhere to a particular format, i.e. |
+| `09-stringr.qmd:59` | 3, 2 | Let us first detect if the email ids contain `@`. Since the data set has 1000 rows, we will use a smaller sample in the examples. | Let us first detect whether the email ids contain `@`. Since the data set has 1000 rows, we use a smaller sample in the examples. |
+| `09-stringr.qmd:98` | 2, 9 | Let us split the domain name and extension from the domain column in the data. … separated by `.` and we will use it to split the domain column. … we will use two slashes to escape the special character. | Let us split the domain name and extension from the domain column. … separated by `.`, and we use it to split the domain column. … we use two slashes to escape it. |
+| `09-stringr.qmd:110` | 3 | The default truncation happens at the beggining of the string but we can truncate the central part or the end of the string as well. | The default truncation happens at the beginning of the string, but we can truncate the central part or the end as well. |
+| `09-stringr.qmd:123` | 9, 3 | Let us quickly sort the emails in both ascending and descending orders. | Let us sort the emails in both ascending and descending order. |
+| `09-stringr.qmd:136` | 2 | The case of a string can be changed to upper, lower or title case as shown below. | We can change the case of a string to upper, lower or title case as shown below. |
+| `09-stringr.qmd:147` | 2 | Parts of a string can be replaced using `str_replace()`. | We can replace parts of a string using `str_replace()`. |
+| `09-stringr.qmd:172` | 3, 9 | text that match our pattern. Use `str_match()` to see if the pattern is present in the string. | text that matches our pattern. Use `str_match()` to see whether the pattern is present in the string. |
+| `09-stringr.qmd:194` | 3 | the position of `@`  in the email ids | the position of `@` in the email ids |
+| `09-stringr.qmd:206` | 2, 15 | The length of the string can be computed using `str_length()`. Let us ensure that the length of the strings in the `password` column is 16. | We can compute the length of a string using `str_length()`. Let us ensure that the strings in the `password` column are 16 characters long. |
+| `09-stringr.qmd:228` | 3, 9 | One final function that we will look at before the case study is `word()`. It extracts word(s) from sentences. | One final function before the case study is `word()`. It extracts words from sentences. |
+| `09-stringr.qmd:265` | 2, 3 | We will split the email using `str_split`. It will split a string using the pattern supplied. In our case the pattern is `@`. | We split the email using `str_split`. It splits a string using the pattern supplied. In our case, the pattern is `@`. |
+| `09-stringr.qmd:274` | 13, 9 | Each element of the list has two values. The first one is the username … we want the second value from each element of the list. | Each element of the list has two values: the first one is the username … we want the second value from each element. |
+| `09-stringr.qmd:278` | 2 | We will use `map_chr()` from purrr … It will return … `map_chr()` will return a character vector. | We use `map_chr()` from purrr … It returns … `map_chr()` returns a character vector. |
+| `09-stringr.qmd:290` | 13, 9 | Step 2 returned a character vector and we need to split the domain name and the domain extension. … Let us split the domain name and domain extension using `str_split` and `\.` as the pattern. | Step 2 returned a character vector, and we need to split the domain name from the domain extension. … Let us split them using `str_split` and `\.` as the pattern. |
+| `09-stringr.qmd:305` | 9, 2 | We will again use `map_chr` to achieve this. | We again use `map_chr` for this. |
+| `09-stringr.qmd:319` | §3a.3 | The below code extracts the domain extension instead of the domain name. | The code below extracts the domain extension instead of the domain name. |
+| `09-stringr.qmd:333` | 13 | does the same job — verified identical on all 1001 addresses: | does the same job, verified identical on all 1001 addresses: |
+| `09-stringr.qmd:389` | 3, 11 | Step 1 returned a list the elements of which have 3 values each. If you observe the list, the image type is in the 3rd value. We will now extract | Step 1 returned a list whose elements have 3 values each. In the list, the image type is the 3rd value. We now extract |
+| `09-stringr.qmd:407` | 4, 3 | Below is the first method. We know that the image type is 3 characters. So we use `str_sub` … are mentioned using `start` and `stop`. | In the first method, we know that the image type is 3 characters, so we use `str_sub` … are specified using `start` and `stop`. |
+| `09-stringr.qmd:418` | 3, 2 | In case you are not sure about the length of the image type. In such cases, we will split the string | What if we are not sure about the length of the image type? In such cases, we split the string |
+| `09-stringr.qmd:441` | 3, 9 | there are no numbers in the url before. We will locate the position or index of the first number in the url using `str_locate()` and using the pattern `[0-9]` which instructs | there are no numbers in the url before it. We locate the position or index of the first number in the url using `str_locate()` and the pattern `[0-9]`, which instructs it |
+| `09-stringr.qmd:463` | 2, 9 | To extract the dimension, we will split it from the rest of the url using `str_split()` and using the pattern `\.` as it separates the dimension and the image extension. | To extract the dimension, we split it from the rest of the url using `str_split()` and the pattern `\.`, which separates the dimension from the image extension. |
+| `09-stringr.qmd:477` | 3, 9 | a list which contains the image dimension … Each element of the list is a character vector. We want to extract the first value in the character vector. | a list that contains the image dimension … Each element of the list is a character vector, and we want the first value in it. |
+| `09-stringr.qmd:509` | 15, 2 | separated from the rest of the url by `:`. Let us split the url using `str_split()` and using the pattern `:`. Since `:` is a special character, we will escape it using `\`. | separated from the rest by `://`. Let us split the url using `str_split()` and the pattern `://`. |
+| `09-stringr.qmd:520` | 2 | we will extract it using `map_chr()` with the element position. | we extract it using `map_chr()` with the element position. |
+| `09-stringr.qmd:544` | 3 | - detect the staritng position of file type - tetect the ending position of file type | - detect the starting position of file type - detect the ending position of file type |
+| `09-stringr.qmd:550` | 3 | and see if any of them contain more than 2 dots. | and see whether any of them contains more than 2 dots. |
+| `09-stringr.qmd:563` | 3 | to check if there is only one `?` | to check whether there is only one `?` |
+| `09-stringr.qmd:576` | 3, 13 | the first quesiton mark in the url, let us extract the location of the second dot and add 1 as the file type starts after the dot. | the first question mark in the url, let us extract the location of the second dot and add 1, as the file type starts after the dot. |
+| `09-stringr.qmd:595` | 3 | the ending chapterion of the file type. followed by a stray full stop on its own line | the ending position of the file type. |
+
+
+Refusals: `### Extract Image Dimesion from URL` (432) and `#### Step 3: Detect the
+staritng position` (577) carry the same typos as the prose rows above, but headings are not
+edited; both are listed as follow-ups. "Reach for the one-step regex…" (357) is kept: it is
+advice, not hype.
+
+## Date & Time: Parsing and Components
+
+64 prose sentences changed. The 36 rows below are the ones that alter grammar, sense or a term; the
+other 28 are the same kinds (spelling, "i.e." commas, `will` → present tense) and are counted here
+rather than itemized.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `10-lubridate-parsing.qmd:53` | 3 | `am()` and `pm()` allow us to check whether date/time occur in the am or pm? They return a logical value i.e. `TRUE` or `FALSE` | `am()` and `pm()` allow us to check whether a date/time occurs in the am or pm. They return a logical value, i.e. `TRUE` or `FALSE`. |
+| `10-lubridate-parsing.qmd:95` | 3, 8 | Throughout the tutorial, we will work on a case study related to transactions of a imaginary company. | Throughout this chapter, we will work on a case study related to transactions of an imaginary company. |
+| `10-lubridate-parsing.qmd:156` | 3, 11 | The data type is `numeric` i.e. R has subtracted `12` twice … Let us see if we can get some hints … If you observe the output, all of them returned | The data type is `numeric`: R has subtracted `12` twice … Let us see whether we can get some hints … In the output, all of them returned |
+| `10-lubridate-parsing.qmd:170` | 3, 9 | The problem is the nature or type of operations done on date or time is different when compared to string/character, number or logical values. | The problem is that the nature of the operations done on date or time is different from those on string/character, number or logical values. |
+| `10-lubridate-parsing.qmd:186` | 11, 5 | As you can see from the above output, there are 3 different classes for storing date/time in R | In the output above, there are 3 different classes for storing date/time in R: |
+| `10-lubridate-parsing.qmd:199` | 9, 2 | If you check the class of `Sys.Date()`, it is `Date`. … The `unclass()` function will show dates are stored internally. | If you check its class, it is `Date`. … The `unclass()` function shows how dates are stored internally. |
+| `10-lubridate-parsing.qmd:210` | 13 | All the dates in R are internally stored in this way. | all the dates in R are stored in this way. |
+| `10-lubridate-parsing.qmd:215` | 9 | `as.Date()` is the easiest and simplest way to create dates in R. | `as.Date()` is the easiest way to create dates in R. |
+| `10-lubridate-parsing.qmd:230` | 3 | it will be the same as `unclass(release_date)`. | it is the same as `unclass(release_date)`. |
+| `10-lubridate-parsing.qmd:267` | 9 | How about converting numbers to date? Sure, we can create date from numbers by specifying the origin and number of days since it. | How about converting numbers to date? We can create a date from numbers by specifying the origin and the number of days since it. |
+| `10-lubridate-parsing.qmd:286` | 11, 3 | If you have carefully observed, the format in which we have been specifying the dates as well as of those returned by functions … is the same i.e. `YYYY-MM-DD`. | In the examples above, the format in which we specify the dates, and the format returned by functions …, is the same, i.e. `YYYY-MM-DD`. |
+| `10-lubridate-parsing.qmd:311` | 3 | The next class we are going to look at is `POSIXct/POSIXlt`. | The next classes we are going to look at are `POSIXct/POSIXlt`. |
+| `10-lubridate-parsing.qmd:316` | 3 | You might be wondering what is this POSIX thing? … standards specified for maintaining compatibility | You might be wondering what this POSIX thing is. … standards specified for maintaining compatibility (a word broken across two lines) |
+| `10-lubridate-parsing.qmd:338` | 3 | Let us now store the latest R release date as `POSIXct` as shown below | Let us now store the latest R release date as `POSIXct`, as shown below. |
+| `10-lubridate-parsing.qmd:413` | 8, 9 | a few tips/suggestions on when to use | a few tips on when to use |
+| `10-lubridate-parsing.qmd:439` | 3, 9 | a good practice to adher to ISO 8601 format … In real world … Below is a sample | good practice to adhere to the ISO 8601 format … In the real world … Below is a sample. |
+| `10-lubridate-parsing.qmd:482` | 15, 3 | the year comes first followed by month and the date; each separated by a backslash (`/`). | the year comes first, followed by the month and the date, each separated by a `/`. |
+| `10-lubridate-parsing.qmd:496` | 2, 3 | Using the format argument, we will specify the date format as a character vector i.e. enclosed in quotes. | Using the format argument, we specify the date format as a character vector, i.e. enclosed in quotes. |
+| `10-lubridate-parsing.qmd:503` | 3 | Another way in which the release data can be written is `2019-Dec-12`. | Another way in which the release date can be written is `2019-Dec-12`. |
+| `10-lubridate-parsing.qmd:550` | §3a.3 | In the below table, we look at some of the most widely used conversion specifications. | In the table below, we look at some of the most widely used conversion specifications. |
+| `10-lubridate-parsing.qmd:587` | 2 | It will guess the date/time format | It guesses the date/time format |
+| `10-lubridate-parsing.qmd:621` | 13, 9 | but most often you will not create date/time and instead deal with data thay comes your way from a system or colleague/collaborator. | Most often though, you will not create date/time; you will deal with data that comes your way from a system or a colleague. |
+| `10-lubridate-parsing.qmd:632` | 2 | `strptime()` will convert character data to `POSIXlt`. | `strptime()` converts character data to `POSIXlt`. |
+| `10-lubridate-parsing.qmd:642` | 9, 3 | date/time as character data and in the format `YYYYMMDD` i.e. nothing separates | date/time as character data in the format `YYYYMMDD`, i.e. nothing separates |
+| `10-lubridate-parsing.qmd:653` | 9 | Let us quickly explore the functions to convert date/time to character data before moving on to the functions from lubridate. | Let us explore the functions that convert date/time to character data before moving on to lubridate. |
+| `10-lubridate-parsing.qmd:669` | 11, 13 | As you can see, all the 3 functions converted date/time to character. … but they have one thing in common i.e. the order | In the output above, all the 3 functions converted date/time to character. … but they have one thing in common: the order |
+| `10-lubridate-parsing.qmd:690` | 3 | What happens in the below case? … specify mutiple date-time formats. | What happens in the case below? … specify multiple date-time formats. |
+| `10-lubridate-parsing.qmd:711` | 9 | Can you tell what differentiates `parse_date_time()` when compared to `strptime()`? | Can you tell what differentiates `parse_date_time()` from `strptime()`? |
+| `10-lubridate-parsing.qmd:774` | 3 | One of the points we discussed was that we can't extract components | One of the points we discussed was that we cannot extract components |
+| `10-lubridate-parsing.qmd:942` | 2, 9 | `quarter()` will return the quarter from the date. December is in the 4th quarter and hence it returns 4. | `quarter()` returns the quarter from the date. December is in the 4th quarter, so it returns 4. |
+| `10-lubridate-parsing.qmd:956` | 3, 9 | In India, the fiscal starts in April and December falls in the 3rd quarter. … We will set it to 4 for April. Now it returns 3 instead of 4. | In India, the fiscal year starts in April, and December falls in the 3rd quarter. … We set it to 4 for April, and it now returns 3 instead of 4. |
+| `10-lubridate-parsing.qmd:1008` | 3 | - we will then create a new column `is_leap` which will have be set to `TRUE` if the year is a leap year else it will be set to `FALSE` | - we will then create a new column `is_leap` which will be set to `TRUE` if the year is a leap year, and `FALSE` otherwise |
+| `10-lubridate-parsing.qmd:1051` | §3a.10, 2 | In the second section, we learnt to create date-time objects … functions that will allow us to do the same | In the second section, we learned to create date-time objects … functions that allow us to do the same. |
+| `10-lubridate-parsing.qmd:1098` | §3a.3, 2 | In the below example, we will start with the date of release of R version 3.6.1 and using `update()`, we will change it to `2019-12-12`. | In the example below, we start with the date of release of R version 3.6.1 and, using `update()`, change it to `2019-12-12`. |
+| `10-lubridate-parsing.qmd:1115` | 3 | it will create the sequence uptil the current date. | it creates the sequence up to the current date. |
+| `10-lubridate-parsing.qmd:1201` | 3 | goes back upto `1992` and the difference between the dates in 2 years. | goes back up to `1992`, and the difference between the dates is 2 years. |
+
+Refusals: the `### Your Turn` items, the numbered/bulleted step lists and every table description
+inside a chunk are left alone (the tables are code). "Okay!", "Hmmm...", "Ah!" and "Great!" stay:
+they are his rare light lines (§3a.12). Three `## Summary` blocks and the `####` step headings are
+not edited.
+
+## Date & Time: Arithmetic and Time Zones
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `11-lubridate-arithmetic.qmd:9` | 13 | round and roll back dates — including the receivables overdue case study. | round and roll back dates, including the receivables overdue case study. |
+| `11-lubridate-arithmetic.qmd:23` | 3 | Time to do some arithmetic with the dates. | Time to do some arithmetic with dates. |
+| `11-lubridate-arithmetic.qmd:67` | 3, 9 | subtracting the date of invoice from the date of payment. | subtracting the invoice date from the payment date. |
+| `11-lubridate-arithmetic.qmd:111` | 9 | Among the different components it returned were | Among the components it returned were |
+| `11-lubridate-arithmetic.qmd:117` | 3 | `gmtoff` is offset in seconds from GMT i.e. difference in hours and minutes from UTC. | `gmtoff` is the offset in seconds from GMT, i.e. the difference in hours and minutes from UTC. |
+| `11-lubridate-arithmetic.qmd:123` | 2, 9 | let us spend a little time on understanding the basics of time zones | let us spend a little time on the basics of time zones |
+| `11-lubridate-arithmetic.qmd:128` | 3, 9 | receive sun light at different times. … The timezones are based on Earth's rotation. The Earth moves ~15 degrees every 60 minutes i.e. 360 degrees in 24 hours. The planet is divided into 24 timezones each 15 degrees of longitude width. | receive sunlight at different times. … Timezones are based on Earth's rotation. The Earth moves about 15 degrees every 60 minutes, i.e. 360 degrees in 24 hours. The planet is divided into 24 timezones, each 15 degrees of longitude wide. |
+| `11-lubridate-arithmetic.qmd:121` | 8 | - Greenwich Meridian Time (GMT) | - Greenwich Mean Time (GMT) |
+| `11-lubridate-arithmetic.qmd:135` | 8, 9, 3 | you have heard of Greenwich Meridian Time (GMT) right? We just saw GMT off set in `POSIXlt` … For example, India timezone | you have heard of Greenwich Mean Time (GMT). We just saw the GMT offset in `POSIXlt` … For example, the India timezone |
+| `11-lubridate-arithmetic.qmd:139` | 3 | every 15 degree section is one hour earlier than GMT and every 15 degree section to the East is an hour later. | every 15-degree section is one hour earlier than GMT, and every 15-degree section to the East is an hour later. |
+| `11-lubridate-arithmetic.qmd:143` | 3 | **C**oordinated **U**niversal **T**ime (UTC) , on the other hand | **C**oordinated **U**niversal **T**ime (UTC), on the other hand |
+| `11-lubridate-arithmetic.qmd:148` | 9 | you should be able to see the timezone you are in. | you should see the timezone you are in. |
+| `11-lubridate-arithmetic.qmd:162` | 3, 13 | If nothing is returned, it means we have to set the timezone. Use `Sys.setenv()` to set the timezone as shown below. The author resides in India and hence the timezone is set to `Asia/Calcutta`. | If nothing is returned, we have to set the timezone. Use `Sys.setenv()` to set the timezone, as shown below. The author resides in India, and hence the timezone is set to `Asia/Calcutta`. |
+| `11-lubridate-arithmetic.qmd:190` | 3 | Daylight savings also known as | Daylight savings, also known as |
+| `11-lubridate-arithmetic.qmd:213` | 3 | - check if daylight savings in on | - check if daylight savings is on |
+| `11-lubridate-arithmetic.qmd:218` | 11 | In this chapter, we will learn about | In this section, we will learn about |
+| `11-lubridate-arithmetic.qmd:243` | 11 | If you observe carefully, the interval is represented by the course start and end dates. | The interval is represented by the course start and end dates. |
+| `11-lubridate-arithmetic.qmd:252` | 3 | - use `int_overlaps()` to check if two intervals overlap. | - use `int_overlaps()` to check whether two intervals overlap. |
+| `11-lubridate-arithmetic.qmd:310` | 3, 9 | You might be thinking why we incremented the due date … both the intervals will share a common date i.e. the due date and they will always overlap as shown below: | You might be wondering why we incremented the due date … both intervals share a common date, i.e. the due date, and they always overlap, as shown below: |
+| `11-lubridate-arithmetic.qmd:327` | §3a.3 | In the below example, we shift the course interval by: | In the example below, we shift the course interval by: |
+| `11-lubridate-arithmetic.qmd:357` | 13, 2 | We can answer this using `%within%` which will return `TRUE` if a date falls within an interval. | We can answer this using `%within%`, which returns `TRUE` if a date falls within an interval. |
+| `11-lubridate-arithmetic.qmd:393` | 3, 2 | Duration is timespan measured in seconds. … The timespan can be anything from seconds to years but it will be represented as seconds. | A duration is a timespan measured in seconds. … The timespan can be anything from seconds to years, but it is represented as seconds. |
+| `11-lubridate-arithmetic.qmd:407` | 3, 9 | the output is same in both the cases. | the output is the same in both cases. |
+| `11-lubridate-arithmetic.qmd:413` | 9, 3, §3a.3 | it also shows `~1 minutes` in the brackets. As the length of the timespan increases i.e. the number becomes large … In the below examples | it also shows `~1 minutes` in brackets. As the timespan gets longer, i.e. the number becomes large … In the examples below |
+| `11-lubridate-arithmetic.qmd:477` | 3, §3a.3 | we use `period()` to represent timespan using different units. | we use `period()` to represent a timespan using different units. |
+| `11-lubridate-arithmetic.qmd:521` | 3 | a timespan i.e. `duration`, `interval` or `period`. | a timespan, i.e. `duration`, `interval` or `period`. |
+
+Refusals: the "Rule of thumb" paragraph (566) and the interval/duration/period table are new
+reference prose and already in his voice. `round_dates()` (580) is an inline-code typo
+(`round_date()`), out of scope. The webR lead-in is left as in the other chapters.
+
+## Categorical Data Fundamentals
+
+34 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
+other 2 are small comma/`will` fixes of the same kinds and are counted here.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `12-factors-fundamentals.qmd:31` | 13, 3 | data analysis.  Almost every … store, summarize, visualize & manipulate such data. | data analysis. Almost every … store, summarize, visualize and manipulate such data. |
+| `12-factors-fundamentals.qmd:41` | 3 | Quantitative data, on the other hand, consists of numbers and indicate how much or how many. | Quantitative data, on the other hand, consists of numbers and indicates how much or how many. |
+| `12-factors-fundamentals.qmd:46` | 3 | qualitative data is always **discrete** where as quantitative data | qualitative data is always **discrete** whereas quantitative data |
+| `12-factors-fundamentals.qmd:59` | 3, §3a.1 | We can have 5 0r 10 students but not 5.5 students (we can't have half a student). | We can have 5 or 10 students but not 5.5 students (we cannot have half a student). |
+| `12-factors-fundamentals.qmd:82` | 3 | is termed as **binary** or **dichotomous** variable. | is termed a **binary** or **dichotomous** variable. |
+| `12-factors-fundamentals.qmd:109` | 3, 9 | we cannot say that like is twice as positive as dislike i.e. we are unable to say … cannot be measured/determined or are meaningless. | we cannot say that like is twice as positive as dislike, i.e. we are unable to say … cannot be measured. |
+| `12-factors-fundamentals.qmd:184` | 3, 9 | as well as by third party cookies. Data collected is then used to display ads as well as to feed to recommendation algorithms. | as well as by third-party cookies. Data collected is then used to display ads as well as to feed recommendation algorithms. |
+| `12-factors-fundamentals.qmd:187` | 3 | It closely resembles real world data for an e-commerce store. | It closely resembles real-world data for an e-commerce store. |
+| `12-factors-fundamentals.qmd:200` | 13, 8 | We will read a subset of columns … which will cover both nominal and ordinal data types. … enclosed in single/double quotes. | We will read a subset of the columns …, which will cover both nominal and ordinal data types. … enclosed in single or double quotes. |
+| `12-factors-fundamentals.qmd:211` | 2, 9 | we will use the `col_types` argument to list out the data types. … we will use the `cols_only()` function indicating that only the columns specified must be read in and not all of them. | we use the `col_types` argument to list the data types. … we will use `cols_only()` to indicate that only the columns specified must be read. |
+| `12-factors-fundamentals.qmd:216` | 3 | the `ordered` argument to indicate if the data is ordinal. By default, it is set to `FALSE`, change this to `TRUE` if the column is ordinal. | the `ordered` argument to indicate whether the data is ordinal. By default, it is set to `FALSE`; change this to `TRUE` if the column is ordinal. |
+| `12-factors-fundamentals.qmd:264` | 9 | In this very important section, we will learn how R | In this section, we will learn how R |
+| `12-factors-fundamentals.qmd:275` | 11 | the sample data we will use in this module. | the sample data we will use in this section. |
+| `12-factors-fundamentals.qmd:288` | §3a.10, 3, 13 | We have successfully generated the sample data and along the way learnt … let us check if the sample is a `factor` | We have successfully generated the sample data, and along the way learned … let us check whether the sample is a `factor` |
+| `12-factors-fundamentals.qmd:294` | 3 | they return `TRUE` else `FALSE`. | they return `TRUE` and `FALSE` otherwise. |
+| `12-factors-fundamentals.qmd:304` | §3a.1 | Don't worry if you didn't spot it. | Do not worry if you did not spot it. |
+| `12-factors-fundamentals.qmd:323` | 13 | (i.e. 25 values) but 3 unique values. | (i.e. 25 values), but 3 unique values. |
+| `12-factors-fundamentals.qmd:368` | 2, 3, 9 | By default, it will ignore them. … set to `NA` by default i.e. `NA` is excluded automatically. … In order to treat `NA` as a level | By default, it ignores them. … set to `NA` by default, i.e. `NA` is excluded automatically. … To treat `NA` as a level |
+| `12-factors-fundamentals.qmd:387` | 3, 13, §3a.1 | three values Dislike, Neutral & Like in that order … Like is better than neutral which in turn is better than dislike. While we can order them, we can’t quantify … We can’t say | three values, Dislike, Neutral and Like, in that order … Like is better than neutral, which in turn is better than dislike. While we can order them, we cannot quantify … We cannot say |
+| `12-factors-fundamentals.qmd:403` | 3, 9 | In case of ordered factors … This is used to indicate the order of the levels. Now `rating` is both an ordered but the order of the levels is not correct. | In the case of ordered factors … This indicates the order of the levels. Now `rating` is ordered, but the order of the levels is not correct. |
+| `12-factors-fundamentals.qmd:409` | 9, 11 | The ranking of the levels has not changed and is still the same. … If you observe carefully, the ranking follows | The ranking of the levels has not changed. … The ranking follows |
+| `12-factors-fundamentals.qmd:490` | 3 | since data consists of a few distinct values only.  So how do we summarize | since the data consists of a few distinct values only. So how do we summarize |
+| `12-factors-fundamentals.qmd:511` | 3, 9 | for data sanitization i.e. as an analyst … into which any visitor can be classified into. | for data sanitization, i.e. as an analyst … into which any visitor can be classified. |
+| `12-factors-fundamentals.qmd:522` | 2, 13 | Both these functions will return the unique names/labels along with the levels while `levels()` returns | Both these functions return the unique names/labels along with the levels, while `levels()` returns |
+| `12-factors-fundamentals.qmd:531` | 3, 2, 13 | distribution i.e. count/frequency. `table()` and `summary()` will display … will return a tibble with 2 columns (level & count). | distribution, i.e. count/frequency. `table()` and `summary()` display … returns a tibble with 2 columns (level and count). |
+| `12-factors-fundamentals.qmd:554` | 13, 9 | we want to view the proportion or percentage instead of counts i.e. the proportion or percentage of traffic | we want the proportion or percentage instead of counts, i.e. the proportion or percentage of traffic |
+| `12-factors-fundamentals.qmd:579` | 3 | the order of the variables matter. | the order of the variables matters. |
+| `12-factors-fundamentals.qmd:592` | 9, 3 | another function at this point of time … the marginal frequencies i.e. the sum | another function at this point … the marginal frequencies, i.e. the sum |
+| `12-factors-fundamentals.qmd:680` | §3a.1 | We won’t explicitly specify `NA` as a level | We will not explicitly specify `NA` as a level |
+| `12-factors-fundamentals.qmd:687` | 2 | In order to ensure that missing values are also counted | To ensure that missing values are also counted |
+| `12-factors-fundamentals.qmd:693` | 2, 3 | In the first case, it will show `NA` … irrespective of whether there are missing values in the data or not. | In the first case, it shows `NA` … whether or not there are missing values in the data. |
+| `12-factors-fundamentals.qmd:700` | 8 | how to select/access the different parts of a `table`. | how to select the different parts of a `table`. |
+
+Refusals: the taxonomy section (Discrete/Continuous/Dichotomous/Ordinal/Nominal) and the
+qualitative/quantitative summary are teaching content and are left as written apart from the grammar
+rows above. The table descriptions and every `- ifany / - always` value inside chunks are code.
+`**D**esktop, **M**obile, **T**able` at 409 is a content error (the levels are Dislike/Neutral/Like);
+it is reported as a follow-up, not edited here.
+
+## Factor Manipulation with forcats
+
+36 prose sentences changed. The 32 rows below are the ones that alter grammar, sense or a term; the
+other 4 are the same kinds (comma, `will` → present tense) and are counted here.
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `13-forcats-manipulation.qmd:27` | 9, 3 | exploring the [forcats](https://forcats.tidyverse.org/) package for the same. We will basically look at 3 key operations or transformations we would like to do when it comes to factors which are: | and on the [forcats](https://forcats.tidyverse.org/) package. We will look at 3 key operations or transformations we would like to do when it comes to factors: |
+| `13-forcats-manipulation.qmd:33` | 9, 2 | let us take a quick look at some of the functions … We will store the source of traffic as `channel` | let us look at some of the functions … We store the source of traffic as `channel` |
+| `13-forcats-manipulation.qmd:39` | 11 | If you observe the result, it is in the same order as displayed by `levels()`. | In the result, the levels are in the same order as displayed by `levels()`. |
+| `13-forcats-manipulation.qmd:45` | 3 | sort the results by the count i.e. most common level comes at the top | sort the results by count, i.e. the most common level comes at the top |
+| `13-forcats-manipulation.qmd:61` | 3, 2, 9 | is to check if the levels are valid i.e. only levels which should be present in the data are actually present. `fct_match()` can be used to check validity of levels. | is to check that the levels are valid, i.e. that only the levels which should be present in the data are actually present. Use `fct_match()` to check the validity of the levels. |
+| `13-forcats-manipulation.qmd:81` | 9, 3 | In order to keep it interesting … map it into a function | To keep it interesting … map it to a function |
+| `13-forcats-manipulation.qmd:89` | 13 | two levels, *Paid Search* & *Organic Search* and give them the common value | two levels, *Paid Search* and *Organic Search*, and give them the common value |
+| `13-forcats-manipulation.qmd:94` | 13 | not enclosed in quotes (single or double) but the existing values must be a `character` vector. | not enclosed in quotes (single or double), but the existing values must be a `character` vector. |
+| `13-forcats-manipulation.qmd:103` | 13 | not enclosed in quotes but the existing values must be. | not enclosed in quotes, but the existing values must be. |
+| `13-forcats-manipulation.qmd:126` | 9, 15 | we desire to retain only those channels … will lump together all levels which do not have a minimum count specified. | we want to retain only those channels … will lump together all levels which do not meet the specified minimum count. |
+| `13-forcats-manipulation.qmd:141` | 2 | `fct_lump_n()` will retain top `n` levels by count/frequency and lump the rest | `fct_lump_n()` retains the top `n` levels by count/frequency and lumps the rest |
+| `13-forcats-manipulation.qmd:158` | 3 | The criteria was count of visits. If you want to specify the criteria … The criteria is a value between **0** and **1**. | The criterion was the count of visits. If you want to specify the criterion … The criterion is a value between **0** and **1**. |
+| `13-forcats-manipulation.qmd:175` | 3, 9 | based on some criteria like count or percentage of traffic … We will do a comparison of the three functions in a short while. | based on criteria such as count or percentage of traffic … We will compare the three functions in a short while. |
+| `13-forcats-manipulation.qmd:184` | 9, 3 | `keep` is used when we know the levels we want to retain and `drop` is used when we know the levels we want to drop. … and hence we will use the `keep` argument | `keep` is used when we know the levels to retain and `drop` when we know the levels to drop. … so we use the `keep` argument |
+| `13-forcats-manipulation.qmd:248` | 9 | so that we can share it with others without divulging the names of the channels. `fct_anon()` allows us to anonymize the levels | so that we can share it without divulging their names. `fct_anon()` anonymizes the levels |
+| `13-forcats-manipulation.qmd:317` | 2 | `fct_expand()` allows us to add new levels to the data. … it will be ignored. | `fct_expand()` adds new levels to the data. … it is ignored. |
+| `13-forcats-manipulation.qmd:331` | 2, 3 | `fct_drop()` will drop levels which have no values i.e. unused levels. | `fct_drop()` drops levels which have no values, i.e. unused levels. |
+| `13-forcats-manipulation.qmd:347` | 3, 9 | explicit i.e. it will appear as `(Missing)` … This will help non R users to understand | explicit, i.e. it will appear as `(Missing)` … This will help non-R users understand |
+| `13-forcats-manipulation.qmd:386` | 2, 9 | `fct_relevel()` allows us to manually reorder the levels. | `fct_relevel()` manually reorders the levels. |
+| `13-forcats-manipulation.qmd:402` | 3, 9 | move the level to the end or anywhere between the beginning and end … we will set the value of `after` to `2` i.e. | move a level to the end or anywhere between the beginning and the end … we set the value of `after` to `2`, i.e. |
+| `13-forcats-manipulation.qmd:418` | 3 | there are eight channels i.e. eight levels, so we can set | there are eight channels, i.e. eight levels, so we can set |
+| `13-forcats-manipulation.qmd:439` | 2 | `fct_infreq()` will order the levels by their frequency. | `fct_infreq()` orders the levels by their frequency. |
+| `13-forcats-manipulation.qmd:457` | 2 | `fct_inorder()` will order the levels according to the order in which they appear | `fct_inorder()` orders the levels according to the order in which they appear |
+| `13-forcats-manipulation.qmd:540` | 3, 11 | the following type of plots … We will be using [ggplot2](https://ggplot2.tidyverse.org) in this chapter. | the following types of plots … We will be using [ggplot2](https://ggplot2.tidyverse.org) in this section. |
+| `13-forcats-manipulation.qmd:551` | 3 | on ggplot2, you can go through them first and then come back to this section. | on ggplot2; you can go through them first and then come back to this section. |
+| `13-forcats-manipulation.qmd:563` | 15, 3 | If the bars represent continuous data, the value could be *mean* or *sum* of the variable being represented. | If the bars represent a continuous value, it could be the *mean* or *sum* of the variable being represented. |
+| `13-forcats-manipulation.qmd:567` | 3 | You should use grouped bar chart when making comparisons | You should use a grouped bar chart when making comparisons |
+| `13-forcats-manipulation.qmd:577` | 15 | Use stacked bar plots while looking at cumulative value. | Use stacked bar plots when you look at a cumulative value. |
+| `13-forcats-manipulation.qmd:587` | 3 | the height of all bars in this plot are the same … as their percentage ratio's change. | the height of all the bars in this plot is the same … as their percentage ratios change. |
+| `13-forcats-manipulation.qmd:611` | 3, 15 | Pie chart is a circular chart, divided into slices to show relevant sizes of data. | A pie chart is a circular chart, divided into slices to show the relative sizes of the data. |
+| `13-forcats-manipulation.qmd:645` | 3 | Donut chart is a variation of the pie chart. | A donut chart is a variation of the pie chart. |
+| `13-forcats-manipulation.qmd:765` | 3 | Below are a list of functions from different R pacakges | Below is a list of functions from different R packages |
+
+Refusals: the numbered Your Turn items 3–15 and the plot titles inside chunks are teaching/code.
+The Data Visualization section (536) is the review's call to move, not this pass: its prose is
+left in place, only grammar fixed. `geom_bar(stat = "identity")` stays as code.
+
+## Exercise Solutions
+
+| file:line | principle | before | after |
+| :-- | :-- | :-- | :-- |
+| `14-solutions.qmd:9` | 13 | before reading its solution — the struggle is the lesson. … Remaining chapters are open stubs — to contribute one, open an issue | before reading its solution: the struggle is the lesson. … Remaining chapters are open stubs. To contribute one, open an issue |
+| `14-solutions.qmd:47` | 13 | Purchasers browse far more pages (~16 vs ~5) — the signal behind the AOV case study. | Purchasers browse far more pages (~16 vs ~5), the signal behind the AOV case study. |
+| `14-solutions.qmd:70` | 13 | Yes — every row round-trips (`TRUE`) | Yes, every row round-trips (`TRUE`) |
+| `14-solutions.qmd:110` | 13 | day-first vs month-first — the format string, not the data, decides. | day-first vs month-first: the format string, not the data, decides. |
+| `14-solutions.qmd:128` | 13 | handles the whole mixed vector — prefer helpers | handles the whole mixed vector. Prefer helpers |
+| `14-solutions.qmd:255` | 13 | is qualitative but *ordered* — see ordered factors below. | is qualitative but *ordered*, see ordered factors below. |
+| `14-solutions.qmd:330` | 13 | so `"laptop"` is not a level — it belongs to the `ecom` schema | so `"laptop"` is not a level: it belongs to the `ecom` schema |
+| `14-solutions.qmd:478` | 13 | still need proposed drills + solutions — contributions welcome | still need proposed drills and solutions; contributions welcome |
+
+Refusals: the question stems in bold and every solution chunk are answers, not prose to restyle; the
+section headings (including "Open stubs") are untouched. The `separate()` solution the review flags
+is code and a follow-up.
+
+## Checks
+
+**Guard** (`git diff 90425d8 HEAD`, per file):
+
+- Heading lines (`^#{1,6} `): **0 changed**.
+- Fenced-code and chunk-header lines (every line starting with ` ``` `): **0 changed**.
+- Inline-code spans: **not zero edited**. Against `90425d8..ffcf40b` the wr2 pass removed eight
+  occurrences and inserted two `://` spans. ebk-wr3 restored three of those removals
+  (`` `order_value` ``, `` `Sys.Date()` ``, `` `along.with` ``) and removed two more
+  (`stringsAsFactors`, `FALSE` in `07-tibbles.qmd`), so its own delta was **2 removals /
+  11 insertions**: the three restorations plus eight new spans (`across()`, `ecom1`, `to`,
+  `length.out`, `is.`, `is.factor()`, `is_tibble()`, `sort = TRUE`). ebk-wr4 added three more
+  content corrections, each one removal and one insertion: `cell_limit()` -> `cell_limits()`,
+  `stop` -> `end`, and `ecom` -> `ecom_mini`. Against wr1 the full `90425d8..HEAD` delta is
+  therefore **10 removals / 13 insertions**: `02` -1/+1; `04` +2; `06` -2/+1 (`head`, and
+  `ecom` -> `ecom_mini`); `07` -2 (`stringsAsFactors`, `FALSE`); `09` -5/+3 (`stop`, `:` x3
+  and `\\` removed; `end`, `://` x2 added); `10` +2; `12` +3; `14` +1. The remaining removals
+  are content repairs the audit endorses (the false `head` sentence, the obsolete
+  `stringsAsFactors`/`FALSE` contrast, the false `:` escape, the wrong `cell_limit`/`stop`
+  names, and the `ecom`/`ecom_mini` mismatch); they are exceptions to the inline-code guard, not
+  restorations to manufacture a clean guard. No other span changed and no code line moved.
+- `git diff 90425d8 --stat`: 16 `.qmd` files plus `docs/ebk-wr2-report.md`. Nothing else. No `docs/` HTML,
+  no `_freeze`, no YAML, no image, no data file.
+
+**Renders**: chapter by chapter in a throwaway `git archive HEAD` copy outside the repo
+(`…/Temp/opencode/ebk-wr2-build`), one chapter in `_quarto.yml` at a time, through
+`heavy-slot.sh ebk-wr2 quarto render <file>.qmd`. Rendered: `01-import-1`, `02-import-2`, `03-pipes`,
+`04-dplyr-1`, `05-dplyr-2`, `06-dplyr-3`, `07-tibbles`, `08-tidyr`, `09-stringr`,
+`10-lubridate-parsing`, `11-lubridate-arithmetic`, `12-factors-fundamentals`,
+`13-forcats-manipulation`, `14-solutions`. No new errors or warnings; each page was checked for a
+changed sentence. `index.qmd`/`00-author.qmd` rode along in the book list without error.
+
+Packages installed in the *global* library to make the pre-existing chunks run — none are committed:
+`haven`, `forcats`, `gmodels`, `descriptr`, `ggpubr`, `plotrix`, `Hmisc`, `janitor`, `epiDisplay`,
+`summarytools`, `questionr`, `psych`, `skimr`, `tableone`. Without them chapters 2, 12 and 13 stop at a
+`library()` call that predates this pass.
+
+## Not done
+
+- **Appendices** (`appendices/arrow-duckdb.qmd`, `legacy-magrittr.qmd`, `rosetta-pandas.qmd`): read,
+  not edited. They are reference stubs and `arrow`/`duckdb` are not installed here, so they could not
+  be rendered. One pass each would finish the book.
+- **`docs/` output** is deliberately not committed; CI owns it.
+- **Ten inline-code removals** relative to wr1 are listed under Guard. Three wr2 removals were
+  restored in ebk-wr3; the rest are content repairs (the false `head` claim, the
+  `ecom`/`ecom_mini`, `cell_limit()`/`cell_limits()` and `stop`/`end` mismatches, the obsolete
+  R < 4.0 comparison, and the false regex escape). Restoring them would re-break a worked
+  example or explanation.
+
+## Follow-ups
+
+1. **Heading typos** (`09-stringr`): `### Extract Image Dimesion from URL` and
+   `#### Step 3: Detect the staritng position of file type`. Renaming needs the redirect that CI
+   checks; left for a heading pass with Aravind's call.
+2. **`round_dates()`** (`11-lubridate-arithmetic:580`) is inline code for `round_date()`.
+3. **`**D**esktop, **M**obile, **T**able`** (`12-factors-fundamentals:409`): the levels under discussion
+   are Dislike/Neutral/Like. Fixed in ebk-wr3.
+4. **`pull(ecom_mini, 1)` described as "from `ecom`"** (`06-dplyr-3:209`): text now names
+   `ecom_mini`, matching the chunk. Fixed in ebk-wr4.
+5. **Syllabus promises** (`06-dplyr-3:16-18`: compare tables, arrange rows, predicate functions) are
+   sections the chapter does not have. The unsupported bullets were removed in ebk-wr3.
+6. **`geom_bar(stat = "identity")`** (`08-tidyr:106`, `13-forcats` plots) is code; `geom_col()` is the
+   idiom.
+7. **`separate()` in the tidyr solution** (`14-solutions`) contradicts ch 8's `separate_wider_delim()`.
+8. **Em dashes that remain** are single em dashes in the shared webR callout ("— no R installation
+   needed"), identical in every chapter; changing one means changing all seven at once.
+9. The learner review's structural asks (course links, missing-values section, join pitfalls, Part I/II
+   split) are untouched by design.

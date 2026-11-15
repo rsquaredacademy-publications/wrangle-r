@@ -17,32 +17,32 @@ library(dplyr)
 library(ggplot2)
 library(ggpubr)
 library(plotrix)
-data <- readRDS('analytics.rds')
+data <- readRDS(url('https://raw.githubusercontent.com/rsquaredacademy-publications/wrangle-r/master/analytics.rds'))
 ```
 
 ## Data Manipulation {#manipulate}
 
 ### Introduction
 
-In this section, our focus will be on handling the levels of a categorical variable, and exploring the [forcats](https://forcats.tidyverse.org/) package for the same. We will basically look at 3 key operations or transformations we would like to do when it comes to factors which are:
+In this section, our focus will be on handling the levels of a categorical variable, and on the [forcats](https://forcats.tidyverse.org/) package. We will look at 3 key operations or transformations we would like to do when it comes to factors:
 
 - change value of levels
 - add or remove levels
 - change order of levels
 
-Before we start working with the value of the levels, let us take a quick look at some of the functions we used in the previous sections. We will store the source of traffic as `channel` instead of referring to the column in the `data.frame` every time.
+Before we start working with the value of the levels, let us look at some of the functions we used in the previous sections. We store the source of traffic as `channel` instead of referring to the column in the `data.frame` every time.
 
 ```{r channel}
 channel <- data$channel
 ```
 
-Let us go back to the function we used for tabulating data, `fct_count()`. If you observe the result, it is in the same order as displayed by `levels()`.
+Let us go back to the function we used for tabulating data, `fct_count()`. In the result, the levels are in the same order as displayed by `levels()`.
 
 ```{r fct_helpers}
 fct_count(channel)
 ```
 
-If you want to sort the results by the count i.e. most common level comes at the top, use the `sort` argument.
+If you want to sort the results by count, i.e. the most common level comes at the top, use the `sort` argument.
 
 ```{r fct_sort, echo=FALSE, fig.align="center"}
 knitr::include_graphics("img/fct_sort.png")
@@ -58,7 +58,7 @@ If you want to view the proportion along with the count, set the `prop` argument
 fct_count(channel, prop = TRUE)
 ```
 
-One of the important steps in data preparation/sanitization is to check if the levels are valid i.e. only levels which should be present in the data are actually present. `fct_match()` can be used to check validity of levels. It returns a logical vector if the level is present and an error if not.
+One of the important steps in data preparation/sanitization is to check that the levels are valid, i.e. that only the levels which should be present in the data are actually present. Use `fct_match()` to check the validity of the levels. It returns a logical vector if the level is present and an error if not.
 
 ```{r fct_match}
 channel |>
@@ -78,7 +78,7 @@ channel |>
 
 ### Change Value of Levels
 
-In this section, we will learn how to change the value of the levels. In order to keep it interesting, we will state an objective from our case study and then map it into a function from the [forcats](https://forcats.tidyverse.org/) package.
+In this section, we will learn how to change the value of the levels. To keep it interesting, we will state an objective from our case study and then map it to a function from the [forcats](https://forcats.tidyverse.org/) package.
 
 **Combine both Paid & Organic Search into a single level, Search**
 
@@ -86,12 +86,12 @@ In this section, we will learn how to change the value of the levels. In order t
 knitr::include_graphics("img/fct_collapse.png")
 ```
 
-In this case, we want to change the value of two levels, *Paid Search* & *Organic Search* and give them the common value *Search*. You can also look at it as collapsing two levels into one. There are two functions we can use here:
+In this case, we want to change the value of two levels, *Paid Search* and *Organic Search*, and give them the common value *Search*. You can also look at it as collapsing two levels into one. There are two functions we can use here:
 
 - `fct_collapse()`
 - `fct_recode()`
 
-Let us look at `fct_collapse()` first. After specifying the categorical variable, we specify the new value followed by a character vector of the existing values. Remember, the new value is not enclosed in quotes (single or double) but the existing values must be a `character` vector.
+Let us look at `fct_collapse()` first. After specifying the categorical variable, we specify the new value followed by a character vector of the existing values. Remember, the new value is not enclosed in quotes (single or double), but the existing values must be a `character` vector.
 
 ```{r fct_collapse}
 channel |> 
@@ -100,7 +100,7 @@ channel |>
 ```
 
 In the case of `fct_recode()`, each value being changed must be specified in a new line. Similar to
-`fct_collapse()`, the new value is not enclosed in quotes but the existing values must be.
+`fct_collapse()`, the new value is not enclosed in quotes, but the existing values must be.
 
 ```{r fct_recode_img, echo=FALSE, fig.align="center"}
 knitr::include_graphics("img/fct_recode.png")
@@ -123,7 +123,7 @@ The [dplyr](https://dplyr.tidyverse.org/) and [car](https://cran.r-project.org/p
 knitr::include_graphics("img/fct_lump_1.png")
 ```
 
-Instead of having all the channels, we desire to retain only those channels which have driven at least *5000* visits to the website. What about the rest of the channels which have driven less than *5000*? We will recategorize them as **Other**. Keep in mind that we already have a **(Other)** level in our data. `fct_lump_min()` will lump together all levels which do not have a minimum count specified. In our case study, only **Display** drives less than *5000* visits and it will be categorized into **Other**.
+Instead of having all the channels, we want to retain only those channels which have driven at least *5000* visits to the website. What about the rest of the channels which have driven less than *5000*? We will recategorize them as **Other**. Keep in mind that we already have a **(Other)** level in our data. `fct_lump_min()` will lump together all levels which do not meet the specified minimum count. In our case study, only **Display** drives less than *5000* visits and it will be categorized into **Other**.
 
 ```{r fct_lump_1}
 channel |> 
@@ -138,7 +138,7 @@ knitr::include_graphics("img/fct_lump_2.png")
 ```
 
 Suppose you decide to retain only the top 3 channels in terms of the traffic driven to the website. In our
-case study, these are **Direct**, **Organic Search** and **Referral**. We want to retain these 3 levels and categorize the rest as **Other**. `fct_lump_n()` will retain top `n` levels by count/frequency and lump the rest into **Other**.
+case study, these are **Direct**, **Organic Search** and **Referral**. We want to retain these 3 levels and categorize the rest as **Other**. `fct_lump_n()` retains the top `n` levels by count/frequency and lumps the rest into **Other**.
 
 ```{r fct_lump_2}
 channel |> 
@@ -156,7 +156,7 @@ knitr::include_graphics("img/fct_lump_3.png")
 ```
 
 In the second scenario above, we retained channels based on minimum traffic driven by them to the website.
-The criteria was count of visits. If you want to specify the criteria as a percentage or proportion instead of count, use `fct_lump_prop()`. The criteria is a value between **0** and **1**. In our case study, we want to retain channels that have driven at least **2%** of the overall traffic. Hence, we have specified the criteria as `0.02`.
+The criterion was the count of visits. If you want to specify the criterion as a percentage or proportion instead of count, use `fct_lump_prop()`. The criterion is a value between **0** and **1**. In our case study, we want to retain channels that have driven at least **2%** of the overall traffic. Hence, we have specified the criteria as `0.02`.
 
 ```{r fct_lump_3}
 channel |> 
@@ -172,18 +172,18 @@ As you can see, only **Display** drives less than **2%** of overall traffic and 
 - Direct
 - Referral
 
-In the previous scenarios, we have been retaining or lumping channels based on some criteria like count or
+In the previous scenarios, we have been retaining or lumping channels based on criteria such as count or
 percentage of traffic driven to the website. In this scenario, we want to retain certain levels by specifying
 their labels and combine the rest into **Other**. While we can use `fct_collapse()` or `fct_recode()`, a more
-appropriate function would be `fct_other()`. We will do a comparison of the three functions in a short while.
+appropriate function would be `fct_other()`. We will compare the three functions in a short while.
 
 ```{r fct_other_img, echo=FALSE, fig.align="center"}
 knitr::include_graphics("img/fct_others.png")
 ```
 
-`fct_other()` has two arguments, `keep` and `drop`. `keep` is used when we know the levels we want to retain
-and `drop` is used when we know the levels we want to drop. In this scenario, we know the levels we want to
-retain and hence we will use the `keep` argument and specify them. **Organic Search**, **Direct** and **Referral** will be retained while the rest of the channels will be lumped into **Other**.
+`fct_other()` has two arguments, `keep` and `drop`. `keep` is used when we know the levels to retain
+and `drop` when we know the levels to drop. In this scenario, we know the levels we want to
+retain, so we use the `keep` argument and specify them. **Organic Search**, **Direct** and **Referral** will be retained while the rest of the channels will be lumped into **Other**.
 
 ```{r fct_other_keep}
 # channels to be retained 
@@ -246,8 +246,8 @@ knitr::include_graphics("img/fct_anonymize.png")
 ```
 
 Anonymizing data is extremely important when you are sharing sensitive data with others. Here, we want
-to anonymize the channels which drive traffic to the website so that we can share it with others without
-divulging the names of the channels. `fct_anon()` allows us to anonymize the levels in the data. Using the
+to anonymize the channels which drive traffic to the website so that we can share it without
+divulging their names. `fct_anon()` anonymizes the levels in the data. Using the
 `prefix` argument, we can specify the prefix to be used while anonymizing the data.
 
 ```{r fct_anon}
@@ -314,7 +314,7 @@ In this small section, we will learn to:
 knitr::include_graphics("img/fct_expand.png")
 ```
 
-`fct_expand()` allows us to add new levels to the data. The label of the new level must be specified after the variable name and must be enclosed in quotes. If the level already exists, it will be ignored. Let us add a new level, `Blog`.
+`fct_expand()` adds new levels to the data. The label of the new level must be specified after the variable name and must be enclosed in quotes. If the level already exists, it is ignored. Let us add a new level, `Blog`.
 
 ```{r fct_expand}
 channel |> 
@@ -328,7 +328,7 @@ channel |>
 knitr::include_graphics("img/fct_drop.png")
 ```
 
-On the other hand, `fct_drop()` will drop levels which have no values i.e. unused levels. If you want
+On the other hand, `fct_drop()` drops levels which have no values, i.e. unused levels. If you want
 to drop only specific levels, use the `only` argument and specify the name of the level in quotes. Let us drop the new level we added in the previous example.
 
 ```{r fct_drop}
@@ -344,7 +344,7 @@ channel |>
 knitr::include_graphics("img/fct_explicit_na.png")
 ```
 
-In our data set, the gender column has many missing values, and in R, missing values are represented by `NA`. Suppose you are sharing the data or analysis with someone who is not an R user, and does not know what `NA` represents. In such a scenario, we can use the `fct_na_value_to_level()` function to make the missing values in the gender column explicit i.e. it will appear as `(Missing)` instead of `NA`. This will help non R users to understand that there are missing values in the data.
+In our data set, the gender column has many missing values, and in R, missing values are represented by `NA`. Suppose you are sharing the data or analysis with someone who is not an R user, and does not know what `NA` represents. In such a scenario, we can use the `fct_na_value_to_level()` function to make the missing values in the gender column explicit, i.e. it will appear as `(Missing)` instead of `NA`. This will help non-R users understand that there are missing values in the data.
 
 ```{r fct_na_value_to_level}
 data |> 
@@ -383,7 +383,7 @@ We want to make
 knitr::include_graphics("img/fct_relevel_1.png")
 ```
 
-In this scenario, we want the levels to appear in a certain order. In the first case, we want **Organic Search** to be the first level. `fct_relevel()` allows us to manually reorder the levels. To move a level to the beginning, specify the label (it must be enclosed in quotes).
+In this scenario, we want the levels to appear in a certain order. In the first case, we want **Organic Search** to be the first level. `fct_relevel()` manually reorders the levels. To move a level to the beginning, specify the label (it must be enclosed in quotes).
 
 ```{r fct_relevel_1}
 levels(channel)
@@ -399,7 +399,7 @@ channel |>
 knitr::include_graphics("img/fct_relevel_2.png")
 ```
 
-The `after` argument is useful when we want to move the level to the end or anywhere between the beginning and end. In the second case, we want **Referral** to be the third level. After specifying the label, use the `after` argument and specify the level after which **Referral** should appear. Since we want to move it to the third position, we will set the value of `after` to `2` i.e. **Referral** should come after the second position.
+The `after` argument is useful when we want to move a level to the end or anywhere between the beginning and the end. In the second case, we want **Referral** to be the third level. After specifying the label, use the `after` argument and specify the level after which **Referral** should appear. Since we want to move it to the third position, we set the value of `after` to `2`, i.e. **Referral** should come after the second position.
 
 ```{r fct_relevel_2}
 levels(channel)
@@ -415,7 +415,7 @@ channel |>
 knitr::include_graphics("img/fct_relevel_3.png")
 ```
 
-In this last case, we want to move **Display** to the end. If you know the number of levels, you can specify a value here. In our data, there are eight channels i.e. eight levels, so we can set the value of `after` to `7`. What happens when we do not know the number of levels or if they tend to vary? In such cases, to move a level to the end, set the value of `after` to `Inf`.
+In this last case, we want to move **Display** to the end. If you know the number of levels, you can specify a value here. In our data, there are eight channels, i.e. eight levels, so we can set the value of `after` to `7`. What happens when we do not know the number of levels or if they tend to vary? In such cases, to move a level to the end, set the value of `after` to `Inf`.
 
 ```{r fct_relevel_3}
 levels(channel)
@@ -436,7 +436,7 @@ Let us now look at a scenario where we want to order the levels by
 knitr::include_graphics("img/fct_infreq.png")
 ```
 
-In the first case, the levels with the most frequency should appear at the top. `fct_infreq()` will order the
+In the first case, the levels with the most frequency should appear at the top. `fct_infreq()` orders the
 levels by their frequency.
 
 ```{r fct_infreq}
@@ -454,7 +454,7 @@ channel |>
 knitr::include_graphics("img/fct_inorder.png")
 ```
 
-In the second case, the order of the levels should be the same as the order of their appearance in the data. `fct_inorder()` will order the levels according to the order in which they appear in the data.
+In the second case, the order of the levels should be the same as the order of their appearance in the data. `fct_inorder()` orders the levels according to the order in which they appear in the data.
 
 ```{r fct_inorder}
 levels(channel)
@@ -537,7 +537,7 @@ data.frame(Function = fname, Description = descrip) |>
 
 ### Introduction
 
-In this section, we will learn to visualize categorical data. We will look at the following type of plots:
+In this section, we will learn to visualize categorical data. We will look at the following types of plots:
 
 - univariate bar plot
 - bivariate bar plot
@@ -548,7 +548,7 @@ In this section, we will learn to visualize categorical data. We will look at th
 - pie chart
 - donut chart
 
-We will be using [ggplot2](https://ggplot2.tidyverse.org) in this chapter. So you should know the basics of data visualization with ggplot2. If you are new or have never used ggplot2, do not worry. We have several [tutorials](https://blog.rsquaredacademy.com/data-visualization/index.html) and an [ebook](https://viz-ggplot2.rsquaredacademy.com/) on ggplot2, you can go through them first and then come back to this section.
+We will be using [ggplot2](https://ggplot2.tidyverse.org) in this section. So you should know the basics of data visualization with ggplot2. If you are new or have never used ggplot2, do not worry. We have several [tutorials](https://blog.rsquaredacademy.com/data-visualization/index.html) and an [ebook](https://viz-ggplot2.rsquaredacademy.com/) on ggplot2; you can go through them first and then come back to this section.
 
 ### Bar Plot
 
@@ -560,11 +560,11 @@ ggplot(data) +
   xlab("Device") + ylab("Count")
 ```
 
-In the above example, the bars represent the count/frequency of the categories. If the bars represent continuous data, the value could be *mean* or *sum* of the variable being represented.
+In the above example, the bars represent the count/frequency of the categories. If the bars represent a continuous value, it could be the *mean* or *sum* of the variable being represented.
 
 ### Grouped Bar Plot
 
-A grouped bar chart plots values for two levels of a categorical variable instead of one. You should use grouped bar chart when making comparisons across different categories of data. Use it when you want to look at how the second category variable changes within each level of the first and vice versa.
+A grouped bar chart plots values for two levels of a categorical variable instead of one. You should use a grouped bar chart when making comparisons across different categories of data. Use it when you want to look at how the second category variable changes within each level of the first and vice versa.
 
 ```{r grouped_bar_plot}
 ggplot(data) +
@@ -574,7 +574,7 @@ ggplot(data) +
 
 ### Stacked Bar Plot
 
-In stacked bar plots, the bars are stacked on top of each other instead of placing them next to each other. Use stacked bar plots while looking at cumulative value.
+In stacked bar plots, the bars are stacked on top of each other instead of placing them next to each other. Use stacked bar plots when you look at a cumulative value.
 
 ```{r stacked_bar_plot}
 ggplot(data) +
@@ -584,7 +584,7 @@ ggplot(data) +
 
 ### Proportional Bar Plot
 
-Also known as percent stacked plot, the height of all bars in this plot are the same. The distribution of the second categorical variable is scaled to 1 or 100. The length of each bar is determined by its share in the category. Use this when you want to concurrently observe each of several variables as they fluctuate and as their percentage ratio's change.
+Also known as a percent stacked plot, the height of all the bars in this plot is the same. The distribution of the second categorical variable is scaled to 1 or 100. The length of each bar is determined by its share in the category. Use this when you want to concurrently observe each of several variables as they fluctuate and as their percentage ratios change.
 
 ```{r prop_bar_plot}
 data |> 
@@ -608,7 +608,7 @@ ggplot(data, aes(x = device, y = gender)) +
 
 ### Pie Chart
 
-Pie chart is a circular chart, divided into slices to show relevant sizes of data. It shows the distribution of the different levels of a categorical variable as a circle is divided into radial slices. Each level corresponds with a single slice of the circle and size indicates the proportion of the level. Use it when comparing each group's contribution to the whole as opposed to comparing groups to each other.
+A pie chart is a circular chart, divided into slices to show the relative sizes of the data. It shows the distribution of the different levels of a categorical variable as a circle is divided into radial slices. Each level corresponds with a single slice of the circle and size indicates the proportion of the level. Use it when comparing each group's contribution to the whole as opposed to comparing groups to each other.
 
 **Base R**
 
@@ -642,7 +642,7 @@ data |>
 
 ### Donut Chart
 
-Donut chart is a variation of the pie chart. It has a round hole in the middle which makes it look like a donut. The focus is on the length of the arcs and not the proportions of the slices. Blank spaces inside donut chart can be used to display information inside it. 
+A donut chart is a variation of the pie chart. It has a round hole in the middle which makes it look like a donut. The focus is on the length of the arcs and not the proportions of the slices. Blank spaces inside donut chart can be used to display information inside it. 
 
 ```{r gg_donut_chart}
 data |> 
@@ -762,7 +762,7 @@ data |>
 
 ## Useful R Packages {#conclusion}
 
-Below are a list of functions from different R pacakges for summarizing categorical data.
+Below is a list of functions from different R packages for summarizing categorical data.
 
 ### Summarize Variables
 

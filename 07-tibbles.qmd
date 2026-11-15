@@ -12,11 +12,11 @@ A **tibble**, or `tbl_df`, is a modern reimagining of the data.frame, keeping wh
 Source: https://tibble.tidyverse.org/
 :::
 
-In this chapter, we will explore tibbles. To be more precise, we will learn:
+In this chapter, we will explore tibbles. We will learn:
 
-- how tibbles are different from data frames?
-- how to create tibbles?
-- how to manipulate tibbles?
+- how tibbles differ from data frames
+- how to create tibbles
+- how to manipulate tibbles
 
 We will use the following R packages:
 
@@ -27,7 +27,7 @@ library(dplyr)
 
 ## Creating tibbles
 
-tibble can be created using any of the following:
+A tibble can be created using any of the following:
 
 - `tibble()`
 - `as_tibble()`
@@ -41,17 +41,16 @@ tibble(x = letters,
        z = sample(100, 26))
 ```
 
-We mentioned the column names followed by the data. If you do not specify the
-column names, `tibble()` will supply them. Ensure that the length of each column
-is same.
+We specified the column names followed by the data. If you do not specify the
+column names, `tibble()` supplies them. Ensure that the length of each column
+is the same.
 
 ## tibble features
 
 ### never changes input's types
 
-`tibble()` will never alter the input's type. For example, if you supply a 
-character vector it will not be converted to factor unlike data.frame where
-you need to set `stringsAsFactors` to `FALSE`.
+`tibble()` never alters the input's type. For example, if you supply a 
+character vector, it is not converted to a factor.
 
 ```{r tibble3}
 tibble(x = letters,
@@ -61,7 +60,7 @@ tibble(x = letters,
 
 ### never adjusts variable names
 
-`tibble()` will never modify the column names. In the below example, you can 
+`tibble()` never modifies the column names. In the example below, you can 
 observe that while `data.frame` adds a `.`, `tibble()` retains the column names
 as is.
 
@@ -72,9 +71,9 @@ names(tibble(`order value` = 10))
 
 ### never prints all rows
 
-`tibble()` will never print all the rows and clutter your console. It will only 
-print the first 10 rows and only as many columns that fit the width of the 
-console.
+`tibble()` prints only the first rows of a large tibble, so it does not clutter
+your console. It prints only the first 10 rows and only as many columns as fit
+the width of the console.
 
 ```{r tibble5}
 x <- 1:100
@@ -85,20 +84,23 @@ tibble(x, y, z)
 
 ### never recycles vector of length greater than 1
 
-Recycling vectors of length greater than 1 often leads to errors and as such 
-`tibble()` will only recycle vectors of length 1.
+Recycling vectors of length greater than 1 often leads to errors, so 
+`tibble()` recycles only vectors of length 1.
 
 ```{r tibble6, eval=FALSE}
 x <- 1:100
 y <- letters
 z <- sample(c(TRUE, FALSE), 100, replace = TRUE)
 tibble(x, y, z)
-Error in overscope_eval_next(overscope, expr) : object 'y' not found
+#> Error: Tibble columns must have compatible sizes.
+#> • Size 100: Existing data.
+#> • Size 26: Column at position 2.
+#> ℹ Only values of size one are recycled.
 ```
 
 ## Membership Testing
 
-We can test if an object is a tibble using `is_tibble()`.
+We can test whether an object is a tibble using `is_tibble()`.
 
 ```{r tibble14}
 is_tibble(mtcars)
@@ -107,7 +109,7 @@ is_tibble(as_tibble(mtcars))
 
 ## Tribble
 
-Another way to create tibbles is using `tribble()`: 
+Another way to create a tibble is with `tribble()`: 
 
 - it is short for transposed tibbles
 - it is customized for data entry in code 
@@ -125,9 +127,9 @@ tribble(
 
 ## Column Names
 
-Names of the columns in tibbles need not be valid R variable names. They can 
-contain unusual characters like a space or a smiley but must be enclosed in 
-ticks. 
+Column names in tibbles need not be valid R variable names. They can 
+contain unusual characters, like a space or a smiley, but must be enclosed in 
+backticks. 
 
 ```{r tibble16}
 tibble(
@@ -139,7 +141,7 @@ tibble(
 
 ## Add Rows
 
-Let us add data related to **Safari** browser to the web traffic data using 
+Let us add data related to the **Safari** browser to the web traffic data using 
 `add_row()`.
 
 ```{r tibble21}
@@ -151,8 +153,8 @@ browsers
 add_row(browsers, name = 'safari', value = 10)
 ```
 
-If we want to add the data at a particular row, we can specify the row number 
-using the `.before` argument. Let us add the data related to **Safari** browser 
+If we want to add the data at a particular row, we specify the row number 
+using the `.before` argument. Let us add the data related to the **Safari** browser 
 in the second row instead of the last row.
 
 ```{r tibble23}
@@ -170,8 +172,8 @@ add_column(browsers, visits = c(4000, 2000, 3000, 1000))
 
 ## Rownames
 
-The [tibble](tibble.tidyverse.org) package provides a set of functions to deal 
-with rownames. Remember, `tibble` does not have `rownames` unlike `data.frame`. 
+The [tibble](https://tibble.tidyverse.org/) package provides a set of functions to deal 
+with rownames. Remember, `tibble` does not have `rownames`, unlike `data.frame`. 
 To check whether a data set has rownames, use `has_rownames()`.
 
 ```{r tibble25}
@@ -209,7 +211,7 @@ glimpse(mtcars)
 
 ## Check Column 
 
-`has_name()` can be used to check if a tibble has a specific column.
+Use `has_name()` to check whether a tibble has a specific column.
 
 ```{r tibble30}
 has_name(mtcars, 'cyl')
@@ -230,7 +232,7 @@ has_name(mtcars, 'gears')
 - use `add_row()` to add a new row
 - use `add_column()` to add a new column
 - use `remove_rownames()` to remove rownames from data
-- use `rownames_to_colum()` to coerce rowname to first column
+- use `rownames_to_column()` to coerce rowname to first column
 - use `column_to_rownames()` to coerce first column to rownames
 
 ### Testing tibbles

@@ -6,8 +6,8 @@ description: "Data Wrangling in R: chain verbs with the native pipe, placeholder
 
 ## Introduction
 
-R code contain a lot of parentheses in case of a sequence of multiple operations. When you are dealing with 
-complex code, it results in nested function calls which are hard to read and maintain. The [magrittr](https://CRAN.R-project.org/package=magrittr) package by [Stefan Milton Bache](http://stefanbache.dk/) provides pipes enabling us to write R code that is readable.
+A sequence of multiple operations in R contains a lot of parentheses. When you 
+deal with complex code, it results in nested function calls which are hard to read and maintain. The [magrittr](https://CRAN.R-project.org/package=magrittr) package by [Stefan Milton Bache](http://stefanbache.dk/) provides pipes that let us write R code that is readable.
 
 Pipes allow us to clearly express a sequence of multiple operations by:
 
@@ -28,7 +28,7 @@ operations from left to right (or top to bottom).
 :::{.callout-note}
 ## Legacy note
 
-Older code — including the first edition of this chapter —
+Older code, including the first edition of this chapter,
 used the magrittr pipe `%>%` and its companions documented in
 `?magrittr::operators`. Those operators are kept only for reading inherited
 code; every example below uses `|>` together with `pull()`/`pluck()` and
@@ -45,7 +45,7 @@ base assignment instead (see the data-extraction section).
 | Other argument | Placeholder `_`: `mtcars \|> lm(mpg ~ disp, data = _)` | Dot `.`: `mtcars %>% lm(mpg ~ disp, data = .)` |
 | Inline function | `\(x)`: `1:5 \|> (\(x) x^2)() \|> sum()` | `.` shorthand: `1:5 %>% (function(x) x^2) %>% sum()` |
 
-For first-argument chains — every example in this book — the two pipes read
+For first-argument chains, which is every example in this book, the two pipes read
 identically, so inherited `%>%` code can be read as `|>`:
 
 ```{r pipe_compare}
@@ -74,7 +74,7 @@ library(purrr)
 
 ```{r showed, message=FALSE}
 ecom <- 
-  read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/web.csv',
+  read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/web.csv',
     col_types = cols_only(
       referrer = col_factor(levels = c("bing", "direct", "social", "yahoo", "google")),
       n_pages = col_double(), duration = col_double(), purchase = col_logical()
@@ -84,7 +84,7 @@ ecom <-
 ecom
 ```
 
-We will create a smaller data set from the above data to be used in some examples:
+We will create a smaller data set from the above data to use in some examples:
 
 ```{r show_mini, message=FALSE}
 ecom_mini <- slice_sample(ecom, n = 10)
@@ -101,8 +101,8 @@ ecom_mini
 ## head()
 
 Let us start with a simple example. You must be aware of `head()`. If not,
-do not worry. It returns the first few observations/rows of data. We can
-specify the number of observations it should return as well. Let us use 
+do not worry: it returns the first few rows of data. We can also
+specify the number of rows it should return. Let us use 
 it to view the first 10 rows of our data set.
 
 ```{r mag1}
@@ -119,8 +119,8 @@ ecom |> head(10)
 
 ## Square Root 
 
-Time to try a slightly  more challenging example. We want the square root of 
-`n_pages` column from the data set. 
+Time to try a slightly more challenging example. We want the square root of 
+the `n_pages` column from the data set. 
 
 ```{r mag3}
 y <- sqrt(ecom_mini$n_pages)
@@ -161,7 +161,7 @@ y <-
 
 Let us look at a data visualization example. We will create a bar plot to
 visualize the frequency of different referrer types that drove purchasers
-to the website. Let us look at the steps involved in creating the bar plot:
+to the website. The steps involved in creating the bar plot are:
 
 - extract rows where purchase is TRUE
 - select/expose `referrer` column
@@ -189,9 +189,9 @@ ecom |>
 ## Correlation
 
 Correlation is a statistical measure that indicates the extent to which two or more variables 
-fluctuate together. In R, correlation is computed using `cor()`. Let us look at the 
+fluctuate together. In R, we compute correlation using `cor()`. Let us look at the 
 correlation between the number of pages browsed and time spent on the site for
-visitors who purchased some product. Below are the steps for computing correlation:
+visitors who purchased a product. Below are the steps for computing correlation:
 
 - extract rows where purchase is TRUE
 - select/expose `n_pages` and `duration` columns
@@ -201,7 +201,7 @@ visitors who purchased some product. Below are the steps for computing correlati
 knitr::include_graphics("img/pipes_correlation.png")
 ```
 
-```{r mag6, collpase = TRUE}
+```{r mag6, collapse = TRUE}
 # without pipe
 ecom1 <- subset(ecom, purchase)
 cor(ecom1$n_pages, ecom1$duration)
@@ -215,7 +215,7 @@ ecom |>
 ## Regression
 
 Let us look at a regression example. We regress time spent on the site on 
-number of pages visited. Below are the steps involved in running the regression:
+the number of pages visited. Below are the steps involved in running the regression:
 
 - use `duration` and `n_pages` columns from ecom data
 - pass the above data to `lm()`
@@ -235,8 +235,8 @@ ecom |>
 
 ## String Manipulation
 
-We want to extract the first name (jovial) from the below email id and
-convert it to upper case. Below are the steps to achieve this:
+We want to extract the first name (jovial) from the email id below and
+convert it to upper case. The steps to achieve this are:
 
 - split the email id using the pattern `@` using `str_split()`
 - extract the first element of the resulting list and the first element of
@@ -262,7 +262,7 @@ email |>
   str_to_upper()
 ```
 
-Another method that uses `map_chr()` from the [purrr](https://readr.tidyverse.org/) package.
+Another method uses `map_chr()` from the [purrr](https://purrr.tidyverse.org/) package:
 
 ```{r map39}
 email |>
@@ -274,7 +274,7 @@ email |>
 
 ## Data Extraction
 
-Let us turn our attention towards data extraction. dplyr and purrr provide
+Let us turn our attention to data extraction. dplyr and purrr provide
 `pull()` and `pluck()` as readable alternatives to `$`, `[` and `[[`:
 
 - `pull()` extracts a column as a vector (like `$`)
@@ -282,8 +282,8 @@ Let us turn our attention towards data extraction. dplyr and purrr provide
 
 ### Extract Column 
 
-To extract a specific column using the column name, we mention the name 
-of the column in single/double quotes within `[` or `[[`. In case of `$`,
+To extract a column by name, we put the name 
+in single or double quotes within `[` or `[[`. With `$`,
 we do not use quotes.
 
 ```{r mag10}
@@ -294,10 +294,9 @@ ecom_mini['n_pages']
 select(ecom_mini, n_pages)
 ```
 
-We can extract columns using their index position. Keep in mind that index 
-position starts from **1** in R. In the below example, we show how to 
-extract `n_pages` column but instead of using the column name, we use the 
-column position.
+We can also extract columns by position. Keep in mind that 
+positions start from **1** in R. In the example below, we 
+extract the `n_pages` column by position instead of by name.
 
 ```{r mag23}
 # base 
@@ -307,7 +306,7 @@ ecom_mini[2]
 select(ecom_mini, 2)
 ```
 
-One important differentiator between `[` and `[[` is that `[[` will
+One important difference between `[` and `[[` is that `[[` will
 return an atomic vector and not a `data.frame`. `$` will also return
 an atomic vector. In the tidyverse, we use `pull()` in place of `$`.
 
@@ -328,7 +327,7 @@ ecom_list <- as.list(ecom_mini)
 ```
 
 To extract elements of a list, we use `pluck()`. It is the tidyverse
-alternative for `[[`.
+alternative to `[[`.
 
 ```{r mag12}
 # base 
@@ -358,7 +357,7 @@ pluck(ecom_list, "n_pages")
 
 ## Arithmetic Operations
 
-magrittr offer alternatives for arithemtic operations as well. We will look at 
+magrittr offers alternatives for arithmetic operations as well. We will look at 
 a few examples below.
 
 - `add()`
@@ -403,7 +402,7 @@ divide_by(1:10, 2)
 ### Power
 
 ```{r mag18}
-1:10 ^ 2
+(1:10)^2
 
 raise_to_power(1:10, 2)
 

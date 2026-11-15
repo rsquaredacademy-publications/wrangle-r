@@ -6,21 +6,21 @@ description: "Data Wrangling in R: durations vs periods vs intervals, time zones
 
 This chapter continues @date-and-time-in-r. We do arithmetic with dates,
 compare durations, periods and intervals, handle time zones and DST, and
-round and roll back dates — including the receivables overdue case study.
+round and roll back dates, including the receivables overdue case study.
 
 ```{r lub_setup_b, echo=FALSE, message=FALSE, warning=FALSE}
 library(lubridate)
 library(readr)
 library(dplyr)
 release_date <- lubridate::ymd_hms("2019-12-12 08:05:03")
-transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy/datasets/master/transact.csv')
+transact <- readr::read_csv('https://raw.githubusercontent.com/rsquaredacademy-publications/datasets/master/transact.csv')
 ```
 
 ## Date Arithmetic 
 
 ### Introduction 
 
-Time to do some arithmetic with the dates. Let us calculate the length of a 
+Time to do some arithmetic with dates. Let us calculate the length of a 
 course you have enrolled for (Become a Rock Star Data Scientist in 10 Days) by subtracting the course start date from the course end date.
 
 <br>
@@ -65,7 +65,7 @@ course_start + years(1)
 #### Compute days to settle invoice
 
 Let us estimate the number of days to settle the invoice by subtracting the
-date of invoice from the date of payment.
+invoice date from the payment date.
 
 ```{r lub3}
 transact |>
@@ -109,44 +109,44 @@ knitr::include_graphics('img/lub_timezones.jpg')
 ```
 
 In the previous section, `POSIXlt` stored date/time components as a list. Among 
-the different components it returned were
+the components it returned were
 
 - `gmtoff`
 - `zone`
 
-`gmtoff` is offset in seconds from GMT i.e. difference in hours and minutes from 
+`gmtoff` is the offset in seconds from GMT, i.e. the difference in hours and minutes from 
 UTC. Wait.. What do UTC and GMT stand for?
 
 - Coordinated Universal Time (UTC)
-- Greenwich Meridian Time (GMT)
+- Greenwich Mean Time (GMT)
 
 Since we are talking about UTC, GMT etc., let us spend a little time on 
-understanding the basics of time zones and daylight savings.
+the basics of time zones and daylight savings.
 
 ### Time Zones
 
-Timezones exist because different parts of the Earth receive sun light at 
+Timezones exist because different parts of the Earth receive sunlight at 
 different times. If there was a single timezone, noon or morning would mean 
-different things in different parts of the world. The timezones are based on 
-Earth's rotation. The Earth moves ~15 degrees every 60 minutes i.e. 360 degrees 
-in 24 hours. The planet is divided into 24 timezones each 15 degrees of 
-longitude width. 
+different things in different parts of the world. Timezones are based on 
+Earth's rotation. The Earth moves about 15 degrees every 60 minutes, i.e. 360 degrees 
+in 24 hours. The planet is divided into 24 timezones, each 15 degrees of 
+longitude wide. 
 
-Now, you have heard of Greenwich Meridian Time (GMT) right? We just saw GMT off 
-set in `POSIXlt` and you would have come across it in other time formats as 
-well. For example, India timezone is given as GMT +5:30. Let us explore GMT in a 
+Now, you have heard of Greenwich Mean Time (GMT). We just saw the GMT offset 
+in `POSIXlt` and you would have come across it in other time formats as 
+well. For example, the India timezone is given as GMT +5:30. Let us explore GMT in a 
 little more detail. Greenwich is a suburb of London and the time at Greenwich 
-is **G**reenwich **M**ean **T**ime. As you move West from Greenwich, every 15 
-degree section is one hour earlier than GMT and every 15 degree section to the 
+is **G**reenwich **M**ean **T**ime. As you move West from Greenwich, every 15-degree 
+section is one hour earlier than GMT, and every 15-degree section to the 
 East is an hour later. 
 
-Alright! What is **UTC** then? **C**oordinated **U**niversal **T**ime (UTC) , 
+Alright! What is **UTC** then? **C**oordinated **U**niversal **T**ime (UTC), 
 on the other hand, is the time standard commonly used across the world. Even 
 though they share the same current time, **GMT** is a **timezone** while 
 **UTC** is a **time standard**.
 
 So how do we check the timezone in R? When you run `Sys.timezone()`, you should 
-be able to see the timezone you are in. 
+see the timezone you are in. 
 
 ```{r sys_time_zones}
 Sys.timezone()
@@ -159,9 +159,9 @@ If you do not see the timezone, use `Sys.getenv()` to get the value of the
 Sys.getenv("TZ")
 ```
 
-If nothing is returned, it means we have to set the timezone. Use `Sys.setenv()` 
-to set the timezone as shown below. The author resides in India and hence the 
-timezone is set to `Asia/Calcutta`. You need to set the timezone in which you 
+If nothing is returned, R uses the system timezone. Use `Sys.setenv()` 
+to override it when needed, as shown below. The author resides in India, and hence the 
+timezone is set to `Asia/Calcutta`. Replace it with the timezone in which you 
 reside or work.
 
 ```{r set_time_zone}
@@ -187,7 +187,7 @@ lubridate::with_tz(Sys.time(), "UTC")
 knitr::include_graphics('img/lub_daylight_savings.png')
 ```
 
-Daylight savings also known as 
+Daylight savings, also known as 
 
 - daylight saving time
 - daylight savings time
@@ -210,12 +210,12 @@ dst(Sys.Date())
 ### Your Turn
 
 - check the timezone you live in
-- check if daylight savings in on
+- check if daylight savings is on
 - check the current time in **UTC** or a different time zone 
 
 ## Intervals, Duration & Period 
 
-In this chapter, we will learn about 
+In this section, we will learn about 
 
 - intervals
 - duration
@@ -240,7 +240,7 @@ course_end      <- as_date('2017-04-21')
 interval(course_start, course_end)
 ```
 
-If you observe carefully, the interval is represented by the course start and
+The interval is represented by the course start and
 end dates. We will learn how to use intervals in the case study.
 
 #### Overlapping Intervals
@@ -249,7 +249,7 @@ Let us say you are planning a vacation and want to check if the vacation
 dates overlap with the course dates. You can do this by:
 
 - creating vacation and course intervals
-- use `int_overlaps()` to check if two intervals overlap. It returns `TRUE`
+- use `int_overlaps()` to check whether two intervals overlap. It returns `TRUE`
 if the intervals overlap else `FALSE`.
 
 Let us use the vacation start and end dates to create `vacation_interval`
@@ -307,10 +307,10 @@ transact |>
   select(Invoice, Due, Payment, overlaps)
 ```
 
-You might be thinking why we incremented the due date by a day before creating
+You might be wondering why we incremented the due date by a day before creating
 the interval between the due day and the payment day. If we do not increment, 
-both the intervals will share a common date i.e. the due date and they will
-always overlap as shown below:
+both intervals share a common date, i.e. the due date, and they always 
+overlap, as shown below:
 
 ```{r lub7a}
 transact |>
@@ -324,7 +324,7 @@ transact |>
 
 #### Shift Interval
 
-Intervals can be shifted too. In the below example, we shift the course 
+Intervals can be shifted too. In the example below, we shift the course 
 interval by:
 
 - 1 day
@@ -355,8 +355,8 @@ int_shift(course_interval, by = years(1))
 ### Within
 
 Let us assume that we have to attend a conference in April 2017. Does it occur
-during the course duration? We can answer this using `%within%` which will
-return `TRUE` if a date falls within an interval.
+during the course duration? We can answer this using `%within%`, which
+returns `TRUE` if a date falls within an interval.
 
 <br>
 
@@ -390,8 +390,8 @@ transact |>
 
 ### Duration
 
-Duration is timespan measured in seconds. To create a duration object, use
-`duration()`. The timespan can be anything from seconds to years but it will be
+A duration is a timespan measured in seconds. To create a duration object, use
+`duration()`. The timespan can be anything from seconds to years, but it is
 represented as seconds. Let us begin by creating a duration object where the timespan is in seconds.
 
 ```{r duration_1}
@@ -404,13 +404,13 @@ Another way to specify the above timespan is shown below:
 duration(second = 50)
 ```
 
-As you can see, the output is same in both the cases. Let us increase the timespan to 60 seconds and see what happens.
+As you can see, the output is the same in both cases. Let us increase the timespan to 60 seconds and see what happens.
 
 ```{r duration_3}
 duration(second = 60)
 ```
 
-Although the timespan is primarily measured in seconds, it also shows `~1 minutes` in the brackets. As the length of the timespan increases i.e. the number becomes large, it is represented using larger units such as hours and days. In the below examples, as the number of seconds increases, you can observe larger units being used to represent the timespan.
+Although the timespan is primarily measured in seconds, it also shows `~1 minutes` in brackets. As the timespan gets longer, i.e. the number becomes large, it is represented using larger units such as hours and days. In the examples below, as the number of seconds increases, you can observe larger units being used to represent the timespan.
 
 
 ```{r duration_4}
@@ -475,7 +475,7 @@ course_interval / dyears()
 ### Period
 
 A `period` is a timespan defined in units such as years, months, and days. In
-the below examples, we use `period()` to represent timespan using different
+the examples below, we use `period()` to represent a timespan using different
 units.
 
 ```{r period_examples}
@@ -518,7 +518,7 @@ as.period(course_interval, unit = "hours")
 ```
 
 
-`time_length()` computes the exact length of a timespan i.e. `duration`, `interval` or `period`. Let us use `time_length()` to compute the length of the
+`time_length()` computes the exact length of a timespan, i.e. `duration`, `interval` or `period`. Let us use `time_length()` to compute the length of the
 course in different units.
 
 <br>
