@@ -85,9 +85,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4b771a4b784a8e84876cc78b6787da1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f1199573155d9ece16e6d1f1e3349c0d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-4b771a4b784a8e84876cc78b6787da1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-48e03e558016f0210b9c32ca68f42870.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-efe33b70990426dcfcbf5a97766889a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-48e03e558016f0210b9c32ca68f42870.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -2662,16 +2662,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 700 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 yahoo    tablet TRUE           9       1      706 FALSE   
- 2 bing     tablet TRUE           0       1      425 FALSE   
- 3 direct   mobile FALSE          3      10      200 FALSE   
- 4 social   laptop FALSE          8       7      105 FALSE   
- 5 social   tablet TRUE           5       1      667 FALSE   
- 6 bing     tablet FALSE          1      17      170 FALSE   
- 7 yahoo    tablet FALSE          4       1       17 FALSE   
- 8 google   mobile FALSE          3      18      270 TRUE    
- 9 direct   laptop FALSE          6      17      204 FALSE   
-10 bing     mobile TRUE           5       1      751 FALSE   
+ 1 social   mobile TRUE          10       1      102 FALSE   
+ 2 google   laptop FALSE          2       7      154 FALSE   
+ 3 bing     laptop TRUE           1       1      938 FALSE   
+ 4 social   laptop FALSE          8       3       30 FALSE   
+ 5 google   mobile FALSE         10      13      208 FALSE   
+ 6 social   mobile TRUE           8       1      619 FALSE   
+ 7 social   laptop FALSE          0      17      204 FALSE   
+ 8 google   tablet FALSE          9      14      308 TRUE    
+ 9 direct   laptop TRUE           3       1      510 FALSE   
+10 yahoo    laptop FALSE          6      19      418 TRUE    
 # ℹ 690 more rows</code></pre>
 </div>
 </div>
@@ -2682,16 +2682,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 500 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 google   mobile FALSE          0       4       76 FALSE   
- 2 google   laptop FALSE          0       3       45 FALSE   
- 3 google   laptop TRUE           3       1      369 FALSE   
- 4 google   mobile TRUE           1       1      367 FALSE   
- 5 google   laptop TRUE           4       1      985 FALSE   
- 6 google   tablet TRUE           8       1      249 FALSE   
- 7 google   tablet TRUE           9       1      382 FALSE   
- 8 google   tablet FALSE          1       9       90 FALSE   
- 9 google   laptop FALSE          9      19      228 FALSE   
-10 google   laptop TRUE           6       1      235 FALSE   
+ 1 google   laptop FALSE         10      18      450 FALSE   
+ 2 google   tablet FALSE          1      18      180 FALSE   
+ 3 google   mobile FALSE          8      10      240 FALSE   
+ 4 google   mobile FALSE          3      18      270 TRUE    
+ 5 google   tablet TRUE           8       1      249 FALSE   
+ 6 google   tablet FALSE          7       5       60 FALSE   
+ 7 google   mobile FALSE          5      13      390 FALSE   
+ 8 google   mobile TRUE           1       1      367 FALSE   
+ 9 google   mobile TRUE           5       1      988 FALSE   
+10 google   mobile FALSE          4      20      420 FALSE   
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -2702,23 +2702,23 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 700 × 7
    referrer device bouncers n_visit n_pages duration purchase
    &lt;fct&gt;    &lt;fct&gt;  &lt;lgl&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
- 1 social   laptop FALSE         10      10      180 FALSE   
- 2 yahoo    laptop TRUE           2       1       83 FALSE   
- 3 google   tablet FALSE          1       9       90 FALSE   
- 4 yahoo    tablet TRUE           7       1      799 FALSE   
- 5 bing     laptop FALSE          4      11      187 FALSE   
- 6 google   laptop TRUE           5       1      376 FALSE   
- 7 direct   tablet FALSE          8      16      192 FALSE   
- 8 google   mobile FALSE          5      13      390 FALSE   
- 9 google   tablet FALSE          5      10      180 FALSE   
-10 yahoo    tablet TRUE           0       1      824 FALSE   
+ 1 bing     laptop TRUE           1       1      169 FALSE   
+ 2 social   laptop FALSE          8       2       60 FALSE   
+ 3 direct   mobile TRUE           9       1      242 FALSE   
+ 4 google   laptop TRUE           5       1      751 FALSE   
+ 5 direct   laptop FALSE          8       5      150 FALSE   
+ 6 social   tablet FALSE         10      10      170 FALSE   
+ 7 google   mobile TRUE           1       1      417 FALSE   
+ 8 social   laptop TRUE           7       1      403 FALSE   
+ 9 direct   mobile TRUE           0       1      566 FALSE   
+10 yahoo    tablet TRUE           9       1      459 FALSE   
 # ℹ 690 more rows</code></pre>
 </div>
 </div>
 </section>
 <section id="data-extraction" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="data-extraction"><span class="header-section-number">6.7</span> Data Extraction</h2>
-<p>In the first <a href="https://blog.aravindhebbali.com/2017/12/25/data-wrangling-with-dplyr-part-1/">chapter</a>, we had observed that dplyr verbs always returned a tibble. What if you want to extract a specific column or a bunch of rows but not as a tibble?</p>
+<p>In the <a href="./04-dplyr-1.html">first dplyr chapter</a>, we had observed that dplyr verbs always returned a tibble. What if you want to extract a specific column or a bunch of rows but not as a tibble?</p>
 <p>Use <code>pull</code> to extract columns either by name or position. It will return a vector. In the below example, we extract the <code>device</code> column as a vector. I am using <code>head</code> in addition to limit the output printed.</p>
 <section id="sample-data" class="level3" data-number="6.7.1">
 <h3 data-number="6.7.1" class="anchored" data-anchor-id="sample-data"><span class="header-section-number">6.7.1</span> Sample Data</h3>
@@ -2737,7 +2737,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] tablet laptop tablet laptop mobile tablet laptop mobile tablet mobile
+<pre><code> [1] mobile mobile tablet mobile tablet laptop mobile laptop tablet laptop
 Levels: laptop tablet mobile</code></pre>
 </div>
 </div>
@@ -2745,7 +2745,7 @@ Levels: laptop tablet mobile</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] bing   direct google yahoo  bing   google social yahoo  bing   bing  
+<pre><code> [1] bing   google google yahoo  google google yahoo  social social google
 Levels: bing direct social yahoo google</code></pre>
 </div>
 </div>
@@ -2753,7 +2753,7 @@ Levels: bing direct social yahoo google</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pull</span>(ecom_mini, <span class="sc">-</span><span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE</code></pre>
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>Let us now look at extracting rows using <code>slice()</code>. In the below example, we extract data starting from the 5th row and upto the 15th row.</p>
@@ -2807,9 +2807,9 @@ Levels: bing direct social yahoo google</code></pre>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_pages) <span class="sc">|&gt;</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">between</span>(<span class="dv">5</span>, <span class="dv">15</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
-[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
-[25]  TRUE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
 </section>
@@ -3530,7 +3530,7 @@ Levels: bing direct social yahoo google</code></pre>
 <span id="cb45-184"><a href="#cb45-184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Extraction</span></span>
 <span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>In the first <span class="co">[</span><span class="ot">chapter</span><span class="co">](https://blog.aravindhebbali.com/2017/12/25/data-wrangling-with-dplyr-part-1/)</span>,</span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">first dplyr chapter</span><span class="co">](04-dplyr-1.qmd)</span>,</span>
 <span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a>we had observed that dplyr verbs always returned a tibble. What if you want to</span>
 <span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a>extract a specific column or a bunch of rows but not as a tibble? </span>
 <span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a></span>
