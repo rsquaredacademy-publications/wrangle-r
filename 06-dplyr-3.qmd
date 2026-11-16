@@ -184,7 +184,7 @@ slice_sample(ecom, prop = 0.7)
 
 ## Data Extraction
 
-In the first [chapter](https://blog.aravindhebbali.com/2017/12/25/data-wrangling-with-dplyr-part-1/),
+In the [first dplyr chapter](04-dplyr-1.qmd),
 we had observed that dplyr verbs always returned a tibble. What if you want to
 extract a specific column or a bunch of rows but not as a tibble? 
 
