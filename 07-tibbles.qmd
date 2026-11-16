@@ -170,7 +170,7 @@ add_column(browsers, visits = c(4000, 2000, 3000, 1000))
 
 ## Rownames
 
-The [tibble](tibble.tidyverse.org) package provides a set of functions to deal 
+The [tibble](https://tibble.tidyverse.org/) package provides a set of functions to deal 
 with rownames. Remember, `tibble` does not have `rownames` unlike `data.frame`. 
 To check whether a data set has rownames, use `has_rownames()`.
 
