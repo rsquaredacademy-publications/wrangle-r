@@ -85,9 +85,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93940b3b3c8f18ccfbb4d0fac2c5b15b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ed40b6d0673a2b74ceb9e3d6257bd262.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-93940b3b3c8f18ccfbb4d0fac2c5b15b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4b771a4b784a8e84876cc78b6787da1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f1199573155d9ece16e6d1f1e3349c0d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-4b771a4b784a8e84876cc78b6787da1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -2431,16 +2431,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 26 × 3
    x         y     z
    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
- 1 a         1    73
- 2 b         2    25
- 3 c         3    53
- 4 d         4    69
- 5 e         5     4
- 6 f         6    26
- 7 g         7    37
- 8 h         8    71
- 9 i         9    61
-10 j        10     1
+ 1 a         1    24
+ 2 b         2    95
+ 3 c         3    51
+ 4 d         4    64
+ 5 e         5    74
+ 6 f         6    13
+ 7 g         7    20
+ 8 h         8     6
+ 9 i         9    87
+10 j        10    41
 # ℹ 16 more rows</code></pre>
 </div>
 </div>
@@ -2459,16 +2459,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 26 × 3
    x         y     z
    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
- 1 a         1    12
- 2 b         2    58
- 3 c         3    66
- 4 d         4    55
- 5 e         5    27
+ 1 a         1    54
+ 2 b         2    53
+ 3 c         3    83
+ 4 d         4     2
+ 5 e         5    25
  6 f         6    46
- 7 g         7    56
- 8 h         8    53
- 9 i         9    14
-10 j        10    65
+ 7 g         7    91
+ 8 h         8    70
+ 9 i         9    52
+10 j        10    63
 # ℹ 16 more rows</code></pre>
 </div>
 </div>
@@ -2499,16 +2499,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code># A tibble: 100 × 3
        x y     z    
    &lt;int&gt; &lt;chr&gt; &lt;lgl&gt;
- 1     1 a     FALSE
- 2     2 a     FALSE
+ 1     1 a     TRUE 
+ 2     2 a     TRUE 
  3     3 a     FALSE
- 4     4 a     FALSE
+ 4     4 a     TRUE 
  5     5 a     FALSE
- 6     6 a     FALSE
- 7     7 a     TRUE 
+ 6     6 a     TRUE 
+ 7     7 a     FALSE
  8     8 a     FALSE
- 9     9 a     TRUE 
-10    10 a     TRUE 
+ 9     9 a     FALSE
+10    10 a     FALSE
 # ℹ 90 more rows</code></pre>
 </div>
 </div>
@@ -2641,7 +2641,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="rownames" class="level2" data-number="7.9">
 <h2 data-number="7.9" class="anchored" data-anchor-id="rownames"><span class="header-section-number">7.9</span> Rownames</h2>
-<p>The <a href="tibble.tidyverse.org">tibble</a> package provides a set of functions to deal with rownames. Remember, <code>tibble</code> does not have <code>rownames</code> unlike <code>data.frame</code>. To check whether a data set has rownames, use <code>has_rownames()</code>.</p>
+<p>The <a href="https://tibble.tidyverse.org/">tibble</a> package provides a set of functions to deal with rownames. Remember, <code>tibble</code> does not have <code>rownames</code> unlike <code>data.frame</code>. To check whether a data set has rownames, use <code>has_rownames()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">has_rownames</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -3488,7 +3488,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <span id="cb43-170"><a href="#cb43-170" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-171"><a href="#cb43-171" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rownames</span></span>
 <span id="cb43-172"><a href="#cb43-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-173"><a href="#cb43-173" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">tibble</span><span class="co">](tibble.tidyverse.org)</span> package provides a set of functions to deal </span>
+<span id="cb43-173"><a href="#cb43-173" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">tibble</span><span class="co">](https://tibble.tidyverse.org/)</span> package provides a set of functions to deal </span>
 <span id="cb43-174"><a href="#cb43-174" aria-hidden="true" tabindex="-1"></a>with rownames. Remember, <span class="in">`tibble`</span> does not have <span class="in">`rownames`</span> unlike <span class="in">`data.frame`</span>. </span>
 <span id="cb43-175"><a href="#cb43-175" aria-hidden="true" tabindex="-1"></a>To check whether a data set has rownames, use <span class="in">`has_rownames()`</span>.</span>
 <span id="cb43-176"><a href="#cb43-176" aria-hidden="true" tabindex="-1"></a></span>
